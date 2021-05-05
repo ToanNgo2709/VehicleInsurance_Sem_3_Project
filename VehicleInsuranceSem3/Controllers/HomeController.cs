@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using VehicleInsuranceSem3.DAL.Models.Context;
+using VehicleInsuranceSem3.DAL.Models.Entities;
 
 namespace VehicleInsuranceSem3.Controllers
 {
@@ -11,10 +12,6 @@ namespace VehicleInsuranceSem3.Controllers
     {
         public ActionResult Index()
         {
-            using (var ctx = new InsuranceDbContext())
-            {
-                var list = ctx.UserTypes.ToList();
-            }
                 
             return View();
         }
