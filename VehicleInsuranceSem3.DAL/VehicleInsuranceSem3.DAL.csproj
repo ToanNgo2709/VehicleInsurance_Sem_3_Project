@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\VehicleInsuranceSem3\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\VehicleInsuranceSem3\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>b6533c25-fbbe-40e9-9f6d-482613146524</ProjectGuid>
+    <ProjectGuid>{B6533C25-FBBE-40E9-9F6D-482613146524}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>VehicleInsuranceSem3.DAL</RootNamespace>
@@ -12,6 +13,8 @@
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,24 +34,56 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\VehicleInsuranceSem3\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\VehicleInsuranceSem3\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Models\Configuration\CustomerInfoConfiguration.cs" />
+    <Compile Include="Models\Configuration\UserInfoConfiguration.cs" />
+    <Compile Include="Models\Configuration\UserTypeConfiguration.cs" />
+    <Compile Include="Models\Context\InsuranceDbContext.cs" />
+    <Compile Include="Models\Entities\Brand.cs" />
+    <Compile Include="Models\Entities\ClaimDetail.cs" />
+    <Compile Include="Models\Entities\CompanyExpense.cs" />
+    <Compile Include="Models\Entities\CustomerInfo.cs" />
+    <Compile Include="Models\Entities\CustomerBillingInfo.cs" />
+    <Compile Include="Models\Entities\CustomerPolicy.cs" />
+    <Compile Include="Models\Entities\Estimate.cs" />
+    <Compile Include="Models\Entities\ExpenseType.cs" />
+    <Compile Include="Models\Entities\GoogleMap.cs" />
+    <Compile Include="Models\Entities\ModelInfo.cs" />
+    <Compile Include="Models\Entities\Policy.cs" />
+    <Compile Include="Models\Entities\PolicyType.cs" />
+    <Compile Include="Models\Entities\UserInfo.cs" />
+    <Compile Include="Models\Entities\UserType.cs" />
+    <Compile Include="Models\Entities\VehicleInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\VehicleInsuranceSem3\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\VehicleInsuranceSem3\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\VehicleInsuranceSem3\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\VehicleInsuranceSem3\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\VehicleInsuranceSem3\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\VehicleInsuranceSem3\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
