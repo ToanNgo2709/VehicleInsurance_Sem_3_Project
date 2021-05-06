@@ -52,37 +52,28 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\202105051726380_testdb.cs" />
-    <Compile Include="Migrations\202105051726380_testdb.Designer.cs">
-      <DependentUpon>202105051726380_testdb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Brand.cs" />
-    <Compile Include="Model\Claim_detail.cs" />
-    <Compile Include="Model\Company_expense.cs" />
-    <Compile Include="Model\Customer_billing_info.cs" />
-    <Compile Include="Model\Customer_info.cs" />
-    <Compile Include="Model\Customer_policy.cs" />
+    <Compile Include="Model\Claim_Detail.cs" />
+    <Compile Include="Model\Company_Expense.cs" />
+    <Compile Include="Model\Customer_Billing_Info.cs" />
+    <Compile Include="Model\Customer_Info.cs" />
+    <Compile Include="Model\Customer_Policy.cs" />
     <Compile Include="Model\Estimate.cs" />
-    <Compile Include="Model\Expense_type.cs" />
-    <Compile Include="Model\Google_map.cs" />
-    <Compile Include="Model\InsuranceVehicle.cs" />
+    <Compile Include="Model\Expense_Type.cs" />
+    <Compile Include="Model\Google_Map.cs" />
+    <Compile Include="Model\InsuranceDbContext.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\Policy.cs" />
-    <Compile Include="Model\Policy_type.cs" />
-    <Compile Include="Model\User_info.cs" />
-    <Compile Include="Model\User_type.cs" />
-    <Compile Include="Model\Vehicle_info.cs" />
+    <Compile Include="Model\Policy_Type.cs" />
+    <Compile Include="Model\User_Info.cs" />
+    <Compile Include="Model\User_Type.cs" />
+    <Compile Include="Model\Vehicle_Info.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202105051726380_testdb.resx">
-      <DependentUpon>202105051726380_testdb.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

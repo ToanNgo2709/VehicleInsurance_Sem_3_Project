@@ -10,5 +10,3 @@ D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\obj\Debug\VehicleIns
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\obj\Debug\VehicleInsuranceSem3.DAL.dll
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\obj\Debug\VehicleInsuranceSem3.DAL.pdb
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\obj\Debug\VehicleInsuranceSem3.DAL.csprojAssemblyReference.cache
-D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\obj\Debug\VehicleInsuranceSem3.DAL.Migrations.testdb.resources
-D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\obj\Debug\VehicleInsuranceSem3.DAL.csproj.GenerateResource.cache

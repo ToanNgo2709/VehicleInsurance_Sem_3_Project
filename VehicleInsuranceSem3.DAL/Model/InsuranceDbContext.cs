@@ -8,7 +8,7 @@ namespace VehicleInsuranceSem3.DAL.Model
     public partial class InsuranceDbContext : DbContext
     {
         public InsuranceDbContext()
-            : base("name=InsuranceDbContext")
+            : base("data source=.;initial catalog=Vehicle_Insurance_Sem_3;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework")
         {
         }
 
