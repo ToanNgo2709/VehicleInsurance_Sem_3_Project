@@ -12,6 +12,6 @@ namespace VehicleInsuranceSem3.BLL.ViewModel
         public string Name { get; set; }
         public bool Active { get; set; }
 
-
+       
     }
 }
