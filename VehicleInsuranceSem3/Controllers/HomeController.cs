@@ -28,5 +28,10 @@ namespace VehicleInsuranceSem3.Controllers
 
             return View();
         }
+
+        public ActionResult Test()
+        {
+            return View();
+        }
     }
 }
