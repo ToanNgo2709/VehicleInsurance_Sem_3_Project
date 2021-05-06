@@ -6,12 +6,12 @@ namespace VehicleInsuranceSem3.DAL.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Customer_info
+    public partial class Customer_Info
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Customer_info()
+        public Customer_Info()
         {
-            Customer_policy = new HashSet<Customer_policy>();
+            Customer_Policy = new HashSet<Customer_Policy>();
             Estimates = new HashSet<Estimate>();
         }
 
@@ -40,9 +40,9 @@ namespace VehicleInsuranceSem3.DAL.Model
         public int? user_info_id { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer_policy> Customer_policy { get; set; }
+        public virtual ICollection<Customer_Policy> Customer_Policy { get; set; }
 
-        public virtual User_info User_info { get; set; }
+        public virtual User_Info User_Info { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estimate> Estimates { get; set; }

@@ -23,8 +23,8 @@ namespace VehicleInsuranceSem3.DAL.Model
 
         public int policy_id { get; set; }
 
-        public virtual Customer_info Customer_info { get; set; }
+        public virtual Customer_Info Customer_Info { get; set; }
 
-        public virtual Vehicle_info Vehicle_info { get; set; }
+        public virtual Vehicle_Info Vehicle_Info { get; set; }
     }
 }

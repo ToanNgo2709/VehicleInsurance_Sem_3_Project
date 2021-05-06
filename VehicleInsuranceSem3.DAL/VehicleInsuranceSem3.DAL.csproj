@@ -57,37 +57,22 @@
       <DependentUpon>202105051726380_testdb.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Configuration\BrandConfiguration.cs" />
-    <Compile Include="Models\Configuration\ClaimDetailConfiguration.cs" />
-    <Compile Include="Models\Configuration\CompanyExpenseConfiguration.cs" />
-    <Compile Include="Models\Configuration\CustomerBillingInfoConfiguration.cs" />
-    <Compile Include="Models\Configuration\CustomerInfoConfiguration.cs" />
-    <Compile Include="Models\Configuration\CustomerPolicyConfiguration.cs" />
-    <Compile Include="Models\Configuration\EstimateConfiguration.cs" />
-    <Compile Include="Models\Configuration\ExpenseTypeConfiguration.cs" />
-    <Compile Include="Models\Configuration\GoogleMapConfiguration.cs" />
-    <Compile Include="Models\Configuration\ModelInfoConfiguration.cs" />
-    <Compile Include="Models\Configuration\PolicyConfiguration.cs" />
-    <Compile Include="Models\Configuration\PolicyTypeConfiguration.cs" />
-    <Compile Include="Models\Configuration\UserInfoConfiguration.cs" />
-    <Compile Include="Models\Configuration\UserTypeConfiguration.cs" />
-    <Compile Include="Models\Configuration\VehicleInfoConfiguration.cs" />
-    <Compile Include="Models\Context\InsuranceDbContext.cs" />
-    <Compile Include="Models\Entities\Brand.cs" />
-    <Compile Include="Models\Entities\ClaimDetail.cs" />
-    <Compile Include="Models\Entities\CompanyExpense.cs" />
-    <Compile Include="Models\Entities\CustomerInfo.cs" />
-    <Compile Include="Models\Entities\CustomerBillingInfo.cs" />
-    <Compile Include="Models\Entities\CustomerPolicy.cs" />
-    <Compile Include="Models\Entities\Estimate.cs" />
-    <Compile Include="Models\Entities\ExpenseType.cs" />
-    <Compile Include="Models\Entities\GoogleMap.cs" />
-    <Compile Include="Models\Entities\ModelInfo.cs" />
-    <Compile Include="Models\Entities\Policy.cs" />
-    <Compile Include="Models\Entities\PolicyType.cs" />
-    <Compile Include="Models\Entities\UserInfo.cs" />
-    <Compile Include="Models\Entities\UserType.cs" />
-    <Compile Include="Models\Entities\VehicleInfo.cs" />
+    <Compile Include="Model\Brand.cs" />
+    <Compile Include="Model\Claim_detail.cs" />
+    <Compile Include="Model\Company_expense.cs" />
+    <Compile Include="Model\Customer_billing_info.cs" />
+    <Compile Include="Model\Customer_info.cs" />
+    <Compile Include="Model\Customer_policy.cs" />
+    <Compile Include="Model\Estimate.cs" />
+    <Compile Include="Model\Expense_type.cs" />
+    <Compile Include="Model\Google_map.cs" />
+    <Compile Include="Model\InsuranceVehicle.cs" />
+    <Compile Include="Model\Model.cs" />
+    <Compile Include="Model\Policy.cs" />
+    <Compile Include="Model\Policy_type.cs" />
+    <Compile Include="Model\User_info.cs" />
+    <Compile Include="Model\User_type.cs" />
+    <Compile Include="Model\Vehicle_info.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

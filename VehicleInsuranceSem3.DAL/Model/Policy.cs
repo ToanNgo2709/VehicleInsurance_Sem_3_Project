@@ -12,7 +12,7 @@ namespace VehicleInsuranceSem3.DAL.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Policy()
         {
-            Customer_policy = new HashSet<Customer_policy>();
+            Customer_Policy = new HashSet<Customer_Policy>();
         }
 
         public int id { get; set; }
@@ -30,8 +30,8 @@ namespace VehicleInsuranceSem3.DAL.Model
         public int policy_type_id { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Customer_policy> Customer_policy { get; set; }
+        public virtual ICollection<Customer_Policy> Customer_Policy { get; set; }
 
-        public virtual Policy_type Policy_type { get; set; }
+        public virtual Policy_Type Policy_Type { get; set; }
     }
 }

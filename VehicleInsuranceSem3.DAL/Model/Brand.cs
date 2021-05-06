@@ -13,7 +13,7 @@ namespace VehicleInsuranceSem3.DAL.Model
         public Brand()
         {
             Models = new HashSet<Model>();
-            Vehicle_info = new HashSet<Vehicle_info>();
+            Vehicle_Info = new HashSet<Vehicle_Info>();
         }
 
         public int id { get; set; }
@@ -28,6 +28,6 @@ namespace VehicleInsuranceSem3.DAL.Model
         public virtual ICollection<Model> Models { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vehicle_info> Vehicle_info { get; set; }
+        public virtual ICollection<Vehicle_Info> Vehicle_Info { get; set; }
     }
 }

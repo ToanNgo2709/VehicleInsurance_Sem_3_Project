@@ -6,7 +6,7 @@ namespace VehicleInsuranceSem3.DAL.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Claim_detail
+    public partial class Claim_Detail
     {
         public int id { get; set; }
 
@@ -26,6 +26,6 @@ namespace VehicleInsuranceSem3.DAL.Model
 
         public decimal claimable_amount { get; set; }
 
-        public virtual Customer_policy Customer_policy { get; set; }
+        public virtual Customer_Policy Customer_Policy { get; set; }
     }
 }

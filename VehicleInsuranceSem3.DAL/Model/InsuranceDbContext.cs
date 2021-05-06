@@ -5,28 +5,28 @@ using System.Linq;
 
 namespace VehicleInsuranceSem3.DAL.Model
 {
-    public partial class InsuranceVehicle : DbContext
+    public partial class InsuranceDbContext : DbContext
     {
-        public InsuranceVehicle()
-            : base("name=InsuranceVehicle")
+        public InsuranceDbContext()
+            : base("name=InsuranceDbContext")
         {
         }
 
         public virtual DbSet<Brand> Brands { get; set; }
-        public virtual DbSet<Claim_detail> Claim_detail { get; set; }
-        public virtual DbSet<Company_expense> Company_expense { get; set; }
-        public virtual DbSet<Customer_billing_info> Customer_billing_info { get; set; }
-        public virtual DbSet<Customer_info> Customer_info { get; set; }
-        public virtual DbSet<Customer_policy> Customer_policy { get; set; }
+        public virtual DbSet<Claim_Detail> Claim_Detail { get; set; }
+        public virtual DbSet<Company_Expense> Company_Expense { get; set; }
+        public virtual DbSet<Customer_Billing_Info> Customer_Billing_Info { get; set; }
+        public virtual DbSet<Customer_Info> Customer_Info { get; set; }
+        public virtual DbSet<Customer_Policy> Customer_Policy { get; set; }
         public virtual DbSet<Estimate> Estimates { get; set; }
-        public virtual DbSet<Expense_type> Expense_type { get; set; }
-        public virtual DbSet<Google_map> Google_map { get; set; }
+        public virtual DbSet<Expense_Type> Expense_Type { get; set; }
+        public virtual DbSet<Google_Map> Google_Map { get; set; }
         public virtual DbSet<Model> Models { get; set; }
         public virtual DbSet<Policy> Policies { get; set; }
-        public virtual DbSet<Policy_type> Policy_type { get; set; }
-        public virtual DbSet<User_info> User_info { get; set; }
-        public virtual DbSet<User_type> User_type { get; set; }
-        public virtual DbSet<Vehicle_info> Vehicle_info { get; set; }
+        public virtual DbSet<Policy_Type> Policy_Type { get; set; }
+        public virtual DbSet<User_Info> User_Info { get; set; }
+        public virtual DbSet<User_Type> User_Type { get; set; }
+        public virtual DbSet<Vehicle_Info> Vehicle_Info { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -41,92 +41,96 @@ namespace VehicleInsuranceSem3.DAL.Model
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Brand>()
-                .HasMany(e => e.Vehicle_info)
+                .HasMany(e => e.Vehicle_Info)
                 .WithRequired(e => e.Brand)
                 .HasForeignKey(e => e.brand_id)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Claim_detail>()
+            modelBuilder.Entity<Claim_Detail>()
                 .Property(e => e.claim_number)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Claim_detail>()
+            modelBuilder.Entity<Claim_Detail>()
                 .Property(e => e.insured_amount)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<Claim_detail>()
+            modelBuilder.Entity<Claim_Detail>()
                 .Property(e => e.claimable_amount)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<Company_expense>()
+            modelBuilder.Entity<Company_Expense>()
                 .Property(e => e.amount)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<Customer_billing_info>()
+            modelBuilder.Entity<Customer_Billing_Info>()
                 .Property(e => e.customer_add_prove)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Customer_billing_info>()
+            modelBuilder.Entity<Customer_Billing_Info>()
                 .Property(e => e.bill_number)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Customer_billing_info>()
+            modelBuilder.Entity<Customer_Billing_Info>()
                 .Property(e => e.amount)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<Customer_info>()
+            modelBuilder.Entity<Customer_Info>()
                 .Property(e => e.phone)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Customer_info>()
+            modelBuilder.Entity<Customer_Info>()
                 .Property(e => e.email)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Customer_info>()
-                .HasMany(e => e.Customer_policy)
-                .WithOptional(e => e.Customer_info)
+            modelBuilder.Entity<Customer_Info>()
+                .HasMany(e => e.Customer_Policy)
+                .WithOptional(e => e.Customer_Info)
                 .HasForeignKey(e => e.customer_id);
 
-            modelBuilder.Entity<Customer_info>()
+            modelBuilder.Entity<Customer_Info>()
                 .HasMany(e => e.Estimates)
-                .WithRequired(e => e.Customer_info)
+                .WithRequired(e => e.Customer_Info)
                 .HasForeignKey(e => e.customer_id)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Customer_policy>()
+            modelBuilder.Entity<Customer_Policy>()
                 .Property(e => e.customer_add_prove)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Customer_policy>()
-                .HasMany(e => e.Claim_detail)
-                .WithOptional(e => e.Customer_policy)
+            modelBuilder.Entity<Customer_Policy>()
+                .Property(e => e.total_payment)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Customer_Policy>()
+                .HasMany(e => e.Claim_Detail)
+                .WithOptional(e => e.Customer_Policy)
                 .HasForeignKey(e => e.customer_policy_id);
 
-            modelBuilder.Entity<Customer_policy>()
-                .HasMany(e => e.Company_expense)
-                .WithOptional(e => e.Customer_policy)
+            modelBuilder.Entity<Customer_Policy>()
+                .HasMany(e => e.Company_Expense)
+                .WithOptional(e => e.Customer_Policy)
                 .HasForeignKey(e => e.customer_policy_id);
 
-            modelBuilder.Entity<Customer_policy>()
-                .HasMany(e => e.Customer_billing_info)
-                .WithOptional(e => e.Customer_policy)
+            modelBuilder.Entity<Customer_Policy>()
+                .HasMany(e => e.Customer_Billing_Info)
+                .WithOptional(e => e.Customer_Policy)
                 .HasForeignKey(e => e.customer_policy_id);
 
             modelBuilder.Entity<Estimate>()
                 .Property(e => e.estimate_number)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Expense_type>()
-                .HasMany(e => e.Company_expense)
-                .WithRequired(e => e.Expense_type)
+            modelBuilder.Entity<Expense_Type>()
+                .HasMany(e => e.Company_Expense)
+                .WithRequired(e => e.Expense_Type)
                 .HasForeignKey(e => e.expense_type_id)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Google_map>()
+            modelBuilder.Entity<Google_Map>()
                 .Property(e => e.latitude)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<Google_map>()
+            modelBuilder.Entity<Google_Map>()
                 .Property(e => e.longitude)
                 .HasPrecision(18, 0);
 
@@ -135,11 +139,11 @@ namespace VehicleInsuranceSem3.DAL.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<Model>()
-                .Property(e => e.rate)
+                .Property(e => e.highest_rate)
                 .HasPrecision(18, 0);
 
             modelBuilder.Entity<Model>()
-                .HasMany(e => e.Vehicle_info)
+                .HasMany(e => e.Vehicle_Info)
                 .WithRequired(e => e.Model)
                 .HasForeignKey(e => e.model_id)
                 .WillCascadeOnDelete(false);
@@ -149,59 +153,71 @@ namespace VehicleInsuranceSem3.DAL.Model
                 .IsUnicode(false);
 
             modelBuilder.Entity<Policy>()
-                .HasMany(e => e.Customer_policy)
+                .HasMany(e => e.Customer_Policy)
                 .WithOptional(e => e.Policy)
                 .HasForeignKey(e => e.policy_id);
 
-            modelBuilder.Entity<Policy_type>()
+            modelBuilder.Entity<Policy_Type>()
+                .Property(e => e.liability_level)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Policy_Type>()
+                .Property(e => e.price)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Policy_Type>()
                 .HasMany(e => e.Policies)
-                .WithRequired(e => e.Policy_type)
+                .WithRequired(e => e.Policy_Type)
                 .HasForeignKey(e => e.policy_type_id)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<User_info>()
+            modelBuilder.Entity<User_Info>()
                 .Property(e => e.username)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<User_info>()
+            modelBuilder.Entity<User_Info>()
                 .Property(e => e.password)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<User_info>()
+            modelBuilder.Entity<User_Info>()
                 .Property(e => e.authorize_token)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<User_info>()
-                .HasMany(e => e.Customer_info)
-                .WithOptional(e => e.User_info)
+            modelBuilder.Entity<User_Info>()
+                .HasMany(e => e.Customer_Info)
+                .WithOptional(e => e.User_Info)
                 .HasForeignKey(e => e.user_info_id);
 
-            modelBuilder.Entity<User_type>()
-                .HasMany(e => e.User_info)
-                .WithRequired(e => e.User_type)
+            modelBuilder.Entity<User_Type>()
+                .HasMany(e => e.User_Info)
+                .WithRequired(e => e.User_Type)
                 .HasForeignKey(e => e.user_type_id)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Vehicle_info>()
+            modelBuilder.Entity<Vehicle_Info>()
                 .Property(e => e.frame_number)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Vehicle_info>()
+            modelBuilder.Entity<Vehicle_Info>()
                 .Property(e => e.engine_number)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Vehicle_info>()
+            modelBuilder.Entity<Vehicle_Info>()
                 .Property(e => e.vehicle_number)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Vehicle_info>()
-                .HasMany(e => e.Customer_policy)
-                .WithOptional(e => e.Vehicle_info)
+            modelBuilder.Entity<Vehicle_Info>()
+                .Property(e => e.rate_by_condition)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Vehicle_Info>()
+                .HasMany(e => e.Customer_Policy)
+                .WithOptional(e => e.Vehicle_Info)
                 .HasForeignKey(e => e.vehicle_id);
 
-            modelBuilder.Entity<Vehicle_info>()
+            modelBuilder.Entity<Vehicle_Info>()
                 .HasMany(e => e.Estimates)
-                .WithRequired(e => e.Vehicle_info)
+                .WithRequired(e => e.Vehicle_Info)
                 .HasForeignKey(e => e.vehicle_id)
                 .WillCascadeOnDelete(false);
         }

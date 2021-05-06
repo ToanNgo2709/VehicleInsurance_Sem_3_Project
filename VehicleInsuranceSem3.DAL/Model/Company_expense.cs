@@ -6,7 +6,7 @@ namespace VehicleInsuranceSem3.DAL.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Company_expense
+    public partial class Company_Expense
     {
         public int id { get; set; }
 
@@ -21,8 +21,8 @@ namespace VehicleInsuranceSem3.DAL.Model
 
         public int? customer_policy_id { get; set; }
 
-        public virtual Customer_policy Customer_policy { get; set; }
+        public virtual Customer_Policy Customer_Policy { get; set; }
 
-        public virtual Expense_type Expense_type { get; set; }
+        public virtual Expense_Type Expense_Type { get; set; }
     }
 }

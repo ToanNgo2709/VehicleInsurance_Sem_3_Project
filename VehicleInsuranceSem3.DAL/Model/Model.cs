@@ -12,7 +12,7 @@ namespace VehicleInsuranceSem3.DAL.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Model()
         {
-            Vehicle_info = new HashSet<Vehicle_info>();
+            Vehicle_Info = new HashSet<Vehicle_Info>();
         }
 
         public int id { get; set; }
@@ -21,7 +21,7 @@ namespace VehicleInsuranceSem3.DAL.Model
         [StringLength(50)]
         public string name { get; set; }
 
-        public decimal rate { get; set; }
+        public decimal highest_rate { get; set; }
 
         public int brand_id { get; set; }
 
@@ -30,6 +30,6 @@ namespace VehicleInsuranceSem3.DAL.Model
         public virtual Brand Brand { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vehicle_info> Vehicle_info { get; set; }
+        public virtual ICollection<Vehicle_Info> Vehicle_Info { get; set; }
     }
 }

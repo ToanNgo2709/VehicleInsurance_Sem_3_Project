@@ -6,7 +6,7 @@ namespace VehicleInsuranceSem3.DAL.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Google_map
+    public partial class Google_Map
     {
         public int id { get; set; }
 

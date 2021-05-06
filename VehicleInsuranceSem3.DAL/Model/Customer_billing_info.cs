@@ -6,7 +6,7 @@ namespace VehicleInsuranceSem3.DAL.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Customer_billing_info
+    public partial class Customer_Billing_Info
     {
         public int id { get; set; }
 
@@ -26,6 +26,6 @@ namespace VehicleInsuranceSem3.DAL.Model
 
         public bool? active { get; set; }
 
-        public virtual Customer_policy Customer_policy { get; set; }
+        public virtual Customer_Policy Customer_Policy { get; set; }
     }
 }

@@ -6,10 +6,10 @@ namespace VehicleInsuranceSem3.DAL.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Policy_type
+    public partial class Policy_Type
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Policy_type()
+        public Policy_Type()
         {
             Policies = new HashSet<Policy>();
         }
@@ -19,6 +19,10 @@ namespace VehicleInsuranceSem3.DAL.Model
         [Required]
         [StringLength(50)]
         public string name { get; set; }
+
+        public decimal? liability_level { get; set; }
+
+        public decimal? price { get; set; }
 
         public bool? active { get; set; }
 

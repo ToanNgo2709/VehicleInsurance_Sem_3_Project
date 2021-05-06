@@ -6,12 +6,12 @@ namespace VehicleInsuranceSem3.DAL.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Expense_type
+    public partial class Expense_Type
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Expense_type()
+        public Expense_Type()
         {
-            Company_expense = new HashSet<Company_expense>();
+            Company_Expense = new HashSet<Company_Expense>();
         }
 
         public int id { get; set; }
@@ -23,6 +23,6 @@ namespace VehicleInsuranceSem3.DAL.Model
         public bool? active { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Company_expense> Company_expense { get; set; }
+        public virtual ICollection<Company_Expense> Company_Expense { get; set; }
     }
 }

@@ -51,22 +51,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test\Brand.cs" />
-    <Compile Include="Test\Claim_detail.cs" />
-    <Compile Include="Test\Company_expense.cs" />
-    <Compile Include="Test\Customer_billing_info.cs" />
-    <Compile Include="Test\Customer_info.cs" />
-    <Compile Include="Test\Customer_policy.cs" />
-    <Compile Include="Test\Estimate.cs" />
-    <Compile Include="Test\Expense_type.cs" />
-    <Compile Include="Test\Google_map.cs" />
-    <Compile Include="Test\Model.cs" />
-    <Compile Include="Test\Model1.cs" />
-    <Compile Include="Test\Policy.cs" />
-    <Compile Include="Test\Policy_type.cs" />
-    <Compile Include="Test\User_info.cs" />
-    <Compile Include="Test\User_type.cs" />
-    <Compile Include="Test\Vehicle_info.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

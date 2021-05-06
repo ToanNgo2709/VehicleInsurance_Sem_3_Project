@@ -6,12 +6,12 @@ namespace VehicleInsuranceSem3.DAL.Model
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class User_type
+    public partial class User_Type
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User_type()
+        public User_Type()
         {
-            User_info = new HashSet<User_info>();
+            User_Info = new HashSet<User_Info>();
         }
 
         public int id { get; set; }
@@ -23,6 +23,6 @@ namespace VehicleInsuranceSem3.DAL.Model
         public bool? active { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User_info> User_info { get; set; }
+        public virtual ICollection<User_Info> User_Info { get; set; }
     }
 }
