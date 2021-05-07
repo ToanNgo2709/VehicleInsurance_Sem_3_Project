@@ -33,5 +33,10 @@ namespace VehicleInsuranceSem3.Controllers
         {
             return View();
         }
+
+        public ActionResult TestAdminLayout()
+        {
+            return View();
+        }
     }
 }
