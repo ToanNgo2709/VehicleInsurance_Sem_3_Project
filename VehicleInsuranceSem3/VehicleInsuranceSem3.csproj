@@ -487,6 +487,8 @@
     <Content Include="Content\CustomResource\ClientResource\sass\libs\_normalize.scss" />
     <Content Include="Content\CustomResource\ClientResource\sass\libs\_settings.scss" />
     <Content Include="Content\CustomResource\ClientResource\sass\style.scss" />
+    <Content Include="Scripts\CanvasJS\canvasjs.min.js" />
+    <Content Include="Scripts\CanvasJS\jquery.canvasjs.min.js" />
     <Content Include="Scripts\CustomResource\ClientResource\js\jquery-1.11.1.min.map" />
     <Content Include="Content\LA_Themes\bootstrap\CHANGELOG.md" />
     <Content Include="Content\LA_Themes\bootstrap\dist\css\bootstrap-theme.css.map" />
