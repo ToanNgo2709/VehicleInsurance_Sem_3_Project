@@ -24,7 +24,7 @@ namespace VehicleInsuranceSem3.DAL.Model
         public virtual DbSet<Model> Models { get; set; }
         public virtual DbSet<Policy> Policies { get; set; }
         public virtual DbSet<Policy_Type> Policy_Type { get; set; }
-        public virtual DbSet<User_Info> User_Info { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User_Type> User_Type { get; set; }
         public virtual DbSet<Vehicle_Info> Vehicle_Info { get; set; }
 
@@ -80,6 +80,14 @@ namespace VehicleInsuranceSem3.DAL.Model
 
             modelBuilder.Entity<Customer_Info>()
                 .Property(e => e.email)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Customer_Info>()
+                .Property(e => e.username)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Customer_Info>()
+                .Property(e => e.password)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Customer_Info>()
@@ -171,25 +179,8 @@ namespace VehicleInsuranceSem3.DAL.Model
                 .HasForeignKey(e => e.policy_type_id)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<User_Info>()
-                .Property(e => e.username)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User_Info>()
-                .Property(e => e.password)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User_Info>()
-                .Property(e => e.authorize_token)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User_Info>()
-                .HasMany(e => e.Customer_Info)
-                .WithOptional(e => e.User_Info)
-                .HasForeignKey(e => e.user_info_id);
-
             modelBuilder.Entity<User_Type>()
-                .HasMany(e => e.User_Info)
+                .HasMany(e => e.Customer_Info)
                 .WithRequired(e => e.User_Type)
                 .HasForeignKey(e => e.user_type_id)
                 .WillCascadeOnDelete(false);

@@ -39,10 +39,19 @@ namespace VehicleInsuranceSem3.DAL.Model
 
         public int? user_info_id { get; set; }
 
+        [Required]
+        [StringLength(20)]
+        public string username { get; set; }
+
+        [Required]
+        public string password { get; set; }
+
+        public int user_type_id { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer_Policy> Customer_Policy { get; set; }
 
-        public virtual User_Info User_Info { get; set; }
+        public virtual User_Type User_Type { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estimate> Estimates { get; set; }
