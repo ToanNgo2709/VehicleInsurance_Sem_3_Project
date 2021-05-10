@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VehicleInsuranceSem3.DAL.Model;
+
 
 namespace VehicleInsuranceSem3.Controllers
 {
@@ -10,7 +12,7 @@ namespace VehicleInsuranceSem3.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+                return View();
         }
 
         public ActionResult About()
@@ -24,6 +26,16 @@ namespace VehicleInsuranceSem3.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult Test()
+        {
+            return View();
+        }
+
+        public ActionResult TestAdminLayout()
+        {
             return View();
         }
     }

@@ -1,0 +1,12 @@
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\bin\Debug\VehicleInsuranceSem3.DAL.dll.config
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\bin\Debug\VehicleInsuranceSem3.DAL.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\bin\Debug\VehicleInsuranceSem3.DAL.pdb
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\bin\Debug\EntityFramework.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\bin\Debug\EntityFramework.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\obj\Debug\VehicleInsuranceSem3.DAL.csproj.CoreCompileInputs.cache
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\obj\Debug\VehicleInsuranceSem3.DAL.csproj.CopyComplete
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\obj\Debug\VehicleInsuranceSem3.DAL.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\obj\Debug\VehicleInsuranceSem3.DAL.pdb
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.DAL\obj\Debug\VehicleInsuranceSem3.DAL.csprojAssemblyReference.cache

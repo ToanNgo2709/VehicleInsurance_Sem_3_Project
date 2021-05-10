@@ -1,0 +1,6 @@
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\VehicleInsuranceSem3.BLL.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\VehicleInsuranceSem3.BLL.pdb
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\obj\Debug\VehicleInsuranceSem3.BLL.csprojAssemblyReference.cache
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\obj\Debug\VehicleInsuranceSem3.BLL.csproj.CoreCompileInputs.cache
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\obj\Debug\VehicleInsuranceSem3.BLL.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\obj\Debug\VehicleInsuranceSem3.BLL.pdb
