@@ -25,6 +25,9 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 phone = newItem.phone,
                 email = newItem.email,
                 active = newItem.active,
+                username = newItem.username,
+                password = newItem.password,
+                user_type_id = newItem.user_type_id
             };
             context.Customer_Info.Add(customer);
             context.SaveChanges();
@@ -44,7 +47,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public List<CustomerinfoViewModel> GetAll()
         {
-            var q = context.Customer_Info.Select(d => new CustomerinfoViewModel { id = d.id, name = d.name, dob = d.dob, active = d.active, address = d.address, email = d.email, phone = d.phone }).ToList();
+            var q = context.Customer_Info.Select(d => new CustomerinfoViewModel { id = d.id, name = d.name, dob = d.dob, active = d.active, address = d.address, email = d.email, phone = d.phone, username = d.username }).ToList();
             return q;
 
         }
@@ -56,14 +59,14 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public CustomerinfoViewModel GetEdit(int id)
         {
-            var q = context.Customer_Info.Where(d => d.id == id).Select(d => new CustomerinfoViewModel { id = d.id, name = d.name, address = d.address, dob = d.dob, phone = d.phone, email = d.email, active = d.active }).FirstOrDefault();
+            var q = context.Customer_Info.Where(d => d.id == id).Select(d => new CustomerinfoViewModel { id = d.id, name = d.name, address = d.address, dob = d.dob, phone = d.phone, email = d.email, active = d.active, username = d.username }).FirstOrDefault();
             return q;
 
         }
 
         public List<CustomerinfoViewModel> Gets(int page, int row)
         {
-            var q = context.Customer_Info.Select(d => new CustomerinfoViewModel { id = d.id, active = d.active, address = d.address, dob = d.dob, email = d.email, name = d.name, phone = d.phone }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
+            var q = context.Customer_Info.Select(d => new CustomerinfoViewModel { id = d.id, active = d.active, address = d.address, dob = d.dob, email = d.email, name = d.name, phone = d.phone, username = d.username }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
             return q;
 
         }
@@ -84,7 +87,9 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 address = d.address,
                 dob = d.dob,
                 email = d.email,
-                phone = d.phone
+                phone = d.phone,
+                username = d.username,
+                password = d.password
             }).Skip((page-1)*row).Take(row).ToList();
             return q;
         }
@@ -100,6 +105,8 @@ namespace VehicleInsuranceSem3.BLL.DAO
                     q.dob = updateItems.dob;
                 q.email = updateItems.email;
                 q.phone = updateItems.phone;
+                q.username = updateItems.username;
+                q.password = updateItems.password;
                 context.SaveChanges();
                 return 1;
 
