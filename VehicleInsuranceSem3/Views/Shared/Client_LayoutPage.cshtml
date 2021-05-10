@@ -26,7 +26,8 @@
 
                     <div class="right-section pull-right">
                         <a href="#" class="phone"><img src="~/Content/CustomResource/ClientResource/images/icon-phone.png" class="icon">+84 123 456 789</a>
-
+                        <a class="social-icon" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                        <a class="social-icon" href="#"><i class="fa fa-twitter"></i></a>
                         <form action="#" class="search-form">
                             <input type="text" placeholder="Search...">
                             <button type="submit"><img src="~/Content/CustomResource/ClientResource/images/icon-search.png" alt=""></button>
@@ -48,12 +49,22 @@
                         </ul> <!-- .menu -->
                     </div> <!-- .main-navigation -->
 
-                    <div class="social-links">
+                    <div class="sub-navigation">
+                        <ul class="menu">
+                            <li class="menu-item"><a href="#">Login</a></li>
+                            <li class="menu-item"><a href="#">Register</a></li>
+                        </ul>
+                    </div>
+                    
+
+                    @*<div class="social-links">
+                        
                         <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
                         <a href="#"><i class="fa fa-twitter"></i></a>
                         <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
                         <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                    </div>
+
+                    </div>*@
 
                     <div class="mobile-navigation"></div>
                 </div>
@@ -162,12 +173,12 @@
     </div>
 
 
-        @Scripts.Render("~/bundles/jquery")
-        @Scripts.Render("~/bundles/bootstrap")
-        <script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
-        <script src="~/Scripts/CustomResource/ClientResource/js/plugins.js"></script>
-        <script src="~/Scripts/CustomResource/ClientResource/js/app.js"></script>
-        @RenderSection("scripts", required: false)
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    <script src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+    <script src="~/Scripts/CustomResource/ClientResource/js/plugins.js"></script>
+    <script src="~/Scripts/CustomResource/ClientResource/js/app.js"></script>
+    @RenderSection("scripts", required: false)
 
 </body>
 </html>

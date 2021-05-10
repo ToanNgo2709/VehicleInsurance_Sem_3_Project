@@ -127,6 +127,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\ClientArea\ClientAreaAreaRegistration.cs" />
+    <Compile Include="Areas\ClientArea\Controllers\HomePageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -686,6 +688,9 @@
     <Content Include="Content\LA_Themes\plugins\bower_components\sidebar-nav\LICENSE" />
     <Content Include="Content\LA_Themes\plugins\bower_components\sidebar-nav\package.json" />
     <Content Include="Content\LA_Themes\plugins\bower_components\sidebar-nav\README.md" />
+    <Content Include="Areas\ClientArea\Views\web.config" />
+    <Content Include="Areas\ClientArea\Views\HomePage\About.cshtml" />
+    <Content Include="Areas\ClientArea\Views\HomePage\Contact.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\CustomResource\ClientResource\js\app.js" />
     <Content Include="Scripts\CustomResource\ClientResource\js\ie-support\html5.js" />
@@ -726,6 +731,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\ClientArea\Data\" />
+    <Folder Include="Areas\ClientArea\Views\Shared\" />
     <Folder Include="Content\CustomResource\ClientResource\sass\pages\" />
     <Folder Include="Models\" />
   </ItemGroup>

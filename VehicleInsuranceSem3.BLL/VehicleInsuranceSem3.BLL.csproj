@@ -45,6 +45,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,9 +55,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAO\BrandDAORequest.cs" />
+    <Compile Include="DAO\CompanyexpenseDAORequest.cs" />
+    <Compile Include="DAO\CustomerBillingInfoDAORequest.cs" />
+    <Compile Include="DAO\CustomerinfoDAORequest.cs" />
+    <Compile Include="DAO\CustomerpolicyDAORequest.cs" />
+    <Compile Include="DAO\EstimateDAORequest.cs" />
+    <Compile Include="DAO\ExpensetypeDAORequest.cs" />
+    <Compile Include="DAO\GoogleMapDAORequest.cs" />
+    <Compile Include="DAO\ModelDAORequest.cs" />
+    <Compile Include="DAO\PolicyDAORequest.cs" />
+    <Compile Include="DAO\PolicyTypeDAORequest.cs" />
+    <Compile Include="DAO\UserInfoDAORequest.cs" />
+    <Compile Include="DAO\UserTypeDAORequest.cs" />
+    <Compile Include="DAO\VehicleinfoDAORequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ICrudFeature.cs" />
     <Compile Include="ViewModel\BrandViewModel.cs" />
+    <Compile Include="ViewModel\CompanyexpenseViewModel.cs" />
+    <Compile Include="ViewModel\CustomerbillinginfoViewModel.cs" />
+    <Compile Include="ViewModel\CustomerinfoViewModel.cs" />
+    <Compile Include="ViewModel\CustomerpolicyViewModel.cs" />
+    <Compile Include="ViewModel\EstimateViewModel.cs" />
+    <Compile Include="ViewModel\ExpensetypeViewModel.cs" />
+    <Compile Include="ViewModel\GooglemapViewModel.cs" />
+    <Compile Include="ViewModel\ModelViewModel.cs" />
+    <Compile Include="ViewModel\PolicytypeViewModel.cs" />
+    <Compile Include="ViewModel\PolicyViewModel.cs" />
+    <Compile Include="ViewModel\UserinfoViewModel.cs" />
+    <Compile Include="ViewModel\UsertypeViewModel.cs" />
+    <Compile Include="ViewModel\VehicleinfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\VehicleInsuranceSem3.DAL\VehicleInsuranceSem3.DAL.csproj">

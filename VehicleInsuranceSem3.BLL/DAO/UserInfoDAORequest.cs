@@ -99,5 +99,42 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 return 0;
             }
         }
+
+        public bool CheckExits(string UserName)
+        {
+            var q = context.User_Info.Where(d => d.username == UserName).ToList();
+            if (q == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public UserinfoViewModel LoginAdd(string UserName)
+        {
+            return context.User_Info.Where(d => d.username == UserName).Select(d => new UserinfoViewModel { id = d.id, username = d.username, password = d.password, active = d.active }).FirstOrDefault();
+        }
+
+        public bool CheckLogin(UserinfoViewModel lg)
+        {
+            if (lg != null)
+            {
+                var q = context.User_Info.Where(d => d.username == lg.username && d.password == lg.password).ToList();
+                if (q.Count == 1)
+                {
+                    return true;
+
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            return false;
+        }
     }
 }
