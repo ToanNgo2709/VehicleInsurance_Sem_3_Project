@@ -24,9 +24,9 @@ namespace VehicleInsuranceSem3.DAL.Model
         public virtual DbSet<Model> Models { get; set; }
         public virtual DbSet<Policy> Policies { get; set; }
         public virtual DbSet<Policy_Type> Policy_Type { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<User_Type> User_Type { get; set; }
         public virtual DbSet<Vehicle_Info> Vehicle_Info { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
