@@ -65,7 +65,7 @@
     <Compile Include="Model\Model.cs" />
     <Compile Include="Model\Policy.cs" />
     <Compile Include="Model\Policy_Type.cs" />
-    <Compile Include="Model\User_Info.cs" />
+    <Compile Include="Model\sysdiagram.cs" />
     <Compile Include="Model\User_Type.cs" />
     <Compile Include="Model\Vehicle_Info.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -750,6 +750,10 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\VehicleInsuranceSem3.BLL\VehicleInsuranceSem3.BLL.csproj">
+      <Project>{7028CA55-D89D-4146-AFF1-11BBD4DBF1B7}</Project>
+      <Name>VehicleInsuranceSem3.BLL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VehicleInsuranceSem3.DAL\VehicleInsuranceSem3.DAL.csproj">
       <Project>{B6533C25-FBBE-40E9-9F6D-482613146524}</Project>
       <Name>VehicleInsuranceSem3.DAL</Name>

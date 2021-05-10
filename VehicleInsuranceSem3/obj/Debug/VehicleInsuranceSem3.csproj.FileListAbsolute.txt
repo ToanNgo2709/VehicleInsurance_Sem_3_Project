@@ -84,3 +84,6 @@ D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\obj\Debug\VehicleInsuran
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\obj\Debug\VehicleInsuranceSem3.csproj.CopyComplete
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\obj\Debug\VehicleInsuranceSem3.dll
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\obj\Debug\VehicleInsuranceSem3.pdb
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\VehicleInsuranceSem3.BLL.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\VehicleInsuranceSem3.BLL.pdb
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\VehicleInsuranceSem3.BLL.dll.config

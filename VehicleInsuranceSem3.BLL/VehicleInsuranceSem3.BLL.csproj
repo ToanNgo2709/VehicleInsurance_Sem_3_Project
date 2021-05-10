@@ -65,7 +65,6 @@
     <Compile Include="DAO\ModelDAORequest.cs" />
     <Compile Include="DAO\PolicyDAORequest.cs" />
     <Compile Include="DAO\PolicyTypeDAORequest.cs" />
-    <Compile Include="DAO\UserInfoDAORequest.cs" />
     <Compile Include="DAO\UserTypeDAORequest.cs" />
     <Compile Include="DAO\VehicleinfoDAORequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
