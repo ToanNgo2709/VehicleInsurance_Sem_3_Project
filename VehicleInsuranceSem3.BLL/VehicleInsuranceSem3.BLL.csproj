@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="DAO\BrandDAORequest.cs" />
     <Compile Include="DAO\CompanyexpenseDAORequest.cs" />
+    <Compile Include="DAO\ContactDAORequest.cs" />
     <Compile Include="DAO\CustomerBillingInfoDAORequest.cs" />
     <Compile Include="DAO\CustomerinfoDAORequest.cs" />
     <Compile Include="DAO\CustomerpolicyDAORequest.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Repository\ICrudFeature.cs" />
     <Compile Include="ViewModel\BrandViewModel.cs" />
     <Compile Include="ViewModel\CompanyexpenseViewModel.cs" />
+    <Compile Include="ViewModel\ContactViewModel.cs" />
     <Compile Include="ViewModel\CustomerbillinginfoViewModel.cs" />
     <Compile Include="ViewModel\CustomerinfoViewModel.cs" />
     <Compile Include="ViewModel\CustomerpolicyViewModel.cs" />

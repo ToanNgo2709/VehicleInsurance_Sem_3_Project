@@ -37,14 +37,14 @@
             </div>
             <div class="col-md-9">
                 <h2 class="section-title text-left">Contact form</h2>
-                <form action="#" class="contact-form">
+                <form method="post" action="@Url.Action("AddContact")" class="contact-form">
                     <div class="row">
-                        <div class="col-md-4"><input type="text" placeholder="Your name..."></div>
-                        <div class="col-md-4"><input type="text" placeholder="Email..."></div>
-                        <div class="col-md-4"><input type="text" placeholder="Website..."></div>
+                        <div class="col-md-4"><input type="text" id="Name" name="Name" placeholder="Your name..."></div>
+                        <div class="col-md-4"><input type="text" id="Email" name="Email" placeholder="Email..."></div>
+                        <div class="col-md-4"><input type="text" id="Website" name="Website" placeholder="Website..."></div>
                     </div>
 
-                    <textarea placeholder="Message..."></textarea>
+                    <textarea id="Message" name="Message" placeholder="Message..."></textarea>
 
                     <p class="text-right">
                         <input type="submit" value="Send message">

@@ -55,6 +55,7 @@
     <Compile Include="Model\Brand.cs" />
     <Compile Include="Model\Claim_Detail.cs" />
     <Compile Include="Model\Company_Expense.cs" />
+    <Compile Include="Model\Contact.cs" />
     <Compile Include="Model\Customer_Billing_Info.cs" />
     <Compile Include="Model\Customer_Info.cs" />
     <Compile Include="Model\Customer_Policy.cs" />
