@@ -4,3 +4,15 @@ D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\obj\Debug\Vehi
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\obj\Debug\VehicleInsuranceSem3.Utilities.csproj.CoreCompileInputs.cache
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\obj\Debug\VehicleInsuranceSem3.Utilities.dll
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\obj\Debug\VehicleInsuranceSem3.Utilities.pdb
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\bin\Debug\VehicleInsuranceSem3.Utilities.dll.config
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\bin\Debug\BCrypt.Net-Next.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\bin\Debug\System.Buffers.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\bin\Debug\System.Memory.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\bin\Debug\System.Numerics.Vectors.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\bin\Debug\BCrypt.Net-Next.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\bin\Debug\System.Buffers.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\bin\Debug\System.Memory.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\bin\Debug\System.Numerics.Vectors.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.Utilities\obj\Debug\VehicleInsuranceSem3.Utilities.csproj.CopyComplete
