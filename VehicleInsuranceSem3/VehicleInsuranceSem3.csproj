@@ -730,6 +730,7 @@
     <Content Include="Views\Shared\Admin_LayoutPage.cshtml" />
     <Content Include="Views\Home\Test.cshtml" />
     <Content Include="Views\Home\TestAdminLayout.cshtml" />
+    <Content Include="Views\Home\ViewAll.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -759,6 +760,10 @@
     <ProjectReference Include="..\VehicleInsuranceSem3.DAL\VehicleInsuranceSem3.DAL.csproj">
       <Project>{B6533C25-FBBE-40E9-9F6D-482613146524}</Project>
       <Name>VehicleInsuranceSem3.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VehicleInsuranceSem3.Utilities\VehicleInsuranceSem3.Utilities.csproj">
+      <Project>{5015895E-82D7-4C8A-AD82-0B6FFB9228BE}</Project>
+      <Name>VehicleInsuranceSem3.Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

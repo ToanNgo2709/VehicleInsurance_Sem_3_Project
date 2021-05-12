@@ -14,6 +14,7 @@ namespace VehicleInsuranceSem3.Areas.ClientArea.Controllers
         // GET: ClientArea/HomePage
         public ActionResult Index()
         {
+
             return View();
         }
 

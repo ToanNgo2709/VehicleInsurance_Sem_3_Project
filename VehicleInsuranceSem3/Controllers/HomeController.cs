@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using VehicleInsuranceSem3.BLL.DAO;
 using VehicleInsuranceSem3.BLL.ViewModel;
 using VehicleInsuranceSem3.DAL.Model;
-
+using VehicleInsuranceSem3.Utilities.Crypto;
 
 namespace VehicleInsuranceSem3.Controllers
 {
@@ -14,22 +14,8 @@ namespace VehicleInsuranceSem3.Controllers
     {
         public ActionResult Index()
         {
-            CustomerinfoViewModel newCustomer = new CustomerinfoViewModel() {
-                name = "toanngo",
-                active = true,
-                address = "dap da",
-                dob = DateTime.Parse("1997/09/27"),
-                email = "ngotoanlibra@gmail.com",
-                password = "toanngo",
-                phone = "0984685751",
-                username = "toanngo",
-                user_type_id = 2
-            };
-
-            CustomerinfoDAORequest context = new CustomerinfoDAORequest();
-            context.Add(newCustomer);
-
-            return View();
+            var list = TempData["customerList"];
+            return View(list);
         }
 
         public ActionResult About()
@@ -42,8 +28,16 @@ namespace VehicleInsuranceSem3.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-
             return View();
+        }
+
+        [HttpGet]
+        public ActionResult ViewAll()
+        {
+            CustomerinfoDAORequest request = new CustomerinfoDAORequest();
+            var list = request.GetAll();
+            Session["customerList"] = list;
+            return RedirectToAction("Index");
         }
 
         public ActionResult Test()

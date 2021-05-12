@@ -87,3 +87,14 @@ D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\obj\Debug\VehicleInsuran
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\VehicleInsuranceSem3.BLL.dll
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\VehicleInsuranceSem3.BLL.pdb
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\VehicleInsuranceSem3.BLL.dll.config
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\VehicleInsuranceSem3.Utilities.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\BCrypt.Net-Next.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\System.Memory.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\System.Numerics.Vectors.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\System.Buffers.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\VehicleInsuranceSem3.Utilities.pdb
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\VehicleInsuranceSem3.Utilities.dll.config
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\BCrypt.Net-Next.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\System.Memory.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\System.Numerics.Vectors.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\System.Buffers.xml
