@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "CreateCustomerBill";
+    Layout = "~/Views/Shared/LayOutAdmin.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel> x = Session["cspAllView"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel>;
+}
+
+
+<form action="@Url.Action("AddCustomerBill")" method="post">
+    <div class="form-group">
+        <label for="exampleInputEmail1">customeraddprove</label>
+        <input type="text" class="form-control" id="customeraddprove" name="customeraddprove" aria-describedby="emailHelp" placeholder="customeraddprove" value="" required>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">bill Name</label>
+        <input type="text" class="form-control" id="bill_number" name="bill_number" placeholder="bill Name" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">createdate</label>
+        <input type="date" class="form-control" id="bill_number" name="createdate" placeholder="" value="   " required>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">amount</label>
+        <input type="number" class="form-control" id="amount" name="amount" placeholder="0" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Brand</label>
+        <select class="form-select" aria-label="Default select example" id="customerpolicyid" name="customerpolicyid">
+            @foreach (var item in x)
+            {
+                if (item.id != null)
+                {
+                    <option value="@item.id" selected>@item.customeraddprove</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.customeraddprove</option>
+                }
+            }
+
+        </select>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="active" id="active" required />
+        @*       <input type="checkbox" class="form-check-input" id="isActive" checked>*@
+        <label class="form-check-label" for="isActive">Is Active</label>
+    </div>
+
+
+
+
+    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("CusTomerBillManagerl")" style="color:white">Back</a></button>
+</form>
+
+
+
+
+

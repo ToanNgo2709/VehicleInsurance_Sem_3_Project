@@ -11,7 +11,7 @@
     <title>Art Gallery</title>
     @Styles.Render("~/Content/css")<!--must delete ../Site.css in bundle.config if use other css below-->
     <!-- Bootstrap Core CSS -->
-    <link href="@Url.Content("~/Content/LA_Themes/bootstrap/dist/css/bootstrap.min.css")" rel="stylesheet">
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet">
     <!-- Menu CSS -->
     <link href="@Url.Content("~/Content/LA_Themes/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css")" rel="stylesheet">
     <!-- animation CSS -->
@@ -20,6 +20,9 @@
     <link href="@Url.Content("~/Content/LA_Themes/css/style.css")" rel="stylesheet">
     <!-- color CSS -->
     <link href="@Url.Content("~/Content/LA_Themes/css/colors/default.css")" id="theme" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file  :// -->
     <!--[if lt IE 9]>
@@ -226,7 +229,7 @@
     <!-- jQuery -->
     <script src="~/Content/LA_Themes/plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="~/Content/LA_Themes/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
     <!-- Menu Plugin JavaScript -->
     <script src="~/Content/LA_Themes/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
     <!--slimscroll JavaScript -->

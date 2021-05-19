@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using VehicleInsuranceSem3.BLL.DAO;
-using VehicleInsuranceSem3.BLL.ViewModel;
 using VehicleInsuranceSem3.DAL.Model;
-using VehicleInsuranceSem3.Utilities.Crypto;
+
 
 namespace VehicleInsuranceSem3.Controllers
 {
@@ -14,8 +12,7 @@ namespace VehicleInsuranceSem3.Controllers
     {
         public ActionResult Index()
         {
-            var list = TempData["customerList"];
-            return View(list);
+                return View();
         }
 
         public ActionResult About()
@@ -28,16 +25,8 @@ namespace VehicleInsuranceSem3.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
-            return View();
-        }
 
-        [HttpGet]
-        public ActionResult ViewAll()
-        {
-            CustomerinfoDAORequest request = new CustomerinfoDAORequest();
-            var list = request.GetAll();
-            Session["customerList"] = list;
-            return RedirectToAction("Index");
+            return View();
         }
 
         public ActionResult Test()

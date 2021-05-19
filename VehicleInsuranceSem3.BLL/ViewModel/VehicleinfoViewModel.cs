@@ -17,6 +17,7 @@ namespace VehicleInsuranceSem3.BLL.ViewModel
         public string framenumber { get; set; }
         public string eginenumber { get; set; }
         public string vehiclenumber { get; set; }
-
+        public int vehiclecondition { get; set; }
+        public decimal? ratebycondition { get; set; }
     }
 }

@@ -25,7 +25,11 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 version = newItem.version,
                 frame_number = newItem.framenumber,
                 engine_number = newItem.eginenumber,
-                vehicle_number = newItem.vehiclenumber
+                vehicle_number = newItem.vehiclenumber,
+               brand_id = newItem.brandid,
+               model_id = newItem.modelid,
+               vehicle_condition = newItem.vehiclecondition,
+               rate_by_condition = newItem.ratebycondition,
             };
             context.Vehicle_Info.Add(vehicle);
             context.SaveChanges();
@@ -45,7 +49,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public List<VehicleinfoViewModel> GetAll()
         {
-            var q = context.Vehicle_Info.Select(d => new VehicleinfoViewModel { id = d.id, address = d.address, brandid = d.brand_id, eginenumber = d.engine_number, framenumber = d.frame_number, modelid = d.model_id, ownername = d.owner_name, vehiclenumber = d.vehicle_number, version = d.version }).ToList();
+            var q = context.Vehicle_Info.Select(d => new VehicleinfoViewModel { id = d.id, address = d.address, brandid = d.brand_id, eginenumber = d.engine_number, framenumber = d.frame_number, modelid = d.model_id, ownername = d.owner_name, vehiclenumber = d.vehicle_number, version = d.version, ratebycondition = d.rate_by_condition, vehiclecondition = d.vehicle_condition }).ToList();
             return q;
 
         }
@@ -57,14 +61,14 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public VehicleinfoViewModel GetEdit(int id)
         {
-            var q = context.Vehicle_Info.Where(d => d.id == id).Select(d => new VehicleinfoViewModel { id = d.id, address = d.address, ownername = d.owner_name, version = d.version, framenumber = d.frame_number, eginenumber = d.frame_number, vehiclenumber = d.vehicle_number }).FirstOrDefault();
+            var q = context.Vehicle_Info.Where(d => d.id == id).Select(d => new VehicleinfoViewModel { id = d.id, address = d.address, ownername = d.owner_name, version = d.version, framenumber = d.frame_number, eginenumber = d.frame_number, vehiclenumber = d.vehicle_number , brandid = d.brand_id , modelid = d.model_id , vehiclecondition = d.vehicle_condition , ratebycondition = d.rate_by_condition }).FirstOrDefault();
             return q;
 
         }
 
         public List<VehicleinfoViewModel> Gets(int page, int row)
         {
-            var q = context.Vehicle_Info.Select(d => new VehicleinfoViewModel { id = d.id, address = d.address, ownername = d.owner_name, version = d.version, framenumber = d.frame_number, eginenumber = d.engine_number, vehiclenumber = d.vehicle_number }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
+            var q = context.Vehicle_Info.Select(d => new VehicleinfoViewModel { id = d.id, address = d.address, ownername = d.owner_name, version = d.version, framenumber = d.frame_number, eginenumber = d.engine_number, vehiclenumber = d.vehicle_number  , brandid = d.brand_id , modelid =d.model_id , ratebycondition = d.rate_by_condition , vehiclecondition = d.vehicle_condition }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
             return q;
         }
 
@@ -78,7 +82,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
             Context.Session["CountItemVecleinfo"] = CountItem;
             Context.Session["totalPage"] = totalPage;
             var q = context.Vehicle_Info.Where(d => d.address.ToLower().Contains(keyword.ToLower()) || d.owner_name.ToLower().Contains(keyword.ToLower()) || d.version.ToLower().Contains(keyword.ToLower()) || d.frame_number.ToLower().Contains(keyword.ToLower())
-                || d.engine_number.ToLower().Contains(keyword.ToLower()) || d.vehicle_number.ToLower().Contains(keyword.ToLower())).Select(d => new VehicleinfoViewModel { id = d.id, ownername = d.owner_name, address = d.address, eginenumber = d.engine_number, framenumber = d.frame_number, vehiclenumber = d.vehicle_number, version = d.version }).Skip((page - 1) * row).Take(row).ToList();
+                || d.engine_number.ToLower().Contains(keyword.ToLower()) || d.vehicle_number.ToLower().Contains(keyword.ToLower())).Select(d => new VehicleinfoViewModel { id = d.id, ownername = d.owner_name, address = d.address, eginenumber = d.engine_number, framenumber = d.frame_number, vehiclenumber = d.vehicle_number, version = d.version , brandid = d.brand_id , modelid = d.model_id , ratebycondition = d.rate_by_condition , vehiclecondition = d.vehicle_condition }).OrderBy(d=>d.id).Skip((page - 1) * row).Take(row).ToList();
             return q;
         }
 
@@ -93,6 +97,11 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 q.frame_number = updateItems.framenumber;
                 q.engine_number = updateItems.eginenumber;
                 q.vehicle_number = updateItems.vehiclenumber;
+                q.vehicle_condition = updateItems.vehiclecondition;
+                q.brand_id = updateItems.brandid;
+                q.model_id = updateItems.modelid;
+                q.rate_by_condition = updateItems.ratebycondition;
+
                 context.SaveChanges();
                 return 1;
 

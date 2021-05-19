@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Createvehicle";
+    Layout = "~/Views/Shared/LayOutAdmin.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel> x = Session["brandAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel> xx = Session["modelAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel>;
+}
+
+
+
+<form action="@Url.Action("AddVehicle")" method="post">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="text" class="form-control" id="ownername" name="ownername" aria-describedby="emailHelp" placeholder="ownername" value="" required>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Address</label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="address" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Version</label>
+        <input type="text" class="form-control" id="version" name="version" placeholder="" value="" required>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">frame Name</label>
+        <input type="text" class="form-control" id="framenumber" name="framenumber" placeholder="" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Egine Name</label>
+        <input type="text" class="form-control" id="eginenumber" name="eginenumber" placeholder="" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">vehicle name</label>
+        <input type="text" class="form-control" id="vehiclenumber" name="vehiclenumber" placeholder="" value="" required>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">vehiclecondition</label>
+        <input type="number" class="form-control" id="vehiclecondition" name="vehiclecondition" placeholder="" value="" min="1" max="10" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">ratebycondition</label>
+        <input type="number" class="form-control" id="ratebycondition" name="ratebycondition" placeholder="" value="" min="10" max="9999999" required>
+    </div>
+
+
+
+
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Brand</label>
+        <select class="form-select" aria-label="Default select example" id="brandid" name="brandid">
+            @foreach (var item in x)
+            {
+                if (item.id != null)
+                {
+                    <option value="@item.id" selected>@item.name</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.name</option>
+                }
+            }
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Model</label>
+        <select class="form-select" aria-label="Default select example" id="modelid" name="modelid">
+            @foreach (var item in xx)
+            {
+                if (item.id != null)
+                {
+                    <option value="@item.id" selected>@item.name</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.name</option>
+                }
+            }
+
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("VehicleInfoManager")">Back</a></button>
+</form>
+
+

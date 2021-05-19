@@ -24,7 +24,8 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 bill_number = newItem.bill_number,
                 create_date = newItem.createdate,
                 amount = newItem.amount,
-                active = newItem.active
+                active = newItem.active, customer_policy_id = newItem.customerpolicyid,
+               id = newItem.id
             };
             context.Customer_Billing_Info.Add(customer);
             context.SaveChanges();
@@ -45,7 +46,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public List<CustomerbillinginfoViewModel> GetAll()
         {
-            var q = context.Customer_Billing_Info.Select(d => new CustomerbillinginfoViewModel { id = d.id, active = d.active, amount = d.amount, bill_number = d.bill_number, createdate = d.create_date, customeraddprove = d.customer_add_prove }).ToList();
+            var q = context.Customer_Billing_Info.Select(d => new CustomerbillinginfoViewModel { customerpolicyid = (int)d.customer_policy_id,id = d.id, active = d.active, amount = d.amount, bill_number = d.bill_number, createdate = d.create_date, customeraddprove = d.customer_add_prove }).ToList();
             return q;
                 
 
@@ -58,14 +59,14 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public CustomerbillinginfoViewModel GetEdit(int id)
         {
-            var q = context.Customer_Billing_Info.Where(d => d.id == id).Select(d => new CustomerbillinginfoViewModel { id = d.id, active = d.active, amount = d.amount, bill_number = d.bill_number, createdate = d.create_date, customeraddprove = d.customer_add_prove }).FirstOrDefault();
+            var q = context.Customer_Billing_Info.Where(d => d.id == id).Select(d => new CustomerbillinginfoViewModel { customerpolicyid = (int)d.customer_policy_id, id = d.id, active = d.active, amount = d.amount, bill_number = d.bill_number, createdate = d.create_date, customeraddprove = d.customer_add_prove }).FirstOrDefault();
             return q;
                 
         }
 
         public List<CustomerbillinginfoViewModel> Gets(int page, int row)
         {
-            var q = context.Customer_Billing_Info.Select(d => new CustomerbillinginfoViewModel { id = d.id, active = d.active, amount = d.amount, bill_number = d.bill_number, createdate = d.create_date, customeraddprove = d.customer_add_prove }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
+            var q = context.Customer_Billing_Info.Select(d => new CustomerbillinginfoViewModel {  customerpolicyid = (int)d.customer_policy_id,id = d.id, active = d.active, amount = d.amount, bill_number = d.bill_number, createdate = d.create_date, customeraddprove = d.customer_add_prove }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
             return q;
         }
 
@@ -85,7 +86,8 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 amount = d.amount,
                 bill_number = d.bill_number,
                 createdate = d.create_date,
-                customeraddprove = d.customer_add_prove
+                customeraddprove = d.customer_add_prove,
+                 customerpolicyid = (int)d.customer_policy_id
             }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
 
             return q;
@@ -101,6 +103,8 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 q.bill_number = updateItems.bill_number;
                 q.create_date = updateItems.createdate;
                 q.customer_add_prove = updateItems.customeraddprove;
+                q.customer_policy_id = updateItems.customerpolicyid;
+           
                 context.SaveChanges();
                 return 1;
             }

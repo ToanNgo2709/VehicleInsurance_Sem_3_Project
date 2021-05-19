@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core;
 using System.Diagnostics;
@@ -9,7 +10,6 @@ using System.Web;
 using VehicleInsuranceSem3.BLL.Repository;
 using VehicleInsuranceSem3.BLL.ViewModel;
 using VehicleInsuranceSem3.DAL.Model;
-
 namespace VehicleInsuranceSem3.BLL.DAO
 {
     public class ModelDAORequest : ICrudFeature<ModelViewModel>
@@ -19,15 +19,28 @@ namespace VehicleInsuranceSem3.BLL.DAO
         {
             Model model = new Model()
             {
+                brand_id = newItem.brandid,
                 name = newItem.name,
                 highest_rate = newItem.rate,
                 active = newItem.active
+                
 
             };
             context.Models.Add(model);
             context.SaveChanges();
             return 1;
         }
+
+        public List<ModelViewModel> pagination(int? page)
+        {
+            var pagenumber = page ?? 1;
+            var pagesize = 5;
+            var q = context.Models.Select(d => new ModelViewModel { id = d.id, name = d.name, brandid = d.brand_id, rate = d.highest_rate, active = d.active }).ToPagedList(pagenumber,pagesize).ToList();
+
+            return q; 
+        
+        }
+
 
         public void Delete(int id)
         {
@@ -53,7 +66,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public ModelViewModel GetEdit(int id)
         {
-            var q = context.Models.Where(d => d.id == id).Select(d => new ModelViewModel { id = d.id, name = d.name, rate = d.highest_rate }).FirstOrDefault();
+            var q = context.Models.Where(d => d.id == id).Select(d => new ModelViewModel { id = d.id, name = d.name, rate = d.highest_rate , brandid =d.brand_id , active = d.active}).FirstOrDefault();
             return q;
         }
 
@@ -82,10 +95,11 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
             try
             {
-                var q = context.Models.Where(d => d.id == updateItems.id).FirstOrDefault();
+                var q = context.Models.Where(d => d.id == updateItems.id).SingleOrDefault();
                 q.name = updateItems.name;
                 q.highest_rate = updateItems.rate;
                 q.active = updateItems.active;
+                q.brand_id = updateItems.brandid;
                 context.SaveChanges();
                 return 1;
             }

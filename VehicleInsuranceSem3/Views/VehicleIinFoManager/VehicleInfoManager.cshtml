@@ -1,0 +1,117 @@
+﻿@model PagedList.IPagedList<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "VehicleInfoManager";
+    Layout = "~/Views/Shared/LayOutAdmin.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel> x = Session["brandAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel> z = Session["modelAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel>;
+}
+
+<button type="button" class="btn btn-warning"> <a href="@Url.Action("VehicleInfoViewAll")"> ViewAll </a></button>
+<button type="button" class="btn btn-success"> <a href="@Url.Action("Createvehicle")"> Create VehicleInfo</a></button>
+
+<div class="input-group">
+    <form action="@Url.Action("VehicleSearch")" method="post" class="col-12">
+        <div class="form-outline">
+            <input type="search" id="form1" class="form-control" name="tbSearch" />
+            <label class="form-label" for="form1">Search</label>
+        </div>
+        <button type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+</div>
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Owner Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Brand </th>
+            <th scope="col">Model </th>
+            <th scope="col">Version </th>
+            <th scope="col">frame Name</th>
+            <th scope="col">engine Name</th>
+            <th scope="col">Vehicle Name</th>
+            <th scope="col">Vehicle Condition</th>
+            <th scope="col">Rate </th>
+
+
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Session["VehicleInfoAll"] != null)
+        {
+            var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel>)Session["VehicleInfoAll"];
+            int i = 0;
+            foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@i</td>
+                    <td>@item.ownername</td>
+                    <td>@item.address</td>
+
+                    @if (x != null)
+                    {
+                        foreach (var tem in x)
+                        {
+                            if (item.brandid == tem.id)
+                            {
+                                <td tabindex="@item.brandid">@tem.name</td>
+                            }
+
+                        }
+                    }
+
+
+                    @if (z != null)
+                    {
+                        foreach (var em in z)
+                        {
+                            if (item.modelid == em.id)
+                            {
+                                <td tabindex="@item.modelid">@em.name</td>
+                            }
+
+                        }
+                    }
+
+
+                    <td>@item.version</td>
+                    <td>@item.framenumber</td>
+                    <td>@item.eginenumber</td>
+                    <td>@item.vehiclenumber</td>
+                    <td>@item.vehiclecondition</td>
+                    <td>@item.ratebycondition</td>
+
+
+
+                    <td>
+
+
+                        <a class="btn-btn-fab" href="@Url.Action("EditVehicleInfo", new { id = item.id})" data-idItem="@item.id"><i class="far fa-edit"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteVehicle" , new { id = item.id })"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+
+
+
+    </tbody>
+</table>
+<div id='Paging' style="text-align:center">
+    @Html.PagedListPager(Model, page => Url.Action("VehicleInfoManager", new { page, pageSize = Model.PageSize }))
+    Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
+</div>
+
+
+
+
+
+

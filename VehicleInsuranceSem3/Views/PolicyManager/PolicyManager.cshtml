@@ -1,0 +1,85 @@
+﻿@model PagedList.IPagedList<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>
+    @using PagedList.Mvc;
+@{
+    ViewBag.Title = "PolicyManager";
+    Layout = "~/Views/Shared/LayOutAdmin.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.PolicytypeViewModel> x = Session["AllPolicyType"] as List<VehicleInsuranceSem3.BLL.ViewModel.PolicytypeViewModel>;
+}
+
+<button type="button" class="btn btn-warning"> <a href="@Url.Action("PolicyViewAll")"> ViewAll </a></button>
+<button type="button" class="btn btn-success"> <a href="@Url.Action("CreatePolicy")"> CreateProduct</a></button>
+
+
+<div class="input-group">
+    <form action="@Url.Action("PolicySearch")" method="post" class="col-12">
+        <div class="form-outline">
+            <input type="search" id="form1" class="form-control" name="tbSearch" />
+            <label class="form-label" for="form1">Search</label>
+        </div>
+        <button type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+</div>
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Policy Name</th>
+            <th scope="col">Policy Date</th>
+            <th scope="col">Policy Duration</th>
+            <th scope="col">Active</th>
+            <th scope="col">Policy Type</th>
+
+
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Session["AllPolicy"] != null)
+        {
+            var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>)Session["AllPolicy"];
+            int i = 0;
+            foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@i</td>
+                    <td>@item.policynumber</td>
+                    <td>@item.policydate</td>
+                    <td>@item.policyduration</td>
+                    <td>@item.active</td>
+                    @if (x != null)
+                    {
+                        foreach (var tem in x)
+                        {
+                            if (item.policytypeid == tem.id)
+                            {
+                                <td tabindex="@item.policytypeid">@tem.name</td>
+                            }
+
+                        }
+                    }
+
+                    <td>
+
+
+                        <a class="btn-btn-fab" href="@Url.Action("EditPolicy", new { id = item.id})" data-idItem="@item.id"><i class="far fa-edit"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteAcc" , new { id = item.id })"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+
+
+
+    </tbody>
+    </table>
+    <div id='Paging' style="text-align:center">
+        @Html.PagedListPager(Model, page => Url.Action("PolicyManager", new { page, pageSize = Model.PageSize }))
+        Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
+    </div>
+

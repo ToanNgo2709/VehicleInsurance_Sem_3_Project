@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "CreateCompanyExpense";
+    Layout = "~/Views/Shared/LayOutAdmin.cshtml";
+
+    List<VehicleInsuranceSem3.BLL.ViewModel.ExpensetypeViewModel> cc = Session["ViewAllExpenseType"] as List<VehicleInsuranceSem3.BLL.ViewModel.ExpensetypeViewModel>;
+}
+
+
+<form action="@Url.Action("AddConpanyExpesnese")" method="post">
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Date </label>
+        <input type="date" class="form-control" id="date" name="date" placeholder="" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Amount</label>
+        <input type="number" class="form-control" id="amount" name="amount" placeholder="" value="" min="1000" max="999999999" required>
+    </div>
+ 
+    <div class="form-group">
+        <label for="exampleInputEmail1">description</label>
+        <input type="text" class="form-control" id="description" name="description" aria-describedby="emailHelp" placeholder="description" value="" required>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    @*<div class="form-group">
+            <label for="exampleInputPassword1">Active</label>
+            <select class="form-select" aria-label="Default select example" id="active" name="active" >
+                <option value="active">1</option>
+
+            </select>-
+        </div>*@
+
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Company</label>
+        <select class="form-select" aria-label="Default select example" id="expensetypeid" name="expensetypeid">
+            @foreach (var item in cc)
+            {
+                if (item.id != null)
+                {
+                    <option value="@item.id" selected>@item.name</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.name</option>
+                }
+            }
+
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("CompanyExpenseManager")">Back</a></button>
+</form>

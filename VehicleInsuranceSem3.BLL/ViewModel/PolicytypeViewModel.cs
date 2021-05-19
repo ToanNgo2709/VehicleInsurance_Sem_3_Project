@@ -11,7 +11,8 @@ namespace VehicleInsuranceSem3.BLL.ViewModel
         public int id { get; set; }
         public string name { get; set; }
         public bool? active { get; set; }
-
+        public decimal? price { get; set; }
+        public decimal? libilityLevel { get; set; }
 
     }
 }

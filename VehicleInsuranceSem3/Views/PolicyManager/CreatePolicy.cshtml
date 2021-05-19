@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "CreatePolicy";
+    Layout = "~/Views/Shared/LayOutAdmin.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.PolicytypeViewModel> cc = Session["AllPolicyType"] as List<VehicleInsuranceSem3.BLL.ViewModel.PolicytypeViewModel>;
+}
+
+<a href="@Url.Action("PolicyManager")" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back</a>
+
+<form action="@Url.Action("AddPolicy")" method="post">
+    <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="text" class="form-control" id="name" name="policynumber" aria-describedby="emailHelp" placeholder="name policy" value="" required>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Date </label>
+        <input type="date" class="form-control" id="policydate" name="policydate" placeholder="" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Policy Duration</label>
+        <input type="number" class="form-control" id="policyduration" name="policyduration" placeholder="0" value="" min="1" max="4" required>
+    </div>
+
+    @*<div class="form-group">
+            <label for="exampleInputPassword1">Active</label>
+            <select class="form-select" aria-label="Default select example" id="active" name="active" >
+                <option value="active">1</option>
+
+            </select>-
+        </div>*@
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Brand</label>
+        <select class="form-select" aria-label="Default select example" id="policytypeid" name="policytypeid">
+            @foreach (var item in cc)
+            {
+                if (item.id != null)
+                {
+                    <option value="@item.id" selected>@item.name</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.name</option>
+                }
+            }
+
+        </select>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="active" id="active" required />
+        @* <input type="checkbox" class="form-check-input" id="isActive" checked>*@
+        <label class="form-check-label" for="isActive">Is Active</label>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("PolicyManager")">Back</a></button>
+</form>
+
+
+

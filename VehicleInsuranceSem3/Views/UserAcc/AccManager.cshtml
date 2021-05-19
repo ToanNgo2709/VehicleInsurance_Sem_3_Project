@@ -1,0 +1,87 @@
+﻿@model PagedList.IPagedList<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "AccManager";
+    Layout = "~/Views/Shared/LayOutAdmin.cshtml";
+    VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel sasdf = new VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel();
+    if (ViewBag.AccManager != null)
+    {
+        sasdf = ViewBag.AccManager;
+
+    }
+}
+
+<button type="button" class="btn btn-warning"> <a href="@Url.Action("ViewAllAcc")"> ViewAll </a></button>
+<button type="button" class="btn btn-success"> <a href="@Url.Action("CreateAcc")"> CreateProduct</a></button>
+
+<div class="input-group">
+    <form action="@Url.Action("AccSearch")" method="post" class="col-12">
+        <div class="form-outline">
+            <input type="search" id="form1" class="form-control" name="tbSearch" />
+            <label class="form-label" for="form1">Search</label>
+        </div>
+        <button type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+</div>
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Name</th>
+            <th scope="col">dob</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Active</th>
+            <th scope="col">UserName</th>
+
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Session["AllListAcc"] != null)
+        {
+            var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel>)Session["AllListAcc"];
+            int i = 0;
+            foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@i</td>
+                    <td>@item.name</td>
+                    <td>@item.dob</td>
+                    <td>@item.phone</td>
+                    <td>@item.email</td>
+                    <td>@item.address</td>
+                    <td>@item.active</td>
+                    <td>@item.username</td>
+
+
+
+                    <td>
+
+
+                        <a class="btn-btn-fab" href="@Url.Action("EditAcc", new { id = item.id})" data-idItem="@item.id"><i class="far fa-edit"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteAcc" , new { id = item.id })"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+
+
+
+    </tbody>
+
+</table>
+<div id='Paging' style="text-align:center">
+    @Html.PagedListPager(Model, page => Url.Action("AccManager", new { page, pageSize = Model.PageSize }))
+    Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
+</div>
+
+
+

@@ -1,0 +1,124 @@
+﻿@model PagedList.IPagedList<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "CustomerPolicyManager";
+    Layout = "~/Views/Shared/LayOutAdmin.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel> cs = Session["customerInAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel> pl = Session["PolicyAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel> vh = Session["VehicleAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel>;
+}
+
+<button type="button" class="btn btn-warning"> <a href="@Url.Action("CustomerPolicyViewAll")"> ViewAll </a></button>
+<button type="button" class="btn btn-success"> <a href="@Url.Action("CreateCustomerPolicy")"> Create Cus</a></button>
+
+<div class="input-group">
+    <form action="@Url.Action("customerPolicySearch")" method="post" class="col-12">
+        <div class="form-outline">
+            <input type="search" id="form1" class="form-control" name="tbSearch" />
+            <label class="form-label" for="form1">Search</label>
+        </div>
+        <button type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fas fa-search"></i>
+        </button>
+    </form>
+</div>
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th scope="col">STT</th>
+            <th scope="col">Customer Add prove</th>
+            <th scope="col">Pl Start Date</th>
+            <th scope="col">PL End Date </th>
+            <th scope="col">Create Date </th>
+            <th scope="col">Active </th>
+            <th scope="col">TotalPayMent</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Policy</th>
+            <th scope="col">Vehicle </th>
+
+
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Session["CustomAll"] != null)
+        {
+            var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel>)Session["CustomAll"];
+            int i = 0;
+            foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@i</td>
+                    <td>@item.customeraddprove</td>
+                    <td>@item.policystartdate</td>
+                    <td>@item.policyenddate</td>
+                    <td>@item.createdate</td>
+                    <td>@item.active</td>
+                    <td>@item.TotalPayment</td>
+
+
+                    @if (cs != null)
+                    {
+                        foreach (var tem in cs)
+                        {
+                            if (item.customerid == tem.id)
+                            {
+                                <td tabindex="@item.customerid">@tem.username</td>
+                            }
+
+                        }
+                    }
+
+
+                    @if (pl != null)
+                    {
+                        foreach (var em in pl)
+                        {
+                            if (item.policyid == em.id)
+                            {
+                                <td tabindex="@item.policyid">@em.policynumber</td>
+                            }
+
+                        }
+                    }
+
+                    @if (vh != null)
+                    {
+                        foreach (var xem in vh)
+                        {
+                            if (item.vehicleid == xem.id)
+                            {
+                                <td tabindex="@item.vehicleid">@xem.ownername</td>
+                            }
+
+                        }
+                    }
+
+
+
+
+                    <td>
+
+
+                        <a class="btn-btn-fab" href="@Url.Action("EditCustomerPolicy", new { id = item.id})" data-idItem="@item.id"><i class="far fa-edit"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteCustomerPolicy" , new { id = item.id })"><i class="far fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+
+
+
+    </tbody>
+</table>
+<div id='Paging' style="text-align:center">
+    @Html.PagedListPager(Model, page => Url.Action("CusTomerBillManagerl", new { page, pageSize = Model.PageSize }))
+    Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
+</div>
+
+
+

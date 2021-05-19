@@ -16,11 +16,13 @@ namespace VehicleInsuranceSem3.BLL.DAO
     {
 
         public InsuranceDbContext context = new InsuranceDbContext();
-
+ 
         public int Add(BrandViewModel newItem)
         {
             Brand newBrand = new Brand()
             {
+                id = newItem.Id,
+
                 name = newItem.Name,
                 active = newItem.Active
             };
@@ -54,13 +56,9 @@ namespace VehicleInsuranceSem3.BLL.DAO
             return q ;
         }
 
-        public List<BrandViewModel> GetAll()
-        {
-            var q = context.Brands.Select(d => new BrandViewModel { Name = d.name, Active = (bool)d.active }).ToList();
-            return q;
-        }
+       
 
-        public List<BrandViewModel> GetById(int Id)
+        public List<BrandViewModel> GetById(int id)
         {
             throw new NotImplementedException();
         }
@@ -97,6 +95,13 @@ namespace VehicleInsuranceSem3.BLL.DAO
         {
             var q = context.Brands.Select(d => new BrandViewModel { Id = d.id, Name = d.name ,Active= (bool)d.active}).OrderBy(d => d.Id).Skip((page - 1) * row).Take(row).ToList();
             return q;
+        }
+
+        public List<BrandViewModel> GetAll()
+        {
+            var q =  context.Brands.Select(d => new BrandViewModel { Id = d.id, Name = d.name, Active = (bool)d.active  }).ToList();
+            return q;
+
         }
     }
 }

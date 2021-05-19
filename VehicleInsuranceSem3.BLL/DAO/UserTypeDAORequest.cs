@@ -21,6 +21,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
         {
             User_Type user = new User_Type()
             {
+                id = newItem.id,
                 name = newItem.name,
                 active = newItem.active,
             };
@@ -83,9 +84,11 @@ namespace VehicleInsuranceSem3.BLL.DAO
             try
             {
                 var q = context.User_Type.Where(d => d.id == updateItems.id).FirstOrDefault();
+             
+
                 q.name = updateItems.name;
                 q.active = updateItems.active;
-
+                context.SaveChanges();
                 return 1;
             }
             catch (EntityException ex)
