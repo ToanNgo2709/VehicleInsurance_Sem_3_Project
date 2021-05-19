@@ -11,7 +11,7 @@ using PagedList.Mvc;
 
 namespace VehicleInsuranceSem3.Controllers
 {
-    public class brandmodelManagerController : Controller
+    public class BrandmodelManagerController : Controller
     {
 
         public BrandDAORequest brd = new BrandDAORequest();

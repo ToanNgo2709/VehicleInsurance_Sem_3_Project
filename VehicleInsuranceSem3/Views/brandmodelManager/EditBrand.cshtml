@@ -1,15 +1,15 @@
 ﻿
 @{
     ViewBag.Title = "EditBrand";
-    Layout = "~/Views/Shared/LayOutAdmin.cshtml";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
     var br = ViewData["LisBrandAll"] as VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel;
 }
 
 <form action="@Url.Action("NewBrand")" method="post">
-    <input type="text" value="@br.id" name="id" id="id" hidden />
+    <input type="text" value="@br.Id" name="id" id="id" hidden />
     <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
-        <input type="text" class="form-control" id="NameProdc" name="name" aria-describedby="emailHelp" placeholder="Name" value="@br.name" required>
+        <input type="text" class="form-control" id="NameProdc" name="name" aria-describedby="emailHelp" placeholder="Name" value="@br.Name" required>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
 

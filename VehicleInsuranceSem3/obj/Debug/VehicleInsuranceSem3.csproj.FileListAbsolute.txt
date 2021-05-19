@@ -81,3 +81,7 @@ D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\roslyn\System.Numeri
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\System.Runtime.CompilerServices.Unsafe.dll
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\PagedList.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\PagedList.Mvc.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\PagedList.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\PagedList.Mvc.xml

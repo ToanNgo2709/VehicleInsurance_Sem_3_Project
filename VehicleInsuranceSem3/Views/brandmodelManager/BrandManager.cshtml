@@ -3,7 +3,7 @@
 @{
 
     ViewBag.Title = "BrandManager";
-    Layout = "~/Views/Shared/LayOutAdmin.cshtml";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
 }
 
 <button type="button" class="btn btn-warning"> <a href="@Url.Action("BrandViewAll")"> ViewAll </a></button>
@@ -46,12 +46,12 @@
             {
                 <tr>
                     <td>@i</td>
-                    <td>@item.name</td>
-                    <td>@item.active</td>
+                    <td>@item.Name</td>
+                    <td>@item.Active</td>
 
                     <td>
-                        <a class="btn-btn-fab" href="@Url.Action("EditBrand", new { id = item.id })" data-idItem="@item.id"><i class="far fa-edit"> </i>  </a>
-                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteBrand", new { id = item.id })"><i class="far fa-trash-alt"></i></a>
+                        <a class="btn-btn-fab" href="@Url.Action("EditBrand", new { id = item.Id })" data-idItem="@item.Id"><i class="far fa-edit"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.Id" href="@Url.Action("DeleteBrand", new { id = item.Id })"><i class="far fa-trash-alt"></i></a>
                     </td>
                 </tr>
                 i++;

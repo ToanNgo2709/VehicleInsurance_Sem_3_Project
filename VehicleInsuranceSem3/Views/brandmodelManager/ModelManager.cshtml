@@ -3,7 +3,7 @@
 
 @{
     ViewBag.Title = "ModelManager";
-    Layout = "~/Views/Shared/LayOutAdmin.cshtml";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
     List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel> sa = Session["LisBrandAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel>;
 
 
@@ -54,9 +54,9 @@
                     {
                         foreach (var tem in sa)
                         {
-                            if (item.brandid == tem.id)
+                            if (item.brandid == tem.Id)
                             {
-                                <td tabindex="@item.brandid">@tem.name</td>
+                                <td tabindex="@item.brandid">@tem.Name</td>
                             }
 
                         }

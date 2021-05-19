@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 @{
     ViewBag.Title = "VehicleInfoManager";
-    Layout = "~/Views/Shared/LayOutAdmin.cshtml";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
     List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel> x = Session["brandAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel>;
     List<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel> z = Session["modelAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel>;
 }
@@ -59,9 +59,9 @@
                     {
                         foreach (var tem in x)
                         {
-                            if (item.brandid == tem.id)
+                            if (item.brandid == tem.Id)
                             {
-                                <td tabindex="@item.brandid">@tem.name</td>
+                                <td tabindex="@item.brandid">@tem.Name</td>
                             }
 
                         }

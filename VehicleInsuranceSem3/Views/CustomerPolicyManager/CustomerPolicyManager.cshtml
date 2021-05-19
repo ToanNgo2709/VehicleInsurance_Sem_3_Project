@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 @{
     ViewBag.Title = "CustomerPolicyManager";
-    Layout = "~/Views/Shared/LayOutAdmin.cshtml";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
     List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel> cs = Session["customerInAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel>;
     List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel> pl = Session["PolicyAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>;
     List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel> vh = Session["VehicleAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel>;

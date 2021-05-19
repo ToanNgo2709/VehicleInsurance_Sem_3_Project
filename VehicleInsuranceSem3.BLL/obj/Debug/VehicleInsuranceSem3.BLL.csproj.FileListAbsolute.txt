@@ -13,3 +13,7 @@ D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\VehicleIns
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\EntityFramework.xml
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\EntityFramework.SqlServer.xml
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\obj\Debug\VehicleInsuranceSem3.BLL.csproj.CopyComplete
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\PagedList.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\PagedList.Mvc.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\PagedList.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\PagedList.Mvc.xml
