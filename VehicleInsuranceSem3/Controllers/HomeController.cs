@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using VehicleInsuranceSem3.BLL.DAO;
+using VehicleInsuranceSem3.BLL.Feature;
 using VehicleInsuranceSem3.BLL.ViewModel;
 using VehicleInsuranceSem3.DAL.Model;
 
@@ -14,7 +15,8 @@ namespace VehicleInsuranceSem3.Controllers
     {
         public ActionResult Index()
         {
-                return View();
+            var test = new ReportFeature().ShowClaimableReportByMonth(9);
+            return View();
         }
 
         public ActionResult About()

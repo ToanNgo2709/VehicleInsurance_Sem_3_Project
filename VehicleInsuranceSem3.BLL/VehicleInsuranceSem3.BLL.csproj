@@ -78,7 +78,9 @@
     <Compile Include="Feature\ReportFeature.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\ICrudFeature.cs" />
+    <Compile Include="ViewModel\BrandInsuranceSellViewModel.cs" />
     <Compile Include="ViewModel\BrandViewModel.cs" />
+    <Compile Include="ViewModel\ClaimableAmountByMonthViewModel.cs" />
     <Compile Include="ViewModel\ClaimDetailViewModel.cs" />
     <Compile Include="ViewModel\CompanyexpenseViewModel.cs" />
     <Compile Include="ViewModel\ContactViewModel.cs" />
@@ -88,6 +90,8 @@
     <Compile Include="ViewModel\EstimateViewModel.cs" />
     <Compile Include="ViewModel\ExpensetypeViewModel.cs" />
     <Compile Include="ViewModel\GooglemapViewModel.cs" />
+    <Compile Include="ViewModel\InsuranceCustomerPolicyMonthlyViewModel.cs" />
+    <Compile Include="ViewModel\ModelInsuranceViewModel.cs" />
     <Compile Include="ViewModel\ModelViewModel.cs" />
     <Compile Include="ViewModel\PolicyTypeCountModel.cs" />
     <Compile Include="ViewModel\PolicytypeViewModel.cs" />
