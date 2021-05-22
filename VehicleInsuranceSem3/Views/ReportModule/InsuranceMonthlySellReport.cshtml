@@ -1,0 +1,95 @@
+﻿
+@{
+    ViewBag.Title = "InsuranceMonthlySellReport";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+
+}
+
+@model IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.InsuranceCustomerPolicyMonthlyViewModel>
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label>Start Date</label>
+                    <input type="date" class="form-control" name="StartDate" id="StartDate" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label>End Date</label>
+                <input type="date" class="form-control" name="EndDate" id="EndDate" />
+            </div>
+            <div class="col-md-4">
+                <button id="btnSearch" class="btn btn-block btn-primary">Confirm</button>
+            </div>
+
+        </div>
+   
+</div>
+
+<div class="container">
+    <div id="customerPolicyChartContainer" style="height:250px; width: 100%">
+
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div id="customerPolicyChartContainer" style="height:150px; width: 50%">
+                <button>sjdfhjwoijeiorjwe</button>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div id="customerPolicyChartContainer" style="height:150px; width: 50%">
+                <button>sjdfhjwoijeiorjwe</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Customer Name</th>
+                <th>Policy Name</th>
+                <th>Vehicle Name</th>
+                <th>Duration</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.CreatedDate</td>
+                    <td>@item.CustomerName</td>
+                    <td>@item.PolicyName</td>
+                    <td>@item.VehicleName</td>
+                    <td>@item.Duration</td>
+                    <td>@item.Active</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<script>
+
+    $(document).ready(function () {
+        $('#btnSearch').click(function () {
+            var startDay = getDate($("#StartDate").val());
+            var endDay = getDate($("#EndDate").val());
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("InsuranceMonthlySellReport")',
+                data: { start: startDay, end: endDay },
+                success: function () {
+                    alert("sdjfojwoj");
+                }
+            })
+        });
+
+    })
+</script>

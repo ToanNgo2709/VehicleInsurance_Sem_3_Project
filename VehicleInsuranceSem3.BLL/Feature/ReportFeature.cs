@@ -41,11 +41,11 @@ namespace VehicleInsuranceSem3.BLL.Feature
             return obj;
         }
 
-        public List<InsuranceCustomerPolicyMonthlyViewModel> ShowCustomerPolicyByMonth(int month)
+        public List<InsuranceCustomerPolicyMonthlyViewModel> ShowCustomerPolicyByDate(DateTime startDay, DateTime endDate)
         {
 
             var list = context.Customer_Policy
-                .Where(c => c.create_date.Month == month)
+                .Where(c => c.create_date >= startDay && c.create_date <= endDate)
                 .Select(c => new InsuranceCustomerPolicyMonthlyViewModel
                 {
                     Active = (bool)c.active,
@@ -75,12 +75,12 @@ namespace VehicleInsuranceSem3.BLL.Feature
             return list;
         }
 
-        public List<ModelInsuranceViewModel> CountModelWithBrandSellByMonth(int month, int brandId)
+        public List<ModelInsuranceViewModel> CountModelWithBrandSellByMonth(DateTime startDate, DateTime endDate, int brandId)
         {
             var list = (from cp in context.Customer_Policy
                         join v in context.Vehicle_Info on cp.vehicle_id equals v.id
                         join m in context.Models on v.model_id equals m.id
-                        where cp.create_date.Month == month && v.brand_id == brandId
+                        where cp.create_date >= startDate && cp.create_date <= endDate && v.brand_id == brandId
                         group m by m.name into g
                         select new ModelInsuranceViewModel
                         {
@@ -100,10 +100,10 @@ namespace VehicleInsuranceSem3.BLL.Feature
             return amount;
         }
 
-        public List<ClaimableAmountByMonthViewModel> ShowClaimableReportByMonth(int month)
+        public List<ClaimableAmountByMonthViewModel> ShowClaimableReportByMonth(DateTime startDate, DateTime endDate)
         {
             var list = context.Claim_Detail
-                .Where(c => c.Customer_Policy.create_date.Month == month)
+                .Where(c => c.Customer_Policy.create_date >= startDate && c.Customer_Policy.create_date <= endDate)
                 .Select(c => new ClaimableAmountByMonthViewModel
                 {
                     ClaimableAmount = c.claimable_amount,

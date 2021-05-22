@@ -15,7 +15,7 @@ namespace VehicleInsuranceSem3.Controllers
     {
         public ActionResult Index()
         {
-            var test = new ReportFeature().ShowClaimableReportByMonth(9);
+            
             return View();
         }
 
@@ -26,10 +26,20 @@ namespace VehicleInsuranceSem3.Controllers
             return View();
         }
 
+        public ActionResult InsurancePlan()
+        {
+            return View();
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult CreateCustomerPolicy()
+        {
             return View();
         }
 

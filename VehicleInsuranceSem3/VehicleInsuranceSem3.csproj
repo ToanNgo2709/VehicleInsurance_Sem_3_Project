@@ -143,6 +143,7 @@
     <Compile Include="Controllers\EstimateManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PolicyManagerController.cs" />
+    <Compile Include="Controllers\ReportModuleController.cs" />
     <Compile Include="Controllers\UserAccController.cs" />
     <Compile Include="Controllers\VehicleIinFoManagerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -168,6 +169,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Chart.css" />
+    <Content Include="Content\Chart.min.css" />
     <Content Include="Content\CustomResource\AdminResource\Assets\css\ruang-admin.css" />
     <Content Include="Content\CustomResource\AdminResource\Assets\css\ruang-admin.min.css" />
     <Content Include="Content\CustomResource\AdminResource\Assets\font\OFL.txt" />
@@ -2152,6 +2155,8 @@
     <Content Include="Content\CustomResource\ClientResource\images\logo%402x.png" />
     <Content Include="Content\CustomResource\ClientResource\images\logo.png" />
     <Content Include="Content\CustomResource\ClientResource\style.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\LA_Themes\bootstrap\dist\css\bootstrap-theme.css" />
     <Content Include="Content\LA_Themes\bootstrap\dist\css\bootstrap-theme.min.css" />
     <Content Include="Content\LA_Themes\bootstrap\dist\css\bootstrap.css" />
@@ -2410,6 +2415,7 @@
     <Content Include="Content\LA_Themes\plugins\images\users\varun.jpg" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\CustomResource\ClientResource\fonts\fontawesome-webfont.eot" />
@@ -2432,6 +2438,7 @@
     <Content Include="Content\CustomResource\ClientResource\sass\libs\_normalize.scss" />
     <Content Include="Content\CustomResource\ClientResource\sass\libs\_settings.scss" />
     <Content Include="Content\CustomResource\ClientResource\sass\style.scss" />
+    <Content Include="Scripts\adminPage.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2440,6 +2447,8 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\CanvasJS\canvasjs.min.js" />
     <Content Include="Scripts\CanvasJS\jquery.canvasjs.min.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\CustomResource\ClientResource\js\jquery-1.11.1.min.map" />
     <Content Include="Content\LA_Themes\bootstrap\CHANGELOG.md" />
     <Content Include="Content\LA_Themes\bootstrap\dist\css\bootstrap-theme.css.map" />
@@ -2867,6 +2876,11 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -3018,13 +3032,19 @@
     <Content Include="Views\VehicleIinFoManager\Createvehicle.cshtml" />
     <Content Include="Views\VehicleIinFoManager\EditVehicleInfo.cshtml" />
     <Content Include="Views\VehicleIinFoManager\VehicleInfoManager.cshtml" />
+    <Content Include="Views\ReportModule\InsuranceMonthlySellReport.cshtml" />
+    <Content Include="Views\ReportModule\ClaimaAmountMonthly.cshtml" />
+    <Content Include="Views\ReportModule\VehicleWise.cshtml" />
+    <Content Include="Views\ReportModule\PolicyDueReport.cshtml" />
+    <Content Include="Views\Home\InsurancePlan.cshtml" />
+    <Content Include="Views\Home\CreateCustomerPolicy.cshtml" />
+    <Content Include="Views\CusTomAdd\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\ClientArea\Data\" />
     <Folder Include="Areas\ClientArea\Views\Shared\" />
     <Folder Include="Content\CustomResource\ClientResource\sass\pages\" />
-    <Folder Include="Views\CusTomAdd\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

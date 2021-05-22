@@ -93,9 +93,11 @@
     <Compile Include="ViewModel\InsuranceCustomerPolicyMonthlyViewModel.cs" />
     <Compile Include="ViewModel\ModelInsuranceViewModel.cs" />
     <Compile Include="ViewModel\ModelViewModel.cs" />
+    <Compile Include="ViewModel\PolicyDueViewModel.cs" />
     <Compile Include="ViewModel\PolicyTypeCountModel.cs" />
     <Compile Include="ViewModel\PolicytypeViewModel.cs" />
     <Compile Include="ViewModel\PolicyViewModel.cs" />
+    <Compile Include="ViewModel\TotalClaimAmountViewModel.cs" />
     <Compile Include="ViewModel\UserinfoViewModel.cs" />
     <Compile Include="ViewModel\UsertypeViewModel.cs" />
     <Compile Include="ViewModel\VehicleinfoViewModel.cs" />

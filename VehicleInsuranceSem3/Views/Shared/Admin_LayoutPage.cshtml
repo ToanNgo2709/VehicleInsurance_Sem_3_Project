@@ -9,9 +9,14 @@
     <meta name="author" content="">
     <link href="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/img/logo/logo.png" rel="icon">
     <title>RuangAdmin - Dashboard</title>
-    <link href="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css">
+    
+    <link href="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/vendor/font/fontawesome-free/css/fontawesome.css" rel="stylesheet" type="text/css">
     <link href="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/css/ruang-admin.min.css" rel="stylesheet">
+    <script src="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/vendor/jquery/jquery.min.js"></script>
+    <script src="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -38,8 +43,8 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
                    aria-expanded="true" aria-controls="collapseBootstrap">
-                    <i class="far fa-fw fa-window-maximize"></i>
-                    <span>Acount AD</span>
+                    <i class="fa fa-fw fa-user"></i>
+                    <span>Acount Manager</span>
                 </a>
                 <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
@@ -54,7 +59,7 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
                    aria-controls="collapseForm">
-                    <i class="fab fa-fw fa-wpforms"></i>
+                    <i class="fa fa-fw fa-shield"></i>
                     <span>Insurance Policy</span>
                 </a>
                 <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
@@ -68,14 +73,14 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
-                   aria-controls="collapseTable">
-                    <i class="fas fa-fw fa-table">COMPANYEXPENSE MANAGER</i>
-                    <span></span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCom" aria-expanded="true"
+                   aria-controls="collapseCom">
+                    <i class="fa fa-fw fa-hotel"></i>
+                    <span>Company Manager</span>
                 </a>
-                <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+                <div id="collapseCom" class="collapse" aria-labelledby="headingCom" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header"> CompanyExpense Manager</h6>
+                        <h6 class="collapse-header"> Company Expense Manager</h6>
                         <a class="collapse-item" href="@Url.Action("ExpenseTypeManager","CompanyExpenseManager")">ExpenseType</a>
                         <a class="collapse-item" href="@Url.Action("CompanyExpenseManager","CompanyExpenseManager")">Company Manager</a>
                         <a class="collapse-item" href="@Url.Action("CLaimDetailManager","CompanyExpenseManager")">ClaimDetail Manager</a>
@@ -83,47 +88,45 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
-                   aria-controls="collapseTable">
-                    <i class="fas fa-fw fa-table">Vehicle,estimate,billinginfo</i>
-                    <span></span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVehicle" aria-expanded="true"
+                   aria-controls="collapseVehicle">
+                    <i class="fa fa-fw fa-car"></i>
+                    <span>Vehicle Manager</span>
                 </a>
-                <div id="collapseTable" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
+                <div id="collapseVehicle" class="collapse" aria-labelledby="headingVehicle" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">  Manager</h6>
+                        <h6 class="collapse-header"> Vehicle Manager</h6>
                         <a class="collapse-item" href="@Url.Action("VehicleInfoManager","VehicleIinFoManager")">Vehicle Info</a>
                         <a class="collapse-item" href="@Url.Action("EstimateManagerNe","EstimateManager")">Estimate Info</a>
                         <a class="collapse-item" href="@Url.Action("CusTomerBillManagerl","CustomerBllingManager")">CustomerBilling Info</a>
-
                     </div>
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="ui-colors.html">
-                    <i class="fas fa-fw fa-palette"></i>
-                    <span>UI Colors</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport" aria-expanded="true"
+                   aria-controls="collapseReport">
+                    <i class="fa fa-fw fa-book"></i>
+                    <span>Report</span>
                 </a>
+                <div id="collapseReport" class="collapse" aria-labelledby="headingReport" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header"> Report Manager</h6>
+                        <a class="collapse-item" href="@Url.Action("InsuranceMonthlySellReport","ReportModule")">Insurance Monthly</a>
+                        <a class="collapse-item" href="@Url.Action("VehicleWise","ReportModule")">Vehicle Wise</a>
+                        <a class="collapse-item" href="@Url.Action("ClaimaAmountMonthly","ReportModule")">Claimable Report</a>
+                        <a class="collapse-item" href="@Url.Action("PolicyDueReport","ReportModule")">Policy Report</a>
+                    </div>
+                </div>
             </li>
+
+
+
+            
             <hr class="sidebar-divider">
             <div class="sidebar-heading">
                 Examples
             </div>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"
-                   aria-controls="collapsePage">
-                    <i class="fas fa-fw fa-columns"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePage" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Example Pages</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-chart-area"></i>
@@ -321,7 +324,7 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="@Url.Content("~/Admin/Logout")">
+                                <a class="dropdown-item" href="@Url.Action("Index","Home")">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -362,19 +365,19 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <script src="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/vendor/jquery/jquery.min.js"></script>
-    <script src="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    
     <script src="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/js/ruang-admin.min.js"></script>
-    <script src="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/vendor/chart.js/Chart.min.js"></script>
-    <script src="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/js/demo/chart-area-demo.js"></script>
+    @*<script src="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/js/demo/chart-area-demo.js"></script>*@
+    <script src="~/Scripts/CanvasJS/canvasjs.min.js"></script>
+    <script src="~/Scripts/adminPage.js"></script>
+
     <script type="text/javascript">
         $("input[type='checkbox']").on('change', function () {
             $("#active").val(this.checked ? "TRUE" : "FALSE");
         })
 
     </script>
-
+    @RenderSection("scripts",required:false)
 </body>
 
 </html>
