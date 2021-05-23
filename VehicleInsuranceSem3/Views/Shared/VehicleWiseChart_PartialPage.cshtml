@@ -1,0 +1,19 @@
+﻿<script>
+    var brandChart = new CanvasJS.Chart("BrandSellChart", {
+            animationEnabled : true,
+            theme: "light2",
+            title: {
+                text: "Number of Sell of Each Brand"
+            },
+            axisY: {
+                title: "No. of Sold"
+            },
+            data: [{
+                type: "column",
+                dataPoints: @Html.Raw(ViewBag.BrandDataPoints)
+            }]
+        });
+    brandChart.render();
+
+    
+</script>

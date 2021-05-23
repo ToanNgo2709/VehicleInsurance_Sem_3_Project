@@ -7,35 +7,35 @@
     List<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel> z = Session["modelAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel>;
 }
 
-<button type="button" class="btn btn-warning"> <a href="@Url.Action("VehicleInfoViewAll")"> ViewAll </a></button>
-<button type="button" class="btn btn-success"> <a href="@Url.Action("Createvehicle")"> Create VehicleInfo</a></button>
+<a class="btn btn-warning" href="@Url.Action("VehicleInfoViewAll")"> ViewAll </a>
+<a class="btn btn-success" href="@Url.Action("Createvehicle")"> Create VehicleInfo</a>
 
-<div class="input-group">
-    <form action="@Url.Action("VehicleSearch")" method="post" class="col-12">
+<div style="margin-top: 20px" class="input-group">
+    <form action="@Url.Action("VehicleSearch")" method="post" class="form-inline">
         <div class="form-outline">
             <input type="search" id="form1" class="form-control" name="tbSearch" />
-            <label class="form-label" for="form1">Search</label>
         </div>
-        <button type="submit" class="btn btn-primary" id="button-addon2">
-            <i class="fas fa-search"></i>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-search"></i>
         </button>
     </form>
 </div>
-<table class="table table-bordered">
+<hr />
+<table class="table table-striped">
 
     <thead>
         <tr>
-            <th scope="col">STT</th>
+            <th scope="col">No.</th>
             <th scope="col">Owner Name</th>
             <th scope="col">Address</th>
             <th scope="col">Brand </th>
             <th scope="col">Model </th>
             <th scope="col">Version </th>
-            <th scope="col">frame Name</th>
-            <th scope="col">engine Name</th>
+            <th scope="col">Frame Number</th>
+            <th scope="col">Engine Number</th>
             <th scope="col">Vehicle Name</th>
             <th scope="col">Vehicle Condition</th>
-            <th scope="col">Rate </th>
+            <th scope="col">Rate</th>
 
 
             <th scope="col">Action</th>
@@ -46,7 +46,7 @@
         @if (Session["VehicleInfoAll"] != null)
         {
             var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel>)Session["VehicleInfoAll"];
-            int i = 0;
+            int i = 1;
             foreach (var item in Model)
             {
 
@@ -93,8 +93,8 @@
                     <td>
 
 
-                        <a class="btn-btn-fab" href="@Url.Action("EditVehicleInfo", new { id = item.id})" data-idItem="@item.id"><i class="far fa-edit"> </i>  </a>
-                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteVehicle" , new { id = item.id })"><i class="far fa-trash-alt"></i></a>
+                        <a class="btn-btn-fab" href="@Url.Action("EditVehicleInfo", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteVehicle" , new { id = item.id })"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
                 i++;

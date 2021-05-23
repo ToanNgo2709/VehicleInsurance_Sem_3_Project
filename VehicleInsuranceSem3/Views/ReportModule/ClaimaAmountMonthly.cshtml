@@ -18,10 +18,12 @@
         <button id="btnConfirm" class="btn btn-block btn-success">Confirm</button>
     </div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" id="claimId">
+    <h3>Total Claim Amount: @ViewBag.SumClaimAllTime</h3>
     <table class="table table-striped">
         <thead>
             <tr>
+                <th>No.</th>
                 <th>Customer Policy Id</th>
                 <th>Customer Name</th>
                 <th>Date</th>
@@ -33,16 +35,19 @@
         <tbody>
             @if (Model != null)
             {
+                int i = 1;
                 foreach (var item in Model)
                 {
                     <tr>
+                        <td>@i</td>
                         <td>@item.CustomerPolicyId</td>
                         <td>@item.CustomerName</td>
                         <td>@item.CreateDate</td>
                         <td>@item.InsuredAmount</td>
                         <td>@item.ClaimableAmount</td>
-                        <td><button>fhsdf</button></td>
+                        <td><button class="btn btn-block btn-primary">Detail</button></td>
                     </tr>
+                    i++;
                 }
             }
 
@@ -56,13 +61,14 @@
             var startDay = getDate($("#StartDate").val());
             var endDay = getDate($("#EndDate").val());
             $.ajax({
-                    type: "POST",
-                    url: "@Url.Action("ClaimaAmountMonthly")",
-                    data: { start: startDay, end: endDay},
-                    success: function (msg) {
+                type: "POST",
+                url: "@Url.Action("ClaimaAmountReportMonthly")",
+                data: { start: startDay, end: endDay },
+                success: function (response) {
+                    $("#claimId").html(response);
+                }
+            });
 
-                    }
-                })
         })
     </script>
 }

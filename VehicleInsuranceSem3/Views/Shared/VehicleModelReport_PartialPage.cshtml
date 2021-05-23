@@ -1,0 +1,18 @@
+﻿<script>
+    var modelChart = new CanvasJS.Chart("ModelSellChart", {
+            animationEnabled : true,
+            theme: "light2",
+            title: {
+                text: "Number of Sell of Each Model"
+            },
+            axisY: {
+                title: "No. of Sold"
+            },
+            data: [{
+                type: "column",
+                dataPoints: @Html.Raw(ViewBag.ModelDataPoints)
+            }]
+        });
+    modelChart.render();
+</script>
+

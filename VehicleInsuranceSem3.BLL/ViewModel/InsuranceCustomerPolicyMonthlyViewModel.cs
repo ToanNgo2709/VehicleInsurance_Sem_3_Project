@@ -8,6 +8,7 @@ namespace VehicleInsuranceSem3.BLL.ViewModel
 {
     public class InsuranceCustomerPolicyMonthlyViewModel
     {
+        public int orderNumber { get; set; }
         public DateTime CreatedDate { get; set; }
         public string CustomerName { get; set; }
         public string PolicyName { get; set; }

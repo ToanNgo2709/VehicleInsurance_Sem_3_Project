@@ -69,6 +69,24 @@ namespace VehicleInsuranceSem3.BLL.DAO
             throw new NotImplementedException();
         }
 
+        public CustomerinfoViewModel GetCustomerById(int Id)
+        {
+            var customer = context.Customer_Info.Where(c => c.id == Id)
+                .Select(c => new CustomerinfoViewModel {
+                    id = c.id,
+                    active = c.active,
+                    address = c.address,
+                    dob = c.dob,
+                    email = c.email,
+                    name = c.name,
+                    password = c.password,
+                    phone = c.phone,
+                    username = c.username,
+                    user_type_id = c.user_type_id
+                }).FirstOrDefault();
+            return customer;
+        }
+
         public CustomerinfoViewModel GetEdit(int id)
         {
             var q = context.Customer_Info.Where(d => d.id == id).Select(d => new CustomerinfoViewModel { id = d.id, name = d.name, address = d.address, dob = d.dob, phone = d.phone, email = d.email, active = d.active, username = d.username, user_type_id = d.user_type_id, password = d.password }).FirstOrDefault();

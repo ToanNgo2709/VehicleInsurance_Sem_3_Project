@@ -140,16 +140,19 @@
     <Compile Include="Controllers\CusTomAddController.cs" />
     <Compile Include="Controllers\CustomerBllingManagerController.cs" />
     <Compile Include="Controllers\CustomerPolicyManagerController.cs" />
+    <Compile Include="Controllers\DashBoardController.cs" />
     <Compile Include="Controllers\EstimateManagerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PolicyManagerController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ReportModuleController.cs" />
     <Compile Include="Controllers\UserAccController.cs" />
     <Compile Include="Controllers\VehicleIinFoManagerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataPointModel.cs" />
+    <Compile Include="Models\DataPoint.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +176,8 @@
     <Content Include="Content\Chart.min.css" />
     <Content Include="Content\CustomResource\AdminResource\Assets\css\ruang-admin.css" />
     <Content Include="Content\CustomResource\AdminResource\Assets\css\ruang-admin.min.css" />
+    <Content Include="Content\CustomResource\AdminResource\Assets\css\sb-admin-2.css" />
+    <Content Include="Content\CustomResource\AdminResource\Assets\css\sb-admin-2.min.css" />
     <Content Include="Content\CustomResource\AdminResource\Assets\font\OFL.txt" />
     <Content Include="Content\CustomResource\AdminResource\Assets\img\boy.png" />
     <Content Include="Content\CustomResource\AdminResource\Assets\img\error.svg" />
@@ -2661,6 +2666,8 @@
     <Content Include="Scripts\CustomResource\ClientResource\js\min\app-min.js" />
     <Content Include="Scripts\CustomResource\ClientResource\js\min\plugins-min.js" />
     <Content Include="Scripts\CustomResource\ClientResource\js\plugins.js" />
+    <Content Include="Scripts\CustomResource\sb-admin-2.js" />
+    <Content Include="Scripts\CustomResource\sb-admin-2.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -3039,6 +3046,18 @@
     <Content Include="Views\Home\InsurancePlan.cshtml" />
     <Content Include="Views\Home\CreateCustomerPolicy.cshtml" />
     <Content Include="Views\CusTomAdd\Index.cshtml" />
+    <Content Include="Views\Shared\InsuranceMonthly_PartialPage.cshtml" />
+    <Content Include="Views\Shared\VehicleWise_PartialPage.cshtml" />
+    <Content Include="Views\Shared\ClaimReport_PartialPage.cshtml" />
+    <Content Include="Views\Shared\InsuranceReportChart_PartialPage.cshtml" />
+    <Content Include="Views\Shared\VehicleWiseChart_PartialPage.cshtml" />
+    <Content Include="Views\Shared\VehicleModelReport_PartialPage.cshtml" />
+    <Content Include="Views\Shared\_LayoutLogin.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\DashBoard\DashIndex.cshtml" />
+    <Content Include="Views\Home\CustomerHistory.cshtml" />
+    <Content Include="Views\Register\Register.cshtml" />
+    <Content Include="Views\Register\ForgetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

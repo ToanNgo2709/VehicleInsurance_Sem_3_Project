@@ -5,25 +5,25 @@
     Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
 }
 
-<button type="button" class="btn btn-warning"> <a href="@Url.Action("expenseTypeViewAll")"> ViewAll </a></button>
-<button type="button" class="btn btn-success"> <a href="@Url.Action("CreateExpenseType")"> CreateProduct</a></button>
+ <a class="btn btn-warning" href="@Url.Action("expenseTypeViewAll")"> View All </a>
+ <a class="btn btn-success" href="@Url.Action("CreateExpenseType")"> Create Expense Type</a>
 
-<div class="input-group">
-    <form action="@Url.Action("expenseTypeSearch")" method="post" class="col-12">
+<div style="margin-top: 20px" class="input-group">
+    <form action="@Url.Action("expenseTypeSearch")" method="post" class="form-inline">
         <div class="form-outline">
-            <input type="search" id="form1" class="form-control" name="tbSearch" />
-            <label class="form-label" for="form1">Search</label>
+            <input type="search" id="form1" placeholder="Search" class="form-control" name="tbSearch" />
         </div>
-        <button type="submit" class="btn btn-primary" id="button-addon2">
-            <i class="fas fa-search"></i>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-search"></i>
         </button>
     </form>
 </div>
-<table class="table table-bordered">
+<hr />
+<table class="table table-striped">
 
     <thead>
         <tr>
-            <th scope="col">STT</th>
+            <th scope="col">No.</th>
             <th scope="col">Name</th>
             <th scope="col">Active</th>
 
@@ -36,7 +36,7 @@
         @if (Session["ViewAllExpenseType"] != null)
         {
             var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.ExpensetypeViewModel>)Session["ViewAllExpenseType"];
-            int i = 0;
+            int i = 1;
             foreach (var item in Model)
             {
                 <tr>
@@ -45,8 +45,8 @@
                     <td>@item.active</td>
 
                     <td>
-                        <a class="btn-btn-fab" href="@Url.Action("EditexpenseType", new { id = item.id})" data-idItem="@item.id"><i class="far fa-edit"> </i>  </a>
-                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteExpenseType" , new { id = item.id })"><i class="far fa-trash-alt"></i></a>
+                        <a class="btn-btn-fab" href="@Url.Action("EditexpenseType", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteExpenseType" , new { id = item.id })"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
                 i++;

@@ -5,29 +5,29 @@
     Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
 }
 
-<button type="button" class="btn btn-warning"> <a href="@Url.Action("PolicyTypeViewAll")"> ViewAll </a></button>
-<button type="button" class="btn btn-success"> <a href="@Url.Action("CreatePolicyType")"> CreateBrand</a></button>
+<a class="btn btn-warning" href="@Url.Action("PolicyTypeViewAll")"> View All </a>
+<a class="btn btn-success" href="@Url.Action("CreatePolicyType")"> Create Policy Type</a>
 
 
-<div class="input-group">
-    <form action="@Url.Action("PolicyTypeSearch")" method="post" class="col-12">
+<div style="margin-top: 20px" class="input-group">
+    <form action="@Url.Action("PolicyTypeSearch")" method="post" class="form-inline">
         <div class="form-outline">
-            <input type="search" id="form1" class="form-control" name="tbSearch" />
-            <label class="form-label" for="form1">Search</label>
+            <input type="search" id="form1" class="form-control" name="tbSearch" placeholder="Search Type Name" />
         </div>
-        <button type="submit" class="btn btn-primary" id="button-addon2">
-            <i class="fas fa-search"></i>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-search"></i>
         </button>
     </form>
 </div>
-<table class="table table-bordered">
+<hr />
+<table class="table table-striped">
 
     <thead>
         <tr>
-            <th scope="col">STT</th>
+            <th scope="col">No.</th>
             <th scope="col">Name</th>
-            <th scope="col">liability level</th>
-            <th scope="col">price</th>
+            <th scope="col">Liability Level</th>
+            <th scope="col">Price</th>
             <th scope="col">Active</th>
 
 
@@ -40,7 +40,7 @@
         @if (Session["AllPolicyType"] != null)
         {
             var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.PolicytypeViewModel>)Session["AllPolicyType"];
-            int i = 0;
+            int i = 1;
             foreach (var item in Model)
             {
                 <tr>
@@ -52,8 +52,8 @@
 
 
                     <td>
-                        <a class="btn-btn-fab" href="@Url.Action("EditPolicyType", new { id = item.id})" data-idItem="@item.id"><i class="far fa-edit"> </i>  </a>
-                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeletePolicyType" , new { id = item.id })"><i class="far fa-trash-alt"></i></a>
+                        <a class="btn-btn-fab" href="@Url.Action("EditPolicyType", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeletePolicyType" , new { id = item.id })"><i class="fa fa-trash btn btn-danger"></i></a>
                     </td>
                 </tr>
                 i++;

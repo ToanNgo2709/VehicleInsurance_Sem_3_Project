@@ -7,19 +7,14 @@
 
 <form action="@Url.Action("AddPolicyType")" method="post">
     <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
-        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="name" value="" required>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Policy Type Name" value="" required>
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">libility level</label>
-        <input type="number" class="form-control" id="name" name="libilityLevel" aria-describedby="emailHelp" placeholder="name" value=""  min="0" max="10" required>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <input type="number" class="form-control" id="name" name="libilityLevel" aria-describedby="emailHelp" placeholder="Liability Level" value=""  min="0" max="10" required>
+        
     </div>
-    <div class="form-group">
-        <label for="exampleInputEmail1">Price</label>
-        <input type="number" class="form-control" id="name" name="price" aria-describedby="emailHelp" placeholder="name" value="" min="10000" max="999999999999"pattern="[0-9]" required>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <div class="form-group">    
+        <input type="number" class="form-control" id="name" name="price" aria-describedby="emailHelp" placeholder="Price" value="" min="10000" max="999999999999"pattern="[0-9]" required>      
     </div>
 
 
@@ -35,6 +30,6 @@
    
 
     <button type="submit" class="btn btn-primary" value="">Submit</button>
-    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("PolicyTypeManager")">Back</a></button>
+    <a class="btn btn-warning" href="@Url.Action("PolicyTypeManager")">Back</a>
 </form>
 

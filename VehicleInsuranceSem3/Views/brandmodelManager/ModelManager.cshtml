@@ -8,28 +8,28 @@
 
 
 }
-<button type="button" class="btn btn-warning"> <a href="@Url.Action("ModelViewAll")"> ViewAll </a></button>
-<button type="button" class="btn btn-success"> <a href="@Url.Action("CreateModel")"> CreateModel</a></button>
+<a class="btn btn-warning" href="@Url.Action("ModelViewAll")"> ViewAll </a>
+<a class="btn btn-success" href="@Url.Action("CreateModel")"> CreateModel</a>
 
 
-<div class="input-group">
-    <form action="@Url.Action("ModelSearch")" method="post" class="col-12">
+<div style="margin-top: 20px" class="input-group">
+    <form action="@Url.Action("ModelSearch")" method="post" class="form-inline">
         <div class="form-outline">
-            <input type="search" id="form1" class="form-control" name="tbSearch" />
-            <label class="form-label" for="form1">Search</label>
+            <input type="search" id="form1" class="form-control" name="tbSearch" placeholder="Enter Model Name" />
         </div>
-        <button type="submit" class="btn btn-primary" id="button-addon2">
-            <i class="fas fa-search"></i>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-search"></i>
         </button>
     </form>
 </div>
-<table class="table table-bordered">
+<hr />
+<table class="table table-striped">
 
     <thead>
         <tr>
-            <th scope="col">STT</th>
+            <th scope="col">No.</th>
             <th scope="col">Name</th>
-            <th scope="col">RateM</th>
+            <th scope="col">Max Rate</th>
             <th scope="col">Brand</th>
             <th scope="col">Active</th>
 
@@ -66,8 +66,8 @@
                     <td>@item.active</td>
 
                     <td>
-                        <a class="btn-btn-fab" href="@Url.Action("EditModel", new { id = item.id})" data-idItem="@item.id"><i class="far fa-edit"> </i>  </a>
-                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteModel" , new { id = item.id })"><i class="far fa-trash-alt"></i></a>
+                        <a class="btn-btn-fab" href="@Url.Action("EditModel", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteModel" , new { id = item.id })"><i class="fa fa-trash btn btn-danger"></i></a>
                     </td>
                 </tr>
                 i++;

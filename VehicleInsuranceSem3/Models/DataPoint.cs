@@ -7,19 +7,19 @@ using System.Web;
 namespace VehicleInsuranceSem3.Models
 {
     [DataContract]
-    public class DataPointModel
+    public class DataPoint
     {
-        public DataPointModel(string x, double y)
+        public DataPoint(string label, double y)
         {
-            this.X = x;
+            this.Label = label;
             this.Y = y;
                
         }
 
-        [DataMember(Name = "X")]
-        public string X = "";
+        [DataMember(Name = "label")]
+        public string Label = "";
 
-        [DataMember(Name = "Y")]
+        [DataMember(Name = "y")]
         public Nullable<double> Y = null;
 
     }

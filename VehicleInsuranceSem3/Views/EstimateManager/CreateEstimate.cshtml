@@ -8,29 +8,21 @@
 }
 
 <form action="@Url.Action("AddEstimate")" method="post">
-    <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
-        <input type="text" class="form-control" id="estimatenumber" name="estimatenumber" aria-describedby="emailHelp" placeholder="Name estimate" value="" required>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    <div class="form-group">       
+        <input type="text" class="form-control" id="estimatenumber" name="estimatenumber" aria-describedby="emailHelp" placeholder="Estimate Name" value="" required>        
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Date</label>
         <input type="date" class="form-control" id="vehiclewarranty" name="vehiclewarranty" placeholder="vehiclewarranty" value=""required>
     </div>
-
-
-
-
-
-
     <div class="form-group">
-        <label for="exampleInputPassword1">Customer</label>
-        <select class="form-select" aria-label="Default select example" id="customerid" name="customerid">
+        <select class="form-control" aria-label="Default select example" id="customerid" name="customerid">
+            <option selected> --- Select Customer ---</option>
             @foreach (var item in cs)
             {
                 if (item.id != null)
                 {
-                    <option value="@item.id" selected>@item.username</option>
+                    <option value="@item.id">@item.username</option>
                 }
                 else
                 {
@@ -41,13 +33,13 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Vehicle</label>
-        <select class="form-select" aria-label="Default select example" id="vehicleid" name="vehicleid">
+        <select class="form-control" aria-label="Default select example" id="vehicleid" name="vehicleid">
+            <option selected> --- Select Vehicle ---</option>
             @foreach (var item in vh)
             {
                 if (item.id != null)
                 {
-                    <option value="@item.id" selected>@item.ownername</option>
+                    <option value="@item.id">@item.ownername</option>
                 }
                 else
                 {
@@ -58,13 +50,13 @@
         </select>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Policy</label>
-        <select class="form-select" aria-label="Default select example" id="policyid" name="policyid">
+        <select class="form-control" aria-label="Default select example" id="policyid" name="policyid">
+            <option selected> --- Select Policy ---</option>
             @foreach (var item in pl)
             {
                 if (item.id != null)
                 {
-                    <option value="@item.id" selected>@item.policynumber</option>
+                    <option value="@item.id">@item.policynumber</option>
                 }
                 else
                 {
@@ -76,6 +68,6 @@
     </div>
 
     <button type="submit" class="btn btn-primary" value="">Submit</button>
-    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("EstimateManagerNe")">Back</a></button>
+    <a class="btn btn-warning" href="@Url.Action("EstimateManagerNe")">Back</a>
 </form>
 

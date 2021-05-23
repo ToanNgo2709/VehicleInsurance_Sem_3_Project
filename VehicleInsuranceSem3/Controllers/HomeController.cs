@@ -40,7 +40,22 @@ namespace VehicleInsuranceSem3.Controllers
 
         public ActionResult CreateCustomerPolicy()
         {
+            if(Session["id"] != null)
+            {
+                int id = (int)Session["id"];
+                CustomerinfoDAORequest request = new CustomerinfoDAORequest();
+                CustomerinfoViewModel customer =  request.GetCustomerById(id);
+                return View(customer);
+            }
             return View();
+        }
+
+        public ActionResult CustomerHistory()
+        {
+            CustomerpolicyDAORequest request = new CustomerpolicyDAORequest();
+            int id = (int)Session["id"];
+            List<CustomerHistoryModelView> list = request.GetCustomerPolicyHistory(id);
+            return View(list);
         }
 
         [HttpPost]

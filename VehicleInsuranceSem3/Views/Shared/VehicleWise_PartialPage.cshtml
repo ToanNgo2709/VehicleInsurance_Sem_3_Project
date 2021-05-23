@@ -1,0 +1,15 @@
+﻿@model IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.ModelInsuranceViewModel>
+
+@if (Model != null)
+{
+    int i = 1;
+    foreach (var item in Model)
+    {
+        <tr>
+            <td>@i</td>
+            <td>@item.ModelName</td>
+            <td>@item.Amount</td>
+        </tr>
+    }
+    i++;
+}

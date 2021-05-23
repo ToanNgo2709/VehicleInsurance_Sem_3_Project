@@ -10,65 +10,32 @@
 
 <form action="@Url.Action("AddVehicle")" method="post">
     <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
-        <input type="text" class="form-control" id="ownername" name="ownername" aria-describedby="emailHelp" placeholder="ownername" value="" required>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <input type="text" class="form-control" id="ownername" name="ownername" aria-describedby="emailHelp" placeholder="Owner's Name" value="" required>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Address</label>
-        <input type="text" class="form-control" id="address" name="address" placeholder="address" value="" required>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Version</label>
-        <input type="text" class="form-control" id="version" name="version" placeholder="" value="" required>
+        <input type="text" class="form-control" id="address" name="address" placeholder="Address" value="" required>
     </div>
 
     <div class="form-group">
-        <label for="exampleInputPassword1">frame Name</label>
-        <input type="text" class="form-control" id="framenumber" name="framenumber" placeholder="" value="" required>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">Egine Name</label>
-        <input type="text" class="form-control" id="eginenumber" name="eginenumber" placeholder="" value="" required>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">vehicle name</label>
-        <input type="text" class="form-control" id="vehiclenumber" name="vehiclenumber" placeholder="" value="" required>
-    </div>
-
-    <div class="form-group">
-        <label for="exampleInputPassword1">vehiclecondition</label>
-        <input type="number" class="form-control" id="vehiclecondition" name="vehiclecondition" placeholder="" value="" min="1" max="10" required>
-    </div>
-    <div class="form-group">
-        <label for="exampleInputPassword1">ratebycondition</label>
-        <input type="number" class="form-control" id="ratebycondition" name="ratebycondition" placeholder="" value="" min="10" max="9999999" required>
-    </div>
-
-
-
-
-
-    <div class="form-group">
-        <label for="exampleInputPassword1">Brand</label>
-        <select class="form-select" aria-label="Default select example" id="brandid" name="brandid">
+        <select class="form-control" aria-label="Default select example" id="brandid" name="brandid">
+            <option selected>--- Select Brand ---</option>
             @foreach (var item in x)
             {
-                if (item.id != null)
+                if (item.Id != null)
                 {
-                    <option value="@item.id" selected>@item.name</option>
+                    <option value="@item.Id">@item.Name</option>
                 }
                 else
                 {
-                    <option value="@item.id">@item.name</option>
+                    <option value="@item.Id">@item.Name</option>
                 }
             }
 
         </select>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Model</label>
-        <select class="form-select" aria-label="Default select example" id="modelid" name="modelid">
+        <select class="form-control" aria-label="Default select example" id="modelid" name="modelid">
+            <option selected> -- Select Model</option>
             @foreach (var item in xx)
             {
                 if (item.id != null)
@@ -84,8 +51,35 @@
         </select>
     </div>
 
+    <div class="form-group">
+        <input type="text" class="form-control" id="version" name="version" placeholder="Version" value="" required>
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control" id="framenumber" name="framenumber" placeholder="Frame Number" value="" required>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="eginenumber" name="eginenumber" placeholder="Engine Number" value="" required>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="vehiclenumber" name="vehiclenumber" placeholder="Vehicle Number" value="" required>
+    </div>
+
+    <div class="form-group">
+        <input type="number" class="form-control" id="vehiclecondition" name="vehiclecondition" placeholder="Vehicle Condition" value="" min="1" max="10" required>
+    </div>
+    <div class="form-group">
+        <input type="number" class="form-control" id="ratebycondition" name="ratebycondition" placeholder="Rate By Condition" value="" min="10" max="9999999" required>
+    </div>
+
+
+
+
+
+
+
     <button type="submit" class="btn btn-primary" value="">Submit</button>
-    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("VehicleInfoManager")">Back</a></button>
+    <a class="btn btn-warning" href="@Url.Action("VehicleInfoManager")">Back</a>
 </form>
 
 

@@ -6,28 +6,28 @@
     List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel> z = Session["CusAllView"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel>;
 }
 
-<button type="button" class="btn btn-warning"> <a href="@Url.Action("ClaimDetailViewAll")"> ViewAll </a></button>
-<button type="button" class="btn btn-success"> <a href="@Url.Action("CreateClaimDetail")" style="color:white"> Create ClaimDetail</a></button>
+<a class="btn btn-warning" href="@Url.Action("ClaimDetailViewAll")"> View All </a>
+<a class="btn btn-success" href="@Url.Action("CreateClaimDetail")" style="color:white"> Create Claim Detail</a>
 
-<div class="input-group">
-    <form action="@Url.Action("ClaimDetailSearch")" method="post" class="col-12">
+<div style="margin-top: 20px" class="input-group">
+    <form action="@Url.Action("ClaimDetailSearch")" method="post" class="form-inline">
         <div class="form-outline">
-            <input type="search" id="form1" class="form-control" name="tbSearch" />
-            <label class="form-label" for="form1">Search</label>
+            <input type="search" id="form1" class="form-control" placeholder="" name="tbSearch" />
         </div>
-        <button type="submit" class="btn btn-primary" id="button-addon2">
-            <i class="fas fa-search"></i>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-search"></i>
         </button>
     </form>
 </div>
-<table class="table table-bordered">
+<hr />
+<table class="table table-striped">
 
     <thead>
         <tr>
-            <th scope="col">STT</th>
+            <th scope="col">No.</th>
             <th scope="col">Claim Name</th>
             <th scope="col">Place Accident</th>
-            <th scope="col">Customer Poli</th>
+            <th scope="col">Customer Policy</th>
             <th scope="col">Date </th>
             <th scope="col">Insured Amount</th>
 
@@ -42,7 +42,7 @@
         @if (Session["ClaimDetailViewAll"] != null)
         {
             var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.ClaimDetailViewModel>)Session["ClaimDetailViewAll"];
-            int i = 0;
+            int i = 1;
             foreach (var item in Model)
             {
 
@@ -70,8 +70,8 @@
                     <td>
 
 
-                        <a class="btn-btn-fab" href="@Url.Action("EditClaimDetail", new { id = item.id })" data-idItem="@item.id"><i class="far fa-edit"> </i>  </a>
-                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteClaimDetail" , new { c = item.id })"><i class="far fa-trash-alt"></i></a>
+                        <a class="btn-btn-fab" href="@Url.Action("EditClaimDetail", new { id = item.id })" data-idItem="@item.id"><i class="fa fa-edit"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteClaimDetail" , new { c = item.id })"><i class="fa fa-trash"></i></a>
                     </td>
                 </tr>
                 i++;

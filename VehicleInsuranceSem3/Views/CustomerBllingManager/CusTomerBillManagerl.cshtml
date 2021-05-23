@@ -7,25 +7,25 @@
 }
 
 
-<button type="button" class="btn btn-warning"> <a href="@Url.Action("CustomerbillViewAll")"> ViewAll </a></button>
-<button type="button" class="btn btn-success"> <a href="@Url.Action("CreateCustomerBill")"> Create CustomerBilling</a></button>
+<a class="btn btn-warning" href="@Url.Action("CustomerbillViewAll")"> View All </a>
+<a class="btn btn-success" href="@Url.Action("CreateCustomerBill")"> Create Customer Billing</a>
 
-<div class="input-group">
-    <form action="@Url.Action("customerSearch")" method="post" class="col-12">
+<div style="margin-top: 20px" class="input-group">
+    <form action="@Url.Action("customerSearch")" method="post" class="form-inline">
         <div class="form-outline">
             <input type="search" id="form1" class="form-control" name="tbSearch" />
-            <label class="form-label" for="form1">Search</label>
         </div>
-        <button type="submit" class="btn btn-primary" id="button-addon2">
-            <i class="fas fa-search"></i>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-search"></i>
         </button>
     </form>
 </div>
-<table class="table table-bordered">
+<hr />
+<table class="table table-striped">
 
     <thead>
         <tr>
-            <th scope="col">STT</th>
+            <th scope="col">No.</th>
             <th scope="col">Customer add prove</th>
             <th scope="col">BillName</th>
             <th scope="col">CreateDate  </th>
@@ -42,7 +42,7 @@
         @if (Session["csbAllView"] != null)
         {
             var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.CustomerbillinginfoViewModel>)Session["csbAllView"];
-            int i = 0;
+            int i = 1;
             foreach (var item in Model)
             {
 
@@ -71,7 +71,7 @@
 
 
                 <a class="btn-btn-fab" href="@Url.Action("EditCustomerBill", new { id = item.id})" data-idItem="@item.id"><i class="far fa-edit"> </i>  </a>
-                <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteCustomerBill" , new { id = item.id })"><i class="far fa-trash-alt"></i></a>
+                <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteCustomerBill" , new { id = item.id })"><i class="far fa-trash"></i></a>
             </td>
         </tr>
                 i++;

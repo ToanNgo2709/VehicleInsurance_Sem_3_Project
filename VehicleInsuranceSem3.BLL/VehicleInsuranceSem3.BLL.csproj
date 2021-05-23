@@ -85,6 +85,7 @@
     <Compile Include="ViewModel\CompanyexpenseViewModel.cs" />
     <Compile Include="ViewModel\ContactViewModel.cs" />
     <Compile Include="ViewModel\CustomerbillinginfoViewModel.cs" />
+    <Compile Include="ViewModel\CustomerHistoryModelView.cs" />
     <Compile Include="ViewModel\CustomerinfoViewModel.cs" />
     <Compile Include="ViewModel\CustomerpolicyViewModel.cs" />
     <Compile Include="ViewModel\EstimateViewModel.cs" />

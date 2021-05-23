@@ -5,21 +5,17 @@
     List<VehicleInsuranceSem3.BLL.ViewModel.PolicytypeViewModel> cc = Session["AllPolicyType"] as List<VehicleInsuranceSem3.BLL.ViewModel.PolicytypeViewModel>;
 }
 
-<a href="@Url.Action("PolicyManager")" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back</a>
 
 <form action="@Url.Action("AddPolicy")" method="post">
     <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
-        <input type="text" class="form-control" id="name" name="policynumber" aria-describedby="emailHelp" placeholder="name policy" value="" required>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <input type="text" class="form-control" id="name" name="policynumber" aria-describedby="emailHelp" placeholder="Policy Name" value="" required>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Date </label>
+        <label for="exampleInputPassword1">Create Date </label>
         <input type="date" class="form-control" id="policydate" name="policydate" placeholder="" value="" required>
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Policy Duration</label>
-        <input type="number" class="form-control" id="policyduration" name="policyduration" placeholder="0" value="" min="1" max="4" required>
+        <input type="number" class="form-control" id="policyduration" name="policyduration" placeholder="Policy Duration" value="" min="1" max="4" required>
     </div>
 
     @*<div class="form-group">
@@ -31,13 +27,13 @@
         </div>*@
 
     <div class="form-group">
-        <label for="exampleInputPassword1">Brand</label>
-        <select class="form-select" aria-label="Default select example" id="policytypeid" name="policytypeid">
+        <select class="form-control" aria-label="Default select example" id="policytypeid" name="policytypeid">
+            <option selected>Select Policy Type</option>
             @foreach (var item in cc)
             {
                 if (item.id != null)
                 {
-                    <option value="@item.id" selected>@item.name</option>
+                    <option value="@item.id">@item.name</option>
                 }
                 else
                 {
@@ -56,7 +52,7 @@
 
 
     <button type="submit" class="btn btn-primary" value="">Submit</button>
-    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("PolicyManager")">Back</a></button>
+    <a class="btn btn-warning" href="@Url.Action("PolicyManager")">Back</a>
 </form>
 
 

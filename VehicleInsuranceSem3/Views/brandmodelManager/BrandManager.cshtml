@@ -6,26 +6,25 @@
     Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
 }
 
-<button type="button" class="btn btn-warning"> <a href="@Url.Action("BrandViewAll")"> ViewAll </a></button>
-<button type="button" class="btn btn-success"> <a href="@Url.Action("CreateBrand")"> CreateBrand</a></button>
+<a class="btn btn-warning" href="@Url.Action("BrandViewAll")"> View All </a>
+<a class="btn btn-success" href="@Url.Action("CreateBrand")"> Create Brand</a>
 
 
-<div class="input-group">
-    <form action="@Url.Action("BrandSearch")" method="post" class="col-12">
-        <div class="form-outline">
-            <input type="search" id="form1" class="form-control" name="tbSearch" />
-            <label class="form-label" for="form1">Search</label>
+<div style="margin-top: 20px" class="input-group">
+    <form action="@Url.Action("BrandSearch")" method="post" class="form-inline">
+        <div class="form-group">
+            <input type="search" id="form1" class="form-control" placeholder="Enter Brand Name" name="tbSearch" />
         </div>
-        <button type="submit" class="btn btn-primary" id="button-addon2">
-            <i class="fas fa-search"></i>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-fw fa-search"></i>
         </button>
     </form>
 </div>
-<table class="table table-bordered">
-
+<hr />
+<table class="table table-striped">
     <thead>
         <tr>
-            <th scope="col">STT</th>
+            <th scope="col">No.</th>
             <th scope="col">Name</th>
             <th scope="col">Active</th>
 
@@ -50,8 +49,8 @@
                     <td>@item.Active</td>
 
                     <td>
-                        <a class="btn-btn-fab" href="@Url.Action("EditBrand", new { id = item.Id })" data-idItem="@item.Id"><i class="far fa-edit"> </i>  </a>
-                        <a class="btn-btn-fab" data-idItem="@item.Id" href="@Url.Action("DeleteBrand", new { id = item.Id })"><i class="far fa-trash-alt"></i></a>
+                        <a class="btn-btn-fab" href="@Url.Action("EditBrand", new { id = item.Id })" data-idItem="@item.Id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.Id" href="@Url.Action("DeleteBrand", new { id = item.Id })"><i class="fa fa-trash btn btn-danger"></i></a>
                     </td>
                 </tr>
                 i++;
@@ -64,7 +63,7 @@
     </tbody>
 
 </table>
-<div id='Paging' style="text-align:center">
+<div class="pagination" id='Paging' style="text-align:center">
     @Html.PagedListPager(Model, page => Url.Action("BrandManager", new { page, pageSize = Model.PageSize }))
     Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
 </div>

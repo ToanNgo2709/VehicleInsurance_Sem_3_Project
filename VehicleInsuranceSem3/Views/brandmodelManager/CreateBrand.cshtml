@@ -4,13 +4,13 @@
     Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
 }
 
-<a href="@Url.Action("BrandManager")" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back</a>
+
 
 <form action="@Url.Action("AddBrand")" method="post">
     <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
-        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="name" value="" required>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Brand Name" value="" required>
+        
     </div>
 
     <div class="form-check">
@@ -24,7 +24,7 @@
       
     
     <button type="submit" class="btn btn-primary" value="">Submit</button>
-    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("BrandManager")">Back</a></button>
+    <a class="btn btn-primary" href="@Url.Action("BrandManager")">Back</a>
 </form>
 
 

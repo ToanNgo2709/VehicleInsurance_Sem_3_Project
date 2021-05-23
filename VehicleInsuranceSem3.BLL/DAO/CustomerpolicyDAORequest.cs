@@ -149,5 +149,21 @@ namespace VehicleInsuranceSem3.BLL.DAO
             }
             
         }
+        public List<CustomerHistoryModelView> GetCustomerPolicyHistory(int customerId)
+        {
+            var list = context.Customer_Policy
+                .Where(c => c.customer_id == customerId)
+                .Select(c => new CustomerHistoryModelView
+                {
+                    CreateDate = c.create_date,
+                    CustomerId = (int)c.customer_id,
+                    EndDate = c.policy_end_date,
+                    PolicyName = c.Policy.policy_number,
+                    StartDate = c.policy_start_date,
+                    TotalPayment = c.total_payment,
+                    VehicleName = c.Vehicle_Info.Brand.name + " " + c.Vehicle_Info.Model.name
+                }).ToList();
+            return list;
+        }
     }
 }

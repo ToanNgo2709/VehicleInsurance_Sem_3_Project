@@ -11,14 +11,11 @@
 
 <form action="@Url.Action("AddModel")" method="post">
     <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
-        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="name" value="" required>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Model Name" value="" required>
     </div>
 
     <div class="form-group">
-        <label for="exampleInputPassword1">Rate</label>
-        <input type="number" class="form-control" id="rate" name="rate" placeholder="" value="" min="1000" max="999999999" required>
+        <input type="number" class="form-control" id="rate" name="rate" placeholder="Max Rate" value="" min="1000" max="999999999" required>
     </div>
 
     @*<div class="form-group">
@@ -29,8 +26,7 @@
             </select>-
         </div>*@
     <div class="form-group">
-        <label for="exampleInputPassword1">Brand</label>
-        <select class="form-select" aria-label="Default select example" id="brandid" name="brandid">
+        <select class="form-control" aria-label="Default select example" id="brandid" name="brandid">
             @foreach (var item in svv)
             {
                 if (item.Id != null)
@@ -54,7 +50,7 @@
 
 
 
-    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <button type="submit" class="btn btn-success" value="">Submit</button>
     <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("ModelManager")" style="color:white">Back</a></button>
 </form>
 

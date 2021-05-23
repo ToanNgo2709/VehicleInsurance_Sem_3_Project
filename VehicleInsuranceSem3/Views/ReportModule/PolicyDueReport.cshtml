@@ -7,7 +7,7 @@
 <div class="container">
     <div class="col-md-6">
         <label>Current Date</label>
-        <input type="date" class="form-control" />
+        <input type="date" readonly class="form-control" id="CurrentDate" name="CurrentDate" />
     </div>
 </div>
 
@@ -25,13 +25,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th>sdfs</th>
-                <th>sdfsf</th>
-                <th>sdfs</th>
-                <th>sdfs</th>
-                <th><button class="btn btn-block btn-success">Detail</button></th>
-            </tr>
+            @if (ViewBag.duePolicy != null)
+            {
+                foreach (var item in ViewBag.duePolicy)
+                {
+                    <tr>
+                        <td>@item.CustomerPolicyId</td>
+                        <td>@item.PolicyType</td>
+                        <td>@item.StartDate</td>
+                        <td>@item.EndDate</td>
+                        <td><button class="btn btn-block btn-success">Detail</button></td>
+                    </tr>
+                }
+            }
         </tbody>
     </table>
 </div>
@@ -50,13 +56,32 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>sdfs</td>
-                <td>sdfsf</td>
-                <td>sdfs</td>
-                <td>sdfs</td>
-                <td><button class="btn btn-block btn-success">Detail</button></td>
-            </tr>
+            @if (ViewBag.lapsedPolicy != null)
+            {
+                foreach (var item in ViewBag.lapsedPolicy)
+                {
+                    <tr>
+                        <td>@item.CustomerPolicyId</td>
+                        <td>@item.PolicyType</td>
+                        <td>@item.StartDate</td>
+                        <td>@item.EndDate</td>
+                        <td><button class="btn btn-block btn-success">Detail</button></td>
+                    </tr>
+                }
+            }
+
+
         </tbody>
     </table>
 </div>
+<script>
+    $(document).ready(function () {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        $("#CurrentDate").val(today);
+    });
+</script>
