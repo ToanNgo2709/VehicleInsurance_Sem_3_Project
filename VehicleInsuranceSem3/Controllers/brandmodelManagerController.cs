@@ -24,7 +24,7 @@ namespace VehicleInsuranceSem3.Controllers
         }
 
 
-        public ActionResult BrandManager(int page = 1, int pageSize = 3)
+        public ActionResult BrandManager(int page = 1, int pageSize = 5)
         {
             List<BrandViewModel> ListBrand = new List<BrandViewModel>();
             PagedList<BrandViewModel> PagelistBrand;

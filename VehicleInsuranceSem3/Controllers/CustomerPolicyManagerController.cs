@@ -130,5 +130,11 @@ using PagedList.Mvc;
             return RedirectToAction("CustomerPolicyViewAll");
         }
 
+
+        public ActionResult CreateCustomerPolicyTest()
+        {
+            return View();
+        }
+
     }
 }

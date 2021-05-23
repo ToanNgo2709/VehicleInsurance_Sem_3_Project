@@ -44,7 +44,10 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Register Free Account</h1>
                                     </div>
-                                    @using (Html.BeginForm("LoginDB", "Login", FormMethod.Post, new { @style = "margin:auto;" }))
+                                    <div class="p-3 mb-2 text-danger">
+                                        @ViewBag.Alert
+                                    </div>
+                                    @using (Html.BeginForm("RegisterDb", "Register", FormMethod.Post, new { @style = "margin:auto;" }))
                                     {
                                         <div class="form-group">
                                             @Html.TextBoxFor(model => model.username, new { @Class = "form-control form-control-user", @id = "txUsername", @autofocus = "@autofocus", @placeholder = "Username" })
@@ -54,7 +57,8 @@
                                             @Html.PasswordFor(model => model.password, new { @Class = "form-control form-control-user", @id = "pwPassword", @placeholder = "Password" })
                                         </div>
                                         <div class="form-group">
-                                            @Html.PasswordFor(model => model.password, new { @Class = "form-control form-control-user", @id = "pwRePassword", @placeholder = "Re-enter Password" })
+                                            <input type="password" placeholder="Re-enter Password" id="pwRePassword" name="pwRePassword" class="form-control form-control-user" />
+
                                         </div>
                                         <div class="form-group">
                                             @Html.TextBoxFor(model => model.name, new { @Class = "form-control form-control-user", @id = "txCustomerName", @autofocus = "@autofocus", @placeholder = "Customer Name" })
@@ -72,11 +76,9 @@
                                             @Html.TextBoxFor(model => model.email, new { @Class = "form-control form-control-user", @placeholder = "Email", @type = "email" })
                                         </div>
                                         <div class="form-group">
-                                            <input type="checkbox" name="cbCheck" id="cbCheck"/>
-                                            <label>Agree With Website policy</label>
-                                        </div>
-                                        <div class="p-3 mb-2 bg-light text-danger">
-                                            @Html.ValidationSummary(false, "", "error")
+
+                                            @Html.CheckBoxFor(model => model.active, new { @name = "cbCheck", @id = "cbCheck" })
+                                            <label for="cbCheck">Agree With Website policy</label>
                                         </div>
                                         <button type="submit" class="btn btn-primary btn-user btn-block" name="btnRegister"> Register</button>
                                         <hr>
@@ -86,7 +88,7 @@
                                         </div>
                                         <div class="text-center">
                                             <a href="@Url.Action("Login", "Login")">Already had an account? Login</a>
-                                           
+
                                         </div>
                                     }
                                     <hr>

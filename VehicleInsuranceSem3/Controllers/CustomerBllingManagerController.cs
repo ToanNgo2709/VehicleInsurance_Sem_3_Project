@@ -102,6 +102,40 @@ namespace VehicleInsuranceSem3.Controllers
             return View();
         }
 
+        public ActionResult CreateBill(int id)
+        {
+            int customerPolicyId = id;
+            CustomerpolicyDAORequest request = new CustomerpolicyDAORequest();
+            CustomerpolicyViewModel model = request.GetCustomerPolicyById(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CreateBillForCustomer()
+        {
+            int customerPolicyId = int.Parse(Request.Params["customerPolicyId"]);
+            string customerProve = Request.Params["customeraddprove"];
+            string billNumber = Request.Params["bill_number"];
+            DateTime createDate = DateTime.Parse(Request.Params["createDate"]);
+            decimal amount = decimal.Parse(Request.Params["amount"]);
+            bool active = Request.Params["active"] == "TRUE" ? true : false;
+
+            CustomerbillinginfoViewModel model = new CustomerbillinginfoViewModel()
+            {
+                customerpolicyid = customerPolicyId,
+                active = active,
+                amount = amount,
+                bill_number = billNumber,
+                createdate = createDate,
+                customeraddprove = customerProve
+            };
+
+            CustomerBillingInfoDAORequest request = new CustomerBillingInfoDAORequest();
+            request.Add(model);
+            return RedirectToAction("CustomerPolicyManager", "CustomerPolicyManager");
+        }
+
+
         [HttpPost]
         public ActionResult AddCustomerBill(CustomerbillinginfoViewModel l)
         {
@@ -118,6 +152,8 @@ namespace VehicleInsuranceSem3.Controllers
             Session["csbAllView"] = x;
             return RedirectToAction("CustomerbillViewAll");
         }
+
+        
 
     }
 }

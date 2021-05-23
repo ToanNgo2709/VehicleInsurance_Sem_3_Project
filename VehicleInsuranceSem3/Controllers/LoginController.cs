@@ -27,12 +27,14 @@ namespace VehicleInsuranceSem3.Controllers
             }
             return View(new CustomerinfoViewModel());
         }
+
+
         public ActionResult LoginDB(CustomerinfoViewModel uv)
         {
             using (var ctx = new InsuranceDbContext())
             {
                 string pw = uv.password;
-                if (Session["id"] == null && ModelState.IsValid)
+                if (Session["id"] == null)
                 {
                     var checkus = ctx.Customer_Info
                         .Where(a => a.username.Equals(uv.username))
@@ -72,8 +74,6 @@ namespace VehicleInsuranceSem3.Controllers
                         else
                         {
                             TempData["Alert"] = "Your password is wrong!";
-                            string msg = "Your account has been locked!";
-                            ModelState.AddModelError(string.Empty, msg);
                             return RedirectToAction("Login", "Login");
                         }
                     }

@@ -27,11 +27,11 @@
         <tr>
             <th scope="col">No.</th>
             <th scope="col">Customer add prove</th>
-            <th scope="col">BillName</th>
-            <th scope="col">CreateDate  </th>
+            <th scope="col">Bill Number</th>
+            <th scope="col">Create Date  </th>
             <th scope="col">Amount</th>
             <th scope="col">Active</th>
-            <th scope="col">CustomerPolicy</th>
+            <th scope="col">Customer Policy</th>
 
 
             <th scope="col">Action</th>
@@ -59,7 +59,7 @@
                 {
                     if (item.customerpolicyid == tem.id)
                     {
-                        <td tabindex="@item.customerpolicyid">@tem.customeraddprove</td>
+                        <td tabindex="@item.customerpolicyid">@tem.id</td>
                     }
 
                 }
@@ -70,8 +70,9 @@
             <td>
 
 
-                <a class="btn-btn-fab" href="@Url.Action("EditCustomerBill", new { id = item.id})" data-idItem="@item.id"><i class="far fa-edit"> </i>  </a>
-                <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteCustomerBill" , new { id = item.id })"><i class="far fa-trash"></i></a>
+                <a class="btn-btn-fab" href="@Url.Action("EditCustomerBill", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit"> </i>  </a>
+                <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteCustomerBill" , new { id = item.id })"><i class="fa fa-trash"></i></a>
+                
             </td>
         </tr>
                 i++;

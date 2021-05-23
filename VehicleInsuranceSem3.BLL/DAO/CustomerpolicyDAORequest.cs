@@ -58,7 +58,14 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public List<CustomerpolicyViewModel> GetById(int Id)
         {
-            throw new NotImplementedException();
+            var q = context.Customer_Policy.Where(c => c.id == Id).Select(d => new CustomerpolicyViewModel { id = d.id, active = d.active, createdate = d.create_date, customeraddprove = d.customer_add_prove, policystartdate = d.policy_start_date, policyenddate = d.policy_end_date, TotalPayment = d.total_payment, policyid = (int)d.policy_id, vehicleid = (int)d.vehicle_id, customerid = (int)d.customer_id }).ToList();
+            return q;
+        }
+
+        public CustomerpolicyViewModel GetCustomerPolicyById(int Id)
+        {
+            var q = context.Customer_Policy.Where(c => c.id == Id).Select(d => new CustomerpolicyViewModel { id = d.id, active = d.active, createdate = d.create_date, customeraddprove = d.customer_add_prove, policystartdate = d.policy_start_date, policyenddate = d.policy_end_date, TotalPayment = d.total_payment, policyid = (int)d.policy_id, vehicleid = (int)d.vehicle_id, customerid = (int)d.customer_id }).FirstOrDefault();
+            return q;
         }
 
         public CustomerpolicyViewModel GetEdit(int id)

@@ -15,7 +15,7 @@ namespace VehicleInsuranceSem3.Controllers
     {
         public ActionResult Index()
         {
-            
+
             return View();
         }
 
@@ -40,11 +40,11 @@ namespace VehicleInsuranceSem3.Controllers
 
         public ActionResult CreateCustomerPolicy()
         {
-            if(Session["id"] != null)
+            if (Session["id"] != null)
             {
                 int id = (int)Session["id"];
                 CustomerinfoDAORequest request = new CustomerinfoDAORequest();
-                CustomerinfoViewModel customer =  request.GetCustomerById(id);
+                CustomerinfoViewModel customer = request.GetCustomerById(id);
                 return View(customer);
             }
             return View();
@@ -75,9 +75,81 @@ namespace VehicleInsuranceSem3.Controllers
             return RedirectToAction("Contact");
         }
 
-        public ActionResult Register()
+        public ActionResult ChangePassword()
         {
+            if (TempData["Alert"] != null)
+            {
+                ViewBag.Alert = TempData["Alert"];
+                TempData.Remove("Alert");
+            }
             return View();
         }
+
+        public ActionResult UpdatePassword()
+        {
+            int id = (int)Session["id"];
+            string oldPassword = Request.Params["oldPassword"];
+            string newPassword = Request.Params["newPassword"];
+            string reNewPassword = Request.Params["reNewPassword"];
+            CustomerinfoDAORequest request = new CustomerinfoDAORequest();
+            var customer = request.GetCustomerById(id);
+            if (CheckNullField(oldPassword, newPassword, reNewPassword))
+            {
+                if (CheckOldPassword(customer.password, oldPassword))
+                {
+                    if (CheckMatchNewPassword(newPassword, reNewPassword))
+                    {
+                        customer.password = newPassword;
+                        request.Update(customer);
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        TempData["Alert"] = "New password not match";
+                        return RedirectToAction("ChangePassword");
+                    }
+                }
+                else
+                {
+                    TempData["Alert"] = "Old Password is not corrent";
+                    return RedirectToAction("ChangePassword");
+                }
+            }
+            else
+            {
+                TempData["Alert"] = "Please Enter All Of Field";
+                return RedirectToAction("ChangePassword");
+            }
+
+
+        }
+
+        public bool CheckOldPassword(string dbPassword, string enterPassword)
+        {
+            if (dbPassword.Equals(enterPassword))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool CheckMatchNewPassword(string newPassword, string reNewPassword)
+        {
+            if (newPassword.Equals(reNewPassword))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool CheckNullField(string oldPassword, string newPassword, string rePassword)
+        {
+            if (oldPassword == null || newPassword == null || rePassword == null)
+            {
+                return true;
+            }
+            return false;
+        }
+
     }
 }

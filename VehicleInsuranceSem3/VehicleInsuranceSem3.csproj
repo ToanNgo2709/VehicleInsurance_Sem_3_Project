@@ -2157,8 +2157,27 @@
     <Content Include="Content\CustomResource\ClientResource\images\icon-phone.png" />
     <Content Include="Content\CustomResource\ClientResource\images\icon-search%402x.png" />
     <Content Include="Content\CustomResource\ClientResource\images\icon-search.png" />
+    <Content Include="Content\CustomResource\ClientResource\images\insuranceOffer1.jpg" />
     <Content Include="Content\CustomResource\ClientResource\images\logo%402x.png" />
     <Content Include="Content\CustomResource\ClientResource\images\logo.png" />
+    <Content Include="Content\CustomResource\ClientResource\images\member1.jpg" />
+    <Content Include="Content\CustomResource\ClientResource\images\member2.jpg" />
+    <Content Include="Content\CustomResource\ClientResource\images\member3.jpg" />
+    <Content Include="Content\CustomResource\ClientResource\images\member4.jpg" />
+    <Content Include="Content\CustomResource\ClientResource\images\new2.jpg" />
+    <Content Include="Content\CustomResource\ClientResource\images\news1.jpg" />
+    <Content Include="Content\CustomResource\ClientResource\images\news3.jpeg" />
+    <Content Include="Content\CustomResource\ClientResource\images\offer1.jpg" />
+    <Content Include="Content\CustomResource\ClientResource\images\offer2.jpg" />
+    <Content Include="Content\CustomResource\ClientResource\images\offer3.jpg" />
+    <Content Include="Content\CustomResource\ClientResource\images\offer4.png" />
+    <Content Include="Content\CustomResource\ClientResource\images\offer5.jpg" />
+    <Content Include="Content\CustomResource\ClientResource\images\offer6.png" />
+    <Content Include="Content\CustomResource\ClientResource\images\partner1.jpg" />
+    <Content Include="Content\CustomResource\ClientResource\images\partner2.jpg" />
+    <Content Include="Content\CustomResource\ClientResource\images\partner3.png" />
+    <Content Include="Content\CustomResource\ClientResource\images\partner4.jpg" />
+    <Content Include="Content\CustomResource\ClientResource\images\partner5.png" />
     <Content Include="Content\CustomResource\ClientResource\style.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
@@ -3058,6 +3077,9 @@
     <Content Include="Views\Home\CustomerHistory.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\Register\ForgetPassword.cshtml" />
+    <Content Include="Views\CustomerBllingManager\CreateBill.cshtml" />
+    <Content Include="Views\CustomerPolicyManager\CreateCustomerPolicyTest.cshtml" />
+    <Content Include="Views\Home\ChangePassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -19,7 +19,7 @@ namespace VehicleInsuranceSem3.BLL.ViewModel
         public string address { get; set; }
         public string phone { get; set; }
         public string   email { get; set; }
-        public bool? active { get; set; }
+        public bool active { get; set; }
         public string username { get; set; }
         public string password { get; set; }
         public int user_type_id { get; set; }

@@ -38,23 +38,15 @@
                     <div class="insurance-icon"><i class="fa fa-car"></i></div>
                     <h3 class="insurance-title">Safe Hourse</h3>
                     <p>Etiam aliquam ante in mattis molestie. Vivamus in laoreet eros. Proin tempus velit dui lobortis justo laoreet nes phasellus luctus neque.</p>
-                    <a href="@Url.Action("CreateCustomerPolicy")" class="button">See details</a>
-                </div>
-            </div>
-            <div class="insurance-item filterable-item compulsory">
-                <div class="insurance-content">
-                    <div class="insurance-icon"><i class="fa fa-car"></i></div>
-                    <h3 class="insurance-title">Safe Hourse</h3>
-                    <p>Etiam aliquam ante in mattis molestie. Vivamus in laoreet eros. Proin tempus velit dui lobortis justo laoreet nes phasellus luctus neque.</p>
-                    <a href="@Url.Action("CreateCustomerPolicy")" class="button">See details</a>
-                </div>
-            </div>
-            <div class="insurance-item filterable-item compulsory">
-                <div class="insurance-content">
-                    <div class="insurance-icon"><i class="fa fa-car"></i></div>
-                    <h3 class="insurance-title">Safe Hourse</h3>
-                    <p>Etiam aliquam ante in mattis molestie. Vivamus in laoreet eros. Proin tempus velit dui lobortis justo laoreet nes phasellus luctus neque.</p>
-                    <a href="@Url.Action("CreateCustomerPolicy")" class="button">See details</a>
+                    @if (Session["id"] == null)
+                    {
+                        <a href="@Url.Action("Login","Login")" class="button">Buy</a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("CreateCustomerPolicy")" class="button">Buy</a>
+                    }
+
                 </div>
             </div>
 
