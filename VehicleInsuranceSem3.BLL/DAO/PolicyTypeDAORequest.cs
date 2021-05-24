@@ -56,6 +56,14 @@ namespace VehicleInsuranceSem3.BLL.ViewModel
             throw new NotImplementedException();
         }
 
+        public PolicytypeViewModel GetTypeById(int Id)
+        {
+            var q = context.Policy_Type.Where(p => p.id == Id)
+                .Select(d => new PolicytypeViewModel { id = d.id, name = d.name, active = d.active, price = d.price, libilityLevel = d.liability_level })
+                .FirstOrDefault();
+            return q;
+        }
+
         public PolicytypeViewModel GetEdit(int id)
         {
             var q = context.Policy_Type.Where(d => d.id == id).Select(d => new PolicytypeViewModel { id = d.id, name = d.name, active = d.active  , price = d.price , libilityLevel = d.liability_level}).FirstOrDefault();

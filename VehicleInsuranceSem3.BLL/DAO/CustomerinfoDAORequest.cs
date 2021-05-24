@@ -113,6 +113,13 @@ namespace VehicleInsuranceSem3.BLL.DAO
             return q;
         }
 
+        public CustomerinfoViewModel GetByUsernameAndEmail(string username, string email)
+        {
+            var q = context.Customer_Info.Where(c => c.username.Equals(username) && c.email.Equals(email))
+                .Select(d => new CustomerinfoViewModel { id = d.id, name = d.name, dob = d.dob, active = (bool)d.active, address = d.address, email = d.email, phone = d.phone, username = d.username, password = d.password }).FirstOrDefault();
+            return q;
+        }
+
         public int Update(CustomerinfoViewModel updateItems)
         {
             try

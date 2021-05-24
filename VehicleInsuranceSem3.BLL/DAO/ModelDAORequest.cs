@@ -64,6 +64,21 @@ namespace VehicleInsuranceSem3.BLL.DAO
             throw new NotImplementedException();
         }
 
+        public ModelViewModel GetModelById(int Id)
+        {
+            var q = context.Models.Select(d => new ModelViewModel { id = d.id, name = d.name, brandid = d.brand_id, rate = d.highest_rate, active = d.active }).FirstOrDefault();
+            return q;
+        }
+
+        public List<ModelViewModel> GetByBrandId(int brandId)
+        {
+            var q = context.Models
+                .Where(m => m.brand_id == brandId)
+                .Select(d => new ModelViewModel { id = d.id, name = d.name, brandid = d.brand_id, rate = d.highest_rate, active = d.active })
+                .ToList();
+            return q;
+        }
+
         public ModelViewModel GetEdit(int id)
         {
             var q = context.Models.Where(d => d.id == id).Select(d => new ModelViewModel { id = d.id, name = d.name, rate = d.highest_rate , brandid =d.brand_id , active = d.active}).FirstOrDefault();

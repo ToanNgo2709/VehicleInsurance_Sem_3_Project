@@ -1,0 +1,25 @@
+﻿@model VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel
+@{
+    ViewBag.Title = "CheckOutPage";
+    Layout = "~/Views/Shared/Client_LayoutPage.cshtml";
+}
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Total Payment</th>
+            </tr>
+        </thead>
+        <tbody>         
+            <tr>
+                <td>@Model.customerid</td>
+                <td>@Model.TotalPayment</td>
+                
+            </tr>         
+        </tbody>
+    </table>
+</div>
+
+

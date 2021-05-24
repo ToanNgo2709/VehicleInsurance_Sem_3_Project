@@ -50,9 +50,21 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         }
 
+        public PolicyViewModel GetPolicyById(int Id)
+        {
+            var q = context.Policies
+                .Where(p => p.id == Id)
+                .Select(d => new PolicyViewModel { id = d.id, active = d.active, policydate = d.policy_date, policyduration = d.policy_duration, policynumber = d.policy_number, policytypeid = d.policy_type_id })
+                .FirstOrDefault();
+            return q;
+        }
+
         public List<PolicyViewModel> GetById(int Id)
         {
-            throw new NotImplementedException();
+            var q = context.Policies
+                .Where(p => p.id == Id)
+                .Select(d => new PolicyViewModel { id = d.id, active = d.active, policydate = d.policy_date, policyduration = d.policy_duration, policynumber = d.policy_number, policytypeid = d.policy_type_id }).ToList();
+            return q;
         }
 
         public PolicyViewModel GetEdit(int id)

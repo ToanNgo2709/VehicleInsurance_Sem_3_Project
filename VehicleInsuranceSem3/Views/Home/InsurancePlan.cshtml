@@ -1,4 +1,4 @@
-﻿
+﻿@model IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>
 @{
     ViewBag.Title = "InsurancePlan";
     Layout = "~/Views/Shared/Client_LayoutPage.cshtml";
@@ -33,29 +33,38 @@
         </div>
 
         <div class="filterable-items">
-            <div class="insurance-item filterable-item civil">
-                <div class="insurance-content">
-                    <div class="insurance-icon"><i class="fa fa-car"></i></div>
-                    <h3 class="insurance-title">Safe Hourse</h3>
-                    <p>Etiam aliquam ante in mattis molestie. Vivamus in laoreet eros. Proin tempus velit dui lobortis justo laoreet nes phasellus luctus neque.</p>
-                    @if (Session["id"] == null)
-                    {
-                        <a href="@Url.Action("Login","Login")" class="button">Buy</a>
-                    }
-                    else
-                    {
-                        <a href="@Url.Action("CreateCustomerPolicy")" class="button">Buy</a>
-                    }
+            @foreach(var item in Model)
+            {
+                <div class="insurance-item filterable-item civil">
+                    <div class="insurance-content">
+                        <div class="insurance-icon"><i class="fa fa-car"></i></div>
+                        <h3 class="insurance-title">@item.policynumber</h3>
+                        <p>Etiam aliquam ante in mattis molestie. Vivamus in laoreet eros. Proin tempus velit dui lobortis justo laoreet nes phasellus luctus neque.</p>
+                        @if (Session["id"] == null)
+                        {
+                            <a href="@Url.Action("Login","Login")" class="button">Buy</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("CreateCustomerPolicy")" onclick="GetPolicyID(@item.id)" class="button">Buy</a>
+                        }
 
+                    </div>
                 </div>
-            </div>
-
-        </div>
-
-        <div class="pagination">
-            <span class="current">1</span>
-            <a href="#">2</a>
-            <a href="#">3</a>
+            }
         </div>
     </div>
 </div> <!-- .page -->
+
+<script>
+    function GetPolicyID(id) {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("GetPolicyId")",
+            data: { policyId: id },
+            success: function (response) {
+                
+            }
+        });
+    }
+</script>

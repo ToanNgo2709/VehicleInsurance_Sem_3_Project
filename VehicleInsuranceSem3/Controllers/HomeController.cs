@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -28,7 +30,9 @@ namespace VehicleInsuranceSem3.Controllers
 
         public ActionResult InsurancePlan()
         {
-            return View();
+            PolicyDAORequest request = new PolicyDAORequest();
+            List<PolicyViewModel> model = request.GetAll();
+            return View(model);
         }
 
         public ActionResult Contact()
@@ -38,18 +42,112 @@ namespace VehicleInsuranceSem3.Controllers
             return View();
         }
 
+        //===============================================================================================
+
         public ActionResult CreateCustomerPolicy()
         {
             if (Session["id"] != null)
             {
+                //Get Customer
                 int id = (int)Session["id"];
                 CustomerinfoDAORequest request = new CustomerinfoDAORequest();
                 CustomerinfoViewModel customer = request.GetCustomerById(id);
-                return View(customer);
+                ViewData["Customers"] = customer;
+
+                //Get Policy
+                int policyID = (int)TempData["PolicyID"];
+                PolicyDAORequest request1 = new PolicyDAORequest();
+                PolicyViewModel policy = request1.GetPolicyById(policyID);
+                ViewData["Policies"] = policy;
+                ViewData["Brands"] = GetBrandList();
+
+                //Get Total Payment
+                PolicyTypeDAORequest request2 = new PolicyTypeDAORequest();
+                PolicytypeViewModel type = request2.GetTypeById(policy.policytypeid);
+                ViewBag.Price = (decimal)(type.price * policy.policyduration);
+
+                return View();
             }
             return View();
         }
 
+        [HttpPost]
+        public ActionResult CreateNewCustomerPolicy()
+        {
+            int cusId = (int)Session["id"];
+            int policyID = int.Parse(Request.Params["idPolicyHidden"]);
+            int modelId = int.Parse(Request.Params["cbVehicleModel"]);
+            ModelDAORequest dao = new ModelDAORequest();
+            ModelViewModel model = dao.GetModelById(modelId);
+            int vehicleCondition = int.Parse(Request.Params["condition"]);
+
+            Vehicle_Info newVehicle = new Vehicle_Info()
+            {
+                brand_id = int.Parse(Request.Form["cbVehicleBrand"]),
+                model_id = int.Parse(Request.Form["cbVehicleModel"]),
+                address = Request.Form["address"].ToString(),
+                owner_name = Request.Form["ownerName"].ToString(),
+                version = Request.Params["version"],
+                frame_number = Request.Params["frameNumber"],
+                engine_number = Request.Params["engineNumber"],
+                vehicle_number = Request.Params["vehicleNumber"],
+                vehicle_condition = vehicleCondition,
+                rate_by_condition = (vehicleCondition * model.rate) / 100
+            };
+            using (var ctx = new InsuranceDbContext())
+            {
+                ctx.Vehicle_Info.Add(newVehicle);
+                ctx.SaveChanges();
+            }
+
+            CustomerpolicyViewModel newCustomerPolicy = new CustomerpolicyViewModel()
+            {
+                customerid = cusId,
+                policyid = policyID,
+                vehicleid = newVehicle.id,
+                policystartdate = DateTime.Parse(Request.Params["startDate"]),
+                policyenddate = DateTime.Parse(Request.Params["endDate"]),
+                createdate = DateTime.Parse(Request.Params["createDate"]),
+                customeraddprove = "sdfhshf",
+                TotalPayment = decimal.Parse(Request.Params["totalPayment"]),
+                active = true
+            };
+
+            TempData["checkout"] = newCustomerPolicy;
+            //CustomerpolicyDAORequest request = new CustomerpolicyDAORequest();
+            //request.Add(newCustomerPolicy);
+            return RedirectToAction("CheckOutPage", "Home");
+        }
+
+        public List<BrandViewModel> GetBrandList()
+        {
+            BrandDAORequest request = new BrandDAORequest();
+            return request.GetAll();
+        }
+
+        [HttpPost]
+        public ActionResult GetModelList(int brandId)
+        {
+            ModelDAORequest request = new ModelDAORequest();
+            return PartialView("ModelList_PartialPage", request.GetByBrandId(brandId));
+        }
+
+        public ActionResult CheckOutPage()
+        {
+            CustomerpolicyViewModel newCustomerPolicy = (CustomerpolicyViewModel)TempData["checkout"];
+            return View(newCustomerPolicy);
+        }
+
+        //===============================================================================================
+        [HttpPost]
+        public ActionResult GetPolicyId(int policyId)
+        {
+            TempData["PolicyID"] = policyId;
+            return Json("success");
+        }
+
+
+        //===============================================================================================
         public ActionResult CustomerHistory()
         {
             CustomerpolicyDAORequest request = new CustomerpolicyDAORequest();
@@ -58,6 +156,8 @@ namespace VehicleInsuranceSem3.Controllers
             return View(list);
         }
 
+
+        //===============================================================================================
         [HttpPost]
         public ActionResult CreateNewContact()
         {
@@ -124,6 +224,8 @@ namespace VehicleInsuranceSem3.Controllers
 
         }
 
+
+        //===============================================================================================
         public bool CheckOldPassword(string dbPassword, string enterPassword)
         {
             if (dbPassword.Equals(enterPassword))
