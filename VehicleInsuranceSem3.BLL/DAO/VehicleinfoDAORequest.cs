@@ -37,6 +37,14 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         }
 
+        public VehicleinfoViewModel GetByAllNumber(string frameNumber, string engineNumber, string vehicleNumber)
+        {
+            var q = context.Vehicle_Info
+                .Where(v => v.frame_number.Equals(frameNumber) && v.engine_number.Equals(engineNumber) && v.vehicle_number.Equals(vehicleNumber))
+                .Select(d => new VehicleinfoViewModel { id = d.id, address = d.address, ownername = d.owner_name, version = d.version, framenumber = d.frame_number, eginenumber = d.engine_number, vehiclenumber = d.vehicle_number, brandid = d.brand_id, modelid = d.model_id, ratebycondition = d.rate_by_condition, vehiclecondition = d.vehicle_condition }).OrderBy(d => d.id).FirstOrDefault();
+            return q;
+        }
+
         public void Delete(int id)
         {
             var q = context.Vehicle_Info.Where(d => d.id == id).FirstOrDefault();

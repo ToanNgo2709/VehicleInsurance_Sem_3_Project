@@ -15,7 +15,7 @@
         <h4 style="color:red" id="msg" name="msg">@TempData["Alert"]</h4>
     }
 
-    <form method="post" action="@Url.Action("CreateNewCustomerPolicy")" class="contact-form">
+    <form method="post" action="@Url.Action("CreateNewCustomerPolicy")" class="contact-form" enctype="multipart/form-data">
         @if (Session["id"] != null)
         {
             <div class="row">
@@ -154,7 +154,7 @@
             <div class="col-md-6">
             </div>
             <div class="col-md-6">
-                <button type="submit" id="btnCreate" class="btn btn-block btn-success">Create Customer Policy</button>
+                <button type="submit" id="btnCreate" class="btn btn-block btn-success">Check Out</button>
             </div>
         </div>
     </form>

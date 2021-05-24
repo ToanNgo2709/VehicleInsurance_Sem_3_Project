@@ -31,6 +31,12 @@ namespace VehicleInsuranceSem3.BLL.DAO
             return 1;
         }
 
+        public Model searchModelByModel(int id)
+        {
+            var item = context.Models.Where(m => m.id == id).FirstOrDefault();
+            return item;
+        }
+
         public List<ModelViewModel> pagination(int? page)
         {
             var pagenumber = page ?? 1;

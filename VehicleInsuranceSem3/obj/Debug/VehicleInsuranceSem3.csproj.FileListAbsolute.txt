@@ -85,3 +85,15 @@ D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\PagedList.dll
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\PagedList.Mvc.dll
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\PagedList.xml
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\PagedList.Mvc.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\BouncyCastle.Crypto.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\itextsharp.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\Microsoft.ReportViewer.Common.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\Microsoft.ReportViewer.DataVisualization.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\Microsoft.ReportViewer.ProcessingObjectModel.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\Microsoft.ReportViewer.WebForms.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\Rotativa.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\itextsharp.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\PayPal.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\PayPal.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\log4net.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3\bin\log4net.xml

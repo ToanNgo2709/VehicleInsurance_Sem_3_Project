@@ -45,6 +45,12 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
 
         }
+        public Customer_Info searchCustomerById(int id)
+        {
+            var item = context.Customer_Info.Where(c => c.id == id)
+                .FirstOrDefault();
+            return item;
+        }
 
         public void Delete(int id)
         {

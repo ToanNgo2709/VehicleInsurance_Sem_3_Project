@@ -1,0 +1,480 @@
+[Header]
+2021-05-24 21:52:56,090
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 21:52:56,140
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 21:52:56,141
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 21:52:56,141
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:61ccb055-a314-478f-a61a-5bde5097ad5a
+2021-05-24 21:52:56,471
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 21:53:01,005
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 21:53:01,007
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAKOQlaknZbXp7mwOT7Z2LSPDloAh4JkxK4dvvqdFDG5iHi5X5sZXkrt_IiqpZliou-xjnyftJ6d-BFl5-nPGQV65RnXvA","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":29623,"nonce":"2021-05-24T14:06:41ZWFvuJ_fD5diTA7iFfHTOpa6FA0lz4mB9SBBwwEEd46c"}
+2021-05-24 21:53:01,503
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 21:53:01,504
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 21:53:01,505
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAKOQlaknZbXp7mwOT7Z2LSPDloAh4JkxK4dvvqdFDG5iHi5X5sZXkrt_IiqpZliou-xjnyftJ6d-BFl5-nPGQV65RnXvA
+2021-05-24 21:53:01,506
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:f634981d-c0c9-48be-a11a-f08a9696f370
+2021-05-24 21:53:01,506
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] {"intent":"sale","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"currency":"USD","total":"25","details":{"subtotal":"25","shipping":"0","tax":"0"}},"description":"Payment","invoice_number":"26318","item_list":{"items":[{"sku":"sku","name":"4 Seat Compulsory 1 year","quantity":"1","price":"25","currency":"USD"}]}}],"redirect_urls":{"return_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=26318","cancel_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=26318"}}
+2021-05-24 21:53:02,702
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 21:53:02,703
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV33TY7S541657JB424451R","intent":"sale","state":"created","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00"}},"description":"Payment","invoice_number":"26318","item_list":{"items":[{"name":"4 Seat Compulsory 1 year","sku":"sku","price":"25.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2021-05-24T14:53:03Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV33TY7S541657JB424451R","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-9UU13428WR195134Y","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV33TY7S541657JB424451R/execute","rel":"execute","method":"POST"}]}
+2021-05-24 21:54:58,326
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 21:54:58,327
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 21:54:58,328
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 21:54:58,329
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:064495e6-4de7-4611-ba45-5aed7d0d26b3
+2021-05-24 21:54:58,634
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 21:55:01,162
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 21:55:01,163
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAKOQlaknZbXp7mwOT7Z2LSPDloAh4JkxK4dvvqdFDG5iHi5X5sZXkrt_IiqpZliou-xjnyftJ6d-BFl5-nPGQV65RnXvA","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":29499,"nonce":"2021-05-24T14:06:41ZWFvuJ_fD5diTA7iFfHTOpa6FA0lz4mB9SBBwwEEd46c"}
+2021-05-24 21:55:01,176
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 21:55:01,177
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 21:55:01,177
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAKOQlaknZbXp7mwOT7Z2LSPDloAh4JkxK4dvvqdFDG5iHi5X5sZXkrt_IiqpZliou-xjnyftJ6d-BFl5-nPGQV65RnXvA
+2021-05-24 21:55:01,178
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:261488d7-94af-4463-bd70-b1a503c57cc3
+2021-05-24 21:55:01,179
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] {"payer_id":"LQJ2WVEUPJS68"}
+2021-05-24 21:55:03,608
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 21:55:03,609
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV33TY7S541657JB424451R","intent":"sale","state":"approved","cart":"9UU13428WR195134Y","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"sb-6zvhz6309716@personal.example.com","first_name":"John","last_name":"Doe","payer_id":"LQJ2WVEUPJS68","shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payee":{"merchant_id":"V87CRLRNWRGVQ","email":"sb-nhqzj5951607@business.example.com"},"description":"Payment","invoice_number":"26318","item_list":{"items":[{"name":"4 Seat Compulsory 1 year","sku":"sku","price":"25.00","currency":"USD","tax":"0.00","quantity":1}],"shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"13P82123BL9484154","state":"completed","amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"1.03","currency":"USD"},"parent_payment":"PAYID-MCV33TY7S541657JB424451R","create_time":"2021-05-24T14:55:03Z","update_time":"2021-05-24T14:55:03Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/13P82123BL9484154","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/13P82123BL9484154/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV33TY7S541657JB424451R","rel":"parent_payment","method":"GET"}]}}]}],"failed_transactions":[],"create_time":"2021-05-24T14:53:03Z","update_time":"2021-05-24T14:55:03Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV33TY7S541657JB424451R","rel":"self","method":"GET"}]}
+[Header]
+2021-05-24 21:58:56,289
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 21:58:56,339
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 21:58:56,341
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 21:58:56,341
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:f7251572-bb9f-44e0-8a51-4d9692e64a5d
+2021-05-24 21:58:56,653
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 21:59:06,120
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 21:59:06,121
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAKOQlaknZbXp7mwOT7Z2LSPDloAh4JkxK4dvvqdFDG5iHi5X5sZXkrt_IiqpZliou-xjnyftJ6d-BFl5-nPGQV65RnXvA","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":29254,"nonce":"2021-05-24T14:06:41ZWFvuJ_fD5diTA7iFfHTOpa6FA0lz4mB9SBBwwEEd46c"}
+2021-05-24 21:59:06,671
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 21:59:06,672
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 21:59:06,673
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAKOQlaknZbXp7mwOT7Z2LSPDloAh4JkxK4dvvqdFDG5iHi5X5sZXkrt_IiqpZliou-xjnyftJ6d-BFl5-nPGQV65RnXvA
+2021-05-24 21:59:06,674
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:d92381f4-16c5-4c60-abb0-bdbd154cca92
+2021-05-24 21:59:06,675
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] {"intent":"sale","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"currency":"USD","total":"25","details":{"subtotal":"25","shipping":"0","tax":"0"}},"description":"Payment","invoice_number":"16483","item_list":{"items":[{"sku":"sku","name":"4 Seat Compulsory 1 year","quantity":"1","price":"25","currency":"USD"}]}}],"redirect_urls":{"return_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=80603","cancel_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=80603"}}
+2021-05-24 21:59:09,665
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 21:59:09,666
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV36PI2TS35740A4086813B","intent":"sale","state":"created","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00"}},"description":"Payment","invoice_number":"16483","item_list":{"items":[{"name":"4 Seat Compulsory 1 year","sku":"sku","price":"25.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2021-05-24T14:59:09Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV36PI2TS35740A4086813B","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-3DM62933K2976530D","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV36PI2TS35740A4086813B/execute","rel":"execute","method":"POST"}]}
+2021-05-24 22:00:29,750
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:00:29,752
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:00:29,753
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:00:29,754
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:c2ece97f-928b-43a8-acd1-31c7b1ee2bbb
+2021-05-24 22:00:39,053
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:00:41,933
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:00:41,934
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":32400,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:00:41,943
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:00:41,944
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:00:41,945
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:00:41,945
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:3f8308ff-b88f-45f5-8f5e-1dfb0e226e4c
+2021-05-24 22:00:41,946
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] {"payer_id":"LQJ2WVEUPJS68"}
+2021-05-24 22:00:44,537
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:00:44,538
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV36PI2TS35740A4086813B","intent":"sale","state":"approved","cart":"3DM62933K2976530D","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"sb-6zvhz6309716@personal.example.com","first_name":"John","last_name":"Doe","payer_id":"LQJ2WVEUPJS68","shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payee":{"merchant_id":"V87CRLRNWRGVQ","email":"sb-nhqzj5951607@business.example.com"},"description":"Payment","invoice_number":"16483","item_list":{"items":[{"name":"4 Seat Compulsory 1 year","sku":"sku","price":"25.00","currency":"USD","tax":"0.00","quantity":1}],"shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"2GC43417YC7724635","state":"completed","amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"1.03","currency":"USD"},"parent_payment":"PAYID-MCV36PI2TS35740A4086813B","create_time":"2021-05-24T15:00:44Z","update_time":"2021-05-24T15:00:44Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/2GC43417YC7724635","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/2GC43417YC7724635/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV36PI2TS35740A4086813B","rel":"parent_payment","method":"GET"}]}}]}],"failed_transactions":[],"create_time":"2021-05-24T14:59:09Z","update_time":"2021-05-24T15:00:44Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV36PI2TS35740A4086813B","rel":"self","method":"GET"}]}
+[Header]
+2021-05-24 22:05:09,624
+      [10] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:05:09,674
+      [10] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:05:09,676
+      [10] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:05:09,676
+      [10] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:7b9b1d0a-25e1-410d-9d77-474f986b5c0d
+2021-05-24 22:05:09,990
+      [10] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:05:12,406
+      [10] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:05:12,407
+      [10] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":32129,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:05:12,911
+      [10] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:05:12,912
+      [10] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:05:12,913
+      [10] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:05:12,913
+      [10] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:88bdb5f6-692c-41b6-8335-2d81f013357e
+2021-05-24 22:05:12,914
+      [10] DEBUG PayPal.Api.HttpConnection [(null)] {"intent":"sale","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"currency":"USD","total":"50","details":{"subtotal":"50","shipping":"0","tax":"0"}},"description":"Payment","invoice_number":"27253","item_list":{"items":[{"sku":"sku","name":"4 Seat Compulsory 2 year","quantity":"1","price":"50","currency":"USD"}]}}],"redirect_urls":{"return_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=27253","cancel_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=27253"}}
+2021-05-24 22:05:14,440
+      [10] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:05:14,441
+      [10] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV4BKY6XA57893DW2507226","intent":"sale","state":"created","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"total":"50.00","currency":"USD","details":{"subtotal":"50.00","tax":"0.00","shipping":"0.00"}},"description":"Payment","invoice_number":"27253","item_list":{"items":[{"name":"4 Seat Compulsory 2 year","sku":"sku","price":"50.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2021-05-24T15:05:14Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4BKY6XA57893DW2507226","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-9KA45127TH870811J","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4BKY6XA57893DW2507226/execute","rel":"execute","method":"POST"}]}
+2021-05-24 22:06:19,685
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:06:19,688
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:06:19,689
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:06:19,690
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:63deb75a-32f3-4a03-9738-f08bcd83897a
+2021-05-24 22:06:19,987
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:06:27,393
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:06:27,393
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":32056,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:06:27,407
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:06:27,408
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:06:27,409
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:06:27,410
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:f6f90c45-576d-455e-98ac-bddce8ca9323
+2021-05-24 22:06:27,411
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"payer_id":"LQJ2WVEUPJS68"}
+2021-05-24 22:06:30,220
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:06:30,222
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV4BKY6XA57893DW2507226","intent":"sale","state":"approved","cart":"9KA45127TH870811J","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"sb-6zvhz6309716@personal.example.com","first_name":"John","last_name":"Doe","payer_id":"LQJ2WVEUPJS68","shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"50.00","currency":"USD","details":{"subtotal":"50.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payee":{"merchant_id":"V87CRLRNWRGVQ","email":"sb-nhqzj5951607@business.example.com"},"description":"Payment","invoice_number":"27253","item_list":{"items":[{"name":"4 Seat Compulsory 2 year","sku":"sku","price":"50.00","currency":"USD","tax":"0.00","quantity":1}],"shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"89E300450G8358905","state":"completed","amount":{"total":"50.00","currency":"USD","details":{"subtotal":"50.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"1.75","currency":"USD"},"parent_payment":"PAYID-MCV4BKY6XA57893DW2507226","create_time":"2021-05-24T15:06:29Z","update_time":"2021-05-24T15:06:29Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/89E300450G8358905","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/89E300450G8358905/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4BKY6XA57893DW2507226","rel":"parent_payment","method":"GET"}]}}]}],"failed_transactions":[],"create_time":"2021-05-24T15:05:14Z","update_time":"2021-05-24T15:06:29Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4BKY6XA57893DW2507226","rel":"self","method":"GET"}]}
+[Header]
+2021-05-24 22:13:46,300
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:13:46,343
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:13:46,343
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:13:46,344
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:c5275747-aa31-4f88-b622-b69f01040937
+2021-05-24 22:13:55,635
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:14:29,605
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:14:29,606
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":31596,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:14:30,157
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:14:30,157
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:14:30,157
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:14:30,159
+      [5] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:90338b96-555f-4748-8a84-369861a23b46
+2021-05-24 22:14:30,159
+      [5] DEBUG PayPal.Api.HttpConnection [(null)] {"intent":"sale","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"currency":"USD","total":"60","details":{"subtotal":"60","shipping":"0","tax":"0"}},"description":"Payment","invoice_number":"22487","item_list":{"items":[{"sku":"sku","name":"7 Seat Compulsory 2 year","quantity":"1","price":"60","currency":"USD"}]}}],"redirect_urls":{"return_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=22487","cancel_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=22487"}}
+[Header]
+2021-05-24 22:16:25,405
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:16:25,450
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:16:25,451
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:16:25,452
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:b95f148f-c3eb-4b73-acb5-49989788f8d3
+2021-05-24 22:16:25,741
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:16:28,162
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:16:28,163
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":31455,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:16:28,694
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:16:28,695
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:16:28,695
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:16:28,695
+      [7] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:4d13622e-e9df-44ff-8633-e0ec7bd67664
+2021-05-24 22:16:28,696
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] {"intent":"sale","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"currency":"USD","total":"30","details":{"subtotal":"30","shipping":"0","tax":"0"}},"description":"Payment","invoice_number":"37378","item_list":{"items":[{"sku":"sku","name":"7 Seat Compulsory 1 year","quantity":"1","price":"30","currency":"USD"}]}}],"redirect_urls":{"return_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=53740","cancel_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=53740"}}
+2021-05-24 22:16:29,958
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:16:29,959
+      [7] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV4GTQ3RN049044H329093V","intent":"sale","state":"created","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"total":"30.00","currency":"USD","details":{"subtotal":"30.00","tax":"0.00","shipping":"0.00"}},"description":"Payment","invoice_number":"37378","item_list":{"items":[{"name":"7 Seat Compulsory 1 year","sku":"sku","price":"30.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2021-05-24T15:16:30Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4GTQ3RN049044H329093V","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-8PJ10489W4195194V","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4GTQ3RN049044H329093V/execute","rel":"execute","method":"POST"}]}
+2021-05-24 22:17:06,556
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:17:06,557
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:17:06,558
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:17:06,559
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:8ebadc7a-5952-4984-a3b4-e1bf16c0e69c
+2021-05-24 22:17:06,560
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:17:07,089
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:17:07,090
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":31414,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:17:07,099
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:17:07,100
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:17:07,101
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:17:07,101
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:97429684-0dce-48bb-a565-5d4ffb0135f3
+2021-05-24 22:17:07,101
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"payer_id":"LQJ2WVEUPJS68"}
+2021-05-24 22:17:09,305
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:17:09,306
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV4GTQ3RN049044H329093V","intent":"sale","state":"approved","cart":"8PJ10489W4195194V","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"sb-6zvhz6309716@personal.example.com","first_name":"John","last_name":"Doe","payer_id":"LQJ2WVEUPJS68","shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"30.00","currency":"USD","details":{"subtotal":"30.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payee":{"merchant_id":"V87CRLRNWRGVQ","email":"sb-nhqzj5951607@business.example.com"},"description":"Payment","invoice_number":"37378","item_list":{"items":[{"name":"7 Seat Compulsory 1 year","sku":"sku","price":"30.00","currency":"USD","tax":"0.00","quantity":1}],"shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"9PM63138WM517701G","state":"completed","amount":{"total":"30.00","currency":"USD","details":{"subtotal":"30.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"1.17","currency":"USD"},"parent_payment":"PAYID-MCV4GTQ3RN049044H329093V","create_time":"2021-05-24T15:17:09Z","update_time":"2021-05-24T15:17:09Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/9PM63138WM517701G","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/9PM63138WM517701G/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4GTQ3RN049044H329093V","rel":"parent_payment","method":"GET"}]}}]}],"failed_transactions":[],"create_time":"2021-05-24T15:16:30Z","update_time":"2021-05-24T15:17:09Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4GTQ3RN049044H329093V","rel":"self","method":"GET"}]}
+[Header]
+2021-05-24 22:33:09,102
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:33:09,145
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:33:09,145
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:33:09,146
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:e0fa2f8e-14e9-4528-955f-fc242195d024
+2021-05-24 22:33:09,494
+      [9] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:33:10,541
+      [9] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:33:10,541
+      [9] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":30451,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:33:11,045
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:33:11,046
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:33:11,046
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:33:11,047
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:f27c67bd-6cb8-40b2-8ab1-90b5a787500d
+2021-05-24 22:33:11,048
+      [9] DEBUG PayPal.Api.HttpConnection [(null)] {"intent":"sale","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"currency":"USD","total":"25","details":{"subtotal":"25","shipping":"0","tax":"0"}},"description":"Payment","invoice_number":"25291","item_list":{"items":[{"sku":"sku","name":"4 Seat Compulsory 1 year","quantity":"1","price":"25","currency":"USD"}]}}],"redirect_urls":{"return_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=25291","cancel_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=25291"}}
+2021-05-24 22:33:12,307
+      [9] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:33:12,308
+      [9] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV4OOI7G857505SN8910617","intent":"sale","state":"created","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00"}},"description":"Payment","invoice_number":"25291","item_list":{"items":[{"name":"4 Seat Compulsory 1 year","sku":"sku","price":"25.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2021-05-24T15:33:12Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4OOI7G857505SN8910617","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-6DR2161571860872S","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4OOI7G857505SN8910617/execute","rel":"execute","method":"POST"}]}
+2021-05-24 22:33:39,286
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:33:39,287
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:33:39,288
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:33:39,289
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:6b55af6b-eab7-496c-9e42-e312ae3d7304
+2021-05-24 22:33:39,290
+      [9] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:33:39,812
+      [9] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:33:39,813
+      [9] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":30422,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:33:39,827
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:33:39,828
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:33:39,829
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:33:39,829
+      [9] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:079e4494-6dc8-4bab-89fa-684180bb6ed3
+2021-05-24 22:33:39,830
+      [9] DEBUG PayPal.Api.HttpConnection [(null)] {"payer_id":"LQJ2WVEUPJS68"}
+2021-05-24 22:33:41,997
+      [9] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:33:41,997
+      [9] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV4OOI7G857505SN8910617","intent":"sale","state":"approved","cart":"6DR2161571860872S","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"sb-6zvhz6309716@personal.example.com","first_name":"John","last_name":"Doe","payer_id":"LQJ2WVEUPJS68","shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payee":{"merchant_id":"V87CRLRNWRGVQ","email":"sb-nhqzj5951607@business.example.com"},"description":"Payment","invoice_number":"25291","item_list":{"items":[{"name":"4 Seat Compulsory 1 year","sku":"sku","price":"25.00","currency":"USD","tax":"0.00","quantity":1}],"shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"10F92765CG2386025","state":"completed","amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"1.03","currency":"USD"},"parent_payment":"PAYID-MCV4OOI7G857505SN8910617","create_time":"2021-05-24T15:33:42Z","update_time":"2021-05-24T15:33:42Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/10F92765CG2386025","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/10F92765CG2386025/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4OOI7G857505SN8910617","rel":"parent_payment","method":"GET"}]}}]}],"failed_transactions":[],"create_time":"2021-05-24T15:33:12Z","update_time":"2021-05-24T15:33:42Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4OOI7G857505SN8910617","rel":"self","method":"GET"}]}
+[Header]
+2021-05-24 22:45:02,907
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:45:02,958
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:45:02,959
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:45:02,959
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:f393dbae-9207-4c94-84bb-13725e48c7bb
+2021-05-24 22:45:03,244
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:45:04,283
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:45:04,285
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":29737,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:45:04,835
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:45:04,836
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:45:04,837
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:45:04,837
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:e37ce920-7710-4b33-babc-c7be04e0a4d9
+2021-05-24 22:45:04,839
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"intent":"sale","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"currency":"USD","total":"25","details":{"subtotal":"25","shipping":"0","tax":"0"}},"description":"Payment","invoice_number":"51609","item_list":{"items":[{"sku":"sku","name":"4 Seat Compulsory 1 year","quantity":"1","price":"25","currency":"USD"}]}}],"redirect_urls":{"return_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=67971","cancel_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=67971"}}
+2021-05-24 22:45:05,997
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:45:05,997
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV4UAQ3UJ781215L646323W","intent":"sale","state":"created","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00"}},"description":"Payment","invoice_number":"51609","item_list":{"items":[{"name":"4 Seat Compulsory 1 year","sku":"sku","price":"25.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2021-05-24T15:45:06Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4UAQ3UJ781215L646323W","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-19M79157CE826483C","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4UAQ3UJ781215L646323W/execute","rel":"execute","method":"POST"}]}
+2021-05-24 22:45:44,874
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:45:44,875
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:45:44,877
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:45:44,877
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:001051ca-9e3c-4eab-8567-b1a3551b3311
+2021-05-24 22:45:44,878
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:45:45,402
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:45:45,403
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":29696,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:45:45,412
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:45:45,413
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:45:45,413
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:45:45,414
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:3068af12-bdde-4828-8f17-66fcf18c25c2
+2021-05-24 22:45:45,414
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"payer_id":"LQJ2WVEUPJS68"}
+2021-05-24 22:45:47,359
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:45:47,360
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV4UAQ3UJ781215L646323W","intent":"sale","state":"approved","cart":"19M79157CE826483C","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"sb-6zvhz6309716@personal.example.com","first_name":"John","last_name":"Doe","payer_id":"LQJ2WVEUPJS68","shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payee":{"merchant_id":"V87CRLRNWRGVQ","email":"sb-nhqzj5951607@business.example.com"},"description":"Payment","invoice_number":"51609","item_list":{"items":[{"name":"4 Seat Compulsory 1 year","sku":"sku","price":"25.00","currency":"USD","tax":"0.00","quantity":1}],"shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"5VA45526S3878413W","state":"completed","amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"1.03","currency":"USD"},"parent_payment":"PAYID-MCV4UAQ3UJ781215L646323W","create_time":"2021-05-24T15:45:47Z","update_time":"2021-05-24T15:45:47Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/5VA45526S3878413W","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/5VA45526S3878413W/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4UAQ3UJ781215L646323W","rel":"parent_payment","method":"GET"}]}}]}],"failed_transactions":[],"create_time":"2021-05-24T15:45:06Z","update_time":"2021-05-24T15:45:47Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4UAQ3UJ781215L646323W","rel":"self","method":"GET"}]}
+2021-05-24 22:49:15,268
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:49:15,273
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:49:15,274
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:49:15,274
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:5eafcb11-22e6-486d-9f34-75183a4accf3
+2021-05-24 22:49:15,541
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:49:16,616
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:49:16,617
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":29485,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:49:16,619
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:49:16,620
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:49:16,621
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:49:16,621
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:06d72561-c53f-4990-97ef-eb20ca0ec786
+2021-05-24 22:49:16,624
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"intent":"sale","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"currency":"USD","total":"30","details":{"subtotal":"30","shipping":"0","tax":"0"}},"description":"Payment","invoice_number":"99843","item_list":{"items":[{"sku":"sku","name":"7 Seat Compulsory 1 year","quantity":"1","price":"30","currency":"USD"}]}}],"redirect_urls":{"return_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=99843","cancel_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=99843"}}
+2021-05-24 22:49:18,722
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:49:18,722
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV4V7Q57B70883B9709681P","intent":"sale","state":"created","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"total":"30.00","currency":"USD","details":{"subtotal":"30.00","tax":"0.00","shipping":"0.00"}},"description":"Payment","invoice_number":"99843","item_list":{"items":[{"name":"7 Seat Compulsory 1 year","sku":"sku","price":"30.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2021-05-24T15:49:18Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4V7Q57B70883B9709681P","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-24521465BH400073X","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4V7Q57B70883B9709681P/execute","rel":"execute","method":"POST"}]}
+2021-05-24 22:49:43,403
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:49:43,405
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:49:43,406
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:49:43,406
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:70ddbea9-6e70-49d2-9ebc-548a96d2d348
+2021-05-24 22:49:43,408
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:49:43,968
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:49:43,970
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":29458,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:49:43,971
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:49:43,971
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:49:43,972
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:49:43,973
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:b80bc72c-e6ef-4ee0-9448-5154d6059b36
+2021-05-24 22:49:43,973
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"payer_id":"LQJ2WVEUPJS68"}
+2021-05-24 22:49:47,312
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:49:47,313
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV4V7Q57B70883B9709681P","intent":"sale","state":"approved","cart":"24521465BH400073X","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"sb-6zvhz6309716@personal.example.com","first_name":"John","last_name":"Doe","payer_id":"LQJ2WVEUPJS68","shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"30.00","currency":"USD","details":{"subtotal":"30.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payee":{"merchant_id":"V87CRLRNWRGVQ","email":"sb-nhqzj5951607@business.example.com"},"description":"Payment","invoice_number":"99843","item_list":{"items":[{"name":"7 Seat Compulsory 1 year","sku":"sku","price":"30.00","currency":"USD","tax":"0.00","quantity":1}],"shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"42N11070ME2607345","state":"completed","amount":{"total":"30.00","currency":"USD","details":{"subtotal":"30.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"1.17","currency":"USD"},"parent_payment":"PAYID-MCV4V7Q57B70883B9709681P","create_time":"2021-05-24T15:49:46Z","update_time":"2021-05-24T15:49:46Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/42N11070ME2607345","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/42N11070ME2607345/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4V7Q57B70883B9709681P","rel":"parent_payment","method":"GET"}]}}]}],"failed_transactions":[],"create_time":"2021-05-24T15:49:18Z","update_time":"2021-05-24T15:49:46Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4V7Q57B70883B9709681P","rel":"self","method":"GET"}]}
+[Header]
+2021-05-24 22:54:26,301
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:54:26,345
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:54:26,345
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:54:26,346
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:a56c2f88-05a8-4fd1-805e-1e06d0ea95b5
+2021-05-24 22:54:26,625
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:54:28,905
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:54:28,907
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":29173,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:54:29,499
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:54:29,499
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:54:29,499
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:54:29,501
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:7bbf9329-38a6-4d52-bd19-2b706ce4b8b9
+2021-05-24 22:54:29,502
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"intent":"sale","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"currency":"USD","total":"50","details":{"subtotal":"50","shipping":"0","tax":"0"}},"description":"Payment","invoice_number":"7274","item_list":{"items":[{"sku":"sku","name":"4 Seat Compulsory 2 year","quantity":"1","price":"50","currency":"USD"}]}}],"redirect_urls":{"return_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=71393","cancel_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=71393"}}
+2021-05-24 22:54:30,650
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:54:30,651
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV4YNY11T23803PL256153V","intent":"sale","state":"created","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"total":"50.00","currency":"USD","details":{"subtotal":"50.00","tax":"0.00","shipping":"0.00"}},"description":"Payment","invoice_number":"7274","item_list":{"items":[{"name":"4 Seat Compulsory 2 year","sku":"sku","price":"50.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2021-05-24T15:54:30Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4YNY11T23803PL256153V","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-4VC90193YG230492X","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4YNY11T23803PL256153V/execute","rel":"execute","method":"POST"}]}
+2021-05-24 22:55:02,364
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-24 22:55:02,366
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:55:02,366
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-24 22:55:02,367
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:4fe630f6-f75c-4d8b-9960-c25d17e2de8d
+2021-05-24 22:55:02,368
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-24 22:55:02,893
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:55:02,895
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":29139,"nonce":"2021-05-24T15:00:42ZheF_IOIk41DaeaI-jn43_4V6DL4sxhcMpk0deJ0051w"}
+2021-05-24 22:55:02,903
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-24 22:55:02,905
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-24 22:55:02,905
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJQdVE2ly2PjFbOoDJZWoVPmxEsemaQ6eOl-xDeWHGrajtE_CO-xxawRZU-w8-wMxYVKzbRHG83q8TPArvz48ke9HFC3g
+2021-05-24 22:55:02,906
+      [6] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:c2294c51-5945-44a0-8b88-a7c1a08bdb52
+2021-05-24 22:55:02,906
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"payer_id":"LQJ2WVEUPJS68"}
+2021-05-24 22:55:05,109
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-24 22:55:05,110
+      [6] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCV4YNY11T23803PL256153V","intent":"sale","state":"approved","cart":"4VC90193YG230492X","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"sb-6zvhz6309716@personal.example.com","first_name":"John","last_name":"Doe","payer_id":"LQJ2WVEUPJS68","shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"50.00","currency":"USD","details":{"subtotal":"50.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payee":{"merchant_id":"V87CRLRNWRGVQ","email":"sb-nhqzj5951607@business.example.com"},"description":"Payment","invoice_number":"7274","item_list":{"items":[{"name":"4 Seat Compulsory 2 year","sku":"sku","price":"50.00","currency":"USD","tax":"0.00","quantity":1}],"shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"4UB048446F647403H","state":"completed","amount":{"total":"50.00","currency":"USD","details":{"subtotal":"50.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"1.75","currency":"USD"},"parent_payment":"PAYID-MCV4YNY11T23803PL256153V","create_time":"2021-05-24T15:55:05Z","update_time":"2021-05-24T15:55:05Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/4UB048446F647403H","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/4UB048446F647403H/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4YNY11T23803PL256153V","rel":"parent_payment","method":"GET"}]}}]}],"failed_transactions":[],"create_time":"2021-05-24T15:54:30Z","update_time":"2021-05-24T15:55:05Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCV4YNY11T23803PL256153V","rel":"self","method":"GET"}]}

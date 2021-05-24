@@ -9,7 +9,7 @@ using VehicleInsuranceSem3.BLL.DAO;
 using VehicleInsuranceSem3.BLL.Feature;
 using VehicleInsuranceSem3.BLL.ViewModel;
 using VehicleInsuranceSem3.DAL.Model;
-
+using VehicleInsuranceSem3.Models;
 
 namespace VehicleInsuranceSem3.Controllers
 {
@@ -72,13 +72,21 @@ namespace VehicleInsuranceSem3.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateNewCustomerPolicy()
+        public ActionResult CreateNewCustomerPolicy(HttpPostedFileBase ImageName)
         {
             int cusId = (int)Session["id"];
+            CustomerinfoDAORequest customerRequest = new CustomerinfoDAORequest();
+            Customer_Info customerInfo = customerRequest.searchCustomerById(cusId);
+
             int policyID = int.Parse(Request.Params["idPolicyHidden"]);
+            PolicyDAORequest policyRequest = new PolicyDAORequest();
+            Policy policyInfo = policyRequest.searchPolicyById(policyID);
+
             int modelId = int.Parse(Request.Params["cbVehicleModel"]);
             ModelDAORequest dao = new ModelDAORequest();
+            Model model1 = dao.searchModelByModel(modelId);
             ModelViewModel model = dao.GetModelById(modelId);
+
             int vehicleCondition = int.Parse(Request.Params["condition"]);
 
             Vehicle_Info newVehicle = new Vehicle_Info()
@@ -92,31 +100,40 @@ namespace VehicleInsuranceSem3.Controllers
                 engine_number = Request.Params["engineNumber"],
                 vehicle_number = Request.Params["vehicleNumber"],
                 vehicle_condition = vehicleCondition,
-                rate_by_condition = (vehicleCondition * model.rate) / 100
-            };
-            using (var ctx = new InsuranceDbContext())
-            {
-                ctx.Vehicle_Info.Add(newVehicle);
-                ctx.SaveChanges();
-            }
+                rate_by_condition = (vehicleCondition * model.rate) / 100,
+                Model = model1
 
-            CustomerpolicyViewModel newCustomerPolicy = new CustomerpolicyViewModel()
-            {
-                customerid = cusId,
-                policyid = policyID,
-                vehicleid = newVehicle.id,
-                policystartdate = DateTime.Parse(Request.Params["startDate"]),
-                policyenddate = DateTime.Parse(Request.Params["endDate"]),
-                createdate = DateTime.Parse(Request.Params["createDate"]),
-                customeraddprove = "sdfhshf",
-                TotalPayment = decimal.Parse(Request.Params["totalPayment"]),
-                active = true
             };
 
-            TempData["checkout"] = newCustomerPolicy;
-            //CustomerpolicyDAORequest request = new CustomerpolicyDAORequest();
-            //request.Add(newCustomerPolicy);
-            return RedirectToAction("CheckOutPage", "Home");
+            Customer_Policy newCustomerPolicy = new Customer_Policy()
+            {
+                customer_id = cusId,
+                policy_id = policyID,
+                Vehicle_Info = newVehicle,
+                vehicle_id = newVehicle.id,
+                policy_start_date = DateTime.Parse(Request.Params["startDate"]),
+                policy_end_date = DateTime.Parse(Request.Params["endDate"]),
+                create_date = DateTime.Parse(Request.Params["createDate"]),
+                customer_add_prove = "Proved",
+                total_payment = decimal.Parse(Request.Params["totalPayment"]),
+                active = true,
+                Policy = policyInfo,
+                Customer_Info = customerInfo
+            };
+
+            CheckoutInfo checkout = new CheckoutInfo() {
+                CustomerPolicy = newCustomerPolicy,
+                Vehicle = newVehicle               
+            };
+
+            Session["checkoutInfo"] = checkout;
+            return RedirectToAction("CheckOutPage");
+        }
+
+        public ActionResult CheckOutPage()
+        {
+            CheckoutInfo checkout = (CheckoutInfo)Session["checkoutInfo"];
+            return View(checkout);
         }
 
         public List<BrandViewModel> GetBrandList()
@@ -132,11 +149,7 @@ namespace VehicleInsuranceSem3.Controllers
             return PartialView("ModelList_PartialPage", request.GetByBrandId(brandId));
         }
 
-        public ActionResult CheckOutPage()
-        {
-            CustomerpolicyViewModel newCustomerPolicy = (CustomerpolicyViewModel)TempData["checkout"];
-            return View(newCustomerPolicy);
-        }
+        
 
         //===============================================================================================
         [HttpPost]
