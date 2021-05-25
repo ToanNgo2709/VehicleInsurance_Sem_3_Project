@@ -12,7 +12,7 @@ using VehicleInsuranceSem3.DAL.Model;
 
 namespace VehicleInsuranceSem3.BLL.DAO
 {
-    class CompanyexpenseDAORequest : ICrudFeature<CompanyexpenseViewModel>
+    public class CompanyexpenseDAORequest : ICrudFeature<CompanyexpenseViewModel>
 
     {
         public InsuranceDbContext context = new InsuranceDbContext();
@@ -24,7 +24,9 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 date = newItem.date,
                 amount = newItem.amount,
                 description = newItem.description,
-
+                 expense_type_id = (int)newItem.expensetypeid,
+                customer_policy_id = newItem.customerpolicyid,
+                id = newItem.id
 
             };
             context.Company_Expense.Add(company);
@@ -46,7 +48,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public List<CompanyexpenseViewModel> GetAll()
         {
-            var q = context.Company_Expense.Select(d => new CompanyexpenseViewModel { id = d.id, amount = (decimal)d.amount, customerpolicyid = d.customer_policy_id, date = d.date, description = d.description }).ToList();
+            var q = context.Company_Expense.Select(d => new CompanyexpenseViewModel { id = d.id, amount = (decimal)d.amount, customerpolicyid = d.customer_policy_id, date = d.date, description = d.description  , expensetypeid = d.expense_type_id}).ToList();
             return q;
 
         }
@@ -58,7 +60,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public CompanyexpenseViewModel GetEdit(int id)
         {
-            var q = context.Company_Expense.Where(d => d.id == id).Select(d => new CompanyexpenseViewModel { id = d.id, amount = (decimal)d.amount, date = d.date, description = d.description, customerpolicyid = d.customer_policy_id, expensetypeid = d.expense_type_id }).FirstOrDefault();
+            var q = context.Company_Expense.Where(d => d.id == id).Select(d => new CompanyexpenseViewModel {id = d.id, amount = (decimal)d.amount, date = d.date, description = d.description, customerpolicyid = d.customer_policy_id, expensetypeid = d.expense_type_id }).FirstOrDefault();
             return q;
 
         }
@@ -66,7 +68,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public List<CompanyexpenseViewModel> Gets(int page, int row)
             {
-            var q = context.Company_Expense.Select(d => new CompanyexpenseViewModel { id = d.id, amount = (decimal)d.amount, date = d.date, description = d.description }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
+            var q = context.Company_Expense.Select(d => new CompanyexpenseViewModel {id = d.id, amount = (decimal)d.amount, date = d.date, description = d.description , customerpolicyid = d.customer_policy_id , expensetypeid = d.expense_type_id }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
             return q;
 
             }
@@ -79,7 +81,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
             HttpContext Context = HttpContext.Current;
             Context.Session["CountItemCompanyexpense"] = Counitem;
             Context.Session["totalPage"] = totalPage;
-            var q = context.Company_Expense.Where(d => d.description.ToLower().Contains(keyword.ToLower())).Select(d=>new CompanyexpenseViewModel { id = d.id , amount = (decimal)d.amount , date = d.date , description = d.description}).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
+            var q = context.Company_Expense.Where(d => d.description.ToLower().Contains(keyword.ToLower())).Select(d=>new CompanyexpenseViewModel {  customerpolicyid = d.customer_policy_id , expensetypeid = d.expense_type_id , id = d.id , amount = (decimal)d.amount , date = d.date , description = d.description}).OrderBy(d =>d.id).Skip((page - 1) * row).Take(row).ToList();
             return q;
         }
 
@@ -91,6 +93,11 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 q.amount = (decimal)updateItems.amount;
                 q.date = updateItems.date;
                 q.description = updateItems.description;
+                q.expense_type_id = (int)updateItems.expensetypeid;
+                q.customer_policy_id = updateItems.customerpolicyid;
+               
+                
+
                 context.SaveChanges();
                 return 1;        
             }

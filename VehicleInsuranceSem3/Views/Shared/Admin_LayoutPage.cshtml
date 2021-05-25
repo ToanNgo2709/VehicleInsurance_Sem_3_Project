@@ -4,238 +4,397 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="@Url.Content("~/Content/LA_Themes/plugins/images/favicon.png")">
-    <title>Art Gallery</title>
-    @Styles.Render("~/Content/css")<!--must delete ../Site.css in bundle.config if use other css below-->
-    <!-- Bootstrap Core CSS -->
-    <link href="@Url.Content("~/Content/LA_Themes/bootstrap/dist/css/bootstrap.min.css")" rel="stylesheet">
-    <!-- Menu CSS -->
-    <link href="@Url.Content("~/Content/LA_Themes/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css")" rel="stylesheet">
-    <!-- animation CSS -->
-    <link href="@Url.Content("~/Content/LA_Themes/css/animate.css")" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="@Url.Content("~/Content/LA_Themes/css/style.css")" rel="stylesheet">
-    <!-- color CSS -->
-    <link href="@Url.Content("~/Content/LA_Themes/css/colors/default.css")" id="theme" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file  :// -->
-    <!--[if lt IE 9]>
-        <script src="https ://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https ://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- "ERROR HERE" Styles.Render("~/Content/css")-->
+    <link href="@Url.Content("/Content/CustomResource/AdminResource")/Assets/img/logo/logo.png" rel="icon">
+    <title>Kraken Force Insurance Dashboard</title>
+    <link href="~/Content/font-awesome.css" rel="stylesheet" type="text/css">
 
-    @Scripts.Render("~/bundles/modernizr")
+    <link href="@Url.Content("/Content/CustomResource/AdminResource")/Assets/vendor/font/fontawesome-free/css/fontawesome.css" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("/Content/CustomResource/AdminResource")/Assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="@Url.Content("/Content/CustomResource/AdminResource")/Assets/css/ruang-admin.min.css" rel="stylesheet">
+    <script src="@Url.Content("/Content/CustomResource/AdminResource")/Assets/vendor/jquery/jquery.min.js"></script>
+    <script src="@Url.Content("/Content/CustomResource/AdminResource")/Assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="@Url.Content("/Content/CustomResource/AdminResource")/Assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="~/Scripts/CanvasJS/canvasjs.min.js"></script>
 </head>
 
-<body class="fix-header">
-    <!-- ============================================================== -->
-    <!-- Preloader -->
-    <!-- ============================================================== -->
-    <div class="preloader">
-        <svg class="circular" viewBox="25 25 50 50">
-            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-        </svg>
-    </div>
-    <!-- ============================================================== -->
-    <!-- Wrapper -->
-    <!-- ============================================================== -->
+<body id="page-top">
     <div id="wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
-        <nav class="navbar navbar-default navbar-static-top m-b-0">
-            <div class="navbar-header">
-                <div class="top-left-part">
-                    <!-- Logo -->
-                    <a class="logo" href="dashboard.html">
-                        <!-- Logo icon image, you can use font-icon also --><b>
-                            <!--This is dark logo icon--><img src="~/Content/LA_Themes/plugins/images/admin-logo.png" alt="home"
-                                                              class="dark-logo" />
-                            <!--This is light logo icon--><img src="~/Content/LA_Themes/plugins/images/admin-logo-dark.png" alt="home"
-                                                               class="light-logo" />
-                        </b>
-                        <!-- Logo text image you can use text also --><span class="hidden-xs">
-                            <!--This is dark logo text--><img src="~/Content/LA_Themes/plugins/images/admin-text.png" alt="home"
-                                                              class="dark-logo" />
-                            <!--This is light logo text--><img src="~/Content/LA_Themes/plugins/images/admin-text-dark.png" alt="home"
-                                                               class="light-logo" />
-                        </span>
-                    </a>
+        <!-- Sidebar -->
+        <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="@Url.Action("DashIndex","DashBoard")">
+                <div class="sidebar-brand-icon">
+                    <img src="~/Content/CustomResource/ClientResource/images/logo.png">
                 </div>
-                <!-- /Logo -->
-                <ul class="nav navbar-top-links navbar-right pull-right">
-                    <li>
-                        <a class="nav-toggler open-close waves-effect waves-light hidden-md hidden-lg"
-                           href="javascript:void(0)"><i class="fa fa-bars"></i></a>
-                    </li>
-                    <li>
-                        <form role="search" class="app-search hidden-sm hidden-xs m-r-10">
-                            <input type="text" placeholder="Search..." class="form-control"> <a href="">
-                                <i class="fa fa-search"></i>
-                            </a>
-                        </form>
-                    </li>
-                    <li>
-                        @if (HttpContext.Current.Session["IDU"] != null && HttpContext.Current.Session["ID"] != "")
-                        {
-                            <!--<a class="profile-pic" href="#">
-                            <img src="~/Content/LA_Themes/plugins/images/users/varun.jpg" alt="user-img"
-                                 width="36" class="img-circle"><b class="hidden-xs">Session["UsernameU"]</b>
-                            </a>-->
-                            <ul class="nav navbar-nav navbar-left">
-                                <li>@Html.ActionLink(Session["UsernameU"].ToString(), "EditUser", "Home", new { id = int.Parse(Session["IDU"].ToString()) }, htmlAttributes: new { id = "Logout" }) </li>
-                                <li>@Html.ActionLink("Logout", "Logout", "Login", routeValues: null, htmlAttributes: new { id = "Logout" })</li>
-
-                            </ul>
-                        }
-                        else
-                        {
-                            <ul class="nav navbar-nav    navbar-left">
-                                <li>@Html.ActionLink("Register", "Register", "Login", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-                                <li>@Html.ActionLink("Login", "Index", "Login", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
-                            </ul>
-                        }
-                        @*<a class="profile-pic" href="#">
-                                <img src="~/Content/LA_Themes/plugins/images/users/varun.jpg" alt="user-img"
-                                     width="36" class="img-circle"><b class="hidden-xs">Steave</b>
-                            </a>*@
-                    </li>
-                </ul>
+                <div class="sidebar-brand-text mx-3">Kraken Force Insurance</div>
+            </a>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("DashIndex","DashBoard")">
+                    <i class="fa fa-tachometer"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider">
+            <div class="sidebar-heading">
+                Features
             </div>
-            <!-- /.navbar-header -->
-            <!-- /.navbar-top-links -->
-            <!-- /.navbar-static-side -->
-        </nav>
-        <!-- End Top Navigation -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <div class="navbar-default sidebar" role="navigation">
-            <div class="sidebar-nav slimscrollsidebar">
-                <div class="sidebar-head">
-                    <h3>
-                        <span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">Navigation</span>
-                    </h3>
-                </div>
-                <ul class="nav" id="side-menu">
-                    <li style="padding: 70px 0 0;">
-                        <a class="waves-effect" href="@Url.Action("Create","User")">
-                            <i class="fa fa-shopping-cart fa-fw"
-                               aria-hidden="true"></i>Customer
-                        </a>
-                    </li>
-                    <li>
-                        <a class="waves-effect" href="@Url.Action("Create","UserType")">
-                            <i class="fa fa-car fa-fw"
-                               aria-hidden="true"></i>Vehicle
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Create","Category")" class="waves-effect">
-                            <i class="fa fa-user fa-fw"
-                               aria-hidden="true"></i>User
-                        </a>
-                    </li>
-
-                    @*@if (Session["USER_SESSION_BAO"] != null)
-        {*@
-                    <li>
-                        <a href="@Url.Action("Create", "ArtList")" class="waves-effect">
-                            <i class="fa fa-signal fa-fw"
-                               aria-hidden="true"></i>Estimate
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Create", "ArtType")" class="waves-effect">
-                            <i class="fa fa-shield fa-fw"
-                               aria-hidden="true"></i>Insurance
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Create", "ArtType")" class="waves-effect">
-                            <i class="fa fa-dollar fa-fw"
-                               aria-hidden="true"></i>Company Expense
-                        </a>
-                    </li>
-                    <li>
-                        <a href="@Url.Action("Create", "ArtType")" class="waves-effect">
-                            <i class="fa fa-exclamation-circle fa-fw"
-                               aria-hidden="true"></i>Claim
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="waves-effect">
-                            <i class="fa fa-flag fa-fw"
-                               aria-hidden="true"></i>Report
-                        </a>
-                    </li>
-                    <li>
-                        <a>
-                            <ul class="nav">
-                                <li>test</li>
-                                <li>test</li>
-                                <li>test</li>
-                            </ul>
-                        </a>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
+                   aria-expanded="true" aria-controls="collapseBootstrap">
+                    <i class="fa fa-fw fa-user"></i>
+                    <span>Acount Manager</span>
+                </a>
+                <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Account and CustomerPolicy</h6>
+                        <a class="collapse-item" href="@Url.Action("AccManager" , "UserAcc")">Account</a>
+                        <a class="collapse-item" href="@Url.Action("UserTypeManager","UserAcc")">User Type</a>
                         
-                    </li>
-                    @*}*@
-                </ul>
-                <div class="center p-20">
-                    <a href="https://wrappixel.com/templates/ampleadmin/" target="_blank"
-                       class="btn btn-danger btn-block waves-effect waves-light">Have a nice day</a>
+
+                    </div>
                 </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
+                   aria-controls="collapseForm">
+                    <i class="fa fa-fw fa-shield"></i>
+                    <span>Insurance Policy</span>
+                </a>
+                <div id="collapseForm" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Insurance Policy </h6>
+                        <a class="collapse-item" href="@Url.Action("PolicyTypeManager","PolicyManager")">Policy Type</a>
+                        <a class="collapse-item" href="@Url.Action("PolicyManager","PolicyManager")">Policy</a>
+                        <a class="collapse-item" href="@Url.Action("CustomerPolicyManager","CustomerPolicyManager")">Customer Policy</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCom" aria-expanded="true"
+                   aria-controls="collapseCom">
+                    <i class="fa fa-fw fa-hotel"></i>
+                    <span>Company Manager</span>
+                </a>
+                <div id="collapseCom" class="collapse" aria-labelledby="headingCom" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header"> Company Expense Manager</h6>
+                        <a class="collapse-item" href="@Url.Action("CusTomerBillManagerl","CustomerBllingManager")">Customer Billing Info</a>
+                        <a class="collapse-item" href="@Url.Action("ExpenseTypeManager","CompanyExpenseManager")">Expense Type</a>
+                        <a class="collapse-item" href="@Url.Action("CompanyExpenseManager","CompanyExpenseManager")">Company Manager</a>
+                        <a class="collapse-item" href="@Url.Action("CLaimDetailManager","CompanyExpenseManager")">Claim Detail Manager</a>
+                        <a class="collapse-item" href="@Url.Action("EstimateManagerNe","EstimateManager")">Estimate Info</a>
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVehicle" aria-expanded="true"
+                   aria-controls="collapseVehicle">
+                    <i class="fa fa-fw fa-car"></i>
+                    <span>Vehicle Manager</span>
+                </a>
+                <div id="collapseVehicle" class="collapse" aria-labelledby="headingVehicle" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header"> Vehicle Manager</h6>
+                        <a class="collapse-item" href="@Url.Action("BrandManager", "BrandmodelManager")">Brand Manager</a>
+                        <a class="collapse-item" href="@Url.Action("ModelManager", "BrandmodelManager")">Model Manager</a>
+                        <a class="collapse-item" href="@Url.Action("VehicleInfoManager","VehicleIinFoManager")">Vehicle Info</a>                                    
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport" aria-expanded="true"
+                   aria-controls="collapseReport">
+                    <i class="fa fa-fw fa-book"></i>
+                    <span>Report</span>
+                </a>
+                <div id="collapseReport" class="collapse" aria-labelledby="headingReport" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header"> Report Manager</h6>
+                        <a class="collapse-item" href="@Url.Action("InsuranceMonthlySellReport","ReportModule")">Insurance Monthly</a>
+                        <a class="collapse-item" href="@Url.Action("VehicleWise","ReportModule")">Vehicle Wise</a>
+                        <a class="collapse-item" href="@Url.Action("ClaimaAmountMonthly","ReportModule")">Claimable Report</a>
+                        <a class="collapse-item" href="@Url.Action("PolicyDueReport","ReportModule")">Policy Report</a>
+                    </div>
+                </div>
+            </li>
+
+
+
+
+            <hr class="sidebar-divider">
+            @*<div class="sidebar-heading">
+                Examples
             </div>
+
+            <li class="nav-item">
+                <a class="nav-link" href="charts.html">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Charts</span>
+                </a>
+            </li>*@
+            <hr class="sidebar-divider">
+            <div class="version" id="version-ruangadmin"></div>
+        </ul>
+        <!-- Sidebar -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <div id="content">
+                <!-- TopBar -->
+                <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+                    <button id="sidebarToggleTop" class="btn btn-link rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                 aria-labelledby="searchDropdown">
+                                <form class="navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-1 small" placeholder="What do you want to look for?"
+                                               aria-label="Search" aria-describedby="basic-addon2" style="border-color: #3f51b5;">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-bell fa-fw"></i>
+                                <span class="badge badge-danger badge-counter">3+</span>
+                            </a>
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                 aria-labelledby="alertsDropdown">
+                                <h6 class="dropdown-header">
+                                    Alerts Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-primary">
+                                            <i class="fas fa-file-alt text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 12, 2019</div>
+                                        <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-success">
+                                            <i class="fas fa-donate text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 7, 2019</div>
+                                        $290.29 has been deposited into your account!
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="mr-3">
+                                        <div class="icon-circle bg-warning">
+                                            <i class="fas fa-exclamation-triangle text-white"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="small text-gray-500">December 2, 2019</div>
+                                        Spending Alert: We've noticed unusually high spending for your account.
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-envelope fa-fw"></i>
+                                <span class="badge badge-warning badge-counter">2</span>
+                            </a>
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                 aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Message Center
+                                </h6>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/img/man.png" style="max-width: 60px" alt="">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate">
+                                            Hi there! I am wondering if you can help me with a problem I've been
+                                            having.
+                                        </div>
+                                        <div class="small text-gray-500">Udin Cilok · 58m</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="@Url.Content("~/Areas/AdminPage/")Assets/img/girl.png" style="max-width: 60px" alt="">
+                                        <div class="status-indicator bg-default"></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-truncate">
+                                            Am I a good boy? The reason I ask is because someone told me that people
+                                            say this to all dogs, even if they aren't good...
+                                        </div>
+                                        <div class="small text-gray-500">Jaenab · 2w</div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown no-arrow mx-1">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-tasks fa-fw"></i>
+                                <span class="badge badge-success badge-counter">3</span>
+                            </a>
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                 aria-labelledby="messagesDropdown">
+                                <h6 class="dropdown-header">
+                                    Task
+                                </h6>
+                                <a class="dropdown-item align-items-center" href="#">
+                                    <div class="mb-3">
+                                        <div class="small text-gray-500">
+                                            Design Button
+                                            <div class="small float-right"><b>50%</b></div>
+                                        </div>
+                                        <div class="progress" style="height: 12px;">
+                                            <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50"
+                                                 aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item align-items-center" href="#">
+                                    <div class="mb-3">
+                                        <div class="small text-gray-500">
+                                            Make Beautiful Transitions
+                                            <div class="small float-right"><b>30%</b></div>
+                                        </div>
+                                        <div class="progress" style="height: 12px;">
+                                            <div class="progress-bar bg-warning" role="progressbar" style="width: 30%" aria-valuenow="30"
+                                                 aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item align-items-center" href="#">
+                                    <div class="mb-3">
+                                        <div class="small text-gray-500">
+                                            Create Pie Chart
+                                            <div class="small float-right"><b>75%</b></div>
+                                        </div>
+                                        <div class="progress" style="height: 12px;">
+                                            <div class="progress-bar bg-danger" role="progressbar" style="width: 75%" aria-valuenow="75"
+                                                 aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">View All Taks</a>
+                            </div>
+                        </li>
+                        <div class="topbar-divider d-none d-sm-block"></div>
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">
+                                <img class="img-profile rounded-circle" src="@Url.Content("~/Content/CustomResource/AdminResource")/Assets/img/boy.png" style="max-width: 60px">
+                                @if (Session["username"] == null)
+                                {
+                                    <span class="ml-2 d-none d-lg-inline text-white small">
+                                        eweuowueou
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="ml-2 d-none d-lg-inline text-white small">
+                                        @Session["username"]
+                                    </span>
+                                }
+                                <span class="ml-2 d-none d-lg-inline text-white small">
+
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                @*<a class="dropdown-item" href="#">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Profile
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Settings
+                                </a>
+                                <a class="dropdown-item" href="#">
+                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Activity Log
+                                </a>*@
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" onclick="noBack()" href="@Url.Action("LogoutDB","Login")">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- Topbar -->
+                <!-- Container Fluid-->
+                <div class="container-fluid" id="container-wrapper">
+
+                    @RenderBody()
+                    <!--Row-->
+
+
+
+                </div>
+                <!---Container Fluid-->
+            </div>
+            <!-- Footer -->
+            <!--<footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>
+                            copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> - developed by
+                            <b><a href="https://indrijunanda.gitlab.io/" target="_blank">indrijunanda</a></b>
+                        </span>
+                    </div>
+                </div>
+            </footer>-->
+            <!-- Footer -->
         </div>
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page Content -->
-        <!-- ============================================================== -->
-        <div id="page-wrapper">
-            @*<div class="container-fluid">*@
-            @RenderBody()
-            @*</div>*@
-            <!-- /.container-fluid -->
-            @*<footer class="footer text-center"> 2017 &copy; Ample Admin brought to you by wrappixel.com </footer>*@
-        </div>
-        <!-- ============================================================== -->
-        <!-- End Page Content -->
-        <!-- ============================================================== -->
     </div>
 
-    @if (ViewBag.Alert != null)
-    {
-        <script type="text/javascript">
-            window.onload = function () {
+    <!-- Scroll to top -->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-                alert("@ViewBag.Alert");
-        };
-        </script>
-    }
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    <script src="@Url.Content("/Content/CustomResource/AdminResource")/Assets/js/ruang-admin.min.js"></script>
+
+    <script src="~/Scripts/adminPage.js"></script>
+
+    <script type="text/javascript">
+        $("input[type='checkbox']").on('change', function () {
+            $("#active").val(this.checked ? "TRUE" : "FALSE");
+        })
+        function noBack() {
+            window.history.forward();
+        }
+    </script>
     @RenderSection("scripts", required: false)
-    <!-- /#wrapper -->
-    <!-- jQuery -->
-    <script src="~/Content/LA_Themes/plugins/bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="~/Content/LA_Themes/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- Menu Plugin JavaScript -->
-    <script src="~/Content/LA_Themes/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
-    <!--slimscroll JavaScript -->
-    <script src="~/Content/LA_Themes/js/jquery.slimscroll.js"></script>
-    <!--Wave Effects -->
-    <script src="~/Content/LA_Themes/js/waves.js"></script>
-    <!-- Custom Theme JavaScript -->
-    <script src="~/Content/LA_Themes/js/custom.min.js"></script>
-    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 </body>
 
 </html>

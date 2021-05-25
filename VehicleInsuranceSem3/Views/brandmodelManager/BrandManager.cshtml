@@ -1,0 +1,71 @@
+﻿@model PagedList.IPagedList<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel>
+@using PagedList.Mvc;
+@{
+
+    ViewBag.Title = "BrandManager";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+
+<a class="btn btn-warning" href="@Url.Action("BrandViewAll")"> View All </a>
+<a class="btn btn-success" href="@Url.Action("CreateBrand")"> Create Brand</a>
+
+
+<div style="margin-top: 20px" class="input-group">
+    <form action="@Url.Action("BrandSearch")" method="post" class="form-inline">
+        <div class="form-group">
+            <input type="search" id="form1" class="form-control" placeholder="Enter Brand Name" name="tbSearch" />
+        </div>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-fw fa-search"></i>
+        </button>
+    </form>
+</div>
+<hr />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Active</th>
+
+
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+       @if (Session["LisBrandAll"] != null )
+
+       {
+
+
+           var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel>)Session["LisBrandAll"];
+           int i = 0;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@item.Name</td>
+                    <td>@item.Active</td>
+
+                    <td>
+                        <a class="btn-btn-fab" href="@Url.Action("EditBrand", new { id = item.Id })" data-idItem="@item.Id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.Id" href="@Url.Action("DeleteBrand", new { id = item.Id })"><i class="fa fa-trash btn btn-danger"></i></a>
+                    </td>
+                </tr>
+                i++;
+            }
+       }
+
+
+
+
+    </tbody>
+
+</table>
+<div class="pagination" id='Paging' style="text-align:center">
+    @Html.PagedListPager(Model, page => Url.Action("BrandManager", new { page, pageSize = Model.PageSize }))
+    Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
+</div>
+
+

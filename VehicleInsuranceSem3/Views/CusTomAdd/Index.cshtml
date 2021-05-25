@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+
+<div class="container" style="margin: 50px; padding: 20px">
+    <h2 class="section-title text-left">Create Customer Policy</h2>
+    <form method="post" action="#" class="contact-form">
+        <div class="row">
+            <div class="col-md-6">
+                <input type="text" class="form-control" id="txtCusName" placeholder="Customer Name" />
+            </div>
+            <div class="col-lg-6">
+                <input type="date" class="form-control" placeholder="Date Of Birth" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <textarea type="text" class="form-control" id="taAddress" placeholder="Address"></textarea>
+            </div>
+            <div class="col-md-6">
+                <input type="tel" class="form-control" placeholder="Phone" />
+                <input type="email" class="form-control" placeholder="Email" />
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <select id="cbVehicleBrand" class="form-control">
+                    <option selected>Select Brand</option>
+                    <option>Honda</option>
+                    <option>Kawasaki</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <input type="text" class="form-control" placeholder="Owner's Name" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <select id="cbVehicleBrand" class="form-control">
+                        <option selected>Select Model</option>
+                        <option>Select Brand</option>
+                        <option>Select Brand</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" id="txtOwner" placeholder="Version" />
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" id="txtOwner" placeholder="Condition" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Frame Number" />
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Engine Number" />
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" placeholder="Vehicle Number" />
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <select class="form-control">
+                    <option selected>Select Type</option>
+                    <option>Select Type</option>
+                    <option>Select Type</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+                <select class="form-control">
+                    <option selected>Select Type</option>
+                    <option>Select Type</option>
+                    <option>Select Type</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label>Create Date:</label>
+                <input type="date" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label>Start Date:</label>
+                <input type="date" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label>End Date:</label>
+                <input type="date" class="form-control" />
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-lg-6">
+                <label>Total Payment:</label>
+                <input type="text" class="form-control" />
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Customer Proves:</label>
+                        <input type="file" class="form-control" accept="image/*" onchange="loadFile(event)" />
+                    </div>
+                    <div class="col-md-6">
+                        <img width="200" height="112" id="previewImg" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="cbProve">Customer accept policy terms</label>
+                <input type="checkbox" class="form-control" id="cbProve" name="cbProve" />
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
+                <button class="btn btn-block btn-success">Create Customer Policy</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    var loadFile = function (event) {
+        var output = document.getElementById('previewImg');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+</script>
+

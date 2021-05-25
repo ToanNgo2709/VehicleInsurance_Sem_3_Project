@@ -1,0 +1,87 @@
+﻿@model PagedList.IPagedList<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel> 
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "ModelManager";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel> sa = Session["LisBrandAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel>;
+
+
+}
+<a class="btn btn-warning" href="@Url.Action("ModelViewAll")"> ViewAll </a>
+<a class="btn btn-success" href="@Url.Action("CreateModel")"> CreateModel</a>
+
+
+<div style="margin-top: 20px" class="input-group">
+    <form action="@Url.Action("ModelSearch")" method="post" class="form-inline">
+        <div class="form-outline">
+            <input type="search" id="form1" class="form-control" name="tbSearch" placeholder="Enter Model Name" />
+        </div>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
+</div>
+<hr />
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Max Rate</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Active</th>
+
+
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Session["ListAllModel"] != null )
+        {
+            
+            var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel>)Session["ListAllModel"];
+            int i = 0;
+            foreach (var item in Model)
+            { 
+                <tr>
+                    <td >@i</td>
+                    <td>@item.name</td>
+                    <td>@item.rate</td>
+                    @if (sa != null)
+                    {
+                        foreach (var tem in sa)
+                        {
+                            if (item.brandid == tem.Id)
+                            {
+                                <td tabindex="@item.brandid">@tem.Name</td>
+                            }
+
+                        }
+
+                    }
+
+                    <td>@item.active</td>
+
+                    <td>
+                        <a class="btn-btn-fab" href="@Url.Action("EditModel", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteModel" , new { id = item.id })"><i class="fa fa-trash btn btn-danger"></i></a>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+
+       
+
+    </tbody>
+
+</table>
+<div id='Paging' style="text-align:center">
+    @Html.PagedListPager(Model, page => Url.Action("ModelManager", new {  page, pageSize = Model.PageSize }) ) 
+    Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount 
+</div>
+   
+

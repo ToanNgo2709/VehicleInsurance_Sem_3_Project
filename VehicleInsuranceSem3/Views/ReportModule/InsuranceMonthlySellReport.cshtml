@@ -1,0 +1,103 @@
+﻿@model IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.InsuranceCustomerPolicyMonthlyViewModel>
+@{
+    ViewBag.Title = "InsuranceMonthlySellReport";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Start Date</label>
+                <input type="date" class="form-control" name="StartDate" id="StartDate" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label>End Date</label>
+            <input type="date" class="form-control" name="EndDate" id="EndDate" />
+        </div>
+        <div class="col-md-4">
+            <label></label>
+            <button id="btnSearch" class="btn btn-block btn-success">Confirm</button>
+        </div>
+
+    </div>
+
+</div>
+<hr />
+
+<div class="container">
+    <div id="PolicySoldChartContainer" style="height:250px; width: 100%">
+
+    </div>
+</div>
+<hr />
+
+
+<div class="container">
+    <div id="insuranceRow" class="container">
+        <h3>Number of Customer Policy Created: @Model.Count()</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Date</th>
+                    <th>Customer Name</th>
+                    <th>Policy Name</th>
+                    <th>Vehicle Name</th>
+                    <th>Duration</th>
+                    <th>Active</th>
+                </tr>
+            </thead>
+            <tbody id="insuranceRow">
+                @if (Model != null)
+                {
+                    int i = 1;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>@item.CreatedDate</td>
+                            <td>@item.CustomerName</td>
+                            <td>@item.PolicyName</td>
+                            <td>@item.VehicleName</td>
+                            <td>@item.Duration</td>
+                            <td>@item.Active</td>
+                        </tr>
+                        i++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#btnSearch').click(function () {
+            var startDay = getDate($("#StartDate").val());
+            var endDay = getDate($("#EndDate").val());
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetInsuranceListByDate", "ReportModule" )',
+                data: { start: startDay, end: endDay },
+                success: function (response) {
+                    $('#insuranceRow').html(response);
+                }
+            })
+
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetDataPointForInsuranceReport")',
+                data: { start: startDay, end: endDay },
+                success: function (response) {
+                    $('#PolicySoldChartContainer').html(response);
+                }
+
+
+            })
+        });
+
+    })
+</script>

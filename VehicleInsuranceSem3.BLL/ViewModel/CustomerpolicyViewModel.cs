@@ -17,6 +17,7 @@ namespace VehicleInsuranceSem3.BLL.ViewModel
         public DateTime createdate { get; set; }
         public string customeraddprove { get; set; }
         public bool? active { get; set; }
+        public decimal TotalPayment { get; set; }
 
     }
 }

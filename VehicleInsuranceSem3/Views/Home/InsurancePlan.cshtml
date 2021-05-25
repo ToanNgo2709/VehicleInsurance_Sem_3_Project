@@ -1,0 +1,70 @@
+﻿@model IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>
+@{
+    ViewBag.Title = "InsurancePlan";
+    Layout = "~/Views/Shared/Client_LayoutPage.cshtml";
+}
+
+<div class="breadcrumbs">
+    <div class="container">
+        <a href="index.html">Home</a>
+        <span>Insurance</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="container">
+        <h3 class="entry-title">Choose your own insurance plan</h3>
+        <p>Nam posuere purus vitae est sollicitudin placerat. Praesent posuere porta dignissim. Phasellus viverra, urna a convallis tincidunt, ante mi tempor turpis, nec tempor mauris ligula ut sapien. Etiam euismod mi eu ante mollis commodo. Suspendisse porta nisi vitae dui hendrerit, eget ornare orci semper. Phasellus pharetra, erat sit amet rutrum porttitor, est eros consectetur elit, molestie consequat erat tellus in dui. Vestibulum a vehicula sem. Nullam commodo quis purus in volutpat. Integer semper lacus a lorem efficitur auctor curabitur tincidunt ligula non.</p>
+
+        <div class="filter-links filterable-nav">
+            <select class="mobile-filter">
+                <option value="*">Show all</option>
+                <option value=".compulsory">Compulsory</option>
+                <option value=".bodyInsu">Body Insurance</option>
+                <option value=".civil">Civil</option>
+                <option value=".others">Others</option>
+            </select>
+            <strong>Select Category: </strong>
+            <a href="#" class="current wow fadeInRight" data-filter="*">Show all</a>
+            <a href="#" class="wow fadeInRight" data-wow-delay=".2s" data-filter=".compulsory">Compulsory</a>
+            <a href="#" class="wow fadeInRight" data-wow-delay=".4s" data-filter=".bodyInsu">Body Insurance</a>
+            <a href="#" class="wow fadeInRight" data-wow-delay=".6s" data-filter=".civil">Civil</a>
+            @*<a href="#" class="wow fadeInRight" data-wow-delay=".8s" data-filter=".others">Others</a>*@
+        </div>
+
+        <div class="filterable-items">
+            @foreach(var item in Model)
+            {
+                <div class="insurance-item filterable-item civil">
+                    <div class="insurance-content">
+                        <div class="insurance-icon"><i class="fa fa-car"></i></div>
+                        <h3 class="insurance-title">@item.policynumber</h3>
+                        <p>Etiam aliquam ante in mattis molestie. Vivamus in laoreet eros. Proin tempus velit dui lobortis justo laoreet nes phasellus luctus neque.</p>
+                        @if (Session["id"] == null)
+                        {
+                            <a href="@Url.Action("Login","Login")" class="button">Buy</a>
+                        }
+                        else
+                        {
+                            <a href="@Url.Action("CreateCustomerPolicy")" onclick="GetPolicyID(@item.id)" class="button">Buy</a>
+                        }
+
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div> <!-- .page -->
+
+<script>
+    function GetPolicyID(id) {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("GetPolicyId")",
+            data: { policyId: id },
+            success: function (response) {
+                
+            }
+        });
+    }
+</script>

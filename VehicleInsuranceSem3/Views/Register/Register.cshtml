@@ -1,0 +1,138 @@
+﻿@{
+    ViewBag.Title = "Register";
+}
+@model VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Login</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+          rel="stylesheet" type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/Content/CustomResource/AdminResource/Assets/css/sb-admin-2.css" rel="stylesheet">
+</head>
+
+<body class="bg-gradient-primary">
+
+    <div class="container">
+
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
+
+            <div class="col-xl-10 col-lg-12 col-md-9">
+
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Register Free Account</h1>
+                                    </div>
+                                    <div class="p-3 mb-2 text-danger">
+                                        @ViewBag.Alert
+                                    </div>
+                                    @using (Html.BeginForm("RegisterDb", "Register", FormMethod.Post, new { @style = "margin:auto;" }))
+                                    {
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(model => model.username, new { @Class = "form-control form-control-user", @id = "txUsername", @autofocus = "@autofocus", @placeholder = "Username" })
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.PasswordFor(model => model.password, new { @Class = "form-control form-control-user", @id = "pwPassword", @placeholder = "Password" })
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" placeholder="Re-enter Password" id="pwRePassword" name="pwRePassword" class="form-control form-control-user" />
+
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(model => model.name, new { @Class = "form-control form-control-user", @id = "txCustomerName", @autofocus = "@autofocus", @placeholder = "Customer Name" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(model => model.dob, new { @Class = "form-control form-control-user", @type = "date" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextAreaFor(model => model.address, new { @Class = "form-control form-control-user", @placeholder = "Address" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(model => model.phone, new { @Class = "form-control form-control-user", @placeholder = "Phone", @type = "tel" })
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.TextBoxFor(model => model.email, new { @Class = "form-control form-control-user", @placeholder = "Email", @type = "email" })
+                                        </div>
+                                        <div class="form-group">
+
+                                            @Html.CheckBoxFor(model => model.active, new { @name = "cbCheck", @id = "cbCheck" })
+                                            <label for="cbCheck">Agree With Website policy</label>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary btn-user btn-block" name="btnRegister"> Register</button>
+                                        <hr>
+
+                                        <div class="text-center">
+                                            <a class="small" href="@Url.Action("ForgetPassword", "Register")">Forgot Password?</a>
+                                        </div>
+                                        <div class="text-center">
+                                            <a href="@Url.Action("Login", "Login")">Already had an account? Login</a>
+
+                                        </div>
+                                    }
+                                    <hr>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="@Url.Content("~/Areas/Admin/")vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Scripts/CustomResource/sb-admin-2.js"></script>
+    <!-- Login System -->
+    <script src="@Url.Content("~/Areas/Admin")js/Controller/LoginController.js"></script>
+
+    <script>
+        //Login System
+        $("#msg").hide();
+
+        var Login = function () {
+            var data = $('#LoginForm').serialize();
+            $.ajax({
+                type: "post",
+                url: "@Url.Action("CheckValidUser")",
+                data: data,
+                success: function (result) {
+                    if (result == "Fail") {
+                        $("#LoginForm")[0].reset();
+                        $("#msg").show();
+                    }
+                    else {
+                        window.location.href = "@Url.Action("AfterLogin")"
+                        $("#msg").hide();
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>
+

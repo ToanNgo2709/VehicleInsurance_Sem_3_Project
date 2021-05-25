@@ -1,0 +1,216 @@
+﻿@{
+    ViewBag.Title = "CreateCustomerPolicy";
+    Layout = "~/Views/Shared/Client_LayoutPage.cshtml";
+    VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel customer = ViewData["Customers"] as VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel;
+    VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel policy = ViewData["Policies"] as VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel;
+    IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel> brands = ViewData["Brands"] as IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel>;
+}
+
+
+<div class="container" style="margin: 50px; padding: 20px">
+    <h2 class="section-title text-left">Create Customer Policy</h2>
+
+    @if (TempData["Alert"] != null)
+    {
+        <h4 style="color:red" id="msg" name="msg">@TempData["Alert"]</h4>
+    }
+
+    <form method="post" action="@Url.Action("CreateNewCustomerPolicy")" class="contact-form" enctype="multipart/form-data">
+        @if (Session["id"] != null)
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="txtCusName">Customer: </label>
+                    <input type="text" id="txtCusName" name="txtCusName" placeholder="Customer Name" value="@customer.name" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="policyName">Policy Name:</label>
+                    <input type="text" id="policyName" name="policyName" placeholder="Policy Name" value="@policy.policynumber" />
+                    <input id="idPolicyHidden" name="idPolicyHidden" hidden value="@policy.id" />
+                </div>
+            </div>
+            <input id="durationField" name="durationField" onchange="getEndDate(@policy.policyduration)" hidden value="@policy.policyduration" />
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" id="txtCusName" placeholder="Customer Name" />
+                </div>
+                <div class="col-lg-6">
+                    <input type="date" placeholder="Date Of Birth" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <textarea type="text" id="taAddress" placeholder="Address"></textarea>
+                </div>
+                <div class="col-md-6">
+                    <input type="tel" placeholder="Phone" />
+                    <input type="email" placeholder="Email" />
+                </div>
+            </div>
+        }
+
+
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <label>Brand:</label>
+                <select id="cbVehicleBrand" name="cbVehicleBrand" onchange="getModelOfBrand(this);">
+                    <option selected> --- Select Brand ---</option>
+                    @foreach (var item in brands)
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="text" id="ownerName" name="ownerName" placeholder="Owner's Name" required />
+                    </div>
+                    <div class="col-md-6">
+                        <input type="text" id="address" name="address" placeholder="Address" required />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Models:</label>
+                    <select id="cbVehicleModel" name="cbVehicleModel">
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" id="version" name="version" placeholder="Version" required />
+                    </div>
+                    <div class="col-md-6">
+                        <input class="form-control" type="text" id="condition" name="condition" placeholder="Condition" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="frameNumber" name="frameNumber" placeholder="Frame Number" required />
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="engineNumber" name="engineNumber" placeholder="Engine Number" required />
+            </div>
+            <div class="col-md-4">
+                <input type="text" class="form-control" id="vehicleNumber" name="vehicleNumber" placeholder="Vehicle Number" required />
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <label>Create Date:</label>
+                <input type="date" readonly id="createDate" name="createDate" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label>Start Date:</label>
+                <input type="date" readonly id="startDate" name="startDate" class="form-control" />
+            </div>
+            <div class="col-md-4">
+                <label>End Date:</label>
+                <input type="date" readonly id="endDate" name="endDate" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <label>Total Payment:</label>
+                <input type="text" id="totalPayment" name="totalPayment" value="@ViewBag.Price" />
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Customer Proves:</label>
+                        <input type="file" accept="image/*" onchange="loadFile(event)" />
+                    </div>
+                    <div class="col-md-6">
+                        <img width="200" height="112" id="previewImg" />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="cbProve">Customer accept policy terms</label>
+                <input type="checkbox" checked required class="form-control" id="cbProve" name="cbProve" />
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
+                <button type="submit" id="btnCreate" class="btn btn-block btn-success">Check Out</button>
+            </div>
+        </div>
+    </form>
+    <h1>@Session["policyId"]</h1>
+</div>
+
+<script>
+
+   
+
+    //preview image file
+    var loadFile = function (event) {
+        var output = document.getElementById('previewImg');
+        output.src = URL.createObjectURL(event.target.files[0]);
+        output.onload = function () {
+            URL.revokeObjectURL(output.src) // free memory
+        }
+    };
+
+    //set today to start and create date
+    var now = new Date();
+    var year = now.getFullYear()
+    var month = (now.getMonth() + 1);
+    var day = now.getDate();
+    if (month < 10)
+        month = "0" + month;
+    if (day < 10)
+        day = "0" + day;
+    var today = year + '-' + month + '-' + day;
+
+    $("#createDate").val(today);
+    $("#startDate").val(today);
+
+    $(document).ready(function () {
+        var duration = parseInt($("#durationField").val());
+        var yearLater = year + duration;
+        var end = yearLater + "-" + month + "-" + day;
+        $("#endDate").val(end);
+    });
+
+    //get endate
+    function getModelOfBrand(sel) {
+        var id = parseInt(sel.value);
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("GetModelList")",
+            data: { brandId: id },
+            success: function (response) {
+                $("#cbVehicleModel").html(response);
+            }
+        });
+    };
+
+
+
+
+
+</script>
+

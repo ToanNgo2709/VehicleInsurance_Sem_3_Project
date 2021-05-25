@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "PolicyDueReport";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+
+<div class="container">
+    <div class="col-md-6">
+        <label>Current Date</label>
+        <input type="date" readonly class="form-control" id="CurrentDate" name="CurrentDate" />
+    </div>
+</div>
+
+<hr />
+<h3>Policy Due Renewals</h3>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Custome Policy ID</th>
+                <th>Policy Type</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.duePolicy != null)
+            {
+                foreach (var item in ViewBag.duePolicy)
+                {
+                    <tr>
+                        <td>@item.CustomerPolicyId</td>
+                        <td>@item.PolicyType</td>
+                        <td>@item.StartDate</td>
+                        <td>@item.EndDate</td>
+                        <td><button class="btn btn-block btn-success">Detail</button></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<hr />
+<h3>Policies Lapsed</h3>
+<div class="container">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Custome Policy ID</th>
+                <th>Policy Type</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.lapsedPolicy != null)
+            {
+                foreach (var item in ViewBag.lapsedPolicy)
+                {
+                    <tr>
+                        <td>@item.CustomerPolicyId</td>
+                        <td>@item.PolicyType</td>
+                        <td>@item.StartDate</td>
+                        <td>@item.EndDate</td>
+                        <td><button class="btn btn-block btn-success">Detail</button></td>
+                    </tr>
+                }
+            }
+
+
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        $("#CurrentDate").val(today);
+    });
+</script>

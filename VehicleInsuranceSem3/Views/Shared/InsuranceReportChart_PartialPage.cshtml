@@ -1,0 +1,18 @@
+﻿
+<script>
+    var chart = new CanvasJS.Chart("PolicySoldChartContainer", {
+            animationEnabled : true,
+            theme: "light2",
+            title: {
+                text: "Number of Sell of Each Policy Type"
+            },
+            axisY: {
+                title: "No. of Sold"
+            },
+            data: [{
+                type: "column",
+                dataPoints: @Html.Raw(ViewBag.DataPoints)
+            }]
+        });
+        chart.render();
+</script>

@@ -37,7 +37,6 @@ namespace VehicleInsuranceSem3.DAL.Model
 
         public bool? active { get; set; }
 
-        public int? user_info_id { get; set; }
 
         [Required]
         [StringLength(20)]

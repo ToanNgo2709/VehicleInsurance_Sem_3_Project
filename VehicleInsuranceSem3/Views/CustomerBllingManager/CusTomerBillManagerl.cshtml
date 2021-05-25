@@ -1,0 +1,95 @@
+﻿@model PagedList.IPagedList<VehicleInsuranceSem3.BLL.ViewModel.CustomerbillinginfoViewModel>
+ @using PagedList.Mvc;
+@{
+    ViewBag.Title = "CusTomerBillManagerl";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel> s = Session["cspAllView"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel>;
+}
+
+
+<a class="btn btn-warning" href="@Url.Action("CustomerbillViewAll")"> View All </a>
+<a class="btn btn-success" href="@Url.Action("CreateCustomerBill")"> Create Customer Billing</a>
+
+<div style="margin-top: 20px" class="input-group">
+    <form action="@Url.Action("customerSearch")" method="post" class="form-inline">
+        <div class="form-outline">
+            <input type="search" id="form1" class="form-control" name="tbSearch" />
+        </div>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
+</div>
+<hr />
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Customer add prove</th>
+            <th scope="col">Bill Number</th>
+            <th scope="col">Create Date  </th>
+            <th scope="col">Amount</th>
+            <th scope="col">Active</th>
+            <th scope="col">Customer Policy</th>
+
+
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Session["csbAllView"] != null)
+        {
+            var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.CustomerbillinginfoViewModel>)Session["csbAllView"];
+            int i = 1;
+            foreach (var item in Model)
+            {
+
+        <tr>
+            <td>@i</td>
+            <td>@item.customeraddprove</td>
+            <td>@item.bill_number</td>
+            <td>@item.createdate</td>
+            <td>@item.amount</td>
+            <td>@item.active</td>
+            @if (s != null)
+            {
+                foreach (var tem in s)
+                {
+                    if (item.customerpolicyid == tem.id)
+                    {
+                        <td tabindex="@item.customerpolicyid">@tem.id</td>
+                    }
+
+                }
+            }
+
+
+
+            <td>
+
+
+                <a class="btn-btn-fab" href="@Url.Action("EditCustomerBill", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit"> </i>  </a>
+                <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteCustomerBill" , new { id = item.id })"><i class="fa fa-trash"></i></a>
+                
+            </td>
+        </tr>
+                i++;
+            }
+        }
+
+
+
+    </tbody>
+    </table>
+<div id='Paging' style="text-align:center">
+    @Html.PagedListPager(Model, page => Url.Action("CusTomerBillManagerl", new { page, pageSize = Model.PageSize }))
+    Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
+</div>
+
+
+
+
+
+

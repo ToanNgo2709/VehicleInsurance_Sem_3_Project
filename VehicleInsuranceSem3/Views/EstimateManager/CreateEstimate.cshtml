@@ -1,0 +1,73 @@
+﻿
+@{
+    ViewBag.Title = "CreateEstimate";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel> cs = Session["CustomerAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel> vh = Session["VehicleAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel> pl = Session["PolicyAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>;
+}
+
+<form action="@Url.Action("AddEstimate")" method="post">
+    <div class="form-group">       
+        <input type="text" class="form-control" id="estimatenumber" name="estimatenumber" aria-describedby="emailHelp" placeholder="Estimate Name" value="" required>        
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Date</label>
+        <input type="date" class="form-control" id="vehiclewarranty" name="vehiclewarranty" placeholder="vehiclewarranty" value=""required>
+    </div>
+    <div class="form-group">
+        <select class="form-control" aria-label="Default select example" id="customerid" name="customerid">
+            <option selected> --- Select Customer ---</option>
+            @foreach (var item in cs)
+            {
+                if (item.id != null)
+                {
+                    <option value="@item.id">@item.username</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.username</option>
+                }
+            }
+
+        </select>
+    </div>
+    <div class="form-group">
+        <select class="form-control" aria-label="Default select example" id="vehicleid" name="vehicleid">
+            <option selected> --- Select Vehicle ---</option>
+            @foreach (var item in vh)
+            {
+                if (item.id != null)
+                {
+                    <option value="@item.id">@item.ownername</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.ownername</option>
+                }
+            }
+
+        </select>
+    </div>
+    <div class="form-group">
+        <select class="form-control" aria-label="Default select example" id="policyid" name="policyid">
+            <option selected> --- Select Policy ---</option>
+            @foreach (var item in pl)
+            {
+                if (item.id != null)
+                {
+                    <option value="@item.id">@item.policynumber</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.policynumber</option>
+                }
+            }
+
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <a class="btn btn-warning" href="@Url.Action("EstimateManagerNe")">Back</a>
+</form>
+

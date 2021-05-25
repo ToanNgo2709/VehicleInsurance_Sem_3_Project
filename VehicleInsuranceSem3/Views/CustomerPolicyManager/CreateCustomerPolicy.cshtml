@@ -1,0 +1,100 @@
+﻿
+@{
+    ViewBag.Title = "CreateCustomerPolicy";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel> cs = Session["customerInAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel> vh = Session["VehicleAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel> pl = Session["PolicyAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel> vvcc = Session["CustomAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel>;
+
+}
+
+<form action="@Url.Action("AddCustomerPolicy")" method="post">
+    <div class="form-group">
+        <label for="exampleInputEmail1">customeraddprove</label>
+        <input type="text" class="form-control" id="customeraddprove" name="customeraddprove" aria-describedby="emailHelp" placeholder="customeraddprove" value="" required>
+       
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Create Date</label>
+
+        <input type="date" class="form-control" id="createdate" name="createdate" placeholder="" value="" required>
+
+
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Start Date</label>
+        <input type="date" class="form-control" id="policystartdate" name="policystartdate" placeholder="" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">End Date</label>
+        <input type="date" class="form-control" id="policyenddate" name="policyenddate" placeholder="" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">ToTal Payment</label>
+        <input type="number" class="form-control" id="TotalPayment" name="TotalPayment" placeholder="" value="" required>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Customer Name</label>
+        <select class="form-control" aria-label="Default select example" id="customerid" name="customerid">
+            @foreach (var item in cs)
+            {
+                if (item.id != null)
+                {
+                    <option value="@item.id" selected>@item.username</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.username</option>
+                }
+            }
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Policy</label>
+        <select class="form-control" aria-label="Default select example" id="policyid" name="policyid">
+            @foreach (var item in pl)
+            {
+                if (item.id != null)
+                {
+                    <option value="@item.id" selected>@item.policynumber</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.policynumber</option>
+                }
+            }
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Vehicle</label>
+        <select class="form-control" aria-label="Default select example" id="vehicleid" name="vehicleid">
+            @foreach (var item in vh)
+            {
+                if (item.id != null)
+                {
+                    <option value="@item.id" selected>@item.ownername</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.ownername</option>
+                }
+            }
+
+        </select>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="active" id="active" required />
+        @*       <input type="checkbox" class="form-check-input" id="isActive" checked>*@
+        <label class="form-check-label" for="isActive">Is Active</label>
+    </div>
+
+
+
+    <button type="submit" class="btn btn-success" value="">Submit</button>
+    <a class="btn btn-warning" href="@Url.Action("CustomerPolicyManager")">Back</a>
+</form>
+
+

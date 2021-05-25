@@ -1,0 +1,117 @@
+﻿@model PagedList.IPagedList<VehicleInsuranceSem3.BLL.ViewModel.EstimateViewModel>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "EstimateManagerNe";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel> cs = Session["CustomerAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel> vh = Session["VehicleAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel> pl = Session["PolicyAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>;
+
+
+}
+
+<a class="btn btn-warning" href="@Url.Action("EstimateViewAll")"> View All </a>
+<a class="btn btn-success" href="@Url.Action("CreateEstimate")"> Create Estimate</a>
+
+<div style="margin-top: 20px" class="input-group">
+    <form action="@Url.Action("EstimateSearch")" method="post" class="form-inline">
+        <div class="form-outline">
+            <input type="search" id="form1" class="form-control" name="tbSearch" />
+        </div>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
+</div>
+<hr />
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Estimate Name</th>
+            <th scope="col">Vehicle warranty</th>
+            <th scope="col">Customer</th>
+            <th scope="col">VehiCle Info</th>
+
+            <th scope="col">Policy</th>
+
+
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Session["EstimatAll"] != null)
+        {
+            var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.EstimateViewModel>)Session["EstimatAll"];
+            int i = 1;
+            foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@i</td>
+                    <td>@item.estimatenumber</td>
+                    <td>@item.vehiclewarranty</td>
+                    @if (cs != null)
+                    {
+                        foreach (var tem in cs)
+                        {
+                            if (item.customerid == tem.id)
+                            {
+                                <td tabindex="@item.customerid">@tem.username</td>
+                            }
+
+                        }
+                    }
+                    @if (vh != null)
+                    {
+                        foreach (var tem in vh)
+                        {
+                            if (item.vehicleid == tem.id)
+                            {
+                                <td tabindex="@item.vehicleid">@tem.ownername</td>
+                            }
+
+                        }
+                    }
+
+                    @if (pl != null)
+                    {
+                        foreach (var tem in pl)
+                        {
+                            if (item.policyid == tem.id)
+                            {
+                                <td tabindex="@item.policyid">@tem.policynumber</td>
+                            }
+
+                        }
+                    }
+
+
+
+
+                    <td>
+
+
+                        <a class="btn-btn-fab" href="@Url.Action("EditEstimate", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteEstimate" , new { id = item.id })"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+
+
+
+    </tbody>
+</table>
+<div id='Paging' style="text-align:center">
+    @Html.PagedListPager(Model, page => Url.Action("EstimateManagerNe", new { page, pageSize = Model.PageSize }))
+    Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
+</div>
+
+
+
+

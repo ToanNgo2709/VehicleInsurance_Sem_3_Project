@@ -23,7 +23,9 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 policy_date = newItem.policydate,
                 policy_number = newItem.policynumber,
                 policy_duration = newItem.policyduration,
-                active = newItem.active
+                active = newItem.active,
+                policy_type_id = newItem.policytypeid
+                
             };
             context.Policies.Add(policy);
             context.SaveChanges();
@@ -41,21 +43,39 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         }
 
+        public Policy searchPolicyById(int id)
+        {
+            var item = context.Policies.Where(p => p.id == id).FirstOrDefault();
+            return item;
+        }
+
         public List<PolicyViewModel> GetAll()
         {
-            var q = context.Policies.Select(d => new PolicyViewModel { id = d.id, active = d.active, policydate = d.policy_date, policyduration = d.policy_duration, policynumber = d.policy_number }).ToList();
+            var q = context.Policies.Select(d => new PolicyViewModel { id = d.id, active = d.active, policydate = d.policy_date, policyduration = d.policy_duration, policynumber = d.policy_number, policytypeid  = d.policy_type_id }).ToList();
             return q;
 
         }
 
+        public PolicyViewModel GetPolicyById(int Id)
+        {
+            var q = context.Policies
+                .Where(p => p.id == Id)
+                .Select(d => new PolicyViewModel { id = d.id, active = d.active, policydate = d.policy_date, policyduration = d.policy_duration, policynumber = d.policy_number, policytypeid = d.policy_type_id })
+                .FirstOrDefault();
+            return q;
+        }
+
         public List<PolicyViewModel> GetById(int Id)
         {
-            throw new NotImplementedException();
+            var q = context.Policies
+                .Where(p => p.id == Id)
+                .Select(d => new PolicyViewModel { id = d.id, active = d.active, policydate = d.policy_date, policyduration = d.policy_duration, policynumber = d.policy_number, policytypeid = d.policy_type_id }).ToList();
+            return q;
         }
 
         public PolicyViewModel GetEdit(int id)
         {
-            var q = context.Policies.Where(d => d.id == id).Select(d => new PolicyViewModel { id = d.id, active = d.active, policydate = d.policy_date, policyduration = d.policy_duration, policynumber = d.policy_number }).FirstOrDefault();
+            var q = context.Policies.Where(d => d.id == id).Select(d => new PolicyViewModel {policytypeid = d.policy_type_id, id = d.id, active = d.active, policydate = d.policy_date,policyduration = d.policy_duration, policynumber = d.policy_number }).FirstOrDefault();
             return q;
                 
 
@@ -63,7 +83,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public List<PolicyViewModel> Gets(int page, int row)
         {
-            var q = context.Policies.Select(d => new PolicyViewModel { id = d.id, active = d.active, policydate = d.policy_date, policyduration = d.policy_duration, policynumber = d.policy_number }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
+            var q = context.Policies.Select(d => new PolicyViewModel { policytypeid = d.policy_type_id,id = d.id, active = d.active, policydate = d.policy_date, policyduration = d.policy_duration, policynumber = d.policy_number }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
             return q;
         }
 
@@ -75,7 +95,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
             HttpContext Context = HttpContext.Current;
             Context.Session["CountItemPolicy"] = CountItem;
             Context.Session["totalPage"] = totalPage;
-            var q = context.Policies.Where(d => d.policy_date.ToString().Contains(keyword.ToString()) || d.policy_number.ToString().Contains(keyword.ToString())).Select(d => new PolicyViewModel { id = d.id, active = d.active, policydate = d.policy_date, policyduration = d.policy_duration, policynumber = d.policy_number }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
+            var q = context.Policies.Where(d => d.policy_date.ToString().Contains(keyword.ToString()) || d.policy_number.ToString().Contains(keyword.ToString())).Select(d => new PolicyViewModel { id = d.id, active = d.active, policydate = d.policy_date, policyduration = d.policy_duration, policynumber = d.policy_number , policytypeid =d.policy_type_id }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
             return q;
 
         }
@@ -89,8 +109,12 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 q.policy_date = updateItems.policydate;
                 q.policy_duration = updateItems.policyduration;
                 q.policy_number = updateItems.policynumber;
-                context.SaveChanges();
-                return 1;
+                q.policy_type_id = updateItems.policytypeid;
+
+               return context.SaveChanges();
+
+
+                
 
 
             }

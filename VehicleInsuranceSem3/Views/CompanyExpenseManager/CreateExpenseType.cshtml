@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "CreateExpenseType";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+
+
+
+<form action="@Url.Action("AddExpenseType")" method="post">
+    <div class="form-group">
+        <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="Expense Type Name" value="" required>
+    </div>
+
+    <div class="form-check">
+        @*  <input type="checkbox" class="form-check-input" id="isActive" checked>*@
+        <input type="checkbox" name="active" id="active" required />
+        <label class="form-check-label" for="isActive">Is Active</label>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <a class="btn btn-warning" href="@Url.Action("ExpenseTypeManager")" style="color:white">Back</a>
+</form>
+
+

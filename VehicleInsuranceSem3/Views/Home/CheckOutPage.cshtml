@@ -1,0 +1,37 @@
+﻿@model VehicleInsuranceSem3.Models.CheckoutInfo
+@{
+    ViewBag.Title = "CheckOutPage";
+    Layout = "~/Views/Shared/Client_LayoutPage.cshtml";
+}
+
+<div class="container">
+    @if (Model != null)
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Customer Name</th>
+                    <th>Vehicle Name</th>
+                    <th>Policy Name</th>
+                    <th>Total Payment</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@Model.CustomerPolicy.Customer_Info.name</td>
+                    <td>@Model.Vehicle.Model.name</td>
+                    <td>@Model.CustomerPolicy.Policy.policy_number</td>
+                    <td>@Model.CustomerPolicy.total_payment</td>
+
+                </tr>
+            </tbody>
+        </table>
+    }
+
+</div>
+<hr />
+<div style="margin: 20px" class="container">
+    <a style="float:right" class="btn btn-block btn-success" href="@Url.Action("PaymentWithPaypal", "Paypal")"> Payment </a>
+</div>
+
+

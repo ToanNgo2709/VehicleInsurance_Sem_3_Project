@@ -129,6 +129,46 @@ pre {
     word-wrap: break-word;
 }
 
+.dropbtn {
+    background-color: #4a4c4e;
+    color: white;
+    font-size: 16px;
+    border: none;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: black;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        .dropdown-content a:hover {
+            color: #42a8f0;
+        }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    color: #42a8f0;
+}
+
 q {
     quotes: "\201C" "\201D" "\2018" "\2019";
 }
@@ -170,6 +210,20 @@ svg:not(:root) {
 figure {
     margin: 0;
 }
+
+
+table {
+    margin: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    padding: 10px;
+}
+
+
 
 fieldset {
     border: 1px solid #c0c0c0;
@@ -244,10 +298,6 @@ textarea {
     vertical-align: top;
 }
 
-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-}
 
 *, *:before, *:after {
     -moz-box-sizing: border-box;
@@ -1566,7 +1616,7 @@ form textarea {
     margin-left: 20px;
 }
 
-.right-section .social-icon{
+.right-section .social-icon {
     margin-left: 10px;
     padding: 5px 10px;
     border: 1px solid;
@@ -1574,9 +1624,9 @@ form textarea {
     transition: 0.3s;
 }
 
-.right-section .social-icon:hover{
-    color: red;
-}
+    .right-section .social-icon:hover {
+        color: red;
+    }
 
 @media screen and (max-width: 480px) {
     .right-section .search-form {
@@ -1663,27 +1713,27 @@ form textarea {
     float: right;
 }
 
-.sub-navigation .menu {
-    list-style: none;
-    display: inline-block;
-    margin-top: 5px;
-}
+    .sub-navigation .menu {
+        list-style: none;
+        display: inline-block;
+        margin-top: 5px;
+    }
 
-.sub-navigation .menu li {
-    display: inline-block;
-}
+        .sub-navigation .menu li {
+            display: inline-block;
+        }
 
-.sub-navigation .menu li a {
-    color: white;
-    padding: 0 10px;
-    /*border-right: 1px solid rgba(255, 255, 255, 0.3);*/
-    -webkit-transition: .3s ease;
-    transition: .3s ease;
-}
+            .sub-navigation .menu li a {
+                color: white;
+                padding: 0 10px;
+                /*border-right: 1px solid rgba(255, 255, 255, 0.3);*/
+                -webkit-transition: .3s ease;
+                transition: .3s ease;
+            }
 
-.sub-navigation .menu li a:hover {
-    color: #42a8f0;
-}
+                .sub-navigation .menu li a:hover {
+                    color: #42a8f0;
+                }
 
 .social-links {
     float: right;
@@ -2204,7 +2254,7 @@ form textarea {
 }
 
     .filterable-nav .mobile-filter {
-        display: none;
+        display: inline-block;
     }
 
     .filterable-nav strong {
@@ -2236,7 +2286,10 @@ form textarea {
 
 .insurance-item {
     width: 33.3333%;
-    padding: 15px;
+    padding: 10px;
+    display: inline;
+    float: left;
+    
 }
 
 @media screen and (max-width: 990px) {
@@ -2261,6 +2314,7 @@ form textarea {
 .insurance-item .insurance-content {
     background: #f1f1f1;
     border-radius: 3px;
+    ;
     padding: 30px;
     text-align: center;
 }
@@ -2269,6 +2323,7 @@ form textarea {
     font-size: 36px;
     font-size: 2.25em;
     font-weight: 300;
+    height: 80px;
     color: #0f75bd;
 }
 
