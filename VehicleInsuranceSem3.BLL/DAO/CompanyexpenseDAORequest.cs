@@ -24,7 +24,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 date = newItem.date,
                 amount = newItem.amount,
                 description = newItem.description,
-                 expense_type_id = (int)newItem.expensetypeid,
+                expense_type_id = (int)newItem.expensetypeid,
                 customer_policy_id = newItem.customerpolicyid,
                 id = newItem.id
 
@@ -37,7 +37,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
         public void Delete(int id)
         {
             var q = context.Company_Expense.Where(d => d.id == id).FirstOrDefault();
-            if (q!=null)
+            if (q != null)
             {
                 context.Company_Expense.Remove(q);
                 context.SaveChanges();
@@ -48,7 +48,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public List<CompanyexpenseViewModel> GetAll()
         {
-            var q = context.Company_Expense.Select(d => new CompanyexpenseViewModel { id = d.id, amount = (decimal)d.amount, customerpolicyid = d.customer_policy_id, date = d.date, description = d.description  , expensetypeid = d.expense_type_id}).ToList();
+            var q = context.Company_Expense.Select(d => new CompanyexpenseViewModel { id = d.id, amount = (decimal)d.amount, customerpolicyid = d.customer_policy_id, date = d.date, description = d.description, expensetypeid = d.expense_type_id }).ToList();
             return q;
 
         }
@@ -60,18 +60,18 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public CompanyexpenseViewModel GetEdit(int id)
         {
-            var q = context.Company_Expense.Where(d => d.id == id).Select(d => new CompanyexpenseViewModel {id = d.id, amount = (decimal)d.amount, date = d.date, description = d.description, customerpolicyid = d.customer_policy_id, expensetypeid = d.expense_type_id }).FirstOrDefault();
+            var q = context.Company_Expense.Where(d => d.id == id).Select(d => new CompanyexpenseViewModel { id = d.id, amount = (decimal)d.amount, date = d.date, description = d.description, customerpolicyid = d.customer_policy_id, expensetypeid = d.expense_type_id }).FirstOrDefault();
             return q;
 
         }
 
 
         public List<CompanyexpenseViewModel> Gets(int page, int row)
-            {
-            var q = context.Company_Expense.Select(d => new CompanyexpenseViewModel {id = d.id, amount = (decimal)d.amount, date = d.date, description = d.description , customerpolicyid = d.customer_policy_id , expensetypeid = d.expense_type_id }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
+        {
+            var q = context.Company_Expense.Select(d => new CompanyexpenseViewModel { id = d.id, amount = (decimal)d.amount, date = d.date, description = d.description, customerpolicyid = d.customer_policy_id, expensetypeid = d.expense_type_id }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
             return q;
 
-            }
+        }
 
         public List<CompanyexpenseViewModel> Search(int page, int row, string keyword)
         {
@@ -81,7 +81,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
             HttpContext Context = HttpContext.Current;
             Context.Session["CountItemCompanyexpense"] = Counitem;
             Context.Session["totalPage"] = totalPage;
-            var q = context.Company_Expense.Where(d => d.description.ToLower().Contains(keyword.ToLower())).Select(d=>new CompanyexpenseViewModel {  customerpolicyid = d.customer_policy_id , expensetypeid = d.expense_type_id , id = d.id , amount = (decimal)d.amount , date = d.date , description = d.description}).OrderBy(d =>d.id).Skip((page - 1) * row).Take(row).ToList();
+            var q = context.Company_Expense.Where(d => d.description.ToLower().Contains(keyword.ToLower())).Select(d => new CompanyexpenseViewModel { customerpolicyid = d.customer_policy_id, expensetypeid = d.expense_type_id, id = d.id, amount = (decimal)d.amount, date = d.date, description = d.description }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
             return q;
         }
 
@@ -95,11 +95,11 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 q.description = updateItems.description;
                 q.expense_type_id = (int)updateItems.expensetypeid;
                 q.customer_policy_id = updateItems.customerpolicyid;
-               
-                
+
+
 
                 context.SaveChanges();
-                return 1;        
+                return 1;
             }
             catch (EntityException ex)
             {
@@ -107,6 +107,14 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
                 return 0;
             }
+        }
+
+        public List<CompanyexpenseViewModel> FilterExpenseByDate(DateTime startDate, DateTime endDate, int page, int row)
+        {
+            var q = context.Company_Expense
+                .Where(c => c.date >= startDate && c.date <= endDate)
+                .Select(d => new CompanyexpenseViewModel { id = d.id, amount = (decimal)d.amount, date = d.date, description = d.description, customerpolicyid = d.customer_policy_id, expensetypeid = d.expense_type_id }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
+            return q;
         }
 
     }

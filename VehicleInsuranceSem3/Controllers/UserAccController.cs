@@ -24,19 +24,19 @@ namespace VehicleInsuranceSem3.Controllers
         }
         public ActionResult AccManager(int page = 1 , int pageSize = 10)
         {
-            List<CustomerinfoViewModel> listcus = new List<CustomerinfoViewModel>();
-            PagedList<CustomerinfoViewModel> PageListCus;
+            List<CustomerinfoViewModel> listcus = ss.GetAll();
+            PagedList<CustomerinfoViewModel> PageListCus = new PagedList<CustomerinfoViewModel>(listcus, page, pageSize);
             if (Session["cusSearch"] != null)
             {
                 listcus = (List<CustomerinfoViewModel>)Session["cusSearch"];
                 PageListCus = new PagedList<CustomerinfoViewModel>(listcus, page, pageSize);
             }
-            else
-            {
-                listcus = ss.GetAll();
-                PageListCus = new PagedList<CustomerinfoViewModel>(listcus, page, pageSize);
+            //else
+            //{
+            //    listcus = ss.GetAll();
+            //    PageListCus = new PagedList<CustomerinfoViewModel>(listcus, page, pageSize);
 
-            }
+            //}
 
             return View(PageListCus);
         }

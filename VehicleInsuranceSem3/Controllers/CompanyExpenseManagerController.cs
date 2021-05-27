@@ -27,6 +27,8 @@ namespace VehicleInsuranceSem3.Controllers
         }
         public ActionResult ExpenseTypeManager(int page = 1, int pageSize = 10)
         {
+            List<ExpensetypeViewModel> c = mc.GetAll();
+            Session["ViewAllExpenseType"] = c;
             List<ExpensetypeViewModel> LisExpenseTpe = new List<ExpensetypeViewModel>();
             PagedList<ExpensetypeViewModel> PageListExpenseTpe;
             if (Session["SearchExpenseType"] != null)
@@ -46,6 +48,10 @@ namespace VehicleInsuranceSem3.Controllers
         }
         public ActionResult CompanyExpenseManager(int page = 1, int pageSize = 10)
         {
+            List<CompanyexpenseViewModel> x = xx.GetAll();
+            Session["CompanyExpenseViewAll"] = x;
+            List<ExpensetypeViewModel> c = mc.GetAll();
+            Session["ViewAllExpenseType"] = c;
 
             List<CompanyexpenseViewModel> ListCompanyExpense = new List<CompanyexpenseViewModel>();
             PagedList<CompanyexpenseViewModel> PageListCompanyExpense;
@@ -65,6 +71,11 @@ namespace VehicleInsuranceSem3.Controllers
         }
         public ActionResult CLaimDetailManager(int page = 1, int pageSize = 10)
         {
+            List<ClaimDetailViewModel> s = l.GetAll();
+            Session["ClaimDetailViewAll"] = s;
+            List<CustomerpolicyViewModel> z = sxx.GetAll();
+            Session["CusAllView"] = z;
+
             List<ClaimDetailViewModel> ListClaimDetail = new List<ClaimDetailViewModel>();
             PagedList<ClaimDetailViewModel> PageListClaimDetail;
             if (Session["ClaimDetailSearchs"] != null)
@@ -138,6 +149,18 @@ namespace VehicleInsuranceSem3.Controllers
             Session["CusAllView"] = z;
             return RedirectToAction("CLaimDetailManager");
         }
+
+        public ActionResult FilterClaimByDate()
+        {
+            DateTime startDate = DateTime.Parse(Request.Params["startDate"]);
+            DateTime endDate = DateTime.Parse(Request.Params["endDate"]);
+            List<ClaimDetailViewModel> model = l.FilterClaimDetailByDate(startDate, endDate, 1, 10);
+            Session["ClaimDetailSearchs"] = model;
+            return RedirectToAction("CLaimDetailManager");
+        }
+
+
+
         public ActionResult ComPanySearch()
         {
             var keyword = Request.Form["tbSearch"];
@@ -153,6 +176,17 @@ namespace VehicleInsuranceSem3.Controllers
             Session["ViewAllExpenseType"] = c;
             return RedirectToAction("CompanyExpenseManager");
         }
+
+        [HttpPost]
+        public ActionResult FilterCompanyExpense()
+        {
+            DateTime startDate = DateTime.Parse(Request.Params["startDate"]);
+            DateTime endDate = DateTime.Parse(Request.Params["endDate"]);
+            List<CompanyexpenseViewModel> model = xx.FilterExpenseByDate(startDate, endDate, 1, 10);
+            Session["CompanyExpenseSearch"] = model;
+            return RedirectToAction("CompanyExpenseManager");
+        }
+
         public ActionResult expenseTypeSearch()
         {
             var keyword = Request.Form["tbSearch"];

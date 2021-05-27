@@ -114,6 +114,14 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 return 0;
             }
         }
+
+        public List<ClaimDetailViewModel> FilterClaimDetailByDate(DateTime start, DateTime end, int page, int row)
+        {
+            var q = context.Claim_Detail
+                .Where(c => c.date_accident >= start && c.date_accident <= end)
+                .Select(d => new ClaimDetailViewModel { id = d.id, claimableamount = d.claimable_amount, claimnumber = d.claim_number, customerpolicyid = d.customer_policy_id, dateaccident = d.date_accident, insuredamount = d.insured_amount, placeaccident = d.place_accident }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
+            return q;
+        }
     }
 
 }

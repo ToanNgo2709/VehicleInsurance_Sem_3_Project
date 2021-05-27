@@ -124,6 +124,14 @@ namespace VehicleInsuranceSem3.BLL.DAO
             }
         }
 
+        public List<CustomerbillinginfoViewModel> FilterByDate(DateTime start, DateTime end, int page, int row)
+        {
+            var q = context.Customer_Billing_Info
+                .Where(c => c.create_date >= start && c.create_date <= end)
+                .Select(d => new CustomerbillinginfoViewModel { customerpolicyid = (int)d.customer_policy_id, id = d.id, active = d.active, amount = d.amount, bill_number = d.bill_number, createdate = d.create_date, customeraddprove = d.customer_add_prove }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
+            return q;
+        }
+
     
     }
 }

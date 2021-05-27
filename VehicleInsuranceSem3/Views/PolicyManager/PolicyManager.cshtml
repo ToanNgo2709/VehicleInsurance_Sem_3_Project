@@ -38,8 +38,7 @@
     </thead>
 
     <tbody>
-        @if (Session["AllPolicy"] != null)
-        {
+        @{
             var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>)Session["AllPolicy"];
             int i = 1;
             foreach (var item in Model)

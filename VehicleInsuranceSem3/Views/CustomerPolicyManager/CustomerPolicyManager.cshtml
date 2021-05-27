@@ -20,6 +20,20 @@
             <i class="fa fa-search"></i>
         </button>
     </form>
+    
+    <form style="margin-left: 40px" action="@Url.Action("CustomerPolicySearchByDate")" method="post" class="form-inline">
+        <div style="margin-left: 20px" class="form-group">
+            <label>Start Date:</label>
+            <input type="date" class="form-control" id="startDate" name="startDate" />
+        </div>
+        <div style="margin-left: 20px" class="form-group">
+            <label>End Date:</label>
+            <input type="date" class="form-control" id="endDate" name="endDate" />
+        </div>
+        <div style="margin-left: 20px" class="form-group">
+            <button class="btn btn-primary" type="submit">Confirm</button>
+        </div>
+    </form>
 </div>
 <hr />
 <table class="table table-striped">
@@ -43,8 +57,7 @@
     </thead>
 
     <tbody>
-        @if (Session["CustomAll"] != null)
-        {
+        @{
             var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel>)Session["CustomAll"];
             int i = 1;
             foreach (var item in Model)

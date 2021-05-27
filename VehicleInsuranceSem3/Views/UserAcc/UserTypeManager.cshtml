@@ -39,8 +39,7 @@
     </thead>
 
     <tbody>
-        @if (Session["AllListUsType"] != null)
-        {
+        @{
             var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.UsertypeViewModel>)Session["AllListUsType"];
             int i = 1;
             foreach (var item in Model)

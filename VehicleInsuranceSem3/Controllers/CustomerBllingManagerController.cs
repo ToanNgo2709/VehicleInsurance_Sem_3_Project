@@ -22,6 +22,11 @@ namespace VehicleInsuranceSem3.Controllers
         }
         public ActionResult CusTomerBillManagerl(int page = 1 , int pageSize = 10)
         {
+            List<CustomerbillinginfoViewModel> x = csb.GetAll();
+            Session["csbAllView"] = x;
+            List<CustomerpolicyViewModel> z = csp.GetAll();
+            Session["cspAllView"] = z;
+
             List<CustomerbillinginfoViewModel> ListCusbill = new List<CustomerbillinginfoViewModel>();
             PagedList<CustomerbillinginfoViewModel> PageListCusBill;
             if (Session["CusbillSearch"] !=null)
@@ -68,6 +73,18 @@ namespace VehicleInsuranceSem3.Controllers
             
             List<CustomerpolicyViewModel> z = csp.GetAll();
             Session["cspAllView"] = z;
+            return RedirectToAction("CusTomerBillManagerl");
+        }
+
+        [HttpPost]
+        public ActionResult FilterBillByDate()
+        {
+            DateTime startDate = DateTime.Parse(Request.Params["startDate"]);
+            DateTime endDate = DateTime.Parse(Request.Params["endDate"]);
+
+            List<CustomerbillinginfoViewModel> list = csb.FilterByDate(startDate, endDate, 1, 10);
+            Session["CusbillSearch"] = list;
+
             return RedirectToAction("CusTomerBillManagerl");
         }
 
