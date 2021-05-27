@@ -9,6 +9,7 @@ using System.Web;
 using VehicleInsuranceSem3.BLL.Repository;
 using VehicleInsuranceSem3.BLL.ViewModel;
 using VehicleInsuranceSem3.DAL.Model;
+using VehicleInsuranceSem3.Utilities.Crypto;
 
 namespace VehicleInsuranceSem3.BLL.DAO
 {
@@ -29,7 +30,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
                     email = newItem.email,
                     active = newItem.active,
                     username = newItem.username,
-                    password = newItem.password,
+                    password = PasswordSecurity.Encrypt(newItem.password),
                     user_type_id = newItem.user_type_id
                 };
                 context.Customer_Info.Add(customer);

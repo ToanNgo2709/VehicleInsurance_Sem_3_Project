@@ -3133,6 +3133,7 @@
     <Content Include="Views\CustomerBllingManager\CustomerPolicyBillView.cshtml" />
     <Content Include="Views\Home\CustomerHistoryDetail.cshtml" />
     <Content Include="Views\UserAcc\ShowCustomerPolicyDetail.cshtml" />
+    <Content Include="Views\Home\ConvertPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

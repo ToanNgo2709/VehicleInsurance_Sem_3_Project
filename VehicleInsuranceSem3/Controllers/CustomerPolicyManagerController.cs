@@ -27,6 +27,13 @@ using PagedList.Mvc;
             List<CustomerpolicyViewModel> ListcusPL = new List<CustomerpolicyViewModel>();
             PagedList<CustomerpolicyViewModel> PageListCusPL;
 
+            List<PolicyViewModel> s = pl.GetAll();
+            Session["PolicyAll"] = s;
+            List<VehicleinfoViewModel> a = vh.GetAll();
+            Session["VehicleAll"] = a;
+            List<CustomerinfoViewModel> w = csi.GetAll();
+            Session["customerInAll"] = w;
+
             int pageSize = 10;
             int pageNumber = (page ?? 1);
             if (Session["CusPLSearch"] != null)
@@ -75,8 +82,18 @@ using PagedList.Mvc;
             List<CustomerinfoViewModel> w = csi.GetAll();
             Session["customerInAll"] = w;
             return RedirectToAction("CustomerPolicyManager");
+        }
 
+        [HttpPost]
+        public ActionResult CustomerPolicySearchByDate()
+        {
+            DateTime startDate =DateTime.Parse(Request.Params["startDate"]);
+            DateTime endDate = DateTime.Parse(Request.Params["endDate"]);
 
+            List<CustomerpolicyViewModel> list = cs.FilterCustomerPolicyByCreateDate(startDate, endDate, 1, 10);
+            Session["CusPLSearch"] = list;
+
+            return RedirectToAction("CustomerPolicyManager");
         }
         public ActionResult EditCustomerPolicy(int id)
         {
@@ -125,6 +142,8 @@ using PagedList.Mvc;
             Session["CustomAll"] = d;
             return RedirectToAction("CustomerPolicyViewAll");
         }
+
+        [HttpPost]
         public ActionResult DeleteCustomerPolicy(int id)
         {
             cs.Delete(id);

@@ -26,6 +26,9 @@ namespace VehicleInsuranceSem3.Controllers
 
         public ActionResult BrandManager(int page = 1, int pageSize = 5)
         {
+            List<BrandViewModel> a = brd.GetAll();
+            Session["LisBrandAll"] = a;
+
             List<BrandViewModel> ListBrand = new List<BrandViewModel>();
             PagedList<BrandViewModel> PagelistBrand;
           
@@ -48,6 +51,11 @@ namespace VehicleInsuranceSem3.Controllers
 
         public ActionResult ModelManager(int page = 1, int pageSize = 10)
         {
+            List<ModelViewModel> s = saf.GetAll();
+            Session["ListAllModel"] = s;
+            List<BrandViewModel> a = brd.GetAll();
+            Session["LisBrandAll"] = a;
+
             List<ModelViewModel> ListModel = new List<ModelViewModel>();
             PagedList<ModelViewModel> PagedListModel;
 
@@ -212,6 +220,7 @@ namespace VehicleInsuranceSem3.Controllers
 
         }
 
+        [HttpPost]
         public ActionResult DeleteBrand(int id)
         {
             brd.Delete(id);
@@ -220,6 +229,8 @@ namespace VehicleInsuranceSem3.Controllers
 
             return RedirectToAction("BrandViewAll");
         }
+
+        [HttpPost]
         public ActionResult DeleteModel(int id)
         {
             saf.Delete(id);

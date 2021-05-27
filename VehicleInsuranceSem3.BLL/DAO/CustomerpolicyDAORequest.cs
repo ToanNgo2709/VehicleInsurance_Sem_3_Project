@@ -182,5 +182,13 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 }).ToList();
             return list;
         }
+
+        public List<CustomerpolicyViewModel> FilterCustomerPolicyByCreateDate(DateTime startDate, DateTime endDate, int page, int row) 
+        {
+            var q = context.Customer_Policy
+                .Where(c => c.create_date >= startDate && c.create_date <= endDate)
+                .Select(d => new CustomerpolicyViewModel { id = d.id, active = d.active, createdate = d.create_date, customeraddprove = d.customer_add_prove, policystartdate = d.policy_start_date, policyenddate = d.policy_end_date, TotalPayment = d.total_payment, policyid = (int)d.policy_id, vehicleid = (int)d.vehicle_id, customerid = (int)d.customer_id }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
+            return q;
+        }
     }
 }

@@ -26,6 +26,13 @@ namespace VehicleInsuranceSem3.Controllers
 
         public ActionResult VehicleInfoManager(int page = 1 , int pageSize =10)
         {
+            List<VehicleinfoViewModel> f = lk.GetAll();
+            Session["VehicleInfoAll"] = f;
+            List<BrandViewModel> s = br.GetAll();
+            Session["brandAll"] = s;
+            List<ModelViewModel> o = md.GetAll();
+            Session["modelAll"] = o;
+
             List<VehicleinfoViewModel> Listvh = new List<VehicleinfoViewModel>();
             PagedList<VehicleinfoViewModel> PageListVH;
             if (Session["VHSearch"] != null)
@@ -117,6 +124,7 @@ namespace VehicleInsuranceSem3.Controllers
 
         }
 
+        [HttpPost]
         public ActionResult DeleteVehicle(int id)
         {
             lk.Delete(id);

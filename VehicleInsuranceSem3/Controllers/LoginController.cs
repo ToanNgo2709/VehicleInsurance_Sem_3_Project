@@ -8,6 +8,7 @@ using VehicleInsuranceSem3.BLL.ViewModel;
 using VehicleInsuranceSem3.BLL.DAO;
 using System.Text;
 using VehicleInsuranceSem3.DAL.Model;
+using VehicleInsuranceSem3.Utilities.Crypto;
 
 namespace VehicleInsuranceSem3.Controllers
 {
@@ -36,12 +37,13 @@ namespace VehicleInsuranceSem3.Controllers
                 string pw = uv.password;
                 if (Session["id"] == null)
                 {
+                    var ecrtPassword = PasswordSecurity.Encrypt(pw);
                     var checkus = ctx.Customer_Info
                         .Where(a => a.username.Equals(uv.username))
                         .FirstOrDefault();
                     if (checkus != null)
                     {
-                        var obj = ctx.Customer_Info.Where(a => a.username.Equals(uv.username) && a.password.Equals(pw)).FirstOrDefault();
+                        var obj = ctx.Customer_Info.Where(a => a.username.Equals(uv.username) && a.password.Equals(ecrtPassword)).FirstOrDefault();
                         if (obj != null)
                         {
                             var ut = ctx.User_Type.Where(t => t.id == obj.user_type_id).Select(t => t.name).FirstOrDefault().ToString();
@@ -97,8 +99,9 @@ namespace VehicleInsuranceSem3.Controllers
         {
             using (var ctx = new InsuranceDbContext())
             {
+                var ecrtPassword = PasswordSecurity.Encrypt(model.password);
                 string result = "Fail";
-                var DataItem = ctx.Customer_Info.Where(x => x.username == model.username && x.password == model.password).SingleOrDefault();
+                var DataItem = ctx.Customer_Info.Where(x => x.username == model.username && x.password.Equals(ecrtPassword)).SingleOrDefault();
                 if (DataItem != null)
                 {
                     Session["id"] = DataItem.id.ToString();
@@ -140,46 +143,6 @@ namespace VehicleInsuranceSem3.Controllers
 
 
         //===============================================================================
-        public static string Encrypt(string text)
-        {
-            string key = "A!9HHhi%XjjYY4YP2@Nob009X";
-            using (var md5 = new MD5CryptoServiceProvider())
-            {
-                using (var tdes = new TripleDESCryptoServiceProvider())
-                {
-                    tdes.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
-                    tdes.Mode = CipherMode.ECB;
-                    tdes.Padding = PaddingMode.PKCS7;
-
-                    using (var transform = tdes.CreateEncryptor())
-                    {
-                        byte[] textBytes = UTF8Encoding.UTF8.GetBytes(text);
-                        byte[] bytes = transform.TransformFinalBlock(textBytes, 0, textBytes.Length);
-                        return Convert.ToBase64String(bytes, 0, bytes.Length);
-                    }
-                }
-            }
-        }
-
-        public static string Decrypt(string cipher)
-        {
-            string key = "A!9HHhi%XjjYY4YP2@Nob009X";
-            using (var md5 = new MD5CryptoServiceProvider())
-            {
-                using (var tdes = new TripleDESCryptoServiceProvider())
-                {
-                    tdes.Key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(key));
-                    tdes.Mode = CipherMode.ECB;
-                    tdes.Padding = PaddingMode.PKCS7;
-
-                    using (var transform = tdes.CreateDecryptor())
-                    {
-                        byte[] cipherBytes = Convert.FromBase64String(cipher);
-                        byte[] bytes = transform.TransformFinalBlock(cipherBytes, 0, cipherBytes.Length);
-                        return UTF8Encoding.UTF8.GetString(bytes);
-                    }
-                }
-            }
-        }
+        
     }
 }

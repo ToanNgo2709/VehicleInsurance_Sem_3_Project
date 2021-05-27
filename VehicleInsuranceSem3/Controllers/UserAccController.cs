@@ -24,19 +24,19 @@ namespace VehicleInsuranceSem3.Controllers
         }
         public ActionResult AccManager(int page = 1 , int pageSize = 10)
         {
-            List<CustomerinfoViewModel> listcus = new List<CustomerinfoViewModel>();
-            PagedList<CustomerinfoViewModel> PageListCus;
+            List<CustomerinfoViewModel> listcus = ss.GetAll();
+            PagedList<CustomerinfoViewModel> PageListCus = new PagedList<CustomerinfoViewModel>(listcus, page, pageSize);
             if (Session["cusSearch"] != null)
             {
                 listcus = (List<CustomerinfoViewModel>)Session["cusSearch"];
                 PageListCus = new PagedList<CustomerinfoViewModel>(listcus, page, pageSize);
             }
-            else
-            {
-                listcus = ss.GetAll();
-                PageListCus = new PagedList<CustomerinfoViewModel>(listcus, page, pageSize);
+            //else
+            //{
+            //    listcus = ss.GetAll();
+            //    PageListCus = new PagedList<CustomerinfoViewModel>(listcus, page, pageSize);
 
-            }
+            //}
 
             return View(PageListCus);
         }
@@ -202,6 +202,7 @@ namespace VehicleInsuranceSem3.Controllers
             return View(list);
         }
 
+       
         public ActionResult ShowCustomerPolicyDetail(int customerPolicyId)
         {
             var context = new InsuranceDbContext();
@@ -231,6 +232,7 @@ namespace VehicleInsuranceSem3.Controllers
         #endregion
 
         #region Delete
+        [HttpPost]
         public ActionResult DeleteAcc(int id)
         {
             ss.Delete(id);
@@ -238,6 +240,8 @@ namespace VehicleInsuranceSem3.Controllers
             Session["AllListAcc"] = c;
             return RedirectToAction("ViewAllAcc");
         }
+
+        [HttpPost]
         public ActionResult DeleteUSType(int id)
         {
             cc.Delete(id);

@@ -10,6 +10,7 @@ using VehicleInsuranceSem3.BLL.Feature;
 using VehicleInsuranceSem3.BLL.ViewModel;
 using VehicleInsuranceSem3.DAL.Model;
 using VehicleInsuranceSem3.Models;
+using VehicleInsuranceSem3.Utilities.Crypto;
 
 namespace VehicleInsuranceSem3.Controllers
 {
@@ -232,13 +233,13 @@ namespace VehicleInsuranceSem3.Controllers
             string reNewPassword = Request.Params["reNewPassword"];
             CustomerinfoDAORequest request = new CustomerinfoDAORequest();
             var customer = request.GetCustomerById(id);
-            if (CheckNullField(oldPassword, newPassword, reNewPassword))
+            if (!CheckNullField(oldPassword, newPassword, reNewPassword))
             {
                 if (CheckOldPassword(customer.password, oldPassword))
                 {
                     if (CheckMatchNewPassword(newPassword, reNewPassword))
                     {
-                        customer.password = newPassword;
+                        customer.password = PasswordSecurity.Encrypt(newPassword);
                         request.Update(customer);
                         return RedirectToAction("Index");
                     }
@@ -267,7 +268,8 @@ namespace VehicleInsuranceSem3.Controllers
         //===============================================================================================
         public bool CheckOldPassword(string dbPassword, string enterPassword)
         {
-            if (dbPassword.Equals(enterPassword))
+
+            if (PasswordSecurity.Decrypt(dbPassword).Equals(enterPassword))
             {
                 return true;
             }
@@ -292,5 +294,19 @@ namespace VehicleInsuranceSem3.Controllers
             return false;
         }
 
+        public ActionResult ConvertPassword()
+        {
+            ViewBag.result = TempData["encrypt"];
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Convert()
+        {
+            string password = Request.Params["password"];
+            string encryptPw = PasswordSecurity.Encrypt(password);
+            TempData["encrypt"] = encryptPw;
+            return RedirectToAction("ConvertPassword", TempData["encrypt"]);
+        }
     }
 }
