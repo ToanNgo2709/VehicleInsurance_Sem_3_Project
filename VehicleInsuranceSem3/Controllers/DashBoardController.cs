@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,11 +16,12 @@ namespace VehicleInsuranceSem3.Controllers
 
         ReportFeature report = new ReportFeature();
         // GET: DashBoard
-        public ActionResult DashIndex()
+        public ActionResult DashIndex(int? page)
         {
             DateTime date = DateTime.Now;
             var firstDayOfMonth = new DateTime(date.Year, date.Month, 1);
             var lastDayOfMonth = firstDayOfMonth.AddMonths(1).AddDays(-1);
+            
 
             List<PolicyTypeCountModel> thisMonthList = report.CountPolicyTypeSellByMonth(firstDayOfMonth, lastDayOfMonth);
 
@@ -30,9 +32,11 @@ namespace VehicleInsuranceSem3.Controllers
             }
             ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
 
-            ///------------------------------------
-            List<InsuranceCustomerPolicyMonthlyViewModel> model = report.ShowCustomerPolicyByDate(firstDayOfMonth, lastDayOfMonth);
-            ViewBag.insuranceList = model;
+            ///------------------------------------       
+            int pageSize = 2;
+            int pageNumber = (page ?? 1);
+            List<InsuranceCustomerPolicyMonthlyViewModel> list = report.ShowCustomerPolicyByDate(firstDayOfMonth, lastDayOfMonth);
+            IPagedList<InsuranceCustomerPolicyMonthlyViewModel> pageOrders = list.ToPagedList(pageNumber, pageSize);
 
             ///-------------------------------------------
 
@@ -44,7 +48,7 @@ namespace VehicleInsuranceSem3.Controllers
             }
             ViewBag.BrandDataPoints = JsonConvert.SerializeObject(brandDataPoints);
 
-            return View();
+            return View(pageOrders);
         }
     }
 }

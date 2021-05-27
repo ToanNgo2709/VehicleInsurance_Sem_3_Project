@@ -20,8 +20,7 @@ namespace VehicleInsuranceSem3.Controllers
         }
 
         public ActionResult Success()
-        {
-            
+        {   
             return View();
         }
 

@@ -53,6 +53,14 @@ namespace VehicleInsuranceSem3.BLL.DAO
             return q;
         }
 
+        public ClaimDetailViewModel GetClaimById(int id)
+        {
+            var q = context.Claim_Detail
+                .Where(c => c.id == id)
+                .Select(d => new ClaimDetailViewModel { id = d.id, claimableamount = d.claimable_amount, claimnumber = d.claim_number, customerpolicyid = d.customer_policy_id, dateaccident = d.date_accident, insuredamount = d.insured_amount, placeaccident = d.place_accident }).FirstOrDefault();
+            return q;
+        }
+
         public List<ClaimDetailViewModel> GetById(int Id)
         {
             throw new NotImplementedException();

@@ -12,16 +12,16 @@
     <input type="text" value="@Usacc.id" name="id" id="id" hidden />
     
     <div class="form-group">
-        <label for="exampleInputPassword1">Date </label>
+        <label for="exampleInputPassword1">Date: </label>
         <input type="date" class="form-control" id="dob" name="date" placeholder="" value="@Usacc.date.ToString("yyyy-MM-dd")">
     @*    <p>@Usacc.date</p>*@
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Amount</label>
+        <label for="exampleInputPassword1">Amount:</label>
         <input type="number" class="form-control" id="amount" name="amount" placeholder="" value="@Usacc.amount" min=" 10" max=" 99999999999">
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Description</label>
+        <label for="exampleInputPassword1">Description:</label>
         <input type="text" class="form-control" id="phone" name="description" placeholder="" value="@Usacc.description">
     </div>
   
@@ -38,8 +38,8 @@
 
 
     <div class="form-group">
-        <label for="exampleInputPassword1">authToken</label>
-        <select class="form-select" aria-label="Default select example" id="expensetypeid" name="expensetypeid" tabindex="@Usacc.expensetypeid">
+        <label for="exampleInputPassword1">Expense Type:</label>
+        <select class="form-control" aria-label="Default select example" id="expensetypeid" name="expensetypeid" tabindex="@Usacc.expensetypeid">
             @if (ls != null)
             {
 
@@ -59,5 +59,5 @@
         </select>
     </div>
     <button type="submit" class="btn btn-primary" value="">Submit</button>
-    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("CompanyExpenseManager")" style="color:white">Back</a></button>
+    <a class="btn btn-warning" href="@Url.Action("CompanyExpenseManager")" style="color:white">Back</a>
 </form>

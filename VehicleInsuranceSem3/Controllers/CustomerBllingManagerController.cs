@@ -7,6 +7,7 @@ using VehicleInsuranceSem3.BLL.DAO;
 using VehicleInsuranceSem3.BLL.ViewModel;
 using PagedList;
 using PagedList.Mvc;
+using VehicleInsuranceSem3.DAL.Model;
 
 namespace VehicleInsuranceSem3.Controllers
 {
@@ -93,6 +94,8 @@ namespace VehicleInsuranceSem3.Controllers
             return RedirectToAction("customerSearch");
         }
 
+
+
         public ActionResult CreateCustomerBill()
         {
             List<CustomerbillinginfoViewModel> x = csb.GetAll();
@@ -132,8 +135,37 @@ namespace VehicleInsuranceSem3.Controllers
 
             CustomerBillingInfoDAORequest request = new CustomerBillingInfoDAORequest();
             request.Add(model);
-            return RedirectToAction("CustomerPolicyManager", "CustomerPolicyManager");
+            return RedirectToAction("CustomerPolicyBillView", model);
         }
+
+        public ActionResult BillDetail(int id)
+        {
+            CustomerBillingInfoDAORequest request = new CustomerBillingInfoDAORequest();
+            CustomerbillinginfoViewModel model = request.GetBillById(id);
+            return RedirectToAction("CustomerPolicyBillView", model);
+        }
+
+        public ActionResult CustomerPolicyBillView(CustomerbillinginfoViewModel model)
+        {
+            var context = new InsuranceDbContext();
+            var item = context.Customer_Billing_Info
+                .Where(c => c.customer_policy_id == model.customerpolicyid)
+                .Select(c => new CustomerPolicyBillViewModel
+                {
+                    Amount = c.amount,
+                    BillNumber = c.bill_number,
+                    CreateDate = c.create_date,
+                    CustomerName = c.Customer_Policy.Customer_Info.name,
+                    CustomerPolicyId = (int)c.customer_policy_id,
+                    EndDate = c.Customer_Policy.policy_end_date,
+                    PolicyName = c.Customer_Policy.Policy.policy_number,
+                    StartDate = c.Customer_Policy.policy_start_date,
+                    VehicleName = c.Customer_Policy.Vehicle_Info.Brand.name + " " + c.Customer_Policy.Vehicle_Info.Model.name
+                }).FirstOrDefault();
+            return View(item);
+        }
+
+
 
 
         [HttpPost]

@@ -22,20 +22,23 @@ using PagedList.Mvc;
         {
             return View();
         }
-        public ActionResult CustomerPolicyManager(int page = 1, int pageSize = 10)
+        public ActionResult CustomerPolicyManager(int? page)
         {
             List<CustomerpolicyViewModel> ListcusPL = new List<CustomerpolicyViewModel>();
             PagedList<CustomerpolicyViewModel> PageListCusPL;
+
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
             if (Session["CusPLSearch"] != null)
             {
                 ListcusPL = (List <CustomerpolicyViewModel>) Session["CusPLSearch"];
-                PageListCusPL = new PagedList<CustomerpolicyViewModel>(ListcusPL , page , pageSize);
+                PageListCusPL = new PagedList<CustomerpolicyViewModel>(ListcusPL , pageNumber , pageSize);
 
             }
             else
             {
                 ListcusPL = cs.GetAll();
-                PageListCusPL = new PagedList<CustomerpolicyViewModel>(ListcusPL, page, pageSize);
+                PageListCusPL = new PagedList<CustomerpolicyViewModel>(ListcusPL, pageNumber, pageSize);
             }
 
             return View(PageListCusPL);

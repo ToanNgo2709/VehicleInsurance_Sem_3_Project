@@ -55,6 +55,15 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         }
 
+        public List<CustomerpolicyViewModel> GetLapsePolicy(DateTime today)
+        {
+            var q = context.Customer_Policy.Where(c => c.policy_end_date < today)
+                .Select(d => new CustomerpolicyViewModel { id = d.id, active = d.active, createdate = d.create_date, customeraddprove = d.customer_add_prove, policystartdate = d.policy_start_date, policyenddate = d.policy_end_date, TotalPayment = d.total_payment, policyid = (int)d.policy_id, vehicleid = (int)d.vehicle_id, customerid = (int)d.customer_id }).ToList();
+            return q;
+
+        }
+
+
 
         public List<CustomerpolicyViewModel> GetById(int Id)
         {
@@ -162,6 +171,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 .Where(c => c.customer_id == customerId)
                 .Select(c => new CustomerHistoryModelView
                 {
+                    CustomerPolicyId = c.id,
                     CreateDate = c.create_date,
                     CustomerId = (int)c.customer_id,
                     EndDate = c.policy_end_date,

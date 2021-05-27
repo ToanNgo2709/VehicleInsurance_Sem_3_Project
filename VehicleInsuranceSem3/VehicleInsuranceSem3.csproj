@@ -172,7 +172,6 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\PaypalController.cs" />
-    <Compile Include="Controllers\PaypalPaymentController.cs" />
     <Compile Include="Controllers\PolicyManagerController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\ReportModuleController.cs" />
@@ -2727,6 +2726,7 @@
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\html2canvas.js" />
     <Content Include="Scripts\index.js.flow" />
     <Content Include="Scripts\esm\popper.min.js.map" />
     <Content Include="Scripts\esm\popper.js.map" />
@@ -3124,6 +3124,15 @@
     <Content Include="Views\PaypalPayment\FailureView.cshtml" />
     <Content Include="Views\Paypal\Success.cshtml" />
     <Content Include="Views\Paypal\Failure.cshtml" />
+    <Content Include="Views\Shared\CustomerPurchaseReportChart_PartialPage.cshtml" />
+    <Content Include="Views\Shared\CustomerPurchaseTable_PartialPage.cshtml" />
+    <Content Include="Views\UserAcc\ShowCustomerPolicyHistory.cshtml" />
+    <Content Include="Views\Shared\Expense_PartialPage.cshtml" />
+    <Content Include="Views\Shared\ExpenseSumChart_PartialPage.cshtml" />
+    <Content Include="Views\CompanyExpenseManager\ClaimDetailBill.cshtml" />
+    <Content Include="Views\CustomerBllingManager\CustomerPolicyBillView.cshtml" />
+    <Content Include="Views\Home\CustomerHistoryDetail.cshtml" />
+    <Content Include="Views\UserAcc\ShowCustomerPolicyDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

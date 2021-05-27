@@ -9,8 +9,8 @@
     <input type="text" value="@br.Id" name="id" id="id" hidden />
     <div class="form-group">
         <label for="exampleInputEmail1">Name</label>
-        <input type="text" class="form-control" id="NameProdc" name="name" aria-describedby="emailHelp" placeholder="Name" value="@br.Name" required>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <input type="text" class="form-control" id="NameProdc" name="name" aria-describedby="emailHelp" placeholder="Brand Name" value="@br.Name" required>
+        
     </div>
 
     <div class="form-check">
@@ -23,6 +23,6 @@
 
 
     <button type="submit" class="btn btn-primary" value="">Submit</button>
-    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("BrandManager")">Back</a></button>
+    <a class="btn btn-warning" href="@Url.Action("BrandManager")">Back</a>
 </form>
 

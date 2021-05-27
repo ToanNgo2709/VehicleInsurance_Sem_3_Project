@@ -4,13 +4,11 @@
     Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
 }
 
-<a href="@Url.Action("UserTypeManager")" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Back</a>
-
 <form action="@Url.Action("AddUsType")" method="post">
     <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
+        <label for="exampleInputEmail1">UserType:</label>
         <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" placeholder="name" value="" required>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        
     </div>
 
     <div class="form-check">
@@ -21,6 +19,6 @@
    
 
     <button type="submit" class="btn btn-primary" value="">Submit</button>
-    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("UserTypeManager")">Back</a></button>
+    <a class="btn btn-warning" href="@Url.Action("UserTypeManager")">Back</a>
 </form>
 

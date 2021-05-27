@@ -1,5 +1,5 @@
 ﻿@model PagedList.IPagedList<VehicleInsuranceSem3.BLL.ViewModel.CustomerbillinginfoViewModel>
- @using PagedList.Mvc;
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "CusTomerBillManagerl";
     Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
@@ -46,35 +46,36 @@
             foreach (var item in Model)
             {
 
-        <tr>
-            <td>@i</td>
-            <td>@item.customeraddprove</td>
-            <td>@item.bill_number</td>
-            <td>@item.createdate</td>
-            <td>@item.amount</td>
-            <td>@item.active</td>
-            @if (s != null)
-            {
-                foreach (var tem in s)
-                {
-                    if (item.customerpolicyid == tem.id)
+                <tr>
+                    <td>@i</td>
+                    <td>@item.customeraddprove</td>
+                    <td>@item.bill_number</td>
+                    <td>@item.createdate</td>
+                    <td>@item.amount</td>
+                    <td>@item.active</td>
+                    @if (s != null)
                     {
-                        <td tabindex="@item.customerpolicyid">@tem.id</td>
+                        foreach (var tem in s)
+                        {
+                            if (item.customerpolicyid == tem.id)
+                            {
+                                <td tabindex="@item.customerpolicyid">@tem.id</td>
+                            }
+
+                        }
                     }
 
-                }
-            }
 
 
+                    <td>
 
-            <td>
+                        <a class="btn btn-warning" href="@Url.Action("BillDetail",new {id = item.id })"><i class="fa fa-info-circle"></i></a>
+                        <a class="btn-btn-fab" href="@Url.Action("EditCustomerBill", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteCustomerBill" , new { id = item.id })"><i class="fa fa-trash btn btn-danger"></i></a>
 
 
-                <a class="btn-btn-fab" href="@Url.Action("EditCustomerBill", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit"> </i>  </a>
-                <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteCustomerBill" , new { id = item.id })"><i class="fa fa-trash"></i></a>
-                
-            </td>
-        </tr>
+                    </td>
+                </tr>
                 i++;
             }
         }
@@ -82,7 +83,7 @@
 
 
     </tbody>
-    </table>
+</table>
 <div id='Paging' style="text-align:center">
     @Html.PagedListPager(Model, page => Url.Action("CusTomerBillManagerl", new { page, pageSize = Model.PageSize }))
     Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount

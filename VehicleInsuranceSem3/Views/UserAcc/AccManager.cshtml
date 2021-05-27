@@ -11,8 +11,8 @@
     }
 }
 
-<a class="btn btn-warning"href="@Url.Action("ViewAllAcc")"> ViewAll </a>
-<a class="btn btn-success"href="@Url.Action("CreateAcc")"> CreateProduct</a>
+<a class="btn btn-warning"href="@Url.Action("ViewAllAcc")"> View All </a>
+<a class="btn btn-success"href="@Url.Action("CreateAcc")"> Create Customer Account</a>
 
 <div style="margin-top: 20px" class="input-group">
     <form action="@Url.Action("AccSearch")" method="post" class="form-inline">
@@ -67,8 +67,9 @@
                     <td>
 
 
-                        <a class="btn-btn-fab" href="@Url.Action("EditAcc", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit"> </i>  </a>
-                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteAcc" , new { id = item.id })"><i class="fa fa-trash"></i></a>
+                        <a class="btn-btn-fab" href="@Url.Action("EditAcc", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
+                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteAcc" , new { id = item.id })"><i class="fa fa-trash btn btn-danger"></i></a>
+                        <a class="btn btn-warning" data-idItem="@item.id" href="@Url.Action("ShowCustomerPolicyHistory", new { id = item.id})"><i class="fa fa-list"></i></a>
                     </td>
                 </tr>
                 i++;

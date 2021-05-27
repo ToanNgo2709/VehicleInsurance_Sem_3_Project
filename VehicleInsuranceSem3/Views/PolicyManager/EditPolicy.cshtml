@@ -11,16 +11,15 @@
 <form action="@Url.Action("NewPolicy")" method="post">
     <input type="text" value="@sc.id" name="id" id="id" hidden />
     <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
+        <label for="exampleInputEmail1">Policy Name:</label>
         <input type="text" class="form-control" id="name" name="policynumber" aria-describedby="emailHelp" placeholder="name" value="@sc.policynumber" >
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
     <div class="form-group">
         <label for="exampleInputPassword1">Policy Duration</label>
         <input type="number" class="form-control" id="policyduration" name="policyduration" placeholder="" value="@sc.policyduration" min="1" max="4">
     </div>
     <div class="form-group">
-        <label for="exampleInputPassword1">Date</label>
+        <label for="exampleInputPassword1">Create Date:</label>
         <input type="date" class="form-control" id="policydate" name="policydate" placeholder="" value="@sc.policydate.ToString("yyyy-MM-dd")">
     </div>
    
@@ -38,8 +37,8 @@
 
 
     <div class="form-group">
-        <label for="exampleInputPassword1">authToken</label>
-        <select class="form-select" aria-label="Default select example" id="policytypeid" name="policytypeid" tabindex="@sc.policytypeid">
+        <label for="exampleInputPassword1">Policy Type:</label>
+        <select class="form-control" aria-label="Default select example" id="policytypeid" name="policytypeid" tabindex="@sc.policytypeid">
             @if (c != null)
             {
 
@@ -59,7 +58,7 @@
         </select>
     </div>
     <button type="submit" class="btn btn-primary" value="">Submit</button>
-    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("PolicyManager")" style="color:white">Back</a></button>
+    <a class="btn btn-warning" href="@Url.Action("PolicyManager")" style="color:white">Back</a>
 </form>
 
 

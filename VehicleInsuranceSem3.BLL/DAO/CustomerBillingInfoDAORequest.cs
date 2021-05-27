@@ -57,6 +57,14 @@ namespace VehicleInsuranceSem3.BLL.DAO
             throw new NotImplementedException();
         }
 
+        public CustomerbillinginfoViewModel GetBillById(int id)
+        {
+            var q = context.Customer_Billing_Info
+                .Where(c => c.id == id )
+                .Select(d => new CustomerbillinginfoViewModel { customerpolicyid = (int)d.customer_policy_id, id = d.id, active = d.active, amount = d.amount, bill_number = d.bill_number, createdate = d.create_date, customeraddprove = d.customer_add_prove }).FirstOrDefault();
+            return q;
+        }
+
         public CustomerbillinginfoViewModel GetEdit(int id)
         {
             var q = context.Customer_Billing_Info.Where(d => d.id == id).Select(d => new CustomerbillinginfoViewModel { customerpolicyid = (int)d.customer_policy_id, id = d.id, active = d.active, amount = d.amount, bill_number = d.bill_number, createdate = d.create_date, customeraddprove = d.customer_add_prove }).FirstOrDefault();
@@ -115,5 +123,7 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 return 0;
             }
         }
+
+    
     }
 }
