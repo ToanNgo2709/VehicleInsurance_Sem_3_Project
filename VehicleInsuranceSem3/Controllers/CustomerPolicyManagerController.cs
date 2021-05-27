@@ -142,6 +142,8 @@ using PagedList.Mvc;
             Session["CustomAll"] = d;
             return RedirectToAction("CustomerPolicyViewAll");
         }
+
+        [HttpPost]
         public ActionResult DeleteCustomerPolicy(int id)
         {
             cs.Delete(id);

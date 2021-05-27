@@ -220,6 +220,7 @@ namespace VehicleInsuranceSem3.Controllers
 
         }
 
+        [HttpPost]
         public ActionResult DeleteBrand(int id)
         {
             brd.Delete(id);
@@ -228,6 +229,8 @@ namespace VehicleInsuranceSem3.Controllers
 
             return RedirectToAction("BrandViewAll");
         }
+
+        [HttpPost]
         public ActionResult DeleteModel(int id)
         {
             saf.Delete(id);

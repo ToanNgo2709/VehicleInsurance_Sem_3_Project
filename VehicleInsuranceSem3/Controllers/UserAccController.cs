@@ -202,6 +202,7 @@ namespace VehicleInsuranceSem3.Controllers
             return View(list);
         }
 
+       
         public ActionResult ShowCustomerPolicyDetail(int customerPolicyId)
         {
             var context = new InsuranceDbContext();
@@ -231,6 +232,7 @@ namespace VehicleInsuranceSem3.Controllers
         #endregion
 
         #region Delete
+        [HttpPost]
         public ActionResult DeleteAcc(int id)
         {
             ss.Delete(id);
@@ -238,6 +240,8 @@ namespace VehicleInsuranceSem3.Controllers
             Session["AllListAcc"] = c;
             return RedirectToAction("ViewAllAcc");
         }
+
+        [HttpPost]
         public ActionResult DeleteUSType(int id)
         {
             cc.Delete(id);

@@ -124,6 +124,7 @@ namespace VehicleInsuranceSem3.Controllers
 
         }
 
+        [HttpPost]
         public ActionResult DeleteVehicle(int id)
         {
             lk.Delete(id);

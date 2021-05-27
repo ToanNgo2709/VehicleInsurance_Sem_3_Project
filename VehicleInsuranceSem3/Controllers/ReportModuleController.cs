@@ -31,6 +31,9 @@ namespace VehicleInsuranceSem3.Controllers
             var defaultEndDate = StartEndDateOfCurrentMonth.GetEndDateOfMonth(defaultStartDate);
             List<InsuranceCustomerPolicyMonthlyViewModel> model = report.ShowCustomerPolicyAllTime();
             TempData["customerPurchase"] = report.ShowPurchaseAllTime();
+
+
+
             return View(model);
         }
 
@@ -119,7 +122,7 @@ namespace VehicleInsuranceSem3.Controllers
         //--------------------------------------------------------------------------------------
 
         //CLAIMABLE LIST REPORT
-        public ActionResult ClaimaAmountMonthly(int? page)
+        public ActionResult ClaimaAmountMonthly()
         {
             List<ClaimableAmountByMonthViewModel> model = report.ShowAllClaimableReport();
             List<CompanyexpenseViewModel> model2 = report.ShowCompanyExpenseAllTime();

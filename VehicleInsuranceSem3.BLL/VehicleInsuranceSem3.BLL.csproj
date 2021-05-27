@@ -161,6 +161,7 @@
     <Compile Include="ViewModel\ForgetPasswordEmailViewModel.cs" />
     <Compile Include="ViewModel\GooglemapViewModel.cs" />
     <Compile Include="ViewModel\InsuranceCustomerPolicyMonthlyViewModel.cs" />
+    <Compile Include="ViewModel\InsuranceMonthlyPageListViewModel.cs" />
     <Compile Include="ViewModel\ModelInsuranceViewModel.cs" />
     <Compile Include="ViewModel\ModelViewModel.cs" />
     <Compile Include="ViewModel\PolicyDueViewModel.cs" />

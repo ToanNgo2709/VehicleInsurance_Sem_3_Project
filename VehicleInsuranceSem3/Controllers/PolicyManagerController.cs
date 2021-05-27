@@ -39,6 +39,11 @@ namespace VehicleInsuranceSem3.Controllers
         }
         public ActionResult PolicyManager(int page = 1 , int pageSize = 10)
         {
+            List<PolicyViewModel> x = c.GetAll();
+            Session["AllPolicy"] = x;
+            List<PolicytypeViewModel> m = pl.GetAll();
+            Session["AllPolicyType"] = m;
+
             List<PolicyViewModel> ListPoli = new List<PolicyViewModel>();
             PagedList<PolicyViewModel> PageListPL;
             if (Session["PLSearch"]!= null)
@@ -187,6 +192,8 @@ namespace VehicleInsuranceSem3.Controllers
             return RedirectToAction("PolicyTypeViewAll");
 
         }
+
+        [HttpPost]
         public ActionResult DeletePolocy(int id)
         {
             c.Delete(id);
@@ -195,6 +202,7 @@ namespace VehicleInsuranceSem3.Controllers
             return RedirectToAction("PolicyViewAll");
         }
 
+        [HttpPost]
         public ActionResult DeletePolicyType(int id)
         {
             pl.Delete(id);

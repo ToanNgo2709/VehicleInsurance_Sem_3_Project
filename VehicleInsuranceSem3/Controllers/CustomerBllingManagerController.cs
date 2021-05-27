@@ -193,7 +193,8 @@ namespace VehicleInsuranceSem3.Controllers
             Session["csbAllView"] = x;
             return RedirectToAction("CustomerbillViewAll");
         }
-         
+        
+        [HttpPost]
         public ActionResult DeleteCustomerBill(int id)
         {
             csb.Delete(id);

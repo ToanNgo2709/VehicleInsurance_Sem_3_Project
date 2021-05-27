@@ -379,7 +379,7 @@ namespace VehicleInsuranceSem3.Controllers
 
         }
 
-
+        [HttpPost]
         public ActionResult DeleteCompanyExpense(int id)
         {
             xx.Delete(id);
@@ -387,6 +387,8 @@ namespace VehicleInsuranceSem3.Controllers
             Session["CompanyExpenseViewAll"] = x;
             return RedirectToAction("CompanyExpenseViewAll");
         }
+
+        [HttpPost]
         public ActionResult DeleteExpenseType(int id)
         {
             mc.Delete(id);
@@ -395,6 +397,8 @@ namespace VehicleInsuranceSem3.Controllers
             return RedirectToAction("expenseTypeViewAll");
         }
 
+
+        [HttpPost]
         public ActionResult DeleteClaimDetail(int c)
         {
             l.Delete(c);

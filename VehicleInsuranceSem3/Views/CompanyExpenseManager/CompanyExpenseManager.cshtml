@@ -81,8 +81,8 @@
                     <td>
 
 
-                        <a class="btn-btn-fab" href="@Url.Action("EditCompanyExpense", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
-                        <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteCompanyExpense" , new { id = item.id })"><i class="fa fa-trash btn btn-danger"></i></a>
+                        <a class="btn-btn-fab" href="@Url.Action("EditCompanyExpense", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>                       
+                        <button data-target="#exampleModal" data-toggle="modal" onclick="OpenModal(@item.id)" class="btn btn-danger fa fa-trash"></button>
                     </td>
                 </tr>
                 i++;
@@ -98,6 +98,52 @@
     Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
 </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Do you really want to delete this record. It can't undo</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="DeleteRecord()">Confirm</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<input id="hiddenField" name="hiddenField" hidden value="" />
 
+<script>
+
+    function OpenModal(id) {
+        $("#hiddenField").val(id);
+        $("#exampleModal").modal('show');
+        console.log($("#hiddenField").val())
+    };
+
+    function DeleteRecord() {
+        var expenseId = $("#hiddenField").val();
+        $("#exampleModal").modal('hide');
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("DeleteCompanyExpense")",
+            data: { id: expenseId },
+            success: function (response) {
+                location.reload();
+                alert("Delete Success");
+            },
+            error: function () {
+                alert("Can't delete because there are other records dependent");
+            }
+        });
+    };
+
+</script>
 
 
