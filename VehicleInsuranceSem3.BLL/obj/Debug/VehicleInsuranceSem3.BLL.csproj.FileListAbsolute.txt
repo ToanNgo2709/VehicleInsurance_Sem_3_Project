@@ -44,3 +44,14 @@ D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\Newtonsoft
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\PayPal.xml
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\log4net.dll
 D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\log4net.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\VehicleInsuranceSem3.Utilities.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\BCrypt.Net-Next.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\System.Memory.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\System.Numerics.Vectors.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\System.Buffers.dll
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\VehicleInsuranceSem3.Utilities.pdb
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\VehicleInsuranceSem3.Utilities.dll.config
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\BCrypt.Net-Next.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\System.Memory.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\System.Numerics.Vectors.xml
+D:\Project\C#\VehicleInsuranceSem3\VehicleInsuranceSem3.BLL\bin\Debug\System.Buffers.xml

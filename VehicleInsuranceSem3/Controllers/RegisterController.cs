@@ -40,7 +40,8 @@ namespace VehicleInsuranceSem3.Controllers
                                 if (uv.active == true)
                                 {
                                     CustomerinfoDAORequest request = new CustomerinfoDAORequest();
-                                    //Usertype: Customer
+
+                                    //Usertype: Customer                                  
                                     uv.user_type_id = 2;
                                     request.Add(uv);
 
