@@ -1,0 +1,35 @@
+﻿@model IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.InsuranceCustomerPolicyMonthlyViewModel>
+
+<h3>Number of Customer Policy Created: @Model.Count()</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Date</th>
+            <th>Customer Name</th>
+            <th>Policy Name</th>
+            <th>Vehicle Name</th>
+            <th>Duration</th>
+            <th>Active</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@item.CreatedDate</td>
+                    <td>@item.CustomerName</td>
+                    <td>@item.PolicyName</td>
+                    <td>@item.VehicleName</td>
+                    <td>@item.Duration</td>
+                    <td>@item.Active</td>
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>

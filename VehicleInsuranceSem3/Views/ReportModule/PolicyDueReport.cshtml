@@ -1,0 +1,131 @@
+﻿
+@{
+    ViewBag.Title = "PolicyDueReport";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+
+<div class="container">
+    <div class="col-md-6">
+        <label>Current Date</label>
+        <input type="date" readonly class="form-control" id="CurrentDate" name="CurrentDate" />
+    </div>
+</div>
+
+<hr />
+<button class="btn btn-primary" onclick="printDiv('policyDue','Policy Renewal Report')">Print Policy Renewal Report</button>
+<hr />
+
+<div class="container" id="policyDue">
+    <h3>Policy Due Renewals</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Custome Policy ID</th>
+                <th>Policy Type</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.duePolicy != null)
+            {
+                foreach (var item in ViewBag.duePolicy)
+                {
+                    <tr>
+                        <td>@item.CustomerPolicyId</td>
+                        <td>@item.PolicyType</td>
+                        <td>@item.StartDate</td>
+                        <td>@item.EndDate</td>
+                        <td><a class="btn btn-block btn-success" href="@Url.Action("ShowCustomerPolicyDetail", "UserAcc", new { customerPolicyId = item.CustomerPolicyId})">Detail</a></td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+<hr />
+<button class="btn btn-primary" onclick="printDiv('policyLapsed','Policy Lapsed Report')">Print Policy Lapsed Report</button>
+<hr />
+<div class="container" id="policyLapsed">
+    <h3>Policies Lapsed</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Custome Policy ID</th>
+                <th>Policy Type</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.lapsedPolicy != null)
+            {
+                foreach (var item in ViewBag.lapsedPolicy)
+                {
+                    <tr>
+                        <td>@item.CustomerPolicyId</td>
+                        <td>@item.PolicyType</td>
+                        <td>@item.StartDate</td>
+                        <td>@item.EndDate</td>
+                        <td><a class="btn btn-block btn-success" href="@Url.Action("ShowCustomerPolicyDetail", "UserAcc", new { customerPolicyId = item.CustomerPolicyId})">Detail</a></td>
+                    </tr>
+                }
+            }
+
+
+        </tbody>
+    </table>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script>
+    function GetDetail(id) {
+        var idInfo = id;
+        $.ajax({
+            type: "post",
+            url: "@Url.Action("ShowCustomerPolicyDetail", "UserAcc")",
+            data: { customerPolicyId: idInfo }
+        });
+    }
+
+    $(document).ready(function () {
+        var today = new Date();
+        var dd = String(today.getDate()).padStart(2, '0');
+        var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+        var yyyy = today.getFullYear();
+
+        today = yyyy + '-' + mm + '-' + dd;
+        $("#CurrentDate").val(today);
+    });
+
+    var doc = new jsPDF('p', 'mm', [297, 600]);
+
+    function saveDiv(divId, title) {
+        doc.fromHTML('<html><head><title>${title}</title></head><body>' + document.getElementById('insuranceRow').innerHTML + '</body></html>');
+        doc.save('InsuranceMonthlyReport.pdf');
+    };
+
+
+    function printDiv(divId,
+        title) {
+
+        let mywindow = window.open('', 'PRINT', 'height=650,width=900,top=100,left=150');
+
+        mywindow.document.write(`<html><head><title>${title}</title>`);
+        mywindow.document.write('</head><body>');
+        mywindow.document.write(document.getElementById(divId).innerHTML);
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+
+        mywindow.print();
+        //mywindow.close();
+
+        return true;
+    };
+</script>

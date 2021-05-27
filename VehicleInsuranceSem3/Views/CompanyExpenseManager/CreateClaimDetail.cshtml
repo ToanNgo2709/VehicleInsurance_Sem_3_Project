@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "CreateClaimDetail";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel> x = Session["CusAllView"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel>;
+}
+
+
+
+<form action="@Url.Action("AddClaimDetail")" method="post">
+    <div class="form-group">
+        <input type="text" class="form-control" id="claimnumber" name="claimnumber" aria-describedby="emailHelp" placeholder="Claim Name" value="" required>
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="placeaccident" name="placeaccident" placeholder="Place Accident" value="" required>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Create Date</label>
+        <input type="date" class="form-control" id="dateaccident" name="dateaccident" placeholder="" value="" required>
+    </div>
+
+
+    <div class="form-group">
+        <input type="number" class="form-control" id="insuredamount" name="insuredamount" placeholder="Insured Amount" value="" required>
+    </div>
+
+
+    <div class="form-group">
+        <input type="number" class="form-control" id="claimableamount" name="claimableamount" placeholder="Claimable Amount" value="" required>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <select class="form-control" aria-label="Default select example" id="customerpolicyid" name="customerpolicyid">
+            <option selected>--- Select Customer Policy ---</option>
+            @foreach (var item in x)
+            {
+                if (item.id != null)
+                {
+                    <option value="@item.id">@item.id</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.id</option>
+                }
+            }
+
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <a href="@Url.Action("CLaimDetailManager")" class="btn btn-warning" style="color:white">Back</a>
+</form>
+
+<script>
+    $("#customerpolicyid").change(function () {
+        var customerPolicyId = $("#customerpolicyid").val();
+        $.ajax({
+            type: 'post',
+            url: "@Url.Action("GetClaimInfo")",
+            data: { customerPolicyId: customerPolicyId },
+            success: function (response) {
+                $("#insuredamount").val(response.insure);
+                $("#claimableamount").val(response.claim);
+            }
+        });
+    });
+</script>
+

@@ -1,0 +1,120 @@
+﻿
+@{
+    ViewBag.Title = "VehicleWise";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    var brand = Session["brandList"] as List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel>;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <label>Start Date</label>
+            <input type="date" class="form-control" id="StartDate" name="StartDate" />
+        </div>
+        <div class="col-md-4">
+            <lable>End Date</lable>
+            <input type="date" class="form-control" id="EndDate" name="EndDate" />
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-block btn-primary" id="btnConfirm">Confirm</button>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div id="BrandSellChart" style="width:100%; height:350px"></div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+
+        </div>
+        <div class="col-md-6">
+            <select id="brandDropList" class="form-control" style="float: right">
+                <option>Select Brand</option>
+                @foreach (var item in brand)
+                {
+                    <option value="@item.Id">@item.Name</option>
+                }
+            </select>
+        </div>
+    </div>
+</div>
+<input hidden id="hiddenBrandIdField" />
+<hr />
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div id="ModelSellChart" style="width:100%; height:350px"></div>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Model</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody id="modelRow">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("GetDataPointBrandReportAll", "ReportModule")",
+                success: function (response) {
+                    $("#BrandSellChart").html(response);
+                }
+            });
+            
+        });
+
+        $("#btnConfirm").click(function () {
+            var startDay = getDate($("#StartDate").val());
+            var endDay = getDate($("#EndDate").val());
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("GetDataPointBrandReport", "ReportModule")",
+                data: { start: startDay, end: endDay },
+                success: function (response) {
+                    $("#BrandSellChart").html(response);
+                }
+            });
+        })
+
+        $('#brandDropList').change(function () {
+            var startDay = getDate($("#StartDate").val());
+            var endDay = getDate($("#EndDate").val());
+            var brandId = $('#brandDropList').val();
+            $.ajax({
+                type: "POST",
+                url: "@Url.Action("GetReportModelByBrand", "ReportModule")",
+                data: { start: startDay, end: endDay, id: brandId },
+                success: function (response) {
+                    $("#modelRow").html(response);
+                }
+            });
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("GetDataPointModelReport")",
+                data: { start: startDay, end: endDay, id: brandId },
+                success: function (response) {
+                    $("#ModelSellChart").html(response);
+                }
+            });
+
+        });
+
+    </script>
+}
+
+

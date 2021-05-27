@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title - Vehicle Insurance Home Page</title>
+    <link href="/Content/CustomResource/ClientResource/style.css" type="text/css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+          rel="stylesheet" type='text/css'>
+    <link href="/Content/CustomResource/ClientResource/fonts/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="~/Content/CustomResource/ClientResource/fonts/lineo-icon/style.css" rel="stylesheet" type="text/css">
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+</head>
+<body>
+    <div id="site-content">
+        <header class="site-header">
+            <div class="top-header">
+                <div class="container">
+                    <a href="index.html" id="branding">
+                        <img src="~/Content/CustomResource/ClientResource/images/logo.png" alt="Company Name" class="logo">
+                        <div class="logo-text">
+                            <h1 class="site-title">Kraken Force</h1>
+                            <small class="description">Bring Value To You</small>
+                        </div>
+                    </a> <!-- #branding -->
+
+                    <div class="right-section pull-right">
+                        <a href="#" class="phone"><img src="~/Content/CustomResource/ClientResource/images/icon-phone.png" class="icon">+84 123 456 789</a>
+                        <a class="social-icon" href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                        <a class="social-icon" href="#"><i class="fa fa-twitter"></i></a>
+                        <form action="#" class="search-form">
+                            <input type="text" placeholder="Search...">
+                            <button type="submit"><img src="~/Content/CustomResource/ClientResource/images/icon-search.png" alt=""></button>
+                        </form>
+                    </div>
+                </div> <!-- .container -->
+            </div> <!-- .top-header -->
+
+
+            <div class="bottom-header">
+                <div class="container">
+                    <div class="main-navigation">
+                        <button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
+                        <ul class="menu">
+                            <li class="menu-item"><a href="@Url.Action("Index","Home")">Home</a></li>
+                            <li class="menu-item"><a href="@Url.Action("InsurancePlan","Home")">Insurance plans</a></li>
+                            @*<li class="menu-item"><a href="resource.html">Resources</a></li>*@
+                            <li class="menu-item"><a href="@Url.Action("About","Home")">About Us</a></li>
+                            <li class="menu-item"><a href="@Url.Action("Contact","Home")">Contact</a></li>
+                            @if (Session["id"] != null)
+                            {
+                                <li class="menu-item"><a href="@Url.Action("CustomerHistory","Home")">Customer History</a></li>
+                            }
+                        </ul> <!-- .menu -->
+                    </div> <!-- .main-navigation -->
+
+                    <div class="sub-navigation">
+                        <ul class="menu">
+                            @if (Session["username"] == null)
+                            {
+                                <li class="menu-item"><a href="@Url.Action("Login","Login")">Login</a></li>
+                                <li class="menu-item"><a href="@Url.Action("Register", "Register")">Register</a></li>
+                            }
+                            else
+                            {
+                                <li class="menu-item">
+                                    <div class="dropdown">
+                                        <button class="dropbtn">@Session["username"]</button>
+                                        <div class="dropdown-content">
+                                            <a href="@Url.Action("ChangePassword", "Home")">Change Password</a>
+           
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="menu-item"><a href="@Url.Action("LogoutDB", "Login")">Sign Out</a></li>
+                            }
+                        </ul>
+                    </div>
+
+
+                    @*<div class="social-links">
+
+                            <a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+
+                        </div>*@
+
+                    <div class="mobile-navigation"></div>
+                </div>
+            </div>
+
+        </header>
+
+        <!--Main Content Go here-->
+        <main class="main-content">
+            @RenderBody()
+        </main>
+
+        <!--Footer-->
+        <div class="site-footer">
+            @*<div class="widget-area">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-2">
+                                <div class="widget">
+                                    <h3 class="widget-title">Contact</h3>
+                                    <address>
+                                        Company Name INC. 523 Burt Street, Omaha
+                                    </address>
+                                    <a href="#">Phone: +1 823 424 9134</a>
+                                    <a href="mailto:info@company.com">info@company.com</a>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-2">
+                                <div class="widget">
+                                    <h3 class="widget-title">Company</h3>
+                                    <ul class="no-bullet">
+                                        <li><a href="#">About us</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-2">
+                                <div class="widget">
+                                    <h3 class="widget-title">Products</h3>
+                                    <ul class="no-bullet">
+                                        <li><a href="#">Life insurance</a></li>
+                                        <li><a href="#">Home insurance</a></li>
+                                        <li><a href="#">Car insurance</a></li>
+                                        <li><a href="#">Business insurance</a></li>
+                                        <li><a href="#">Investment insurance</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-2">
+                                <div class="widget">
+                                    <h3 class="widget-title">Our Solutions</h3>
+                                    <ul class="no-bullet">
+                                        <li><a href="#">Presentation</a></li>
+                                        <li><a href="#">Testimonials</a></li>
+                                        <li><a href="#">Examples</a></li>
+                                        <li><a href="#">Our experts</a></li>
+                                        <li><a href="#">Resources</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-2">
+                                <div class="widget">
+                                    <h3 class="widget-title">Press Room</h3>
+                                    <ul class="no-bullet">
+                                        <li><a href="#">Advertisement</a></li>
+                                        <li><a href="#">Interviews</a></li>
+                                        <li><a href="#">Hot news</a></li>
+                                        <li><a href="#">Photos</a></li>
+                                        <li><a href="#">Marketing</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-4 col-md-2">
+                                <div class="widget">
+                                    <h3 class="widget-title">Resources</h3>
+                                    <ul class="no-bullet">
+                                        <li><a href="#">Sed imperdiet magna</a></li>
+                                        <li><a href="#">Pellentesque molestie</a></li>
+                                        <li><a href="#">Nulla luctus cursus</a></li>
+                                        <li><a href="#">Ligula vel lacinia</a></li>
+                                        <li><a href="#">Mauris scelerisque</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+
+            <div class="bottom-footer">
+                <div class="container">
+                    <nav class="footer-navigation">
+                        <a href="@Url.Action("Index", "Home")">Home</a>
+                        <a href="@Url.Action("About", "Home")">About us</a>
+                        <a href="@Url.Action("InsurancePlan", "Home")">Insurance plans</a>
+                        <a href="@Url.Action("Contact", "Home")">Contact</a>
+                    </nav>
+
+                    <div class="colophon">Copyright 2021 KrakenForce. Designed by Themezy. All rights reserved.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/Scripts/CustomResource/ClientResource/js/plugins.js"></script>
+    <script src="~/Scripts/CustomResource/ClientResource/js/app.js"></script>
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

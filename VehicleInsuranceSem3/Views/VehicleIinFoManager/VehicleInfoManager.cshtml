@@ -1,0 +1,166 @@
+﻿@model PagedList.IPagedList<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "VehicleInfoManager";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel> x = Session["brandAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel> z = Session["modelAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel>;
+}
+
+<a class="btn btn-warning" href="@Url.Action("VehicleInfoViewAll")"> ViewAll </a>
+<a class="btn btn-success" href="@Url.Action("Createvehicle")"> Create VehicleInfo</a>
+
+<div style="margin-top: 20px" class="input-group">
+    <form action="@Url.Action("VehicleSearch")" method="post" class="form-inline">
+        <div class="form-outline">
+            <input type="search" id="form1" class="form-control" name="tbSearch" />
+        </div>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
+</div>
+<hr />
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Owner Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Brand </th>
+            <th scope="col">Model </th>
+            <th scope="col">Version </th>
+            <th scope="col">Frame Number</th>
+            <th scope="col">Engine Number</th>
+            <th scope="col">Vehicle Name</th>
+            <th scope="col">Vehicle Condition</th>
+            <th scope="col">Rate</th>
+
+
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Session["VehicleInfoAll"] != null)
+        {
+            var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel>)Session["VehicleInfoAll"];
+            int i = 1;
+            foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@i</td>
+                    <td>@item.ownername</td>
+                    <td>@item.address</td>
+
+                    @if (x != null)
+                    {
+                        foreach (var tem in x)
+                        {
+                            if (item.brandid == tem.Id)
+                            {
+                                <td tabindex="@item.brandid">@tem.Name</td>
+                            }
+
+                        }
+                    }
+
+
+                    @if (z != null)
+                    {
+                        foreach (var em in z)
+                        {
+                            if (item.modelid == em.id)
+                            {
+                                <td tabindex="@item.modelid">@em.name</td>
+                            }
+
+                        }
+                    }
+
+
+                    <td>@item.version</td>
+                    <td>@item.framenumber</td>
+                    <td>@item.eginenumber</td>
+                    <td>@item.vehiclenumber</td>
+                    <td>@item.vehiclecondition</td>
+                    <td>@item.ratebycondition</td>
+
+
+
+                    <td>
+
+
+                        <a class="btn-btn-fab" href="@Url.Action("EditVehicleInfo", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
+                        <button data-target="#exampleModal" data-toggle="modal" onclick="OpenModal(@item.id)" class="btn btn-danger fa fa-trash"></button>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+
+
+
+    </tbody>
+</table>
+<div id='Paging' style="text-align:center">
+    @Html.PagedListPager(Model, page => Url.Action("VehicleInfoManager", new { page, pageSize = Model.PageSize }))
+    Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Do you really want to delete this record. It can't undo</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="DeleteRecord()">Confirm</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<input id="hiddenField" name="hiddenField" hidden value="" />
+
+<script>
+
+    function OpenModal(id) {
+        $("#hiddenField").val(id);
+        $("#exampleModal").modal('show');
+        console.log($("#hiddenField").val())
+    };
+
+    function DeleteRecord() {
+        var vehicleInfoId = $("#hiddenField").val();
+        $("#exampleModal").modal('hide');
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("DeleteVehicle")",
+            data: { id: vehicleInfoId },
+            success: function (response) {
+                location.reload();
+                alert("Delete Success");
+            },
+            error: function () {
+                alert("Can't delete because there are other records dependent");
+            }
+        });
+    };
+
+</script>
+
+
+
+
+
+

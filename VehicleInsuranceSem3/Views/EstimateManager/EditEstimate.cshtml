@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "EditEstimate";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+
+    List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel> vh = Session["VehicleAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel> cs = Session["CustomerAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel> pl = Session["PolicyAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>;
+
+    var Usacc = ViewData["EstimatAll"] as VehicleInsuranceSem3.BLL.ViewModel.EstimateViewModel;
+}
+
+<form action="@Url.Action("NewEstimate")" method="post">
+    <input type="text" value="@Usacc.id" name="id" id="id" hidden />
+    <div class="form-group">
+        <label for="exampleInputEmail1">Name</label>
+        <input type="text" class="form-control" id="estimatenumber" name="estimatenumber" aria-describedby="emailHelp" placeholder="estimatenumber" value="@Usacc.estimatenumber">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Date </label>
+        <input type="date" class="form-control" id="vehiclewarranty" name="vehiclewarranty" placeholder="vehiclewarranty" value="@Usacc.vehiclewarranty.ToString("yyyy-MM-dd")">
+
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Customer</label>
+        <select class="form-select" aria-label="Default select example" id="customerid" name="customerid" tabindex="@Usacc.customerid">
+            @if (cs != null)
+            {
+
+                foreach (var item in cs)
+                {
+                    if (Usacc.customerid == item.id)
+                    {
+                        <option value="@item.id" selected>@item.username</option>
+                    }
+                    else
+                    {
+                        <option value="@item.id">@item.username</option>
+                    }
+                }
+            }
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Vehicle</label>
+        <select class="form-select" aria-label="Default select example" id="vehicleid" name="vehicleid" tabindex="@Usacc.vehicleid">
+            @if (vh != null)
+            {
+
+                foreach (var item in vh)
+                {
+                    if (Usacc.vehicleid == item.id)
+                    {
+                        <option value="@item.id" selected>@item.ownername</option>
+                    }
+                    else
+                    {
+                        <option value="@item.id">@item.ownername</option>
+                    }
+                }
+            }
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Policy</label>
+        <select class="form-select" aria-label="Default select example" id="policyid" name="policyid" tabindex="@Usacc.policyid">
+            @if (pl != null)
+            {
+
+                foreach (var item in pl)
+                {
+                    if (Usacc.policyid == item.id)
+                    {
+                        <option value="@item.id" selected>@item.policynumber</option>
+                    }
+                    else
+                    {
+                        <option value="@item.id">@item.policynumber</option>
+                    }
+                }
+            }
+
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("EstimateManagerNe")" style="color:white">Back</a></button>
+</form>

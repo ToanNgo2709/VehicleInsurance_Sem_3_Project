@@ -1,0 +1,69 @@
+﻿
+@{
+    ViewBag.Title = "EditClaimDetail";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel> z = Session["CusAllView"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel>;
+  var Usacc = ViewData["ClaimDetailViewAll"] as VehicleInsuranceSem3.BLL.ViewModel.ClaimDetailViewModel;
+}
+
+<form action="@Url.Action("NewClaimDetail")" method="post">
+    <input hidden value="@Usacc.id" name="id" id="id" />
+    <div class="form-group">
+        <label for="exampleInputEmail1">Claim Name:</label>
+        <input type="text" class="form-control" id="claimnumber" name="claimnumber" aria-describedby="emailHelp" placeholder="claimnumber" value="@Usacc.claimnumber">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Place Accident:</label>
+        <input type="text" class="form-control" id="placeaccident" name="placeaccident" placeholder="" value="@Usacc.placeaccident">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Date: </label>
+        <input type="date" class="form-control" id="dob" name="dateaccident" placeholder="" value="@Usacc.dateaccident.ToString("yyyy-MM-dd")">
+
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Claiable Amount:</label>
+        <input type="number" class="form-control" id="claimableamount" name="claimableamount" placeholder="" value="@Usacc.claimableamount" min="1" max="99999999">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Insured Amount:</label>
+        <input type="number" class="form-control" id="insuredamount" name="insuredamount" placeholder="" value="@Usacc.insuredamount" min="1" max="99999999">
+    </div>
+
+
+
+
+
+
+
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Customer Proves:</label>
+        <select class="form-control" aria-label="Default select example" id="customerpolicyid" name="customerpolicyid" tabindex="@Usacc.customerpolicyid">
+            @if (z != null)
+            {
+
+                foreach (var item in z)
+                {
+                    if (Usacc.customerpolicyid == item.id)
+                    {
+                        <option value="@item.id" selected>@item.customeraddprove</option>
+                    }
+                    else
+                    {
+                        <option value="@item.id">@item.customeraddprove</option>
+                    }
+                }
+            }
+
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <a class="btn btn-warning" href="@Url.Action("ClaimDetailManager")" style="color:white">Back</a>
+</form>
+
+
+
+

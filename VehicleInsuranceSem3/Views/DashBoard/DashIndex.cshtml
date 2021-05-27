@@ -1,0 +1,123 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<VehicleInsuranceSem3.BLL.ViewModel.InsuranceCustomerPolicyMonthlyViewModel>
+@{
+    ViewBag.Title = "DashIndex";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+
+<div class="container">
+    <div class="col-6">
+        <label for="today">Today: </label>
+        <input type="date" class="form-control" id="today" name="today" readonly />
+    </div>
+
+</div>
+<hr />
+<div class="container" style="height: 300px">
+    <div class="row">
+        <div class="col-6">
+            <div id="firstChart" style="height: 300px">
+
+            </div>
+        </div>
+        <div class="col-6">
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Create Date</th>
+                        <th>Customer Name</th>
+                        <th>Policy Name</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <th>@item.CreatedDate</th>
+                            <th>@item.CustomerName</th>
+                            <th>@item.PolicyName</th>
+                            <th>@item.Duration</th>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-7">
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("DashIndex", new { page }),
+                    new PagedListRenderOptions
+                    {
+                        LiElementClasses = new string[] { "page-item" }
+                    })
+                </div>
+                <div class="col-5">
+                    <a style="float:right" class="btn btn-primary" href="@Url.Action("CustomerPolicyManager", "CustomerPolicyManager")">Detail</a>
+                </div>
+            </div>
+           
+
+            
+        </div>
+    </div>
+</div>
+<hr />
+<div class="container">
+    <div id="BrandSellChart">
+
+    </div>
+</div>
+
+<script>
+
+    var date = new Date();
+    var day = date.getDate();
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
+
+    var today = year + "-" + month + "-" + day;
+    document.getElementById("today").value = today;
+
+    var chart = new CanvasJS.Chart("firstChart", {
+        animationEnabled: true,
+        theme: "light2",
+        title: {
+            text: "Number of Sell of Each Policy Type"
+        },
+        axisY: {
+            title: "No. of Sold"
+        },
+        data: [{
+            type: "column",
+            dataPoints: @Html.Raw(ViewBag.DataPoints)
+        }]
+    });
+    chart.render();
+
+    var brandChart = new CanvasJS.Chart("BrandSellChart", {
+            animationEnabled : true,
+            theme: "light2",
+            title: {
+                text: "Number of Sell of Each Brand"
+            },
+            axisY: {
+                title: "No. of Sold"
+            },
+            data: [{
+                type: "column",
+                dataPoints: @Html.Raw(ViewBag.BrandDataPoints)
+            }]
+        });
+    brandChart.render();
+
+
+</script>
+
+

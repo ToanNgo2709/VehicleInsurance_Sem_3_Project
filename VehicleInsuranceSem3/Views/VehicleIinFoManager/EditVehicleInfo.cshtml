@@ -1,0 +1,98 @@
+﻿
+@{
+    ViewBag.Title = "EditVehicleInfo";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+
+    var Usacc = ViewData["VehicleInfoAll"] as VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel;
+    List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel> z = Session["brandAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.BrandViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel> xx = Session["modelAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel>;
+}
+
+<form action="@Url.Action("NewVehicleInfo")" method="post">
+    <input type="text" value="@Usacc.id" name="id" id="id" hidden />
+    <div class="form-group">
+        <label for="exampleInputEmail1">Owner Name:</label>
+        <input type="text" class="form-control" id="ownername" name="ownername" aria-describedby="emailHelp" placeholder="name" value="@Usacc.ownername">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Address:</label>
+        <input type="text" class="form-control" id="address" name="address" placeholder="" value="@Usacc.address">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Version:</label>
+        <input type="text" class="form-control" id="version" name="version" placeholder="" value="@Usacc.version">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Frame Number:</label>
+        <input type="text" class="form-control" id="framenumber" name="framenumber" placeholder="" value="@Usacc.framenumber">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Engine Number:</label>
+        <input type="text" class="form-control" id="eginenumber" name="eginenumber" placeholder="" value="@Usacc.eginenumber">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Vehicle Number:</label>
+        <input type="text" class="form-control" id="vehiclenumber" name="vehiclenumber" placeholder="" value="@Usacc.vehiclenumber">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Vehicle Condition:</label>
+        <input type="number" class="form-control" id="vehiclecondition" name="vehiclecondition" placeholder="" value="@Usacc.vehiclecondition" min="1" max="10">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Rate By Condition:</label>
+        <input type="number" class="form-control" id="ratebycondition" name="ratebycondition" placeholder="" value="@Usacc.ratebycondition" min="10" max="999999999">
+    </div>
+
+
+
+
+
+
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Brand:</label>
+        <select class="form-control" aria-label="Default select example" id="brandid" name="brandid" tabindex="@Usacc.brandid">
+            @if (z != null)
+            {
+
+                foreach (var item in z)
+                {
+                    if (Usacc.brandid == item.Id)
+                    {
+                        <option value="@item.Id" selected>@item.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.Id">@item.Name</option>
+                    }
+                }
+            }
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Model:</label>
+        <select class="form-control" aria-label="Default select example" id="modelid" name="modelid" tabindex="@Usacc.modelid">
+            @if (xx != null)
+            {
+
+                foreach (var item in xx)
+                {
+                    if (Usacc.modelid == item.id)
+                    {
+                        <option value="@item.id" selected>@item.name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.id">@item.name</option>
+                    }
+                }
+            }
+
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <a class="btn btn-warning" href="@Url.Action("VehicleInfoManager")" style="color:white">Back</a>
+</form>

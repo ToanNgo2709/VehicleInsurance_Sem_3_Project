@@ -1,0 +1,186 @@
+﻿@model PagedList.IPagedList<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "CustomerPolicyManager";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel> cs = Session["customerInAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel> pl = Session["PolicyAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel> vh = Session["VehicleAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel>;
+}
+
+<a class="btn btn-warning" href="@Url.Action("CustomerPolicyViewAll")"> View All </a>
+<a class="btn btn-success" href="@Url.Action("CreateCustomerPolicy")"> Create Customer Policy</a>
+
+<div style="margin-top:20px" class="input-group">
+    <form action="@Url.Action("customerPolicySearch")" method="post" class="form-inline">
+        <div class="form-outline">
+            <input type="search" id="form1" class="form-control" name="tbSearch" />
+        </div>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
+
+    <form style="margin-left: 40px" action="@Url.Action("CustomerPolicySearchByDate")" method="post" class="form-inline">
+        <div style="margin-left: 20px" class="form-group">
+            <label>Start Date:</label>
+            <input type="date" class="form-control" id="startDate" name="startDate" />
+        </div>
+        <div style="margin-left: 20px" class="form-group">
+            <label>End Date:</label>
+            <input type="date" class="form-control" id="endDate" name="endDate" />
+        </div>
+        <div style="margin-left: 20px" class="form-group">
+            <button class="btn btn-primary" type="submit">Confirm</button>
+        </div>
+    </form>
+</div>
+<hr />
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Customer Add prove</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date </th>
+            <th scope="col">Create Date </th>
+            <th scope="col">Active </th>
+            <th scope="col">Total PayMent</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Policy</th>
+            <th scope="col">Vehicle </th>
+
+
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @{
+            var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel>)Session["CustomAll"];
+            int i = 1;
+            foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@i</td>
+                    <td>@item.customeraddprove</td>
+                    <td>@item.policystartdate</td>
+                    <td>@item.policyenddate</td>
+                    <td>@item.createdate</td>
+                    <td>@item.active</td>
+                    <td>@item.TotalPayment</td>
+
+
+                    @if (cs != null)
+                    {
+                        foreach (var tem in cs)
+                        {
+                            if (item.customerid == tem.id)
+                            {
+                                <td tabindex="@item.customerid">@tem.username</td>
+                            }
+
+                        }
+                    }
+
+
+                    @if (pl != null)
+                    {
+                        foreach (var em in pl)
+                        {
+                            if (item.policyid == em.id)
+                            {
+                                <td tabindex="@item.policyid">@em.policynumber</td>
+                            }
+
+                        }
+                    }
+
+                    @if (vh != null)
+                    {
+                        foreach (var xem in vh)
+                        {
+                            if (item.vehicleid == xem.id)
+                            {
+                                <td tabindex="@item.vehicleid">@xem.ownername</td>
+                            }
+
+                        }
+                    }
+
+
+
+
+                    <td>
+                        <a class="btn-btn-fab" href="@Url.Action("EditCustomerPolicy", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
+                        <button data-target="#exampleModal" data-toggle="modal" onclick="OpenModal(@item.id)" class="btn btn-danger fa fa-trash"></button>
+                        <a class="btn btn-warning" data-idItem="@item.id" href="@Url.Action("CreateBill", "CustomerBllingManager" , new { id = item.id })"><i class="fa fa-file"></i></a>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+
+
+
+    </tbody>
+</table>
+<div id='Paging' style="text-align:center">
+    @Html.PagedListPager(Model, page => Url.Action("CustomerPolicyManager", new { page }))
+    Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h4>Do you really want to delete this record. It can't undo. Please Enter "Confirmed" to delete this</h4>
+                <input type="text" id="confirmText" class="form-control" name="confirmText" placeholder="Enter Confirmed word" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="DeleteRecord()">Confirm</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<input id="hiddenField" name="hiddenField" hidden value="" />
+
+<script>
+
+    function OpenModal(id) {
+        $("#hiddenField").val(id);
+        $("#exampleModal").modal('show');
+        console.log($("#hiddenField").val())
+    };
+
+    function DeleteRecord() {
+        var customerPolicyId = $("#hiddenField").val();
+        $("#exampleModal").modal('hide');
+        var confirm = $("#confirmText").val();
+        if (confirm.localeCompare("Confirmed") == 0) {
+             $.ajax({
+                type: 'POST',
+                url: "@Url.Action("DeleteCustomerPolicy")",
+                data: { id: customerPolicyId },
+                success: function (response) {
+                    location.reload();
+                    alert("Delete Success");
+                }
+            });
+        }
+
+    };
+
+</script>
+
+

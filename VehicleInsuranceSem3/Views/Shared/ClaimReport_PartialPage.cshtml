@@ -1,0 +1,36 @@
+﻿@model IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.ClaimableAmountByMonthViewModel>
+
+<h3>Claim Info:</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Customer Policy Id</th>
+            <th>Customer Name</th>
+            <th>Accident Date</th>
+            <th>Insured Amount</th>
+            <th>Claimable Amount</th>
+            <th>Detail</th>
+        </tr>
+    </thead>
+    <tbody >
+        @if (Model != null)
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@item.CustomerPolicyId</td>
+                    <td>@item.CustomerName</td>
+                    <td>@item.CreateDate</td>
+                    <td>@item.InsuredAmount</td>
+                    <td>@item.ClaimableAmount</td>
+                    <td><a class="btn btn-block btn-primary" href="@Url.Action("GetClaimDetail", "CompanyExpenseManager", new { id = item.Id})">Detail</a></td>
+                </tr>
+                i++;
+            }
+        }
+
+    </tbody>
+</table>

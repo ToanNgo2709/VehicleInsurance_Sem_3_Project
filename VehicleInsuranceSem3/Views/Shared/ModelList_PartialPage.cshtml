@@ -1,0 +1,7 @@
+﻿@model IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.ModelViewModel>
+
+
+<option selected>--- Select Model ---</option>
+@foreach (var item in Model) { 
+    <option value="@item.id">@item.name</option>
+}

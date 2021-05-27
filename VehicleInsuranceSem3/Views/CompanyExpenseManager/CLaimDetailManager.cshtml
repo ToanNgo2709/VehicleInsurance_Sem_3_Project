@@ -1,0 +1,154 @@
+﻿@model PagedList.IPagedList<VehicleInsuranceSem3.BLL.ViewModel.ClaimDetailViewModel>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "CLaimDetailManager";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel> z = Session["CusAllView"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel>;
+}
+
+<a class="btn btn-warning" href="@Url.Action("ClaimDetailViewAll")"> View All </a>
+<a class="btn btn-success" href="@Url.Action("CreateClaimDetail")" style="color:white"> Create Claim Detail</a>
+
+<div style="margin-top: 20px" class="input-group">
+    <form action="@Url.Action("ClaimDetailSearch")" method="post" class="form-inline">
+        <div class="form-outline">
+            <input type="search" id="form1" class="form-control" placeholder="" name="tbSearch" />
+        </div>
+        <button style="margin-left: 20px" type="submit" class="btn btn-primary" id="button-addon2">
+            <i class="fa fa-search"></i>
+        </button>
+    </form>
+    <form style="margin-left: 40px" action="@Url.Action("FilterClaimByDate")" method="post" class="form-inline">
+        <div style="margin-left: 20px" class="form-group">
+            <label>Start Date:</label>
+            <input type="date" class="form-control" id="startDate" name="startDate" />
+        </div>
+        <div style="margin-left: 20px" class="form-group">
+            <label>End Date:</label>
+            <input type="date" class="form-control" id="endDate" name="endDate" />
+        </div>
+        <div style="margin-left: 20px" class="form-group">
+            <button class="btn btn-primary" type="submit">Confirm</button>
+        </div>
+    </form>
+</div>
+<hr />
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th scope="col">No.</th>
+            <th scope="col">Claim Name</th>
+            <th scope="col">Place Accident</th>
+            <th scope="col">Customer Policy</th>
+            <th scope="col">Date </th>
+            <th scope="col">Insured Amount</th>
+
+            <th scope="col">Claimable Amount</th>
+
+
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @if (Session["ClaimDetailViewAll"] != null)
+        {
+            var ls = (List<VehicleInsuranceSem3.BLL.ViewModel.ClaimDetailViewModel>)Session["ClaimDetailViewAll"];
+            int i = 1;
+            foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@i</td>
+                    <td>@item.claimnumber</td>
+                    <td>@item.placeaccident</td>
+                    @if (z != null)
+                    {
+                        foreach (var tem in z)
+                        {
+                            if (item.customerpolicyid == tem.id)
+                            {
+                                <td tabindex="@item.customerpolicyid">@tem.customeraddprove</td>
+                            }
+
+                        }
+                    }
+
+                    <td>@item.dateaccident</td>
+                    <td>@item.insuredamount</td>
+                    <td>@item.claimableamount</td>
+
+
+                    <td>
+
+                        <a class="btn btn-warning" href="@Url.Action("GetClaimDetail", new { id = item.id})"><i class="fa fa-info-circle"></i></a>
+                        <a class="btn-btn-fab" href="@Url.Action("EditClaimDetail", new { id = item.id })" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
+    
+                        <button data-target="#exampleModal" data-toggle="modal" onclick="OpenModal(@item.id)" class="btn btn-danger fa fa-trash"></button>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
+
+
+
+    </tbody>
+</table>
+<div id='Paging' style="text-align:center">
+    @Html.PagedListPager(Model, page => Url.Action("CLaimDetailManager", new { page, pageSize = Model.PageSize }))
+    Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>Do you really want to delete this record. It can't undo</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" onclick="DeleteRecord()">Confirm</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<input id="hiddenField" name="hiddenField" hidden value="" />
+
+<script>
+
+    function OpenModal(id) {
+        $("#hiddenField").val(id);
+        $("#exampleModal").modal('show');
+        console.log($("#hiddenField").val())
+    };
+
+    function DeleteRecord() {
+        var brandId = $("#hiddenField").val();
+        $("#exampleModal").modal('hide');
+        $.ajax({
+            type: 'POST',
+            url: "@Url.Action("DeleteClaimDetail")",
+            data: { id: brandId },
+            success: function (response) {
+                location.reload();
+                alert("Delete Success");
+            },
+            error: function () {
+                alert("Can't delete because there are other records dependent");
+            }
+        });
+    };
+
+</script>
+
+
+

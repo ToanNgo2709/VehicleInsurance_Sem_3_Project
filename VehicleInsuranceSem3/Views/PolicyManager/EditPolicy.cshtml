@@ -1,0 +1,64 @@
+﻿
+@{
+        ViewBag.Title = "EditPolicy";
+        Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+        var sc = ViewData["AllPolicy"] as VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel;
+        List<VehicleInsuranceSem3.BLL.ViewModel.PolicytypeViewModel> c = Session["AllPolicyType"] as List<VehicleInsuranceSem3.BLL.ViewModel.PolicytypeViewModel>;
+   
+}
+
+
+<form action="@Url.Action("NewPolicy")" method="post">
+    <input type="text" value="@sc.id" name="id" id="id" hidden />
+    <div class="form-group">
+        <label for="exampleInputEmail1">Policy Name:</label>
+        <input type="text" class="form-control" id="name" name="policynumber" aria-describedby="emailHelp" placeholder="name" value="@sc.policynumber" >
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Policy Duration</label>
+        <input type="number" class="form-control" id="policyduration" name="policyduration" placeholder="" value="@sc.policyduration" min="1" max="4">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Create Date:</label>
+        <input type="date" class="form-control" id="policydate" name="policydate" placeholder="" value="@sc.policydate.ToString("yyyy-MM-dd")">
+    </div>
+   
+
+    
+
+    <div class="form-check">
+
+        <input type="checkbox" class="form-check-input" id="isActive" checked value="true"/>
+        <label class="form-check-label" for="isActive">Is Active</label>
+    </div>
+    <input type="text" name="active" id="active" hidden  />
+
+   
+
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Policy Type:</label>
+        <select class="form-control" aria-label="Default select example" id="policytypeid" name="policytypeid" tabindex="@sc.policytypeid">
+            @if (c != null)
+            {
+
+                foreach (var item in c)
+                {
+                    if (sc.policytypeid == item.id)
+                    {
+                        <option value="@item.id" selected>@item.name</option>
+                    }
+                    else
+                    {
+                        <option value="@item.id">@item.name</option>
+                    }
+                }
+            }
+
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <a class="btn btn-warning" href="@Url.Action("PolicyManager")" style="color:white">Back</a>
+</form>
+
+

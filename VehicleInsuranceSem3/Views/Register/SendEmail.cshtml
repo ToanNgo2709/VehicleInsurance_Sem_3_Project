@@ -1,0 +1,34 @@
+﻿@model VehicleInsuranceSem3.BLL.ViewModel.ForgetPasswordEmailViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SendEmail</title>
+</head>
+<body>
+    <h2>Index</h2>
+    <fieldset>
+        <legend>
+            Send Email
+        </legend>
+        @using (Html.BeginForm("SendEmail", "Register", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary()
+            <p>From: </p>
+            <p>@Html.TextBoxFor(m => m.From)</p>
+            <p>To: </p>
+            <p>@Html.TextBoxFor(m => m.To)</p>
+            <p>Subject: </p>
+            <p>@Html.TextBoxFor(m => m.Subject)</p>
+            <p>Body: </p>
+            <p>@Html.TextAreaFor(m => m.Body)</p>
+            <input type="submit" value="Send" />
+        }
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,45 @@
+﻿@model IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.CustomerHistoryModelView>
+@{
+    ViewBag.Title = "CustomerHistory";
+    Layout = "~/Views/Shared/Client_LayoutPage.cshtml";
+}
+
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Customer Id</th>
+                <th>Policy Name </th>
+                <th>Vehicle Name</th>
+                <th>Create Date</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Total Payment</th>
+                <th>Detail</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null)
+            {
+                int i = 1;
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.CustomerId</td>
+                        <td>@item.PolicyName</td>
+                        <td>@item.VehicleName</td>
+                        <td>@item.CreateDate</td>
+                        <td>@item.StartDate</td>
+                        <td>@item.EndDate</td>
+                        <td>@item.TotalPayment</td>
+                        <td><a href="@Url.Action("CustomerHistoryDetail", new { id = item.CustomerPolicyId})"><i class="fa fa-file"></i></a></td>
+                    </tr>
+                    i++;
+                }
+            }
+        </tbody>
+    </table>
+</div>
+

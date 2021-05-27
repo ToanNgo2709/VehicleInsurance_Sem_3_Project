@@ -1,0 +1,207 @@
+﻿@model IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.InsuranceCustomerPolicyMonthlyViewModel>
+@{
+    ViewBag.Title = "InsuranceMonthlySellReport";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.CustomerPurchaseAmountViewModel> purchase = TempData["customerPurchase"] as IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.CustomerPurchaseAmountViewModel>;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Start Date</label>
+                <input type="date" class="form-control" name="StartDate" id="StartDate" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <label>End Date</label>
+            <input type="date" class="form-control" name="EndDate" id="EndDate" />
+        </div>
+        <div class="col-md-4">
+            <label></label>
+            <button id="btnSearch" class="btn btn-block btn-success">Confirm</button>
+        </div>
+
+    </div>
+
+</div>
+<hr />
+
+<div id="CustomerPurchaseChartContainer" style="height:250px; width: 100%">
+
+</div>
+<hr />
+<button class="btn btn-primary" id="printCPR" onclick="printDiv('customePurchase','Customer Purchase Report')">Print Customer Purchase Report</button>
+<hr />
+<div class="container" id="customePurchase">
+    <div class="container">
+        <h3><strong>Customer Purchase Amount</strong></h3>
+    </div>
+    <table class="table table-striped" id="customePurchase">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Customer Name</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (purchase != null)
+            {
+                int i = 1;
+                foreach (var item in purchase)
+                {
+
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.CustomerName</td>
+                        <td>@item.Amount</td>
+                    </tr>
+                    i++;
+                };
+            }
+        </tbody>
+    </table>
+
+</div>
+<hr />
+<div class="container">
+    <div id="PolicySoldChartContainer" style="height:250px; width: 100%">
+
+    </div>
+
+</div>
+<hr />
+
+
+<div class="container">
+    <button class="btn btn-primary" id="printCPR" onclick="printDiv('insuranceRow','Customer Policy Report')">Print Customer Policy Report</button>
+    <hr />
+    <div id="insuranceRow" class="container">
+        <h3>Number of Customer Policy Created: @Model.Count()</h3>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Date</th>
+                    <th>Customer Name</th>
+                    <th>Policy Name</th>
+                    <th>Vehicle Name</th>
+                    <th>Duration</th>
+                    <th>Active</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    int i = 1;
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@i</td>
+                            <td>@item.CreatedDate</td>
+                            <td>@item.CustomerName</td>
+                            <td>@item.PolicyName</td>
+                            <td>@item.VehicleName</td>
+                            <td>@item.Duration</td>
+                            <td>@item.Active</td>
+                        </tr>
+                        i++;
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<hr />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetDataPointForCustomerPurchaseAll")',
+                success: function (response) {
+                    $('#CustomerPurchaseChartContainer').html(response);
+                }
+        });
+
+        $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetDataPointForInsuranceReportAll")',
+                success: function (response) {
+                    $('#PolicySoldChartContainer').html(response);
+                }
+            });
+
+
+        $('#btnSearch').click(function () {
+            var startDay = getDate($("#StartDate").val());
+            var endDay = getDate($("#EndDate").val());
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetInsuranceListByDate", "ReportModule" )',
+                data: { start: startDay, end: endDay },
+                success: function (response) {
+                    $('#insuranceRow').html(response);
+                }
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetPurchaseListByDate", "ReportModule" )',
+                data: { start: startDay, end: endDay },
+                success: function (response) {
+                    $('#customePurchase').html(response);
+                }
+            });
+
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetDataPointForInsuranceReport")',
+                data: { start: startDay, end: endDay },
+                success: function (response) {
+                    $('#PolicySoldChartContainer').html(response);
+                }
+            });
+
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetDataPointForCustomerPurchase")',
+                data: { start: startDay, end: endDay },
+                success: function (response) {
+                    $('#CustomerPurchaseChartContainer').html(response);
+                }
+            });
+        });
+
+    });
+
+    var doc = new jsPDF('p', 'mm', [297, 600]);
+
+    function saveDiv(divId, title) {
+        doc.fromHTML('<html><head><title>${title}</title></head><body>' + document.getElementById('insuranceRow').innerHTML + '</body></html>');
+        doc.save('InsuranceMonthlyReport.pdf');
+    };
+
+
+    function printDiv(divId,
+        title) {
+
+        let mywindow = window.open('', 'PRINT', 'height=650,width=900,top=100,left=150');
+
+        mywindow.document.write(`<html><head><title>${title}</title>`);
+        mywindow.document.write('</head><body>');
+        mywindow.document.write(document.getElementById(divId).innerHTML);
+        mywindow.document.write('</body></html>');
+
+        mywindow.document.close(); // necessary for IE >= 10
+        mywindow.focus(); // necessary for IE >= 10*/
+
+        mywindow.print();
+        //mywindow.close();
+
+        return true;
+    };
+</script>

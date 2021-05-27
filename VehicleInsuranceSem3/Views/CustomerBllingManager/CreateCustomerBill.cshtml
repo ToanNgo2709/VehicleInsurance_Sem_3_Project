@@ -1,0 +1,57 @@
+﻿
+@{
+    ViewBag.Title = "CreateCustomerBill";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel> x = Session["cspAllView"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel>;
+}
+
+
+<form action="@Url.Action("AddCustomerBill")" method="post">
+    <div class="form-group">
+        <input type="text" class="form-control" id="customeraddprove" name="customeraddprove" aria-describedby="emailHelp" placeholder="Customer Add Proves" value="" required>
+    </div>
+
+    <div class="form-group">
+        <input type="text" class="form-control" id="bill_number" name="bill_number" placeholder="Bill Number" value="" required>
+    </div>
+    <div class="form-group">
+        <input type="date" class="form-control" id="bill_number" name="createdate" placeholder="Create Date" value="   " required>
+    </div>
+
+    <div class="form-group">
+        <input type="number" class="form-control" id="amount" name="amount" placeholder="Amount" value="" required>
+    </div>
+    <div class="form-group">
+        <select class="form-control" aria-label="Default select example" id="customerpolicyid" name="customerpolicyid">
+            <option selected> -- Select --</option>
+            @foreach (var item in x)
+            {
+                if (item.id != null)
+                {
+                    <option value="@item.id">@item.customeraddprove</option>
+                }
+                else
+                {
+                    <option value="@item.id">@item.customeraddprove</option>
+                }
+            }
+
+        </select>
+    </div>
+    <div class="form-check">
+        <input type="checkbox" name="active" id="active" required />
+        @*       <input type="checkbox" class="form-check-input" id="isActive" checked>*@
+        <label class="form-check-label" for="isActive">Is Active</label>
+    </div>
+
+
+
+
+    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <a class="btn btn-warning" href="@Url.Action("CusTomerBillManagerl")" style="color:white">Back</a>
+</form>
+
+
+
+
+

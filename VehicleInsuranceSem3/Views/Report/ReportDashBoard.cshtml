@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "ReportDashBoard";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <section class="col-sm-6">
+            <div class="form-group">
+                <div class="input-group" id="datetimepicker">
+                    <input type="text" class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $("#datetimepicker").datetimepicker();
+    })
+
+</script>
+

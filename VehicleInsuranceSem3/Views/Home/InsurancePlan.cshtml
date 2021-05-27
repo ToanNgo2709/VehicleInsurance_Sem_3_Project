@@ -1,0 +1,133 @@
+﻿@model IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>
+@{
+    ViewBag.Title = "InsurancePlan";
+    Layout = "~/Views/Shared/Client_LayoutPage.cshtml";
+}
+
+<div class="breadcrumbs">
+    <div class="container">
+        <a href="index.html">Home</a>
+        <span>Insurance</span>
+    </div>
+</div>
+
+<div class="page">
+    <div class="container">
+        <h3 class="entry-title">Choose your own insurance plan</h3>
+        <p>Nam posuere purus vitae est sollicitudin placerat. Praesent posuere porta dignissim. Phasellus viverra, urna a convallis tincidunt, ante mi tempor turpis, nec tempor mauris ligula ut sapien. Etiam euismod mi eu ante mollis commodo. Suspendisse porta nisi vitae dui hendrerit, eget ornare orci semper. Phasellus pharetra, erat sit amet rutrum porttitor, est eros consectetur elit, molestie consequat erat tellus in dui. Vestibulum a vehicula sem. Nullam commodo quis purus in volutpat. Integer semper lacus a lorem efficitur auctor curabitur tincidunt ligula non.</p>
+
+        <div class="filter-links filterable-nav">
+            <div id="myBtnContainer">
+                <strong>Select Category: </strong>
+                <button class="btn active fadeInRight" onclick="filterSelection('all')">Show all</button>
+                <button class="btn fadeInRight" onclick="filterSelection('5')">Motocycle Insurance</button>
+                <button class="btn fadeInRight" onclick="filterSelection('6')">4 Seat Car Insurance</button>
+                <button class="btn fadeInRight" onclick="filterSelection('7')">7 Seat Car Insurance</button>
+                <button class="btn fadeInRight" onclick="filterSelection('8')">16 Seat Insurance</button>
+                <button class="btn fadeInRight" onclick="filterSelection('9')">Body Insurance</button>
+                <button class="btn fadeInRight" onclick="filterSelection('10')">Civil Insurance</button>
+                <button class="btn fadeInRight" onclick="filterSelection('11')">Other Insurance</button>
+                @*<a href="#" class="wow fadeInRight" data-wow-delay=".8s" data-filter=".others">Others</a>*@
+            </div>
+        </div>
+
+        <div class="filterable-items container">
+            @foreach (var item in Model)
+            {
+                <div class="filterDiv @item.policytypeid">
+                    <div class="insurance-item filterable-item ">
+                        <div class="insurance-content">
+                            <div class="insurance-icon"><i class="fa fa-car"></i></div>
+                            <h3 class="insurance-title">@item.policynumber</h3>
+                            <p>Etiam aliquam ante in mattis molestie. Vivamus in laoreet eros. Proin tempus velit dui lobortis justo laoreet nes phasellus luctus neque.</p>
+                            @if (Session["id"] == null)
+                            {
+                                <a href="@Url.Action("Login","Login")" class="button">Buy</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("CreateCustomerPolicy")" onclick="GetPolicyID(@item.id)" class="button">Buy</a>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div> <!-- .page -->
+
+<script>
+
+    //filterSelection('all')
+    //function filterSelection(c) {
+    //    var x, i;
+    //    x = document.getElementsByClassName("filterDiv");
+    //    if (c == 'all') {
+    //        c = '';
+    //    }
+
+    //    for (i = 0; i < x.length; i++) {
+    //        arr =
+    //    }
+    //};
+
+
+    filterSelection('all')
+    function filterSelection(c) {
+        var x, i;
+        x = document.getElementsByClassName("filterDiv");
+        if (c == 'all') {
+            c = '';
+        }
+        for (i = 0; i < x.length; i++) {
+            w3AddClass(x[i], "hideItem");
+            if (x[i].className.indexOf(c) > -1) {
+                w3RemoveClass(x[i], "hideItem");
+            }
+        }
+    };
+
+    function w3AddClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
+        }
+    };
+
+    function w3RemoveClass(element, name) {
+        var i, arr1, arr2;
+        arr1 = element.className.split(" ");
+        arr2 = name.split(" ");
+        for (i = 0; i < arr2.length; i++) {
+            while (arr1.indexOf(arr2[i]) > -1) {
+                arr1.splice(arr1.indexOf(arr2[i]), 1);
+            }
+        }
+        element.className = arr1.join(" ");
+    };
+
+    var btnContainer = document.getElementById("myBtnContainer");
+    var btns = btnContainer.getElementsByClassName("btn");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+            var current = document.getElementsByClassName("active");
+            current[0].className = current[0].className.replace(" active", "");
+            this.className += " active";
+        });
+    };
+
+    function GetPolicyID(id) {
+        $.ajax({
+            type: "POST",
+            url: "@Url.Action("GetPolicyId")",
+            data: { policyId: id },
+            success: function (response) {
+
+            }
+        });
+    };
+</script>

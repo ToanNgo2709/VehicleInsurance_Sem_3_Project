@@ -1,0 +1,128 @@
+﻿
+@{
+    ViewBag.Title = "EditCustomerPolicy";
+    Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
+
+
+    List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel> cs = Session["customerInAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.CustomerinfoViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel> vh = Session["VehicleAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.VehicleinfoViewModel>;
+    List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel> pl = Session["PolicyAll"] as List<VehicleInsuranceSem3.BLL.ViewModel.PolicyViewModel>;
+    var Usacc = ViewData["CustomAll"] as VehicleInsuranceSem3.BLL.ViewModel.CustomerpolicyViewModel;
+}
+
+<form action="@Url.Action("NewCustomerPolicy")" method="post">
+    <input type="text" value="@Usacc.id" name="id" id="id" hidden />
+    <div class="form-group">
+        <label for="exampleInputEmail1">Customer Proves:</label>
+        <input type="text" class="form-control" id="name" name="customeraddprove" aria-describedby="emailHelp" placeholder="customeraddprove" value="@Usacc.customeraddprove">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Create Date:</label>
+        <input type="date" class="form-control" id="createdate" name="createdate" placeholder="" value="@Usacc.createdate.ToString("yyyy-MM-dd")">
+
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Start Date:</label>
+        <input type="date" class="form-control" id="policystartdate" name="policystartdate" placeholder="" value="@Usacc.policystartdate.ToString("yyyy-MM-dd")">
+
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">End Date:</label>
+        <input type="date" class="form-control" id="policyenddate" name="policyenddate" placeholder="" value="@Usacc.policyenddate.ToString("yyyy-MM-dd")">
+
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Total Payment:</label>
+        <input type="number" class="form-control" id="TotalPayment" name="TotalPayment" placeholder="" value="@Usacc.TotalPayment">
+    </div>
+
+
+
+
+
+
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Customer:</label>
+        <select class="form-control" aria-label="Default select example" id="customerid" name="customerid" tabindex="@Usacc.customerid">
+            @if (cs != null)
+            {
+
+                foreach (var item in cs)
+                {
+                    if (Usacc.customerid == item.id)
+                    {
+                        <option value="@item.id" selected>@item.username</option>
+                    }
+                    else
+                    {
+                        <option value="@item.id">@item.username</option>
+                    }
+                }
+            }
+
+        </select>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="exampleInputPassword1">Policy</label>
+        <select class="form-control" aria-label="Default select example" id="policyid" name="policyid" tabindex="@Usacc.policyid">
+            @if (pl != null)
+            {
+
+                foreach (var item in pl)
+                {
+                    if (Usacc.policyid == item.id)
+                    {
+                        <option value="@item.id" selected>@item.policynumber</option>
+                    }
+                    else
+                    {
+                        <option value="@item.id">@item.policynumber</option>
+                    }
+                }
+            }
+
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Vehicle's Owner:</label>
+        <select class="form-control" aria-label="Default select example" id="vehicleid" name="vehicleid" tabindex="@Usacc.vehicleid">
+            @if (vh != null)
+            {
+
+                foreach (var item in vh)
+                {
+                    if (Usacc.vehicleid == item.id)
+                    {
+                        <option value="@item.id" selected>@item.ownername</option>
+                    }
+                    else
+                    {
+                        <option value="@item.id">@item.ownername</option>
+                    }
+                }
+            }
+
+        </select>
+    </div>
+
+    <div class="form-check">
+
+        <input type="checkbox" class="form-check-input" id="isActive" checked />
+        <label class="form-check-label" for="isActive">Is Active</label>
+    </div>
+    <input type="text" name="active" id="active" hidden />
+
+
+    <button type="submit" class="btn btn-primary" value="">Submit</button>
+    <a class="btn btn-warning" href="@Url.Action("CustomerPolicyManager")" style="color:white">Back</a>
+</form>
+
+
+
