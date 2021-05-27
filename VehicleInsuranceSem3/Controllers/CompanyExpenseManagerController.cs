@@ -8,6 +8,8 @@ using VehicleInsuranceSem3.BLL.DAO;
 
 using PagedList;
 using PagedList.Mvc;
+using VehicleInsuranceSem3.DAL.Model;
+
 namespace VehicleInsuranceSem3.Controllers
 
 {
@@ -23,31 +25,31 @@ namespace VehicleInsuranceSem3.Controllers
         {
             return View();
         }
-        public ActionResult ExpenseTypeManager(int page = 1  , int pageSize = 10)
+        public ActionResult ExpenseTypeManager(int page = 1, int pageSize = 10)
         {
             List<ExpensetypeViewModel> LisExpenseTpe = new List<ExpensetypeViewModel>();
             PagedList<ExpensetypeViewModel> PageListExpenseTpe;
             if (Session["SearchExpenseType"] != null)
             {
                 LisExpenseTpe = (List<ExpensetypeViewModel>)Session["SearchExpenseType"];
-                PageListExpenseTpe = new PagedList<ExpensetypeViewModel>(LisExpenseTpe,page,pageSize);
+                PageListExpenseTpe = new PagedList<ExpensetypeViewModel>(LisExpenseTpe, page, pageSize);
             }
             else
             {
                 LisExpenseTpe = mc.GetAll();
                 PageListExpenseTpe = new PagedList<ExpensetypeViewModel>(LisExpenseTpe, page, pageSize);
             }
-           
+
             return View(PageListExpenseTpe);
 
 
         }
-        public ActionResult CompanyExpenseManager(int page =1 , int pageSize=10)
+        public ActionResult CompanyExpenseManager(int page = 1, int pageSize = 10)
         {
-            
+
             List<CompanyexpenseViewModel> ListCompanyExpense = new List<CompanyexpenseViewModel>();
             PagedList<CompanyexpenseViewModel> PageListCompanyExpense;
-            if (Session["CompanyExpenseSearch"]!=null)
+            if (Session["CompanyExpenseSearch"] != null)
             {
                 ListCompanyExpense = (List<CompanyexpenseViewModel>)Session["CompanyExpenseSearch"];
                 PageListCompanyExpense = new PagedList<CompanyexpenseViewModel>(ListCompanyExpense, page, pageSize);
@@ -61,11 +63,11 @@ namespace VehicleInsuranceSem3.Controllers
             return View(PageListCompanyExpense);
 
         }
-        public ActionResult CLaimDetailManager(int page = 1 , int pageSize = 10)
+        public ActionResult CLaimDetailManager(int page = 1, int pageSize = 10)
         {
             List<ClaimDetailViewModel> ListClaimDetail = new List<ClaimDetailViewModel>();
             PagedList<ClaimDetailViewModel> PageListClaimDetail;
-            if (Session["ClaimDetailSearchs"]!=null)
+            if (Session["ClaimDetailSearchs"] != null)
             {
                 ListClaimDetail = (List<ClaimDetailViewModel>)Session["ClaimDetailSearchs"];
                 PageListClaimDetail = new PagedList<ClaimDetailViewModel>(ListClaimDetail, page, pageSize);
@@ -79,7 +81,7 @@ namespace VehicleInsuranceSem3.Controllers
 
             return View(PageListClaimDetail);
         }
-       
+
         [HttpGet]
         public ActionResult ClaimDetailViewAll()
         {
@@ -107,7 +109,7 @@ namespace VehicleInsuranceSem3.Controllers
             Session["CompanyExpenseSearch"] = null;
 
             return RedirectToAction("CompanyExpenseManager");
-            
+
         }
 
         [HttpGet]
@@ -136,7 +138,7 @@ namespace VehicleInsuranceSem3.Controllers
             Session["CusAllView"] = z;
             return RedirectToAction("CLaimDetailManager");
         }
-         public ActionResult ComPanySearch()
+        public ActionResult ComPanySearch()
         {
             var keyword = Request.Form["tbSearch"];
             if (keyword != null)
@@ -154,11 +156,11 @@ namespace VehicleInsuranceSem3.Controllers
         public ActionResult expenseTypeSearch()
         {
             var keyword = Request.Form["tbSearch"];
-            if (keyword !=null)
+            if (keyword != null)
             {
                 Session["StringSearch"] = keyword;
             }
-            List<ExpensetypeViewModel> s = mc.Search(1,10,(String)Session["StringSearch"]);
+            List<ExpensetypeViewModel> s = mc.Search(1, 10, (String)Session["StringSearch"]);
             Session["SearchExpenseType"] = s;
             return RedirectToAction("ExpenseTypeManager");
 
@@ -184,7 +186,7 @@ namespace VehicleInsuranceSem3.Controllers
         public ActionResult EditexpenseType(int id)
         {
             ExpensetypeViewModel b = mc.GetEdit(id);
-            ViewData["ViewAllExpenseType"]  = b;
+            ViewData["ViewAllExpenseType"] = b;
 
             return View();
 
@@ -195,7 +197,7 @@ namespace VehicleInsuranceSem3.Controllers
             l.Update(f);
             List<ClaimDetailViewModel> s = l.GetAll();
             Session["ClaimDetailViewAll"] = s;
-            if (Session["ClaimDetailSearchs"] ==null)
+            if (Session["ClaimDetailSearchs"] == null)
             {
                 return RedirectToAction("ClaimDetailViewAll");
             }
@@ -205,7 +207,7 @@ namespace VehicleInsuranceSem3.Controllers
 
 
         [HttpPost]
-         public ActionResult NewCompanyExpense( CompanyexpenseViewModel z)
+        public ActionResult NewCompanyExpense(CompanyexpenseViewModel z)
         {
 
             xx.Update(z);
@@ -219,7 +221,7 @@ namespace VehicleInsuranceSem3.Controllers
         }
 
         [HttpPost]
-       public ActionResult NewexpeneseType(ExpensetypeViewModel v)
+        public ActionResult NewexpeneseType(ExpensetypeViewModel v)
         {
             mc.Update(v);
             List<ExpensetypeViewModel> c = mc.GetAll();
@@ -246,9 +248,25 @@ namespace VehicleInsuranceSem3.Controllers
             Session["ClaimDetailViewAll"] = h;
             List<CustomerpolicyViewModel> z = sxx.GetAll();
             Session["CusAllView"] = z;
+
+
+
             return View();
 
-        } 
+        }
+
+        [HttpPost]
+        public ActionResult GetClaimInfo(int customerPolicyId)
+        {
+            var context = new InsuranceDbContext();
+            var customerPolicy = context.Customer_Policy.Where(c => c.id == customerPolicyId).FirstOrDefault();
+
+            decimal insuredAmount = (decimal)customerPolicy.Policy.Policy_Type.liability_level;
+            decimal claimableAmout = (insuredAmount / 100) * (decimal)customerPolicy.Vehicle_Info.rate_by_condition;
+
+            return Json(new { insure = insuredAmount, claim = claimableAmout }, JsonRequestBehavior.AllowGet);
+
+        }
 
         public ActionResult CreateExpenseType()
         {
@@ -259,11 +277,53 @@ namespace VehicleInsuranceSem3.Controllers
         [HttpPost]
         public ActionResult AddClaimDetail(ClaimDetailViewModel ss)
         {
+            CompanyexpenseDAORequest request = new CompanyexpenseDAORequest();
+            CompanyexpenseViewModel model = new CompanyexpenseViewModel()
+            {
+                date = DateTime.Today,
+                expensetypeid = 1,
+                amount = ss.claimableamount,
+                customerpolicyid = ss.customerpolicyid,
+                description = "Chi trả bảo hiểm cho hợp đồng số: " + ss.customerpolicyid
+            };
+            request.Add(model);
             l.Add(ss);
             List<ClaimDetailViewModel> h = l.GetAll();
             Session["ClaimDetailViewAll"] = h;
-            return RedirectToAction("ClaimDetailViewAll");
+            return RedirectToAction("ClaimDetailBill",ss);
         }
+
+        public ActionResult GetClaimDetail(int id)
+        {
+            ClaimDetailDAORequest request = new ClaimDetailDAORequest();
+            var model = request.GetClaimById(id);
+            return RedirectToAction("ClaimDetailBill", model);
+        }
+
+        public ActionResult ClaimDetailBill(ClaimDetailViewModel ss)
+        {
+            
+            var context = new InsuranceDbContext();
+            var claimDetail = context.Claim_Detail.Where(c => c.claim_number.Equals(ss.claimnumber))
+                .Select(c => new ClaimBillViewModel
+                {
+                    AccidentDate = c.date_accident,
+                    AccidentPlace = c.place_accident,
+                    Claim = c.claimable_amount,
+                    ClaimName = c.claim_number,
+                    CustomerName = c.Customer_Policy.Customer_Info.name,
+                    CustomerPolicyId = c.Customer_Policy.id,
+                    EndDate = c.Customer_Policy.policy_end_date,
+                    Insured = c.insured_amount,
+                    PolicyName = c.Customer_Policy.Policy.policy_number,
+                    StartDate = c.Customer_Policy.policy_start_date,
+                    VehicleName = c.Customer_Policy.Vehicle_Info.Brand.name + " " + c.Customer_Policy.Vehicle_Info.Model.name
+                }).FirstOrDefault();
+
+            return View(claimDetail);
+        }
+
+
         [HttpPost]
         public ActionResult AddConpanyExpesnese(CompanyexpenseViewModel z)
         {

@@ -68,7 +68,14 @@
 @section scripts{
     <script>
         $(document).ready(function () {
-
+            $.ajax({
+                type: "GET",
+                url: "@Url.Action("GetDataPointBrandReportAll", "ReportModule")",
+                success: function (response) {
+                    $("#BrandSellChart").html(response);
+                }
+            });
+            
         });
 
         $("#btnConfirm").click(function () {

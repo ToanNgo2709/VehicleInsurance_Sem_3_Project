@@ -49,7 +49,7 @@
                 </a>
                 <div id="collapseBootstrap" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Account and CustomerPolicy</h6>
+                        <h6 class="collapse-header">Account and User Type</h6>
                         <a class="collapse-item" href="@Url.Action("AccManager" , "UserAcc")">Account</a>
                         <a class="collapse-item" href="@Url.Action("UserTypeManager","UserAcc")">User Type</a>
                         
@@ -80,12 +80,12 @@
                 </a>
                 <div id="collapseCom" class="collapse" aria-labelledby="headingCom" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header"> Company Expense Manager</h6>
+                        <h6 class="collapse-header"> Company  Manager</h6>
                         <a class="collapse-item" href="@Url.Action("CusTomerBillManagerl","CustomerBllingManager")">Customer Billing Info</a>
                         <a class="collapse-item" href="@Url.Action("ExpenseTypeManager","CompanyExpenseManager")">Expense Type</a>
-                        <a class="collapse-item" href="@Url.Action("CompanyExpenseManager","CompanyExpenseManager")">Company Manager</a>
+                        <a class="collapse-item" href="@Url.Action("CompanyExpenseManager","CompanyExpenseManager")">Company Expense Manager</a>
                         <a class="collapse-item" href="@Url.Action("CLaimDetailManager","CompanyExpenseManager")">Claim Detail Manager</a>
-                        <a class="collapse-item" href="@Url.Action("EstimateManagerNe","EstimateManager")">Estimate Info</a>
+                        @*<a class="collapse-item" href="@Url.Action("EstimateManagerNe","EstimateManager")">Estimate Info</a>*@
                     </div>
                 </div>
             </li>
@@ -378,7 +378,7 @@
 
     <!-- Scroll to top -->
     <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
+        <i class="fa fa-arrow-up"></i>
     </a>
 
 

@@ -1,0 +1,111 @@
+﻿@model VehicleInsuranceSem3.BLL.ViewModel.CopyCustomerPolicyViewModel
+@{
+    ViewBag.Title = "CustomerHistoryDetail";
+    Layout = "~/Views/Shared/Client_LayoutPage.cshtml";
+}
+
+<div class="container" style="margin: 40px">
+    <h2>Customer History Detail</h2>
+    <form method="post" action="" class="contact-form" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="txtCusName">Customer: </label>
+                <input type="text" id="txtCusName" name="txtCusName" readonly placeholder="Customer Name" value="@Model.CustomerName" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <label for="policyName">Policy Name:</label>
+                <input type="text" id="policyName" name="policyName" readonly placeholder="Policy Name" value="@Model.PolicyName" />
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-6">
+                <label>Brand:</label>
+                <input type="text" readonly value="@Model.BrandName" />
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="ownerName">Owner Name:</label>
+                        <input type="text" readonly id="ownerName" name="ownerName" placeholder="Owner's Name" value="@Model.OwnerName" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="address">Address:</label>
+                        <input type="text" readonly id="address" name="address" placeholder="Address" value="@Model.Address" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Models:</label>
+                    <input type="text" readonly value="@Model.ModelName" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="version">Version:</label>
+                        <input class="form-control" readonly type="text" id="version" name="version" placeholder="Version" value="@Model.Version" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="condition">Condition:</label>
+                        <input class="form-control" readonly type="text" id="condition" name="condition" placeholder="Condition" value="@Model.Condition" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="frameNumber">Frame Number:</label>
+                <input type="text" class="form-control" readonly id="frameNumber" name="frameNumber" placeholder="Frame Number" value="@Model.FrameNumber" />
+            </div>
+            <div class="col-md-4">
+                <label for="engineNumber">Engine Number</label>
+                <input type="text" class="form-control" readonly id="engineNumber" name="engineNumber" placeholder="Engine Number" value="@Model.EngineNumber" />
+            </div>
+            <div class="col-md-4">
+                <label for="vehicleNumber">Vehicle Number:</label>
+                <input type="text" class="form-control" readonly id="vehicleNumber" name="vehicleNumber" placeholder="Vehicle Number" value="@Model.VehicleNumber" />
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <label>Create Date:</label>
+                <input type="text id="createDate" readonly name="createDate" class="form-control" value="@Model.CreateDate" />
+            </div>
+            <div class="col-md-4">
+                <label>Start Date:</label>
+                <input type="text" id="startDate" readonly name="startDate" class="form-control" value="@Model.StartDate" />
+            </div>
+            <div class="col-md-4">
+                <label>End Date:</label>
+                <input type="text" id="endDate" readonly name="endDate" class="form-control" value="@Model.EndDate" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <label>Total Payment:</label>
+                <input type="text" id="totalPayment" readonly name="totalPayment" value="@Model.TotayPayment" />
+            </div>
+            <div class="col-lg-6">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
+                <a href="@Url.Action("CustomerHistory")">Return To Customer History</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+

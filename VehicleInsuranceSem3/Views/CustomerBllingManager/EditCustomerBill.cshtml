@@ -9,18 +9,18 @@
 <form action="@Url.Action("NewCustomerBill")" method="post">
     <input type="text" value="@Usacc.id" name="id" id="id" hidden />
     <div class="form-group">
-        <label for="exampleInputEmail1">customeraddprove</label>
+        <label for="exampleInputEmail1">Customer Proves:</label>
         <input type="text" class="form-control" id="customeraddprove" name="customeraddprove" aria-describedby="emailHelp" placeholder="customeraddprove" value="@Usacc.customeraddprove">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        
     </div>
 
     <div class="form-group">
-        <label for="exampleInputEmail1">customeraddprove</label>
+        <label for="exampleInputEmail1">Bill Number:</label>
         <input type="text" class="form-control" id="bill_number" name="bill_number" aria-describedby="emailHelp" placeholder="bill_number" value="@Usacc.bill_number">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">customeraddprove</label>
+        <label for="exampleInputEmail1">Amount:</label>
         <input type="number" class="form-control" id="amount" name="amount" aria-describedby="emailHelp" placeholder="amount" value="@Usacc.amount">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
     </div>
@@ -28,7 +28,7 @@
 
 
     <div class="form-group">
-        <label for="exampleInputPassword1">Date </label>
+        <label for="exampleInputPassword1">Date: </label>
         <input type="date" class="form-control" id="createdate" name="createdate" placeholder="createdate" value="@Usacc.createdate.ToString("yyyy-MM-dd")">
 
     </div>
@@ -41,8 +41,8 @@
 
 
     <div class="form-group">
-        <label for="exampleInputPassword1">Customer</label>
-        <select class="form-select" aria-label="Default select example" id="customerpolicyid" name="customerpolicyid" tabindex="@Usacc.customerpolicyid">
+        <label for="exampleInputPassword1">Customer Policy:</label>
+        <select class="form-control" aria-label="Default select example" id="customerpolicyid" name="customerpolicyid" tabindex="@Usacc.customerpolicyid">
             @if (ss != null)
             {
 
@@ -64,7 +64,7 @@
 
 
     <button type="submit" class="btn btn-primary" value="">Submit</button>
-    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("CustomerBillManagerl")" style="color:white">Back</a></button>
+    <a href="@Url.Action("CustomerBillManagerl")" style="color:white">Back</a>
 </form>
 
 

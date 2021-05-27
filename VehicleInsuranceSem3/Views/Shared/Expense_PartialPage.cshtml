@@ -1,0 +1,33 @@
+﻿@model IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.CompanyexpenseViewModel>
+
+<table class="table table-strip">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Date</th>
+            <th>Expense Type Name</th>
+            <th>Amount</th>
+            <th>Description</th>
+            <th>Customer Policy Id</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            int i = 1;
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@i</td>
+                    <td>@item.date</td>
+                    <td>@item.expenseTypeName</td>
+                    <td>@item.amount</td>
+                    <td>@item.description</td>
+                    <td>@item.customerpolicyid</td>
+                </tr>
+                i++;
+            }
+        }
+
+    </tbody>
+</table>

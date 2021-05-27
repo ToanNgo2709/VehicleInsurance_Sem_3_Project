@@ -8,20 +8,20 @@
 <form action="@Url.Action("NewPolicyType")" method="post">
     <input type="text" value="@zx.id" name="id" id="id" hidden />
     <div class="form-group">
-        <label for="exampleInputEmail1">Name</label>
+        <label for="exampleInputEmail1">Policy Type:</label>
         <input type="text" class="form-control" id="NameProdc" name="name" aria-describedby="emailHelp" placeholder="Name" value="@zx.name">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        
     </div>
 
     <div class="form-group">
-        <label for="exampleInputEmail1">libility level</label>
+        <label for="exampleInputEmail1">Liability Level:</label>
         <input type="number" class="form-control" id="NameProdc" name="libilityLevel" aria-describedby="emailHelp" placeholder="Name" value="@zx.libilityLevel" min="0" max="10">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        
     </div>
     <div class="form-group">
-        <label for="exampleInputEmail1">price</label>
+        <label for="exampleInputEmail1">Price:</label>
         <input type="number" class="form-control" id="NameProdc" name="price" aria-describedby="emailHelp" placeholder="Name" value="@zx.price" min="10000" max="99999999999999">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        
     </div>
 
     <div class="form-check">
@@ -33,7 +33,7 @@
 
 
     <button type="submit" class="btn btn-primary" value="">Submit</button>
-    <button type="submit" class="btn btn-primary" value=""><a href="@Url.Action("PolicyTypeManager")">Back</a></button>
+    <a class="btn btn-warning" href="@Url.Action("PolicyTypeManager")">Back</a>
 </form>
 
 

@@ -8,7 +8,7 @@ using VehicleInsuranceSem3.BLL.ViewModel;
 using VehicleInsuranceSem3.BLL.DAO;
 using PagedList;
 using PagedList.Mvc;
-
+using VehicleInsuranceSem3.DAL.Model;
 
 namespace VehicleInsuranceSem3.Controllers
 {
@@ -40,6 +40,7 @@ namespace VehicleInsuranceSem3.Controllers
 
             return View(PageListCus);
         }
+
    
         public ActionResult UserTypeManager(int page = 1 , int pageSize =10)
         {
@@ -192,6 +193,39 @@ namespace VehicleInsuranceSem3.Controllers
             Session["AllListAcc"] = c;
             return RedirectToAction("ViewAllAcc");
 
+        }
+
+        public ActionResult ShowCustomerPolicyHistory(int id)
+        {
+            CustomerpolicyDAORequest request = new CustomerpolicyDAORequest();
+            List<CustomerHistoryModelView> list = request.GetCustomerPolicyHistory(id);
+            return View(list);
+        }
+
+        public ActionResult ShowCustomerPolicyDetail(int customerPolicyId)
+        {
+            var context = new InsuranceDbContext();
+            var model = context.Customer_Policy
+                .Where(c => c.id == customerPolicyId)
+                .Select(c => new CopyCustomerPolicyViewModel
+                {
+                    Address = c.Vehicle_Info.address,
+                    BrandName = c.Vehicle_Info.Brand.name,
+                    Condition = c.Vehicle_Info.vehicle_condition,
+                    CreateDate = c.create_date,
+                    CustomerName = c.Customer_Info.name,
+                    EndDate = c.policy_end_date,
+                    EngineNumber = c.Vehicle_Info.engine_number,
+                    FrameNumber = c.Vehicle_Info.frame_number,
+                    ModelName = c.Vehicle_Info.Model.name,
+                    OwnerName = c.Vehicle_Info.owner_name,
+                    PolicyName = c.Policy.policy_number,
+                    StartDate = c.policy_start_date,
+                    TotayPayment = c.total_payment,
+                    VehicleNumber = c.Vehicle_Info.vehicle_number,
+                    Version = c.Vehicle_Info.version
+                }).FirstOrDefault();
+            return View(model);
         }
 
         #endregion

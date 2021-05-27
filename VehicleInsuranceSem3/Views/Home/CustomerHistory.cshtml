@@ -16,6 +16,7 @@
                 <th>Start Date</th>
                 <th>End Date</th>
                 <th>Total Payment</th>
+                <th>Detail</th>
             </tr>
         </thead>
         <tbody>
@@ -33,6 +34,7 @@
                         <td>@item.StartDate</td>
                         <td>@item.EndDate</td>
                         <td>@item.TotalPayment</td>
+                        <td><a href="@Url.Action("CustomerHistoryDetail", new { id = item.CustomerPolicyId})"><i class="fa fa-file"></i></a></td>
                     </tr>
                     i++;
                 }

@@ -30,6 +30,7 @@ namespace VehicleInsuranceSem3.Controllers
             var defaultStartDate = StartEndDateOfCurrentMonth.GetStartDateOfMonth(today);
             var defaultEndDate = StartEndDateOfCurrentMonth.GetEndDateOfMonth(defaultStartDate);
             List<InsuranceCustomerPolicyMonthlyViewModel> model = report.ShowCustomerPolicyAllTime();
+            TempData["customerPurchase"] = report.ShowPurchaseAllTime();
             return View(model);
         }
 
@@ -41,6 +42,62 @@ namespace VehicleInsuranceSem3.Controllers
             DateTime endDate = DateTime.Parse(end);
             List<InsuranceCustomerPolicyMonthlyViewModel> model = report.ShowCustomerPolicyByDate(startDate, endDate);
             return PartialView("InsuranceMonthly_PartialPage",model);
+        }
+
+        [HttpPost]
+        public ActionResult GetPurchaseListByDate(string start, string end)
+        {
+            DateTime startDate = DateTime.Parse(start);
+            DateTime endDate = DateTime.Parse(end);
+            List<CustomerPurchaseAmountViewModel> countList = report.ShowPurchaseAmountByDate(startDate, endDate);
+            return PartialView("CustomerPurchaseTable_PartialPage", countList);
+        }
+
+        //------------------------------------------------
+        [HttpGet]
+        public ActionResult GetDataPointForCustomerPurchaseAll()
+        {          
+            List<CustomerPurchaseAmountViewModel> countList = report.ShowPurchaseAmountAll();
+
+            List<DataPoint> dataPoints = new List<DataPoint>();
+            foreach (var item in countList)
+            {
+                dataPoints.Add(new DataPoint(item.CustomerName, item.Amount));
+            }
+            ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints);
+            return PartialView("CustomerPurchaseReportChart_PartialPage", ViewBag.DataPoints2);
+        }
+
+
+        [HttpGet]
+        public ActionResult GetDataPointForCustomerPurchase(string start, string end)
+        {
+            DateTime startDate = DateTime.Parse(start);
+            DateTime endDate = DateTime.Parse(end);
+            List<CustomerPurchaseAmountViewModel> countList = report.ShowPurchaseAmountByDate(startDate, endDate);
+
+            List<DataPoint> dataPoints = new List<DataPoint>();
+            foreach (var item in countList)
+            {
+                dataPoints.Add(new DataPoint(item.CustomerName, item.Amount));
+            }
+            ViewBag.DataPoints2 = JsonConvert.SerializeObject(dataPoints);
+            return PartialView("CustomerPurchaseReportChart_PartialPage", ViewBag.DataPoints2);
+        }
+
+        //---------------------------------------------------------
+        [HttpGet]
+        public ActionResult GetDataPointForInsuranceReportAll()
+        {
+            List<PolicyTypeCountModel> countList = report.CountPolicyTypeSellAllTime();
+
+            List<DataPoint> dataPoints = new List<DataPoint>();
+            foreach (var item in countList)
+            {
+                dataPoints.Add(new DataPoint(item.Name, item.Number));
+            }
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+            return PartialView("InsuranceReportChart_PartialPage", ViewBag.DataPoints);
         }
 
         [HttpGet]
@@ -62,10 +119,12 @@ namespace VehicleInsuranceSem3.Controllers
         //--------------------------------------------------------------------------------------
 
         //CLAIMABLE LIST REPORT
-        public ActionResult ClaimaAmountMonthly()
+        public ActionResult ClaimaAmountMonthly(int? page)
         {
             List<ClaimableAmountByMonthViewModel> model = report.ShowAllClaimableReport();
-            ViewBag.SumClaimAllTime = report.CalculateTotalClaimAmounAllTimet();
+            List<CompanyexpenseViewModel> model2 = report.ShowCompanyExpenseAllTime();
+
+            TempData["expense"] = model2;
             return View(model);
         }
 
@@ -79,6 +138,49 @@ namespace VehicleInsuranceSem3.Controllers
             return PartialView("ClaimReport_PartialPage",list);
         }
 
+        [HttpPost]
+        public ActionResult ShowExpenseWithDate(string start, string end)
+        {
+            DateTime startDate = DateTime.Parse(start);
+            DateTime endDate = DateTime.Parse(end);
+            List<CompanyexpenseViewModel> model2 = report.ShowCompanyExpenseByDate(startDate, endDate);
+            return PartialView("Expense_PartialPage", model2);
+        }
+
+        [HttpGet]
+        public ActionResult GetDataPointForCompanyExpenseReportAll()
+        {
+            List<ExpenseSumViewModel> sumList = report.ShowSumCompanyExpenseAllTime();
+
+            List<DataPoint> dataPoints = new List<DataPoint>();
+            foreach (var item in sumList)
+            {
+                dataPoints.Add(new DataPoint(item.ExpenseTypeName, (double)item.Amount));
+            }
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+            return PartialView("ExpenseSumChart_PartialPage", ViewBag.DataPoints);
+        }
+
+        [HttpGet]
+        public ActionResult GetDataPointForCompanyExpenseReport(string start, string end)
+        {
+            DateTime startDate = DateTime.Parse(start);
+            DateTime endDate = DateTime.Parse(end);
+            List<ExpenseSumViewModel> sumList = report.ShowSumCompanyExpenseByDate(startDate, endDate);
+
+            List<DataPoint> dataPoints = new List<DataPoint>();
+            foreach (var item in sumList)
+            {
+                dataPoints.Add(new DataPoint(item.ExpenseTypeName, (double)item.Amount));
+            }
+            ViewBag.DataPoints = JsonConvert.SerializeObject(dataPoints);
+            return PartialView("ExpenseSumChart_PartialPage", ViewBag.DataPoints);
+        }
+
+
+
+
+
         //--------------------------------------------------------------------------------------
 
         //VEHICLE WISE REPORT
@@ -88,6 +190,21 @@ namespace VehicleInsuranceSem3.Controllers
             Session["brandList"] = request.GetAll();
             return View();
         }
+
+        //-------------------------------------------------
+        [HttpGet]
+        public ActionResult GetDataPointBrandReportAll()
+        {
+            List<BrandInsuranceSellViewModel> brandList = report.CountBrandInsuranceSellAllTime();
+            List<DataPoint> brandDataPoints = new List<DataPoint>();
+            foreach (var item in brandList)
+            {
+                brandDataPoints.Add(new DataPoint(item.BrandName, item.Amount));
+            }
+            ViewBag.BrandDataPoints = JsonConvert.SerializeObject(brandDataPoints);
+            return PartialView("VehicleWiseChart_PartialPage", ViewBag.BrandDataPoints);
+        }
+
 
         [HttpGet]
         public ActionResult GetDataPointBrandReport(string start, string end)
@@ -104,6 +221,8 @@ namespace VehicleInsuranceSem3.Controllers
             return PartialView("VehicleWiseChart_PartialPage", ViewBag.BrandDataPoints);
         }
 
+
+        //------------------------------------------------------
         [HttpGet]
         public ActionResult GetDataPointModelReport(string start, string end, int id)
         {
@@ -117,6 +236,13 @@ namespace VehicleInsuranceSem3.Controllers
             }
             ViewBag.ModelDataPoints = JsonConvert.SerializeObject(ModeldDataPoints);
             return PartialView("VehicleModelReport_PartialPage", ViewBag.ModelDataPoints);
+        }
+
+        [HttpPost]
+        public ActionResult GetReportModelAllTime(int id)
+        {
+            List<ModelInsuranceViewModel> model = report.CountModelWithBrandSellAllTime( id);
+            return PartialView("VehicleWise_PartialPage", model);
         }
 
         [HttpPost]
@@ -137,8 +263,20 @@ namespace VehicleInsuranceSem3.Controllers
         {
             ReportFeature report = new ReportFeature();
 
+                    
+            CustomerpolicyDAORequest request = new CustomerpolicyDAORequest();
+            List<CustomerpolicyViewModel> list = request.GetLapsePolicy(DateTime.Today);
+            foreach (var item in list)
+            {
+                item.active = false;
+                request.Update(item);
+            }
+
             //one month due Policy
-            ViewBag.duePolicy = report.ShowPolicyDue(DateTime.Today);
+            //date of last month
+            DateTime oneMonthLaterDate = DateTime.Today.AddMonths(1);
+
+            ViewBag.duePolicy = report.ShowPolicyDue(oneMonthLaterDate);
 
             //Lapsed Policy
             ViewBag.lapsedPolicy = report.ShowLapsedPolicyDue(false);

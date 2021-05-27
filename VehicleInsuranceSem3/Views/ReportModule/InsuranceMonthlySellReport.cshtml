@@ -2,7 +2,7 @@
 @{
     ViewBag.Title = "InsuranceMonthlySellReport";
     Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
-
+    IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.CustomerPurchaseAmountViewModel> purchase = TempData["customerPurchase"] as IEnumerable<VehicleInsuranceSem3.BLL.ViewModel.CustomerPurchaseAmountViewModel>;
 }
 
 <div class="container">
@@ -27,10 +27,46 @@
 </div>
 <hr />
 
+<div id="CustomerPurchaseChartContainer" style="height:250px; width: 100%">
+
+</div>
+<div class="container" id="customePurchase">
+    <div class="container">
+        <h3><strong>Customer Purchase Amount</strong></h3>
+    </div>
+    <table class="table table-striped" id="customePurchase">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Customer Name</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (purchase != null)
+            {
+                int i = 1;
+                foreach (var item in purchase)
+                {
+
+                    <tr>
+                        <td>@i</td>
+                        <td>@item.CustomerName</td>
+                        <td>@item.Amount</td>
+                    </tr>
+                    i++;
+                };
+            }
+        </tbody>
+    </table>
+
+</div>
+<hr />
 <div class="container">
     <div id="PolicySoldChartContainer" style="height:250px; width: 100%">
 
     </div>
+
 </div>
 <hr />
 
@@ -72,9 +108,28 @@
         </table>
     </div>
 </div>
+<hr />
+
 
 <script type="text/javascript">
     $(document).ready(function () {
+        $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetDataPointForCustomerPurchaseAll")',
+                success: function (response) {
+                    $('#CustomerPurchaseChartContainer').html(response);
+                }
+        });
+
+        $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetDataPointForInsuranceReportAll")',
+                success: function (response) {
+                    $('#PolicySoldChartContainer').html(response);
+                }
+            });
+
+
         $('#btnSearch').click(function () {
             var startDay = getDate($("#StartDate").val());
             var endDay = getDate($("#EndDate").val());
@@ -85,7 +140,16 @@
                 success: function (response) {
                     $('#insuranceRow').html(response);
                 }
-            })
+            });
+
+            $.ajax({
+                type: 'POST',
+                url: '@Url.Action("GetPurchaseListByDate", "ReportModule" )',
+                data: { start: startDay, end: endDay },
+                success: function (response) {
+                    $('#customePurchase').html(response);
+                }
+            });
 
             $.ajax({
                 type: "GET",
@@ -94,10 +158,17 @@
                 success: function (response) {
                     $('#PolicySoldChartContainer').html(response);
                 }
+            });
 
-
-            })
+            $.ajax({
+                type: "GET",
+                url: '@Url.Action("GetDataPointForCustomerPurchase")',
+                data: { start: startDay, end: endDay },
+                success: function (response) {
+                    $('#CustomerPurchaseChartContainer').html(response);
+                }
+            });
         });
 
-    })
+    });
 </script>

@@ -103,9 +103,9 @@
                 <td>
 
 
-                    <a class="btn-btn-fab" href="@Url.Action("EditCustomerPolicy", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit"> </i>  </a>
-                    <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteCustomerPolicy" , new { id = item.id })"><i class="fa fa-trash"></i></a>
-                    <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("CreateBill", "CustomerBllingManager" , new { id = item.id })"><i class="fa fa-file"></i></a>
+                    <a class="btn-btn-fab" href="@Url.Action("EditCustomerPolicy", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
+                    <a class="btn-btn-fab" data-idItem="@item.id" href="@Url.Action("DeleteCustomerPolicy" , new { id = item.id })"><i class="fa fa-trash btn btn-danger"></i></a>
+                    <a class="btn btn-warning" data-idItem="@item.id" href="@Url.Action("CreateBill", "CustomerBllingManager" , new { id = item.id })"><i class="fa fa-file"></i></a>
                 </td>
                 </tr>
                 i++;
@@ -117,7 +117,7 @@
     </tbody>
 </table>
 <div id='Paging' style="text-align:center">
-    @Html.PagedListPager(Model, page => Url.Action("CusTomerBillManagerl", new { page, pageSize = Model.PageSize }))
+    @Html.PagedListPager(Model, page => Url.Action("CustomerPolicyManager", new { page }))
     Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
 </div>
 

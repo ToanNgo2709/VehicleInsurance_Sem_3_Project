@@ -8,6 +8,7 @@ namespace VehicleInsuranceSem3.BLL.ViewModel
 {
     public class CustomerHistoryModelView
     {
+        public int CustomerPolicyId { get; set; }
         public int CustomerId { get; set; }
         public string PolicyName { get; set; }
         public string VehicleName { get; set; }

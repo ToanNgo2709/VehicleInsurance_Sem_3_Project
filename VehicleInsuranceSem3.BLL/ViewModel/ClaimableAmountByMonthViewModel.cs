@@ -8,6 +8,7 @@ namespace VehicleInsuranceSem3.BLL.ViewModel
 {
     public class ClaimableAmountByMonthViewModel
     {
+        public int Id { get; set; }
         public int CustomerPolicyId { get; set; }
         public string CustomerName { get; set; }
         public DateTime CreateDate { get; set; }

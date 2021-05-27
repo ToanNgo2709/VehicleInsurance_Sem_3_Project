@@ -72,7 +72,7 @@ namespace VehicleInsuranceSem3.Controllers
         }
 
         [HttpPost]
-        public ActionResult CreateNewCustomerPolicy(HttpPostedFileBase ImageName)
+        public ActionResult CreateNewCustomerPolicy()
         {
             int cusId = (int)Session["id"];
             CustomerinfoDAORequest customerRequest = new CustomerinfoDAORequest();
@@ -167,6 +167,32 @@ namespace VehicleInsuranceSem3.Controllers
             int id = (int)Session["id"];
             List<CustomerHistoryModelView> list = request.GetCustomerPolicyHistory(id);
             return View(list);
+        }
+
+        public ActionResult CustomerHistoryDetail(int id)
+        {
+            var context = new InsuranceDbContext();
+            var model = context.Customer_Policy
+                .Where(c => c.id == id)
+                .Select(c => new CopyCustomerPolicyViewModel
+                {
+                    Address = c.Vehicle_Info.address,
+                    BrandName = c.Vehicle_Info.Brand.name,
+                    Condition = c.Vehicle_Info.vehicle_condition,
+                    CreateDate = c.create_date,
+                    CustomerName = c.Customer_Info.name,
+                    EndDate = c.policy_end_date,
+                    EngineNumber = c.Vehicle_Info.engine_number,
+                    FrameNumber = c.Vehicle_Info.frame_number,
+                    ModelName = c.Vehicle_Info.Model.name,
+                    OwnerName = c.Vehicle_Info.owner_name,
+                    PolicyName = c.Policy.policy_number,
+                    StartDate = c.policy_start_date,
+                    TotayPayment = c.total_payment,
+                    VehicleNumber = c.Vehicle_Info.vehicle_number,
+                    Version = c.Vehicle_Info.version
+                }).FirstOrDefault();
+            return View(model);
         }
 
 

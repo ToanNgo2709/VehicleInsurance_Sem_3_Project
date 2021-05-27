@@ -1,4 +1,6 @@
-﻿
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<VehicleInsuranceSem3.BLL.ViewModel.InsuranceCustomerPolicyMonthlyViewModel>
 @{
     ViewBag.Title = "DashIndex";
     Layout = "~/Views/Shared/Admin_LayoutPage.cshtml";
@@ -20,7 +22,7 @@
             </div>
         </div>
         <div class="col-6">
-            <a class="btn btn-primary" href="@Url.Action("CustomerPolicyManager", "CustomerPolicyManager")">Detail</a>
+
             <table class="table table-striped">
                 <thead>
                     <tr>
@@ -31,28 +33,42 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @if (ViewBag.insuranceList != null)
+
+                    @foreach (var item in Model)
                     {
-                        foreach (var item in ViewBag.insuranceList)
-                        {
-                            <tr>
-                                <th>@item.CreatedDate</th>
-                                <th>@item.CustomerName</th>
-                                <th>@item.PolicyName</th>
-                                <th>@item.Duration</th>
-                            </tr>
-                        }
+                        <tr>
+                            <th>@item.CreatedDate</th>
+                            <th>@item.CustomerName</th>
+                            <th>@item.PolicyName</th>
+                            <th>@item.Duration</th>
+                        </tr>
                     }
 
                 </tbody>
             </table>
+            <div class="row">
+                <div class="col-7">
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("DashIndex", new { page }),
+                    new PagedListRenderOptions
+                    {
+                        LiElementClasses = new string[] { "page-item" }
+                    })
+                </div>
+                <div class="col-5">
+                    <a style="float:right" class="btn btn-primary" href="@Url.Action("CustomerPolicyManager", "CustomerPolicyManager")">Detail</a>
+                </div>
+            </div>
+           
+
+            
         </div>
     </div>
 </div>
 <hr />
 <div class="container">
     <div id="BrandSellChart">
-        
+
     </div>
 </div>
 
