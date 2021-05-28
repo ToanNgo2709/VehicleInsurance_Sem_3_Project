@@ -762,3 +762,88 @@
       [16] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
 2021-05-26 19:31:47,705
       [16] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCXD6SA4T936551LL093933H","intent":"sale","state":"approved","cart":"57498150P3175262W","payer":{"payment_method":"paypal","status":"VERIFIED","payer_info":{"email":"sb-6zvhz6309716@personal.example.com","first_name":"John","last_name":"Doe","payer_id":"LQJ2WVEUPJS68","shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"},"country_code":"US"}},"transactions":[{"amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payee":{"merchant_id":"V87CRLRNWRGVQ","email":"sb-nhqzj5951607@business.example.com"},"description":"Payment","invoice_number":"21075","item_list":{"items":[{"name":"4 Seat Compulsory 1 year","sku":"sku","price":"25.00","currency":"USD","tax":"0.00","quantity":1}],"shipping_address":{"recipient_name":"John Doe","line1":"1 Main St","city":"San Jose","state":"CA","postal_code":"95131","country_code":"US"}},"related_resources":[{"sale":{"id":"9G120449N7909994A","state":"completed","amount":{"total":"25.00","currency":"USD","details":{"subtotal":"25.00","tax":"0.00","shipping":"0.00","insurance":"0.00","handling_fee":"0.00","shipping_discount":"0.00","discount":"0.00"}},"payment_mode":"INSTANT_TRANSFER","protection_eligibility":"ELIGIBLE","protection_eligibility_type":"ITEM_NOT_RECEIVED_ELIGIBLE,UNAUTHORIZED_PAYMENT_ELIGIBLE","transaction_fee":{"value":"1.03","currency":"USD"},"parent_payment":"PAYID-MCXD6SA4T936551LL093933H","create_time":"2021-05-26T12:31:46Z","update_time":"2021-05-26T12:31:46Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/sale/9G120449N7909994A","rel":"self","method":"GET"},{"href":"https://api.sandbox.paypal.com/v1/payments/sale/9G120449N7909994A/refund","rel":"refund","method":"POST"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCXD6SA4T936551LL093933H","rel":"parent_payment","method":"GET"}]}}]}],"failed_transactions":[],"create_time":"2021-05-26T12:29:59Z","update_time":"2021-05-26T12:31:46Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCXD6SA4T936551LL093933H","rel":"self","method":"GET"}]}
+[Header]
+2021-05-27 23:01:07,834
+      [30] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-27 23:01:08,228
+      [30] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-27 23:01:08,229
+      [30] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-27 23:01:08,230
+      [30] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:79746fd9-d76e-43ef-83ea-c66b1eb7decf
+2021-05-27 23:01:08,543
+      [30] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-27 23:01:10,880
+      [30] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-27 23:01:10,881
+      [30] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJBv8Jkn2-5aT6G5oAh5vrK_c1OoZICNBPuHLOnPQNkf1GJRWY_oBOrB0wei6swZg0xwuJlog0YCbe9nLPe-g866rrRSA","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":32400,"nonce":"2021-05-27T16:01:09ZWemQbac4CsfGIijlMFV3QJlaveMW4F-EGe23zZHD6jY"}
+2021-05-27 23:01:11,210
+      [30] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-27 23:01:11,211
+      [30] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-27 23:01:11,211
+      [30] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJBv8Jkn2-5aT6G5oAh5vrK_c1OoZICNBPuHLOnPQNkf1GJRWY_oBOrB0wei6swZg0xwuJlog0YCbe9nLPe-g866rrRSA
+2021-05-27 23:01:11,212
+      [30] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:423f0896-1585-43df-860f-f30f07590dd8
+2021-05-27 23:01:11,213
+      [30] DEBUG PayPal.Api.HttpConnection [(null)] {"intent":"sale","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"currency":"USD","total":"5","details":{"subtotal":"5","shipping":"0","tax":"0"}},"description":"Payment","invoice_number":"45651","item_list":{"items":[{"sku":"sku","name":"Motorcycle Compulsory 1 year","quantity":"1","price":"5","currency":"USD"}]}}],"redirect_urls":{"return_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=9770","cancel_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=9770"}}
+2021-05-27 23:01:12,402
+      [30] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-27 23:01:12,403
+      [30] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCX4ERY6X265006N7875405T","intent":"sale","state":"created","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"total":"5.00","currency":"USD","details":{"subtotal":"5.00","tax":"0.00","shipping":"0.00"}},"description":"Payment","invoice_number":"45651","item_list":{"items":[{"name":"Motorcycle Compulsory 1 year","sku":"sku","price":"5.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2021-05-27T16:01:11Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCX4ERY6X265006N7875405T","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-0N5999432U261431A","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCX4ERY6X265006N7875405T/execute","rel":"execute","method":"POST"}]}
+2021-05-27 23:01:56,529
+      [29] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-27 23:01:56,531
+      [29] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-27 23:01:56,533
+      [29] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-27 23:01:56,533
+      [29] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:a040a212-01c0-45f8-8860-0044423d7971
+2021-05-27 23:01:56,535
+      [29] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-27 23:01:57,080
+      [29] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-27 23:01:57,080
+      [29] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJBv8Jkn2-5aT6G5oAh5vrK_c1OoZICNBPuHLOnPQNkf1GJRWY_oBOrB0wei6swZg0xwuJlog0YCbe9nLPe-g866rrRSA","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":32353,"nonce":"2021-05-27T16:01:09ZWemQbac4CsfGIijlMFV3QJlaveMW4F-EGe23zZHD6jY"}
+2021-05-27 23:01:57,082
+      [29] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-27 23:01:57,083
+      [29] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-27 23:01:57,083
+      [29] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJBv8Jkn2-5aT6G5oAh5vrK_c1OoZICNBPuHLOnPQNkf1GJRWY_oBOrB0wei6swZg0xwuJlog0YCbe9nLPe-g866rrRSA
+2021-05-27 23:01:57,083
+      [29] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:99ca472f-b2c3-4b37-bf0d-e86bb9797606
+2021-05-27 23:01:57,084
+      [29] DEBUG PayPal.Api.HttpConnection [(null)] {"intent":"sale","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"currency":"USD","total":"5","details":{"subtotal":"5","shipping":"0","tax":"0"}},"description":"Payment","invoice_number":"66216","item_list":{"items":[{"sku":"sku","name":"Motorcycle Compulsory 1 year","quantity":"1","price":"5","currency":"USD"}]}}],"redirect_urls":{"return_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=82578","cancel_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=82578"}}
+2021-05-27 23:01:58,260
+      [29] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-27 23:01:58,262
+      [29] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCX4E5I48S62343MG120552L","intent":"sale","state":"created","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"total":"5.00","currency":"USD","details":{"subtotal":"5.00","tax":"0.00","shipping":"0.00"}},"description":"Payment","invoice_number":"66216","item_list":{"items":[{"name":"Motorcycle Compulsory 1 year","sku":"sku","price":"5.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2021-05-27T16:01:56Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCX4E5I48S62343MG120552L","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-29L57327K12241645","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCX4E5I48S62343MG120552L/execute","rel":"execute","method":"POST"}]}
+2021-05-27 23:02:18,765
+      [35] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/x-www-form-urlencoded
+2021-05-27 23:02:18,766
+      [35] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-27 23:02:18,766
+      [35] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Basic QWJVd0NfRkNOUVFwdTRfQU8tQzlvempUOE1sWkJVVzExa0dZQzl1dGNMNkNvR3U0dUMxeWJkbWtvWktkTWFJam1Pa09kSktucGx1QVlQRTU6RUFIWERTMGRNOUZDM1JvNWRVX252VVFzSGo2dFBrQTNjZzI3VnJqSEJBa0xCdklON1B3VUFMRkItVzZKSkNnX3ZJN3hzTV9IbXhJX0tTbkg=
+2021-05-27 23:02:18,768
+      [35] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:8b6e2ea2-1d45-48dd-afe4-b26509e73fa1
+2021-05-27 23:02:18,769
+      [35] DEBUG PayPal.Api.HttpConnection [(null)] grant_type=client_credentials
+2021-05-27 23:02:19,321
+      [35] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-27 23:02:19,323
+      [35] DEBUG PayPal.Api.HttpConnection [(null)] {"scope":"https://uri.paypal.com/services/invoicing https://uri.paypal.com/services/vault/payment-tokens/read https://uri.paypal.com/services/disputes/read-buyer https://uri.paypal.com/services/payments/realtimepayment https://uri.paypal.com/services/disputes/update-seller https://uri.paypal.com/services/payments/payment/authcapture openid https://uri.paypal.com/services/disputes/read-seller Braintree:Vault https://uri.paypal.com/services/payments/refund https://api.paypal.com/v1/vault/credit-card https://api.paypal.com/v1/payments/.* https://uri.paypal.com/payments/payouts https://uri.paypal.com/services/vault/payment-tokens/readwrite https://api.paypal.com/v1/vault/credit-card/.* https://uri.paypal.com/services/subscriptions https://uri.paypal.com/services/applications/webhooks","access_token":"A21AAJBv8Jkn2-5aT6G5oAh5vrK_c1OoZICNBPuHLOnPQNkf1GJRWY_oBOrB0wei6swZg0xwuJlog0YCbe9nLPe-g866rrRSA","token_type":"Bearer","app_id":"APP-80W284485P519543T","expires_in":32331,"nonce":"2021-05-27T16:01:09ZWemQbac4CsfGIijlMFV3QJlaveMW4F-EGe23zZHD6jY"}
+2021-05-27 23:02:19,325
+      [35] DEBUG PayPal.Api.PayPalResource [(null)] Content-Type:application/json
+2021-05-27 23:02:19,326
+      [35] DEBUG PayPal.Api.PayPalResource [(null)] User-Agent:PayPalSDK/PayPal-NET-SDK 1.9.1 (lang=DOTNET;v=4.5.1;clr=4.0.30319.42000;bit=64;os=Microsoft Windows NT 10.0.19043.0)
+2021-05-27 23:02:19,327
+      [35] DEBUG PayPal.Api.PayPalResource [(null)] Authorization:Bearer A21AAJBv8Jkn2-5aT6G5oAh5vrK_c1OoZICNBPuHLOnPQNkf1GJRWY_oBOrB0wei6swZg0xwuJlog0YCbe9nLPe-g866rrRSA
+2021-05-27 23:02:19,328
+      [35] DEBUG PayPal.Api.PayPalResource [(null)] PayPal-Request-Id:61b7697c-4699-44f7-a816-eb3931f399d0
+2021-05-27 23:02:19,328
+      [35] DEBUG PayPal.Api.HttpConnection [(null)] {"intent":"sale","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"currency":"USD","total":"5","details":{"subtotal":"5","shipping":"0","tax":"0"}},"description":"Payment","invoice_number":"78902","item_list":{"items":[{"sku":"sku","name":"Motorcycle Compulsory 1 year","quantity":"1","price":"5","currency":"USD"}]}}],"redirect_urls":{"return_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=78902","cancel_url":"https://localhost:44304/Paypal/PaymentWithPaypal?guid=78902"}}
+2021-05-27 23:02:20,383
+      [35] DEBUG PayPal.Api.HttpConnection [(null)] Service response: 
+2021-05-27 23:02:20,384
+      [35] DEBUG PayPal.Api.HttpConnection [(null)] {"id":"PAYID-MCX4FCY4S51874246852413W","intent":"sale","state":"created","payer":{"payment_method":"paypal","payer_info":{"email":""}},"transactions":[{"amount":{"total":"5.00","currency":"USD","details":{"subtotal":"5.00","tax":"0.00","shipping":"0.00"}},"description":"Payment","invoice_number":"78902","item_list":{"items":[{"name":"Motorcycle Compulsory 1 year","sku":"sku","price":"5.00","currency":"USD","quantity":1}]},"related_resources":[]}],"create_time":"2021-05-27T16:02:19Z","links":[{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCX4FCY4S51874246852413W","rel":"self","method":"GET"},{"href":"https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-9PH662284F804501S","rel":"approval_url","method":"REDIRECT"},{"href":"https://api.sandbox.paypal.com/v1/payments/payment/PAYID-MCX4FCY4S51874246852413W/execute","rel":"execute","method":"POST"}]}
