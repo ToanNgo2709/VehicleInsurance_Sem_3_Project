@@ -5,14 +5,13 @@
 }
 
 <div class="container">
-    <h4>Customer Policy of Customer:</h4>
+    <h4>Customer Policy of Customer: <strong>@ViewBag.customerName</strong> </h4>
 </div>
 <div class="container" >
     <table class="table table-striped">
         <thead>
             <tr>
                 <th>No.</th>
-                <th>Customer Id</th>
                 <th>Policy Name </th>
                 <th>Vehicle Name</th>
                 <th>Create Date</th>
@@ -30,7 +29,6 @@
                 {
                     <tr>
                         <td>@i</td>
-                        <td>@item.CustomerId</td>
                         <td>@item.PolicyName</td>
                         <td>@item.VehicleName</td>
                         <td>@item.CreateDate</td>

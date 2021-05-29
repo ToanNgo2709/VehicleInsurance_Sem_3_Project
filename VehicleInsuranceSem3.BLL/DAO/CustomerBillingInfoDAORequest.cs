@@ -132,6 +132,12 @@ namespace VehicleInsuranceSem3.BLL.DAO
             return q;
         }
 
-    
+        public List<CustomerbillinginfoViewModel> CheckCustomerPolicyExist(int customerPolicyId)
+        {
+            var q = context.Customer_Billing_Info
+                .Where(c => c.customer_policy_id == customerPolicyId)
+                .Select(d => new CustomerbillinginfoViewModel { customerpolicyid = (int)d.customer_policy_id, id = d.id, active = d.active, amount = d.amount, bill_number = d.bill_number, createdate = d.create_date, customeraddprove = d.customer_add_prove }).ToList();
+            return q;
+        }
     }
 }

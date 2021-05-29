@@ -7,8 +7,9 @@ using VehicleInsuranceSem3.BLL.ViewModel;
 using VehicleInsuranceSem3.BLL.DAO;
 using PagedList;
 using PagedList.Mvc;
+using System.Web.UI;
 
- namespace VehicleInsuranceSem3.Controllers
+namespace VehicleInsuranceSem3.Controllers
 {
     public class CustomerPolicyManagerController : Controller
     {
@@ -38,8 +39,8 @@ using PagedList.Mvc;
             int pageNumber = (page ?? 1);
             if (Session["CusPLSearch"] != null)
             {
-                ListcusPL = (List <CustomerpolicyViewModel>) Session["CusPLSearch"];
-                PageListCusPL = new PagedList<CustomerpolicyViewModel>(ListcusPL , pageNumber , pageSize);
+                ListcusPL = (List<CustomerpolicyViewModel>)Session["CusPLSearch"];
+                PageListCusPL = new PagedList<CustomerpolicyViewModel>(ListcusPL, pageNumber, pageSize);
 
             }
             else
@@ -47,7 +48,7 @@ using PagedList.Mvc;
                 ListcusPL = cs.GetAll();
                 PageListCusPL = new PagedList<CustomerpolicyViewModel>(ListcusPL, pageNumber, pageSize);
             }
-
+            TempData["currentPage"] = page;
             return View(PageListCusPL);
         }
         [HttpGet]
@@ -69,11 +70,11 @@ using PagedList.Mvc;
         public ActionResult customerPolicySearch()
         {
             var keyword = Request.Form["tbSearch"];
-            if (keyword !=null)
+            if (keyword != null)
             {
                 Session["StringSearch"] = keyword;
             }
-            List<CustomerpolicyViewModel> g= cs.Search(1, 10, (String)Session["StringSearch"]);
+            List<CustomerpolicyViewModel> g = cs.Search(1, 10, (String)Session["StringSearch"]);
             Session["CusPLSearch"] = g;
             List<PolicyViewModel> s = pl.GetAll();
             Session["PolicyAll"] = s;
@@ -87,7 +88,7 @@ using PagedList.Mvc;
         [HttpPost]
         public ActionResult CustomerPolicySearchByDate()
         {
-            DateTime startDate =DateTime.Parse(Request.Params["startDate"]);
+            DateTime startDate = DateTime.Parse(Request.Params["startDate"]);
             DateTime endDate = DateTime.Parse(Request.Params["endDate"]);
 
             List<CustomerpolicyViewModel> list = cs.FilterCustomerPolicyByCreateDate(startDate, endDate, 1, 10);
@@ -107,7 +108,7 @@ using PagedList.Mvc;
             Session["customerInAll"] = w;
             return View();
 
-           }
+        }
         [HttpPost]
         public ActionResult NewCustomerPolicy(CustomerpolicyViewModel ff)
         {
@@ -156,6 +157,22 @@ using PagedList.Mvc;
         public ActionResult CreateCustomerPolicyTest()
         {
             return View();
+        }
+
+        public ActionResult CheckBillExist(int customerPolicyId)
+        {
+            CustomerBillingInfoDAORequest dao = new CustomerBillingInfoDAORequest();
+            List<CustomerbillinginfoViewModel> model = dao.CheckCustomerPolicyExist(customerPolicyId);
+            if (model.Count > 0)
+            {
+                TempData["message"] = "Customer Policy already had a bill, please check Customer Billing Info";
+                return RedirectToAction("CustomerPolicyManager", new { page = 1});
+            }
+            else
+            {
+                return RedirectToAction("CreateBill", "CustomerBllingManager", new { id = customerPolicyId } );
+            }
+
         }
 
     }
