@@ -88,7 +88,7 @@ namespace VehicleInsuranceSem3.Controllers
                 ListClaimDetail = l.GetAll();
                 PageListClaimDetail = new PagedList<ClaimDetailViewModel>(ListClaimDetail, page, pageSize);
             }
-
+            ViewBag.message = TempData["message"];
 
             return View(PageListClaimDetail);
         }
@@ -283,8 +283,6 @@ namespace VehicleInsuranceSem3.Controllers
             List<CustomerpolicyViewModel> z = sxx.GetAll();
             Session["CusAllView"] = z;
 
-
-
             return View();
 
         }
@@ -312,19 +310,29 @@ namespace VehicleInsuranceSem3.Controllers
         public ActionResult AddClaimDetail(ClaimDetailViewModel ss)
         {
             CompanyexpenseDAORequest request = new CompanyexpenseDAORequest();
-            CompanyexpenseViewModel model = new CompanyexpenseViewModel()
+            List<ClaimDetailViewModel> checkLIst = l.CheckPolicyExist((int)ss.customerpolicyid);
+            if (checkLIst.Count > 0)
             {
-                date = DateTime.Today,
-                expensetypeid = 1,
-                amount = ss.claimableamount,
-                customerpolicyid = ss.customerpolicyid,
-                description = "Chi trả bảo hiểm cho hợp đồng số: " + ss.customerpolicyid
-            };
-            request.Add(model);
-            l.Add(ss);
-            List<ClaimDetailViewModel> h = l.GetAll();
-            Session["ClaimDetailViewAll"] = h;
-            return RedirectToAction("ClaimDetailBill",ss);
+                TempData["message"] = "This customer policy has claimed, please check in claim management";
+                return RedirectToAction("CLaimDetailManager", new { page = 1, pageSize = 10});
+            }
+            else
+            {
+                CompanyexpenseViewModel model = new CompanyexpenseViewModel()
+                {
+                    date = DateTime.Today,
+                    expensetypeid = 1,
+                    amount = ss.claimableamount,
+                    customerpolicyid = ss.customerpolicyid,
+                    description = "Chi trả bảo hiểm cho hợp đồng số: " + ss.customerpolicyid
+                };
+                request.Add(model);
+                l.Add(ss);
+                List<ClaimDetailViewModel> h = l.GetAll();
+                Session["ClaimDetailViewAll"] = h;
+                return RedirectToAction("ClaimDetailBill", ss);
+            }
+            
         }
 
         public ActionResult GetClaimDetail(int id)
