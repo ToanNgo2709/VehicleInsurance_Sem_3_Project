@@ -238,6 +238,8 @@ namespace VehicleInsuranceSem3.Controllers
             Session["ListAllModel"] = b;
             return RedirectToAction("ModelViewAll");
         }
+
+       
     }
 
 }

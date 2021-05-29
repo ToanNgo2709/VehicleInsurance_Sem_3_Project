@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using VehicleInsuranceSem3.BLL.DAO;
 using VehicleInsuranceSem3.BLL.ViewModel;
 using VehicleInsuranceSem3.DAL.Model;
+using VehicleInsuranceSem3.Utilities.Crypto;
 
 namespace VehicleInsuranceSem3.Controllers
 {
@@ -134,14 +135,17 @@ namespace VehicleInsuranceSem3.Controllers
             ForgetPasswordEmailViewModel emailModel = new ForgetPasswordEmailViewModel();
 
             CustomerinfoViewModel customer = request.GetByUsernameAndEmail(username, email);
+            
             if (CheckForgotPwNull(username, email))
             {
                 if (customer != null)
                 {
+                    string realPassword = PasswordSecurity.Decrypt(customer.password);
+
                     emailModel.From = "toanngongo97@gmail.com";
                     emailModel.To = email;
                     emailModel.Subject = "Kraken Force Inc - Your Password";
-                    emailModel.Body = "Your Password is: " + customer.password;
+                    emailModel.Body = "Your Password is: " + realPassword;
 
                     MailMessage mail = new MailMessage();
                     mail.To.Add(emailModel.To);
