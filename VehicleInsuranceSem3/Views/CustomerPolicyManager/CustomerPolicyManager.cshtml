@@ -116,7 +116,7 @@
                     <td>
                         <a class="btn-btn-fab" href="@Url.Action("EditCustomerPolicy", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
                         <button data-target="#exampleModal" data-toggle="modal" onclick="OpenModal(@item.id)" class="btn btn-danger fa fa-trash"></button>
-                        <a class="btn btn-warning" data-idItem="@item.id" href="@Url.Action("CreateBill", "CustomerBllingManager" , new { id = item.id })"><i class="fa fa-file"></i></a>
+                        <a class="btn btn-warning" data-idItem="@item.id" href="@Url.Action("CheckBillExist" , new { customerPolicyId = item.id })"><i class="fa fa-file"></i></a>
                     </td>
                 </tr>
                 i++;
@@ -154,6 +154,14 @@
     </div>
 </div>
 <input id="hiddenField" name="hiddenField" hidden value="" />
+
+@if(TempData["message"] != null)
+{
+    <script type="text/javascript">          
+                alert("@TempData["message"]");
+    </script>
+
+}
 
 <script>
 

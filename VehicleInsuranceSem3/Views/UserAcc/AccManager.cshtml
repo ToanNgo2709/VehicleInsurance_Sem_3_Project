@@ -64,7 +64,7 @@
                     <td>
                         <a class="btn-btn-fab" href="@Url.Action("EditAcc", new { id = item.id})" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
                         <button data-target="#exampleModal" data-toggle="modal" onclick="OpenModal(@item.id)" class="btn btn-danger fa fa-trash"></button>
-                        <a class="btn btn-warning" data-idItem="@item.id" href="@Url.Action("ShowCustomerPolicyHistory", new { id = item.id})"><i class="fa fa-list"></i></a>
+                        <a class="btn btn-warning" data-idItem="@item.id" href="@Url.Action("ShowCustomerPolicyHistory", new { id = item.id, customerName = item.name})"><i class="fa fa-list"></i></a>
                     </td>
                 </tr>
                 i++;
