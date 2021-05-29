@@ -23,16 +23,16 @@
     </div>
     <div class="form-group">
         <select class="form-control" aria-label="Default select example" id="customerpolicyid" name="customerpolicyid">
-            <option selected> -- Select --</option>
+            <option selected> -- Select Customer Policy ID --</option>
             @foreach (var item in x)
             {
                 if (item.id != null)
                 {
-                    <option value="@item.id">@item.customeraddprove</option>
+                    <option value="@item.id">@item.id</option>
                 }
                 else
                 {
-                    <option value="@item.id">@item.customeraddprove</option>
+                    <option value="@item.id">@item.id</option>
                 }
             }
 

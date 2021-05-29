@@ -195,10 +195,11 @@ namespace VehicleInsuranceSem3.Controllers
 
         }
 
-        public ActionResult ShowCustomerPolicyHistory(int id)
+        public ActionResult ShowCustomerPolicyHistory(int id, string customerName)
         {
             CustomerpolicyDAORequest request = new CustomerpolicyDAORequest();
             List<CustomerHistoryModelView> list = request.GetCustomerPolicyHistory(id);
+            ViewBag.customerName = customerName;
             return View(list);
         }
 

@@ -9,6 +9,7 @@ using VehicleInsuranceSem3.BLL.DAO;
 using System.Text;
 using VehicleInsuranceSem3.DAL.Model;
 using VehicleInsuranceSem3.Utilities.Crypto;
+using System.Web.Security;
 
 namespace VehicleInsuranceSem3.Controllers
 {
@@ -81,7 +82,7 @@ namespace VehicleInsuranceSem3.Controllers
                     }
                     else
                     {
-                        TempData["Alert"] = "Your account not exist!";                    
+                        TempData["Alert"] = "Your account not exist!";
                         return RedirectToAction("Login", "Login");
                     }
 
@@ -124,13 +125,17 @@ namespace VehicleInsuranceSem3.Controllers
             }
         }
 
+        [OutputCache(NoStore = true, Duration = 0, VaryByParam = "*")]
         public ActionResult LogoutDB()
         {
             if (Session["id"] != null)
             {
+                FormsAuthentication.SignOut();
                 Session["id"] = null;
                 Session["Username"] = null;
                 Session["User_Type"] = null;
+                Session.RemoveAll();
+                Session.Abandon();
                 TempData["Alert"] = "Logout successful!";
                 return RedirectToAction("Index", "Home");
             }
@@ -143,6 +148,6 @@ namespace VehicleInsuranceSem3.Controllers
 
 
         //===============================================================================
-        
+
     }
 }
