@@ -122,6 +122,14 @@ namespace VehicleInsuranceSem3.BLL.DAO
                 .Select(d => new ClaimDetailViewModel { id = d.id, claimableamount = d.claimable_amount, claimnumber = d.claim_number, customerpolicyid = d.customer_policy_id, dateaccident = d.date_accident, insuredamount = d.insured_amount, placeaccident = d.place_accident }).OrderBy(d => d.id).Skip((page - 1) * row).Take(row).ToList();
             return q;
         }
+
+        public List<ClaimDetailViewModel> CheckPolicyExist(int customePolicyID)
+        {
+            var q = context.Claim_Detail
+                .Where(c => c.customer_policy_id == customePolicyID)
+                .Select(d => new ClaimDetailViewModel { id = d.id, claimableamount = d.claimable_amount, claimnumber = d.claim_number, customerpolicyid = d.customer_policy_id, dateaccident = d.date_accident, insuredamount = d.insured_amount, placeaccident = d.place_accident }).OrderBy(d => d.id).ToList();
+            return q;
+        }
     }
 
 }
