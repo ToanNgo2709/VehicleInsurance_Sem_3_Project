@@ -52,8 +52,23 @@
                         <h6 class="collapse-header">Account and User Type</h6>
                         <a class="collapse-item" href="@Url.Action("AccManager" , "UserAcc")">Account</a>
                         <a class="collapse-item" href="@Url.Action("UserTypeManager","UserAcc")">User Type</a>
-                        
 
+
+                    </div>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVehicle" aria-expanded="true"
+                   aria-controls="collapseVehicle">
+                    <i class="fa fa-fw fa-car"></i>
+                    <span>Vehicle Manager</span>
+                </a>
+                <div id="collapseVehicle" class="collapse" aria-labelledby="headingVehicle" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header"> Vehicle Manager</h6>
+                        <a class="collapse-item" href="@Url.Action("BrandManager", "BrandmodelManager")">Brand Manager</a>
+                        <a class="collapse-item" href="@Url.Action("ModelManager", "BrandmodelManager")">Model Manager</a>
+                        <a class="collapse-item" href="@Url.Action("VehicleInfoManager","VehicleIinFoManager")">Vehicle Info</a>
                     </div>
                 </div>
             </li>
@@ -89,21 +104,7 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVehicle" aria-expanded="true"
-                   aria-controls="collapseVehicle">
-                    <i class="fa fa-fw fa-car"></i>
-                    <span>Vehicle Manager</span>
-                </a>
-                <div id="collapseVehicle" class="collapse" aria-labelledby="headingVehicle" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header"> Vehicle Manager</h6>
-                        <a class="collapse-item" href="@Url.Action("BrandManager", "BrandmodelManager")">Brand Manager</a>
-                        <a class="collapse-item" href="@Url.Action("ModelManager", "BrandmodelManager")">Model Manager</a>
-                        <a class="collapse-item" href="@Url.Action("VehicleInfoManager","VehicleIinFoManager")">Vehicle Info</a>                                    
-                    </div>
-                </div>
-            </li>
+
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseReport" aria-expanded="true"
                    aria-controls="collapseReport">
@@ -120,21 +121,34 @@
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseContact" aria-expanded="true"
+                   aria-controls="collapseContact">
+                    <i class="fa fa-fw fa-phone"></i>
+                    <span>Contact</span>
+                </a>
+                <div id="collapseContact" class="collapse" aria-labelledby="headingContact" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Contact Manager</h6>
+                        <a class="collapse-item" href="@Url.Action("ContactRequest","Contact")">Contact Request</a>              
+                    </div>
+                </div>
+            </li>
 
 
 
 
             <hr class="sidebar-divider">
             @*<div class="sidebar-heading">
-                Examples
-            </div>
+            Examples
+        </div>
 
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span>
-                </a>
-            </li>*@
+        <li class="nav-item">
+            <a class="nav-link" href="charts.html">
+                <i class="fas fa-fw fa-chart-area"></i>
+                <span>Charts</span>
+            </a>
+        </li>*@
             <hr class="sidebar-divider">
             <div class="version" id="version-ruangadmin"></div>
         </ul>
@@ -340,7 +354,7 @@
                                     Activity Log
                                 </a>*@
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" onclick="noBack()" href="@Url.Action("LogoutDB","Login")">
+                                <a class="dropdown-item" href="@Url.Action("LogoutDB","Login")">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
                                 </a>
@@ -390,6 +404,8 @@
         $("input[type='checkbox']").on('change', function () {
             $("#active").val(this.checked ? "TRUE" : "FALSE");
         })
+
+
         function noBack() {
             window.history.forward();
         }
