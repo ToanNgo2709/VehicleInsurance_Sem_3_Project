@@ -84,7 +84,7 @@
 
                         <a class="btn btn-warning" href="@Url.Action("GetClaimDetail", new { id = item.id})"><i class="fa fa-info-circle"></i></a>
                         <a class="btn-btn-fab" href="@Url.Action("EditClaimDetail", new { id = item.id })" data-idItem="@item.id"><i class="fa fa-edit btn btn-primary"> </i>  </a>
-    
+
                         <button data-target="#exampleModal" data-toggle="modal" onclick="OpenModal(@item.id)" class="btn btn-danger fa fa-trash"></button>
                     </td>
                 </tr>
@@ -100,7 +100,12 @@
     @Html.PagedListPager(Model, page => Url.Action("CLaimDetailManager", new { page, pageSize = Model.PageSize }))
     Showing @Model.FirstItemOnPage to @Model.LastItemOnPage of @Model.TotalItemCount
 </div>
-
+@if (TempData["message"] != null)
+{
+    <script type="text/javascript">
+            alert("@TempData["message"]");
+    </script>
+}
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
