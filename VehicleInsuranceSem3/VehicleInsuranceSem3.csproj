@@ -164,6 +164,7 @@
     <Compile Include="Areas\ClientArea\Controllers\HomePageController.cs" />
     <Compile Include="Controllers\BrandmodelManagerController.cs" />
     <Compile Include="Controllers\CompanyExpenseManagerController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\CusTomAddController.cs" />
     <Compile Include="Controllers\CustomerBllingManagerController.cs" />
     <Compile Include="Controllers\CustomerPolicyManagerController.cs" />
@@ -3134,6 +3135,8 @@
     <Content Include="Views\Home\CustomerHistoryDetail.cshtml" />
     <Content Include="Views\UserAcc\ShowCustomerPolicyDetail.cshtml" />
     <Content Include="Views\Home\ConvertPassword.cshtml" />
+    <Content Include="Views\Contact\ContactRequest.cshtml" />
+    <Content Include="Views\Contact\SendEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

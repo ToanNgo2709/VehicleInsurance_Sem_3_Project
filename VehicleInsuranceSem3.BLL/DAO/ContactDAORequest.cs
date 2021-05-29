@@ -53,7 +53,24 @@ namespace VehicleInsuranceSem3.BLL.DAO
 
         public List<ContactViewModel> GetById(int Id)
         {
-            throw new NotImplementedException();
+            var q = context.Contacts
+                .Where(c => c.id == Id)
+                .Select(c => new ContactViewModel { Id = c.id, Name = c.name, Website = c.website, Email = c.email, Message = c.message })
+                .OrderBy(d => d.Id)
+                .ToList();
+            return q;
+          
+        }
+
+        public ContactViewModel GetContactById(int Id)
+        {
+            var q = context.Contacts
+                .Where(c => c.id == Id)
+                .Select(c => new ContactViewModel { Id = c.id, Name = c.name, Website = c.website, Email = c.email, Message = c.message })
+                .OrderBy(d => d.Id)
+                .FirstOrDefault();
+            return q;
+
         }
 
         public ContactViewModel GetEdit(int id)
