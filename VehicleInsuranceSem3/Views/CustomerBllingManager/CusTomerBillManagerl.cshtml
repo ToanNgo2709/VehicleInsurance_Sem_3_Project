@@ -122,8 +122,34 @@
         </div>
     </div>
 </div>
-<input id="hiddenField" name="hiddenField" hidden value="" />
 
+<!-- Modal Notification -->
+<div class="modal fade" id="NotiModal" tabindex="-1" role="dialog" aria-labelledby="notiModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="notiModalLabel">Notification <i class="fa fa-bell"></i></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h3>This Customer Policy Already had a bill. Please Check</h3>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<input id="hiddenField" name="hiddenField" hidden value="" />
+@if (TempData["message"] != null) { 
+    <script type="text/javascript">
+        //alert("@TempData["message"]");
+        $("#NotiModal").modal("show");
+    </script>
+}
 <script>
 
     function OpenModal(id) {
