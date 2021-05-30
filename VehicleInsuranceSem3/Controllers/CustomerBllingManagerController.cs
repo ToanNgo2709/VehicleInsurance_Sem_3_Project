@@ -14,13 +14,13 @@ namespace VehicleInsuranceSem3.Controllers
     public class CustomerBllingManagerController : Controller
     {
         public CustomerBillingInfoDAORequest csb = new CustomerBillingInfoDAORequest();
-      public  CustomerpolicyDAORequest csp = new CustomerpolicyDAORequest();
+        public CustomerpolicyDAORequest csp = new CustomerpolicyDAORequest();
         // GET: CustomerBllingManager
         public ActionResult Index()
         {
             return View();
         }
-        public ActionResult CusTomerBillManagerl(int page = 1 , int pageSize = 10)
+        public ActionResult CusTomerBillManagerl(int page = 1, int pageSize = 10)
         {
             List<CustomerbillinginfoViewModel> x = csb.GetAll();
             Session["csbAllView"] = x;
@@ -29,19 +29,19 @@ namespace VehicleInsuranceSem3.Controllers
 
             List<CustomerbillinginfoViewModel> ListCusbill = new List<CustomerbillinginfoViewModel>();
             PagedList<CustomerbillinginfoViewModel> PageListCusBill;
-            if (Session["CusbillSearch"] !=null)
+            if (Session["CusbillSearch"] != null)
             {
                 ListCusbill = (List<CustomerbillinginfoViewModel>)Session["CusbillSearch"];
-                PageListCusBill = new PagedList<CustomerbillinginfoViewModel>(ListCusbill , page , pageSize);
+                PageListCusBill = new PagedList<CustomerbillinginfoViewModel>(ListCusbill, page, pageSize);
 
             }
             else
             {
                 ListCusbill = csb.GetAll();
-          
+
                 PageListCusBill = new PagedList<CustomerbillinginfoViewModel>(ListCusbill, page, pageSize);
             }
-            
+
             return View(PageListCusBill);
 
         }
@@ -49,7 +49,7 @@ namespace VehicleInsuranceSem3.Controllers
         [HttpGet]
         public ActionResult CustomerbillViewAll()
         {
-            
+
             List<CustomerbillinginfoViewModel> x = csb.GetAll();
             Session["csbAllView"] = x;
             List<CustomerpolicyViewModel> z = csp.GetAll();
@@ -58,19 +58,19 @@ namespace VehicleInsuranceSem3.Controllers
             Session["StringSearch"] = null;
             Session["CusbillSearch"] = null;
             return RedirectToAction("CusTomerBillManagerl");
-            
+
         }
         public ActionResult customerSearch()
         {
             var keyword = Request.Form["tbSearch"];
-            if (keyword !=null )
+            if (keyword != null)
             {
                 Session["StringSearch"] = keyword;
             }
             List<CustomerbillinginfoViewModel> c = csb.Search(1, 10, (String)Session["StringSearch"]);
 
             Session["CusbillSearch"] = c;
-            
+
             List<CustomerpolicyViewModel> z = csp.GetAll();
             Session["cspAllView"] = z;
             return RedirectToAction("CusTomerBillManagerl");
@@ -188,12 +188,21 @@ namespace VehicleInsuranceSem3.Controllers
         [HttpPost]
         public ActionResult AddCustomerBill(CustomerbillinginfoViewModel l)
         {
-            csb.Add(l);
-            List<CustomerbillinginfoViewModel> x = csb.GetAll();
-            Session["csbAllView"] = x;
-            return RedirectToAction("CustomerbillViewAll");
+            List<CustomerbillinginfoViewModel> model = csb.CheckCustomerPolicyExist(l.customerpolicyid);
+            if (model.Count > 0)
+            {
+                TempData["message"] = "Customer Policy already had a bill, please check Customer Billing Info";
+                return RedirectToAction("CusTomerBillManagerl", new { page = 1, pageSize = 10 });
+            }
+            else
+            {
+                csb.Add(l);
+                List<CustomerbillinginfoViewModel> x = csb.GetAll();
+                Session["csbAllView"] = x;
+                return RedirectToAction("CustomerbillViewAll");
+            }          
         }
-        
+
         [HttpPost]
         public ActionResult DeleteCustomerBill(int id)
         {
@@ -203,7 +212,29 @@ namespace VehicleInsuranceSem3.Controllers
             return RedirectToAction("CustomerbillViewAll");
         }
 
-        
+        [HttpPost]
+        public ActionResult SearchCustomerPolicy(int id)
+        {
+            CustomerpolicyViewModel model = csp.GetCustomerPolicyById(id);
+            return Json(model.TotalPayment, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult CheckBillExist(CustomerbillinginfoViewModel cb)
+        {
+            CustomerBillingInfoDAORequest dao = new CustomerBillingInfoDAORequest();
+            List<CustomerbillinginfoViewModel> model = dao.CheckCustomerPolicyExist(cb.id);
+            if (model.Count > 0)
+            {
+                TempData["message"] = "Customer Policy already had a bill, please check Customer Billing Info";
+                return RedirectToAction("CusTomerBillManagerl", new { page = 1, pageSize = 10 });
+            }
+            else
+            {
+                return RedirectToAction("AddCustomerBill", new { l = cb });
+            }
+
+        }
+
 
     }
 }

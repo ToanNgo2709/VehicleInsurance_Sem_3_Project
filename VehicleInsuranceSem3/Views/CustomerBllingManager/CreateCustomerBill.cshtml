@@ -52,6 +52,21 @@
 </form>
 
 
+<script>
+    $("#customerpolicyid").change(function () {
+        var cpId = $("#customerpolicyid").val();
+        $.ajax({
+            type: "Post",
+            url: "@Url.Action("SearchCustomerPolicy")",
+            data: { id: cpId },
+            success: function (response) {
+                $("#amount").val(response);
+            }
+        });
+    });
+</script>
+
+
 
 
 
